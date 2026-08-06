@@ -1,0 +1,32 @@
+name: "Agent: Site Auditor (weekly)"
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"   # Every Monday, 12:00 UTC (8:00am ET)
+  workflow_dispatch: {}     # Adds a manual "Run workflow" button so you can test anytime
+
+permissions:
+  contents: read            # The agent can read the site files...
+  issues: write             # ...and file/comment on Issues. Nothing else.
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Run the SEO scan
+        run: python3 scripts/audit.py "${{ vars.SITE_URL || 'docs/index.html' }}"
+
+      - name: Claude interprets the scan and files the report
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Read the file agents/site-auditor.md and follow those instructions
+            exactly. Today's scan results are in audit-report.md.
+          claude_args: |
+            --allowedTools "Read,Grep,Glob,Bash(gh issue:*),Bash(gh label:*),Bash(date:*)"
+        env:
+          GH_TOKEN: ${{ github.token }}
