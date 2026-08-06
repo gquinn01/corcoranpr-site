@@ -1,0 +1,32 @@
+name: "Agent: Google Watcher (daily)"
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # Every day, 11:00 UTC (7:00am ET)
+  workflow_dispatch: {}     # Manual "Run workflow" button for testing
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Sweep the SEO news sources
+        run: python3 scripts/fetch_seo_news.py
+
+      - name: Claude reads the sweep and files alerts (only if warranted)
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Read the file agents/google-watcher.md and follow those instructions
+            exactly. Today's headline sweep is in seo-news.md.
+          claude_args: |
+            --allowedTools "Read,Grep,Glob,Bash(gh issue:*),Bash(gh label:*),Bash(date:*),WebFetch"
+        env:
+          GH_TOKEN: ${{ github.token }}
