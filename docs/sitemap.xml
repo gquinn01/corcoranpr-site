@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WHY: the sitemap is the table of contents you hand to crawlers.
+     One page today; every page you add gets a line. Submit it once in
+     Google Search Console and Bing Webmaster Tools. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://corcoranpr.com/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>

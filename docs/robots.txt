@@ -1,0 +1,38 @@
+# WHY: robots.txt is the doorman for crawlers. For AEO, the modern
+# mistake is BLOCKING the AI assistants' crawlers (often via copy-pasted
+# "block AI" templates) — which makes the business invisible when
+# customers ask ChatGPT, Claude, or Perplexity for recommendations.
+# A local business wants these bots IN.
+#
+# NOTE: robots.txt only works at the ROOT of a domain. On a free
+# GitHub Pages address (username.github.io/repo/) it is decorative;
+# it becomes active when you attach a real custom domain.
+
+# Search engines: welcome
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI assistants and answer engines: explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Everyone else
+User-agent: *
+Allow: /
+
+Sitemap: https://corcoranpr.com/sitemap.xml

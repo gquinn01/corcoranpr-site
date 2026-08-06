@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       WILLOW & SAGE DAY SPA — demo site built the AI-first way.
+       Every comment marked "WHY:" explains a choice that makes
+       Google (and AI search engines) love this page. This is the
+       stuff Lucas's "site-scanning agent" checks for.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- WHY: The title tag is the single strongest on-page SEO signal.
+       Formula: Business | Main Service | Town, State -->
+  <title>Willow &amp; Sage Day Spa | Massage &amp; Facials | Ridgewood, NJ</title>
+
+  <!-- WHY: The meta description doesn't affect ranking directly, but it IS
+       your ad copy on the results page. Under 160 characters, one clear offer. -->
+  <meta name="description" content="Ridgewood's boutique day spa for massage, facials, and wellness. Book online in 60 seconds — first visit 20% off. Open 7 days in downtown Ridgewood, NJ.">
+
+  <link rel="canonical" href="https://www.willowandsagespa.com/">
+  <meta name="robots" content="index, follow">
+
+  <!-- WHY: Open Graph tags control how the site looks when shared
+       on Facebook/Instagram/LinkedIn — critical for a local business. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Willow &amp; Sage Day Spa | Ridgewood, NJ">
+  <meta property="og:description" content="Boutique massage, facials & wellness in downtown Ridgewood. Book online in 60 seconds.">
+  <meta property="og:url" content="https://www.willowandsagespa.com/">
+
+  <!-- WHY: JSON-LD "structured data" is how you speak directly to Google's
+       machines — and now to AI assistants that answer "best spa near me."
+       LocalBusiness schema = name, address, hours, price range, geo.
+       This is the #1 thing most small-business sites are missing.
+       AEO NOTE: the "sameAs" links below tie this business to its profiles
+       (Instagram, Yelp, etc.) so AI systems can verify it's a real,
+       reviewed entity — a key answer-engine signal. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DaySpa",
+    "name": "Willow & Sage Day Spa",
+    "description": "Boutique day spa offering massage, facials, and wellness treatments in downtown Ridgewood, New Jersey.",
+    "url": "https://www.willowandsagespa.com/",
+    "telephone": "+1-201-555-0142",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.instagram.com/willowandsagespa",
+      "https://www.facebook.com/willowandsagespa",
+      "https://www.yelp.com/biz/willow-and-sage-day-spa-ridgewood"
+    ],
+    "areaServed": ["Ridgewood NJ", "Glen Rock NJ", "Wyckoff NJ", "Ho-Ho-Kus NJ", "Bergen County NJ"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 E Ridgewood Ave",
+      "addressLocality": "Ridgewood",
+      "addressRegion": "NJ",
+      "postalCode": "07450",
+      "addressCountry": "US"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.9793, "longitude": -74.1166 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "18:00" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Spa Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Swedish Massage" }, "price": "95", "priceCurrency": "USD" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Signature Facial" }, "price": "110", "priceCurrency": "USD" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deep Tissue Massage" }, "price": "115", "priceCurrency": "USD" }
+      ]
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "212" }
+  }
+  </script>
+
+  <!-- WHY: FAQPage schema can win you the expandable Q&A box in Google
+       results — free extra real estate on the results page. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need an appointment at Willow & Sage Day Spa?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Walk-ins are welcome when we have openings, but we recommend booking online — it takes about 60 seconds and guarantees your time slot." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I park in downtown Ridgewood?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Free 2-hour parking is available in the Hudson Street garage, a 2-minute walk from our door on E Ridgewood Ave." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you sell gift cards?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — digital gift cards in any amount are available online and never expire." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* WHY: Everything lives in one file — no external CSS/JS requests means
+       the page loads fast, and page speed is a confirmed Google ranking factor. */
+    :root{
+      --sage:#7d8c6f; --sage-dark:#5c6b50; --cream:#faf7f0; --ink:#2c2a26;
+      --gold:#c9a35c; --white:#ffffff; --soft:#efe9dd;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--cream);line-height:1.7}
+    h1,h2,h3{font-weight:normal;letter-spacing:.02em}
+    a{color:var(--sage-dark)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+    /* Header */
+    header{position:sticky;top:0;background:rgba(250,247,240,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--soft);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase}
+    .logo span{color:var(--sage)}
+    nav ul{display:flex;gap:28px;list-style:none;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+    nav a{text-decoration:none;color:var(--ink)}
+    nav a:hover{color:var(--sage)}
+    .btn{display:inline-block;background:var(--sage);color:var(--white);padding:13px 30px;border-radius:2px;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+    .btn:hover{background:var(--sage-dark)}
+    .btn-gold{background:var(--gold)}
+    .btn-gold:hover{background:#b08d45}
+
+    /* Hero */
+    .hero{padding:110px 0 90px;text-align:center;background:
+      radial-gradient(ellipse at 20% 10%, rgba(125,140,111,.18), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(201,163,92,.14), transparent 50%),
+      var(--cream)}
+    .hero .eyebrow{font-family:Helvetica,Arial,sans-serif;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:18px}
+    /* WHY: Exactly ONE h1 per page, and it contains service + location keywords. */
+    .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.2;max-width:800px;margin:0 auto 22px}
+    .hero p{max-width:560px;margin:0 auto 34px;font-size:1.1rem;color:#55524b}
+    .hero .sub{font-family:Helvetica,Arial,sans-serif;font-size:.8rem;margin-top:18px;color:#7a766d}
+
+    /* Sections */
+    section{padding:80px 0}
+    .sec-title{text-align:center;margin-bottom:8px;font-size:2rem}
+    .sec-sub{text-align:center;color:#6d695f;margin-bottom:48px;font-family:Helvetica,Arial,sans-serif;font-size:.9rem;letter-spacing:.05em}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .card{background:var(--white);border:1px solid var(--soft);border-radius:3px;padding:34px 28px}
+    .card h3{font-size:1.2rem;margin-bottom:8px}
+    .card .price{font-family:Helvetica,Arial,sans-serif;color:var(--gold);font-size:.85rem;letter-spacing:.1em;margin-bottom:12px}
+    .card p{font-size:.95rem;color:#55524b}
+
+    .band{background:var(--sage-dark);color:var(--cream);text-align:center}
+    .band h2{font-size:1.8rem;margin-bottom:14px}
+    .band p{max-width:540px;margin:0 auto 28px;opacity:.9}
+
+    /* Testimonials */
+    .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    blockquote{background:var(--white);border-left:3px solid var(--gold);padding:26px;font-style:italic;color:#4a473f}
+    blockquote footer{margin-top:14px;font-style:normal;font-family:Helvetica,Arial,sans-serif;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-dark)}
+
+    /* FAQ — WHY: on-page FAQ text must MATCH the FAQPage schema above.
+       Google cross-checks; mismatches can void the rich result. */
+    details{background:var(--white);border:1px solid var(--soft);margin-bottom:10px;padding:18px 22px;border-radius:3px}
+    summary{cursor:pointer;font-size:1.05rem}
+    details p{margin-top:10px;color:#55524b}
+
+    /* Contact / footer */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;text-align:center}
+    .contact-grid h3{font-family:Helvetica,Arial,sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:10px}
+    footer.site{background:var(--ink);color:#b5b0a4;text-align:center;padding:34px 20px;font-family:Helvetica,Arial,sans-serif;font-size:.8rem;letter-spacing:.05em}
+    footer.site a{color:#d8d2c4}
+
+    @media(max-width:720px){ nav ul{display:none} }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <div class="logo">Willow <span>&amp;</span> Sage</div>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </nav>
+      <a class="btn" href="#visit">Book Now</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- WHY: h1 = service + town. This is the phrase people actually type:
+         "day spa ridgewood nj", "massage ridgewood". -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Downtown Ridgewood · Est. 2019</p>
+        <h1>A Boutique Day Spa for Massage, Facials &amp; Wellness in Ridgewood, NJ</h1>
+        <p>An hour here undoes a week out there. Thoughtful treatments, unhurried rooms, and a team that remembers your name.</p>
+        <a class="btn btn-gold" href="#visit">Book Online — 60 Seconds</a>
+        <p class="sub">★ 4.9 from 212 Google reviews &nbsp;·&nbsp; First visit 20% off</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <h2 class="sec-title">Signature Services</h2>
+        <p class="sec-sub">TRANSPARENT PRICING — NO MEMBERSHIP REQUIRED</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Swedish Massage</h3>
+            <p class="price">60 MIN · FROM $95</p>
+            <p>Long, warming strokes that lower the shoulders you didn't know were up. Our most-booked hour.</p>
+          </article>
+          <article class="card">
+            <h3>Deep Tissue Massage</h3>
+            <p class="price">60 MIN · FROM $115</p>
+            <p>Slow, focused pressure for desk backs, runner's legs, and stubborn knots. Firm, never punishing.</p>
+          </article>
+          <article class="card">
+            <h3>Signature Facial</h3>
+            <p class="price">50 MIN · FROM $110</p>
+            <p>Cleanse, steam, extraction, and a mask matched to your skin that day — not a script.</p>
+          </article>
+          <article class="card">
+            <h3>Hot Stone Ritual</h3>
+            <p class="price">75 MIN · FROM $140</p>
+            <p>Basalt stones and slow hands. The one to book the week everything happened at once.</p>
+          </article>
+          <article class="card">
+            <h3>Couples Retreat</h3>
+            <p class="price">60 MIN · FROM $210</p>
+            <p>Side-by-side massage in our garden room, with tea and twenty unrushed minutes after.</p>
+          </article>
+          <article class="card">
+            <h3>The Reset — Half Day</h3>
+            <p class="price">3 HRS · FROM $255</p>
+            <p>Massage, facial, and a wellness lunch. Arrive frazzled, leave a different person.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="about">
+      <div class="wrap">
+        <h2>Small on Purpose</h2>
+        <p>Six treatment rooms, twelve practitioners, one standard: you should leave better than you arrived. We're an independent, woman-owned spa in the heart of Bergen County — no franchises, no upsells, no clock-watching.</p>
+        <a class="btn btn-gold" href="#visit">Plan Your Visit</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="sec-title">What Ridgewood Says</h2>
+        <p class="sec-sub">REAL REVIEWS FROM GOOGLE</p>
+        <div class="quotes">
+          <blockquote>
+            "I've tried every spa in Bergen County. This is the one I stopped looking after."
+            <footer>— Maria T., Ridgewood</footer>
+          </blockquote>
+          <blockquote>
+            "Booked online at 11pm, was on the table by noon the next day. The deep tissue fixed what three chiropractor visits couldn't."
+            <footer>— James K., Glen Rock</footer>
+          </blockquote>
+          <blockquote>
+            "My daughter and I do the Couples Retreat every month. It's our thing now."
+            <footer>— Anne P., Wyckoff</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap" style="max-width:760px">
+        <h2 class="sec-title">Questions, Answered</h2>
+        <p class="sec-sub">THE THINGS PEOPLE CALL TO ASK</p>
+        <details>
+          <summary>Do I need an appointment at Willow &amp; Sage Day Spa?</summary>
+          <p>Walk-ins are welcome when we have openings, but we recommend booking online — it takes about 60 seconds and guarantees your time slot.</p>
+        </details>
+        <details>
+          <summary>Where do I park in downtown Ridgewood?</summary>
+          <p>Free 2-hour parking is available in the Hudson Street garage, a 2-minute walk from our door on E Ridgewood Ave.</p>
+        </details>
+        <details>
+          <summary>Do you sell gift cards?</summary>
+          <p>Yes — digital gift cards in any amount are available online and never expire.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="visit" class="band">
+      <div class="wrap">
+        <h2>Visit Us</h2>
+        <div class="contact-grid" style="margin-top:36px">
+          <div>
+            <h3>Find Us</h3>
+            <p>27 E Ridgewood Ave<br>Ridgewood, NJ 07450</p>
+          </div>
+          <div>
+            <h3>Hours</h3>
+            <p>Mon–Fri · 9am–8pm<br>Sat–Sun · 9am–6pm</p>
+          </div>
+          <div>
+            <h3>Book</h3>
+            <p><a href="tel:+12015550142" style="color:var(--cream)">(201) 555-0142</a><br><a href="mailto:hello@willowandsagespa.com" style="color:var(--cream)">hello@willowandsagespa.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <p>© 2026 Willow &amp; Sage Day Spa · 27 E Ridgewood Ave, Ridgewood, NJ 07450 · (201) 555-0142</p>
+    <p style="margin-top:8px">Serving Ridgewood, Glen Rock, Wyckoff, Ho-Ho-Kus &amp; Bergen County</p>
+    <!-- WHY: The footer repeats Name/Address/Phone (called "NAP" in local SEO).
+         It must EXACTLY match your Google Business Profile listing. -->
+  </footer>
+
+</body>
+</html>
