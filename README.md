@@ -159,3 +159,4 @@ name/address/phone everywhere. That's human work — bill for it.
 - Ask Claude to add a third agent — a content writer that drafts a
   monthly blog post as a pull request for your review. Same pattern:
   a schedule, a script, a job description, an Issue.
+  
