@@ -8,6 +8,7 @@ on:
 permissions:
   contents: read            # The agent can read the site files...
   issues: write             # ...and file/comment on Issues. Nothing else.
+  id-token: write
 
 jobs:
   audit:
