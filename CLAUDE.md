@@ -1,6 +1,6 @@
 # Corcoran Communications — standing orders
 
-## Brand (decided 2026-08-11 — "Strategic Growth" palette; do not drift)
+## Brand (decided 2026-08-10 — "Strategic Growth" palette; do not drift)
 - Midnight #082A4A — dark panels (header, hero, bands, footer) and
   heading text on light backgrounds.
 - Signal Blue #0B6BD3 — section titles, links, and hover states, on light
