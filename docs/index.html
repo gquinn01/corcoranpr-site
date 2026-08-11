@@ -182,6 +182,10 @@
     .promise .card{text-align:center}
     .promise .icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 auto 16px;background:var(--midnight);color:var(--mint);border-radius:8px}
 
+    /* Numbered steps. Same Midnight tile + mint glyph family as the promise
+       icons, rounded to a circle to read as a step number. */
+    .steps .num{display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin-bottom:14px;background:var(--midnight);color:var(--mint);border-radius:50%;font-weight:700;font-size:1rem}
+
     .band{background:var(--midnight);color:var(--white)}
     .band .sec-title{color:var(--white)}
     .band .sec-sub{color:var(--on-dark)}
@@ -192,6 +196,10 @@
     .person p{font-size:.94rem;color:var(--on-dark)}
     /* [CONFIRM]: add your headshot to the owner card when ready — with alt
        text, e.g. alt="Greg Quinn, owner of Corcoran Communications" */
+
+    /* Proof block sits on Midnight, so its body copy takes --on-dark. */
+    .proof-block{text-align:center}
+    .proof-block p.proof-copy{max-width:780px;margin:0 auto;font-size:1.05rem;color:var(--on-dark);line-height:1.8}
 
     .story p{max-width:780px;margin:0 auto;text-align:center;font-size:1.05rem;color:var(--slate);line-height:1.8}
     .story p strong{color:var(--midnight)}
@@ -215,6 +223,9 @@
     footer.site{background:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);text-align:center;padding:32px 20px;font-size:.8rem;letter-spacing:.04em}
     footer.site a{color:var(--mint);text-decoration:none;margin:0 8px}
 
+    /* Seven nav items crowd the logo and the audit button before the mobile
+       breakpoint hides them, so the gap tightens first. */
+    @media(max-width:1040px){ nav ul{gap:18px} }
     @media(max-width:760px){ nav ul{display:none} }
   </style>
 </head>
@@ -228,6 +239,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#promise">Promise</a></li>
           <li><a href="#how">How It Works</a></li>
+          <li><a href="#team">Team</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -320,7 +332,33 @@
       </div>
     </section>
 
-    <section class="band" id="how">
+    <!-- WHY: the process answers the "what do I actually get" question the
+         guarantee raises, so it follows the promise directly. -->
+    <section class="steps" id="how">
+      <div class="wrap">
+        <h2 class="sec-title">How It Works</h2>
+        <p class="sec-sub">WHAT HAPPENS WHEN YOU CALL</p>
+        <div class="cards">
+          <article class="card">
+            <span class="num">1</span>
+            <h3>Free AI Audit</h3>
+            <p>Our agents scan your current site and we send you the plain-English report. No charge, no obligation, no sales call required to get it.</p>
+          </article>
+          <article class="card">
+            <span class="num">2</span>
+            <h3>Fix and Build</h3>
+            <p>We fix what's broken or build you something better, verified to 100/100 before it ships.</p>
+          </article>
+          <article class="card">
+            <span class="num">3</span>
+            <h3>Watch It Grow</h3>
+            <p>The agents monitor your site, your rankings, and the AI answers around the clock. You read every report. We handle what they find.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="team">
       <div class="wrap">
         <h2 class="sec-title">Who You'll Work With</h2>
         <p class="sec-sub">ONE SENIOR MARKETER + A STAFF OF AI AGENTS. NO HAND-OFFS.</p>
@@ -344,6 +382,16 @@
         <h2 class="sec-title" style="text-align:center">The Corcoran Story</h2>
         <p class="sec-sub" style="text-align:center">A HALF-CENTURY OF CRAFT, REBUILT FOR THE AI ERA</p>
         <p>The Corcoran family has been in marketing, design, and print for <strong>over half a century</strong>. Founder <strong>Ruth Corcoran</strong>, now happily retired, built this firm on a simple idea: know the client, tell the truth, and make every dollar work. Today <strong>Greg Quinn</strong> carries that standard forward with tools her generation could only imagine. AI builds, watches, and reports. The machines are new. The standard isn't.</p>
+      </div>
+    </section>
+
+    <!-- WHY: the audit score is the one claim on this page a prospect can
+         verify themselves, so it sits immediately before the client list. -->
+    <section class="band proof-block">
+      <div class="wrap">
+        <h2 class="sec-title">Our First Client Was Us</h2>
+        <p class="sec-sub">THE BEFORE AND AFTER WE CAN PROVE</p>
+        <p class="proof-copy">When we rebuilt our own site, the old one scored 58/100 on our audit: no structured data, no meta description, invisible to AI search. The site you're reading scores 100/100, verified by the same scanner that will grade yours. Every check and every fix is on the record. Ask for the free audit and see where you stand.</p>
       </div>
     </section>
 
