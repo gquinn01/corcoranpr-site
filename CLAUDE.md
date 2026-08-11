@@ -7,9 +7,19 @@
 - Growth Green #15B77E — buttons/CTAs and success markers ONLY, always
   with dark text (#062018) on green fills. Use #0E7A55 for small green
   text on light backgrounds (contrast).
+- Buttons do NOT darken on hover. They leave green entirely and flip to a
+  Midnight fill with Fresh Mint text. Darkening to #0E7A55 would put the
+  mandated #062018 text at 3.2:1, under the 4.5:1 bar, and #0E7A55 is a
+  text color, not a fill. Do not "fix" this back to a green hover.
 - Fresh Mint #DDF7EC — light accents: card top-borders, eyebrow text
   and labels on dark panels.
 - Cloud #F3F8FC — page background. Cards stay white.
+- Derived neutrals — the palette names no color for body text or borders,
+  so these three fill the gap. They are working neutrals, not brand
+  colors, and nothing else may be added to this list without a decision:
+  #4A5A6A body and secondary text on light (7.1:1 on white), #D8E4EF
+  hairline borders on light, #B6C9DD secondary text on Midnight (8.6:1).
+  Never substitute a warm grey — it clashes with Cloud.
 - Solid colors only. No gradients, ever.
 - Coral is RETIRED from the site. Until new logo art exists, render the
   wordmark as text: white on dark panels, Midnight on light. The
