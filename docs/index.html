@@ -220,8 +220,27 @@
 
     /* The contact band runs straight into the footer — both Midnight now
        that the hero gradient is gone, so a mint hairline marks the seam. */
-    footer.site{background:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);text-align:center;padding:32px 20px;font-size:.8rem;letter-spacing:.04em}
+    footer.site{background:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);text-align:center;padding:48px 20px 32px;font-size:.8rem;letter-spacing:.04em}
     footer.site a{color:var(--mint);text-decoration:none;margin:0 8px}
+    /* Mint links go white and underline on hover. Signal Blue is the hover
+       color on light panels but only 2.82:1 on Midnight, so it stays out. */
+    footer.site a:hover{color:var(--white);text-decoration:underline}
+
+    .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1.5fr;gap:40px;text-align:left;font-size:.85rem;letter-spacing:.02em;padding-bottom:30px}
+    .foot-grid a{margin:0}
+    .foot-head{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+    /* The wordmark is white on dark per the brand rules. Its interpunct
+       cannot carry Signal Blue here (2.82:1 on Midnight), so it takes Fresh
+       Mint, the accent this palette assigns to dark panels. */
+    footer.site .logo{color:var(--white);margin-bottom:12px}
+    footer.site .logo em{color:var(--mint)}
+    .foot-tag{margin-bottom:14px}
+    .foot-nap{line-height:1.9}
+    .foot-links{list-style:none;line-height:2.1}
+    .foot-area ul{list-style:none;columns:2;column-gap:20px;line-height:1.9}
+    .foot-area p{margin-top:12px}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:26px}
+    @media(max-width:860px){ .foot-grid{grid-template-columns:1fr;gap:32px} }
 
     /* Seven nav items crowd the logo and the audit button before the mobile
        breakpoint hides them, so the gap tightens first. */
@@ -462,14 +481,72 @@
   <footer class="site">
     <!-- WHY: NAP (name/address/phone) here must exactly match your Google
          Business Profile once created. This footer is the consistency anchor. -->
-    <p>© 2026 Corcoran Communications · 1808 Enclave Dr, Quakertown, PA 18951 · 850-619-5151 · greg@corcoranpr.com</p>
-    <p style="margin-top:8px">Serving Bucks, Montgomery &amp; Lehigh Counties · Veteran-owned and operated</p>
-    <p style="margin-top:8px">
-      <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>·
-      <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>·
-      <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>·
-      <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
-    </p>
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <div class="logo">CORCORAN<em>·</em>COMMUNICATIONS</div>
+        <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh County businesses.</p>
+        <p class="foot-nap">
+          Corcoran Communications<br>
+          1808 Enclave Dr<br>
+          Quakertown, PA 18951<br>
+          850-619-5151<br>
+          greg@corcoranpr.com
+        </p>
+      </div>
+      <div>
+        <h2 class="foot-head">Explore</h2>
+        <ul class="foot-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#promise">The Promise</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#team">Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="foot-head">Get Started</h2>
+        <ul class="foot-links">
+          <li><a href="#contact">Free AI Audit</a></li>
+          <li><a href="tel:+18506195151">Call or Text 850-619-5151</a></li>
+          <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+        </ul>
+      </div>
+      <div class="foot-area">
+        <h2 class="foot-head">Service Area</h2>
+        <ul>
+          <li>Quakertown</li>
+          <li>Doylestown</li>
+          <li>Perkasie</li>
+          <li>Sellersville</li>
+          <li>Newtown</li>
+          <li>Warrington</li>
+          <li>Lansdale</li>
+          <li>Souderton</li>
+          <li>Harleysville</li>
+          <li>Skippack</li>
+          <li>North Wales</li>
+          <li>Blue Bell</li>
+          <li>Collegeville</li>
+          <li>Ambler</li>
+          <li>Allentown</li>
+          <li>Emmaus</li>
+          <li>Macungie</li>
+          <li>Center Valley</li>
+        </ul>
+        <p>and across Bucks, Montgomery &amp; Lehigh Counties</p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <p>© 2026 Corcoran Communications · 1808 Enclave Dr, Quakertown, PA 18951 · 850-619-5151 · greg@corcoranpr.com</p>
+      <p style="margin-top:8px">Serving Bucks, Montgomery &amp; Lehigh Counties · Veteran-owned and operated</p>
+      <p style="margin-top:8px">
+        <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>·
+        <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>·
+        <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>·
+        <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+      </p>
+    </div>
   </footer>
 
 </body>
