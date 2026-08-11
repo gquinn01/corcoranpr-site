@@ -169,6 +169,19 @@
     .card p{font-size:.95rem;color:var(--slate)}
     .card .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-text);margin-bottom:8px}
 
+    /* The Corcoran Promise. Centered guarantee block; the cards reuse .card
+       so they stay white on Cloud with the mint top-border. The icon tiles
+       are Midnight with mint glyphs, not green: green fills are reserved
+       for CTAs and success markers and must carry #062018 ink. */
+    .promise{text-align:center}
+    .promise .badge{display:inline-block;background:var(--mint);color:var(--midnight);font-size:.72rem;font-weight:700;letter-spacing:.16em;padding:8px 18px;border-radius:999px;margin-bottom:22px}
+    .promise h2{font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--midnight);margin-bottom:20px}
+    .promise h2 span{display:block;color:var(--signal)}
+    .promise p.promise-lead{max-width:720px;margin:0 auto;font-size:1.05rem;color:var(--slate)}
+    .promise .cards{margin-top:46px}
+    .promise .card{text-align:center}
+    .promise .icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 auto 16px;background:var(--midnight);color:var(--mint);border-radius:8px}
+
     .band{background:var(--midnight);color:var(--white)}
     .band .sec-title{color:var(--white)}
     .band .sec-sub{color:var(--on-dark)}
@@ -213,6 +226,7 @@
       <nav aria-label="Main">
         <ul>
           <li><a href="#services">Services</a></li>
+          <li><a href="#promise">Promise</a></li>
           <li><a href="#how">How It Works</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -274,6 +288,33 @@
             <p class="tag">Fuel</p>
             <h3>Content Marketing</h3>
             <p>Blogs, email, and web copy written to be the answer. Structured so AI search engines quote you when customers ask who to call.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY: the guarantee is the strongest argument on the page, so it sits
+         directly under the services it backs, before the team section. -->
+    <section class="promise" id="promise">
+      <div class="wrap">
+        <p class="badge">THE CORCORAN PROMISE</p>
+        <h2>In the AI Answers in 90 Days.<span>Or We Work Free Until You Are.</span></h2>
+        <p class="promise-lead">If your business isn't showing up in ChatGPT, Perplexity, and Google's AI answers for your core services within 90 days, with measurable lift in calls and leads, we keep working at no charge until it is. That's written into every agreement.</p>
+        <div class="cards">
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 15l2 2 4-4"/></svg></span>
+            <h3>In Writing</h3>
+            <p>The 90-day guarantee is in the contract, not the brochure.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.75"/></svg></span>
+            <h3>Watch It Happen</h3>
+            <p>Our agents file reports you can read every week. You'll see the progress before we mention it.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span>
+            <h3>Month to Month</h3>
+            <p>No long-term contracts. We earn your business every month, or you walk.</p>
           </article>
         </div>
       </div>
