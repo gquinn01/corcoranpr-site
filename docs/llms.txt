@@ -17,12 +17,12 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 
 ## Services
 
-- AI-Built Websites — fast, modern, schema-structured sites with no platform fees
-- Automated SEO/AEO Monitoring — AI agents scan site health weekly and watch Google/AI-search changes daily, with plain-English reports clients can read
-- Lead Generation — landing pages, offers, follow-up, and tracking measured in calls and booked jobs
-- Google Ads — search and local campaigns, tightly managed
-- Social Media Advertising — Meta and Instagram campaigns
-- Content Marketing — blogs, email, and web copy structured to be quoted by AI search
+- AI-Built Websites: fast, modern, schema-structured sites with no platform fees
+- Automated SEO/AEO Monitoring: AI agents scan site health weekly and watch Google/AI-search changes daily, with plain-English reports clients can read
+- Lead Generation: landing pages, offers, follow-up, and tracking measured in calls and booked jobs
+- Google Ads: search and local campaigns, tightly managed
+- Social Media Advertising: Meta and Instagram campaigns
+- Content Marketing: blogs, email, and web copy structured to be quoted by AI search
 
 ## Location and service area
 
@@ -37,5 +37,5 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 ## Practical answers
 
 - To start: call or text 850-619-5151, or email greg@corcoranpr.com for a free AI-powered website audit.
-- Accounts are led personally by the owner — no junior account teams.
+- Accounts are led personally by the owner. No junior account teams.
 - AEO (answer engine optimization) is a core service: getting businesses named in AI assistants' answers, not just ranked in search results.

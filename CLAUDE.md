@@ -30,6 +30,7 @@
   the one accent note on the wordmark. Do not flatten it to Midnight.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
+- No em dashes in site copy, ever, including schema text.
 
 ## Facts are sacred
 - Never invent facts, numbers, years, reviews, or testimonials.
