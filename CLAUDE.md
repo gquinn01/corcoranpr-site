@@ -3,7 +3,10 @@
 ## Brand (decided 2026-08-11 — "Strategic Growth" palette; do not drift)
 - Midnight #082A4A — dark panels (header, hero, bands, footer) and
   heading text on light backgrounds.
-- Signal Blue #0B6BD3 — section titles, links, and hover states.
+- Signal Blue #0B6BD3 — section titles, links, and hover states, on light
+  backgrounds only. On Midnight panels it drops to 2.82:1 and becomes
+  unreadable, so links there use Fresh Mint (footer) or white (contact
+  band). Never put Signal Blue text on a dark panel.
 - Growth Green #15B77E — buttons/CTAs and success markers ONLY, always
   with dark text (#062018) on green fills. Use #0E7A55 for small green
   text on light backgrounds (contrast).
