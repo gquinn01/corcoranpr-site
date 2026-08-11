@@ -12,7 +12,9 @@
 - Cloud #F3F8FC — page background. Cards stay white.
 - Solid colors only. No gradients, ever.
 - Coral is RETIRED from the site. Until new logo art exists, render the
-  wordmark as text: white on dark panels, Midnight on light.
+  wordmark as text: white on dark panels, Midnight on light. The
+  interpunct separator in CORCORAN·COMMUNICATIONS carries Signal Blue —
+  the one accent note on the wordmark. Do not flatten it to Midnight.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
 

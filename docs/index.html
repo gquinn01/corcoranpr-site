@@ -10,6 +10,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- WHY: tints mobile browser chrome to Midnight so the brand starts at
+       the address bar instead of a default grey. -->
+  <meta name="theme-color" content="#082A4A">
+
   <!-- WHY: Short brand + what you do + where, under 60 characters.
        "AI-Powered" is the differentiator prospects are searching for. -->
   <title>Corcoran PR | AI-Powered Marketing &amp; SEO | Quakertown, PA</title>
@@ -109,76 +113,94 @@
   </script>
 
   <style>
+    /* "Strategic Growth" palette — see CLAUDE.md. Solid colors only.
+       --slate / --line / --on-dark are derived cool neutrals: the palette
+       specifies no body-text or border color, and the old warm greys
+       clashed with Cloud. All three clear WCAG AA on every ground they
+       touch (7.09:1, hairline, 8.60:1). */
     :root{
-      --navy:#1b2a41; --navy-deep:#12203a; --ink:#212733; --paper:#f7f6f2;
-      --accent:#c8562e; --accent-dark:#a84523; --line:#e4e1d8; --white:#fff;
-      --muted:#5b6270;
+      --midnight:#082A4A; --signal:#0B6BD3;
+      --green:#15B77E;    --green-ink:#062018; --green-text:#0E7A55;
+      --mint:#DDF7EC;     --cloud:#F3F8FC;     --white:#fff;
+      --slate:#4A5A6A;    --line:#D8E4EF;      --on-dark:#B6C9DD;
     }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+    body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--slate);background:var(--cloud);line-height:1.65}
     .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
     h1,h2,h3{line-height:1.2;letter-spacing:-.01em}
-    a{color:var(--accent-dark)}
+    a{color:var(--signal)}
+    /* Signal Blue is only 2.82:1 on Midnight — links on dark panels use
+       Fresh Mint instead. */
+    :focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+    .hero :focus-visible,.band :focus-visible,footer.site :focus-visible{outline-color:var(--mint)}
 
-    header{position:sticky;top:0;background:rgba(247,246,242,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
+    header{position:sticky;top:0;background:rgba(243,248,252,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-    .logo{font-weight:700;font-size:1.15rem;letter-spacing:.02em;color:var(--navy)}
-    .logo em{font-style:normal;color:var(--accent)}
+    .logo{font-weight:700;font-size:1.15rem;letter-spacing:.02em;color:var(--midnight)}
+    /* WHY: no logo art yet — wordmark renders as text, Midnight on light
+       panels and white on dark. The separator carries Signal Blue as the
+       one accent note; coral is retired. */
+    .logo em{font-style:normal;color:var(--signal)}
     nav ul{display:flex;gap:26px;list-style:none;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
-    nav a{text-decoration:none;color:var(--ink)}
-    nav a:hover{color:var(--accent)}
-    .btn{display:inline-block;background:var(--accent);color:var(--white);padding:13px 28px;border-radius:3px;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:background .2s}
-    .btn:hover{background:var(--accent-dark)}
-    .btn-ghost{background:transparent;border:1.5px solid var(--white);color:var(--white)}
-    .btn-ghost:hover{background:rgba(255,255,255,.12)}
+    nav a{text-decoration:none;color:var(--midnight)}
+    nav a:hover{color:var(--signal)}
+    .btn{display:inline-block;background:var(--green);color:var(--green-ink);padding:13px 28px;border-radius:3px;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,color .2s}
+    /* Hover leaves green rather than darkening it: #062018 on the darker
+       #0E7A55 is only 3.20:1, and green fills must always carry dark text. */
+    .btn:hover{background:var(--midnight);color:var(--mint)}
+    .btn-ghost{background:transparent;border:1.5px solid var(--mint);color:var(--mint)}
+    .btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--mint)}
 
-    .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--white);padding:100px 0 90px}
-    .hero .eyebrow{font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:#e8b99f;margin-bottom:18px}
+    .hero{background:var(--midnight);color:var(--white);padding:100px 0 90px}
+    .hero .eyebrow{font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mint);margin-bottom:18px}
     .hero h1{font-size:clamp(2rem,4.6vw,3.15rem);max-width:840px;margin-bottom:20px;font-weight:700}
-    .hero p.lead{max-width:660px;font-size:1.12rem;color:#c9d1de;margin-bottom:34px}
+    .hero p.lead{max-width:660px;font-size:1.12rem;color:var(--on-dark);margin-bottom:34px}
     .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-    .hero .proof{margin-top:26px;font-size:.85rem;color:#93a1b8}
+    .hero .proof{margin-top:26px;font-size:.85rem;color:var(--on-dark)}
 
     section{padding:78px 0}
-    .sec-title{font-size:1.9rem;color:var(--navy);margin-bottom:6px}
-    .sec-sub{color:var(--muted);margin-bottom:44px;font-size:.92rem;letter-spacing:.04em}
+    .sec-title{font-size:1.9rem;color:var(--signal);margin-bottom:6px}
+    .sec-sub{color:var(--slate);margin-bottom:44px;font-size:.92rem;letter-spacing:.04em}
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-    .card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:30px 26px}
-    .card h3{font-size:1.1rem;color:var(--navy);margin-bottom:10px}
-    .card p{font-size:.95rem;color:var(--muted)}
-    .card .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+    /* Mint is only 1.13:1 on white, so the top accent runs 4px to register. */
+    .card{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--mint);border-radius:4px;padding:30px 26px}
+    .card h3{font-size:1.1rem;color:var(--midnight);margin-bottom:10px}
+    .card p{font-size:.95rem;color:var(--slate)}
+    .card .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-text);margin-bottom:8px}
 
-    .band{background:var(--navy);color:var(--white)}
+    .band{background:var(--midnight);color:var(--white)}
     .band .sec-title{color:var(--white)}
-    .band .sec-sub{color:#9fadc4}
+    .band .sec-sub{color:var(--on-dark)}
     .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
     .person{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:30px}
     .person h3{margin-bottom:2px}
-    .person .role{color:#e8b99f;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-    .person p{font-size:.94rem;color:#c9d1de}
+    .person .role{color:var(--mint);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+    .person p{font-size:.94rem;color:var(--on-dark)}
     /* [CONFIRM]: add your headshot to the owner card when ready — with alt
        text, e.g. alt="Greg Quinn, owner of Corcoran Communications" */
 
-    .story p{max-width:780px;margin:0 auto;text-align:center;font-size:1.05rem;color:var(--muted);line-height:1.8}
-    .story p strong{color:var(--navy)}
+    .story p{max-width:780px;margin:0 auto;text-align:center;font-size:1.05rem;color:var(--slate);line-height:1.8}
+    .story p strong{color:var(--midnight)}
 
-    .clients p.strip{text-align:center;color:var(--muted);font-size:1.02rem;line-height:2;max-width:860px;margin:0 auto}
-    .clients strong{color:var(--navy)}
-    blockquote.big{max-width:760px;margin:44px auto 0;text-align:center;font-size:1.35rem;font-style:italic;color:var(--navy);line-height:1.5}
-    blockquote.big footer{margin-top:12px;font-size:.85rem;font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .clients p.strip{text-align:center;color:var(--slate);font-size:1.02rem;line-height:2;max-width:860px;margin:0 auto}
+    .clients strong{color:var(--midnight)}
+    blockquote.big{max-width:760px;margin:44px auto 0;text-align:center;font-size:1.35rem;font-style:italic;color:var(--midnight);line-height:1.5}
+    blockquote.big footer{margin-top:12px;font-size:.85rem;font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
 
     details{background:var(--white);border:1px solid var(--line);margin-bottom:10px;padding:18px 22px;border-radius:4px}
-    summary{cursor:pointer;font-weight:600;color:var(--navy)}
-    details p{margin-top:10px;color:var(--muted)}
+    summary{cursor:pointer;font-weight:600;color:var(--midnight)}
+    details p{margin-top:10px;color:var(--slate)}
 
     .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;text-align:center;margin-top:34px}
-    .contact-grid h3{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#e8b99f;margin-bottom:10px}
+    .contact-grid h3{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
     .contact-grid a{color:var(--white);text-decoration:none}
     .contact-grid a:hover{text-decoration:underline}
 
-    footer.site{background:var(--navy-deep);color:#8c99ae;text-align:center;padding:32px 20px;font-size:.8rem;letter-spacing:.04em}
-    footer.site a{color:#c9d1de;text-decoration:none;margin:0 8px}
+    /* The contact band runs straight into the footer — both Midnight now
+       that the hero gradient is gone, so a mint hairline marks the seam. */
+    footer.site{background:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);text-align:center;padding:32px 20px;font-size:.8rem;letter-spacing:.04em}
+    footer.site a{color:var(--mint);text-decoration:none;margin:0 8px}
 
     @media(max-width:760px){ nav ul{display:none} }
   </style>
