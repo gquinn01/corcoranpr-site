@@ -358,9 +358,9 @@
     .proofblock{text-align:center}
     .proofblock .proof-copy{max-width:900px;margin:0 auto;font-size:1.06rem;color:var(--on-dark);line-height:1.95}
     .score{font-size:1.5em;font-weight:800;color:var(--green);letter-spacing:-.02em}
-    .clients{text-align:center}
-    blockquote.big{max-width:820px;margin:50px auto 0;font-size:clamp(1.3rem,2.2vw,1.7rem);font-style:italic;color:var(--midnight);line-height:1.5}
-    blockquote.big footer{margin-top:16px;font-size:.78rem;font-style:normal;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
+    /* Work runs straight into the FAQ, both light, so the usual 120 + 120
+       between sections reads as dead space. Work's bottom padding is cut. */
+    .clients{text-align:center;padding-bottom:36px}
     details{background:var(--white);border-radius:14px;box-shadow:var(--lift);margin-bottom:12px;padding:22px 26px}
     summary{cursor:pointer;font-weight:700;color:var(--midnight);font-size:1.05rem}
     details p{margin-top:12px;color:var(--slate);font-size:.97rem}
@@ -718,10 +718,6 @@
         <div class="logo-tile"><img src="logos/choice-one.png" width="360" height="140" alt="Choice One Community Credit Union" loading="lazy"></div>
         <div class="logo-tile"><img src="logos/cork.png" width="360" height="140" alt="Cork Bar &amp; Restaurant" loading="lazy"></div>
       </div>
-      <blockquote class="big">
-        "Corcoran Communications maximized our promotion budgets by a measurable 10 to 1."
-        <footer>Client, from our portfolio</footer>
-      </blockquote>
     </div>
   </section>
 
