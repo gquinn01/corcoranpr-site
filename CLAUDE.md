@@ -35,8 +35,9 @@
 - The old logo's tagline, "Public Relations • Event Coordination", is
   cropped out of both files and stays out unless those services are
   actually listed on the site. It is also illegible at wordmark size.
-  The uncropped source art is not in the repo; ask Greg for it before
-  regenerating either PNG.
+  The uncropped source is brand/logo-original-coral.png, and
+  brand/README.md records the crop box and color mapping used to derive
+  both live PNGs. Regenerate from there, never by hand.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
 - No em dashes in site copy, ever, including schema text.
