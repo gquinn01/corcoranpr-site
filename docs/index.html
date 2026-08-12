@@ -258,6 +258,18 @@
     .cta-row{display:flex;gap:14px;flex-wrap:wrap}
     .hero .proof{margin-top:30px;font-size:.84rem;color:var(--on-dark)}
 
+    /* Portrait beside the lead and buttons, filling the open right side of
+       the hero. It sits BELOW the h1, never next to it, so the headline keeps
+       the full 950px it needs for 3 lines. Card chrome is the same surface,
+       hairline and mint ring used everywhere else on a dark panel. Hidden
+       under 1000px, where the hero is a single column. */
+    .hero-body{display:flex;align-items:center;gap:52px}
+    .hero-copy{flex:1 1 auto;min-width:0;max-width:660px}
+    .hero-portrait{flex:0 0 300px;background:var(--surface);border:1px solid var(--hairline);border-radius:18px;padding:30px 26px;text-align:center;margin-left:auto}
+    .hero-portrait img{width:154px;height:154px;border-radius:50%;object-fit:cover;border:2px solid var(--mint);display:block;margin:0 auto 18px}
+    .hero-portrait b{display:block;color:var(--white);font-size:1.12rem;font-weight:700}
+    .hero-portrait span{display:block;color:var(--mint);font-size:.72rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;margin-top:7px}
+
     /* ---------- product mockup, the signature move ---------- */
     .mockwrap{position:relative;z-index:1;margin-top:84px;transform:translateY(60px)}
     .mock{background:var(--white);border-radius:20px;box-shadow:var(--lift-xl);overflow:hidden}
@@ -391,6 +403,9 @@
       section{padding:84px 0}
       .hero{padding:76px 0 0}
       .hero-grid{grid-template-columns:1fr;gap:38px}
+      .hero-body{display:block}
+      .hero-copy{max-width:none}
+      .hero-portrait{display:none}
       .grid3,.grid2,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
       .mock-body{grid-template-columns:1fr}
       .gauge-pane{border-right:0;border-bottom:1px solid var(--line)}
@@ -466,12 +481,27 @@
     <div class="wrap">
       <p class="eyebrow">Veteran-Owned · Quakertown, PA</p>
       <h1><span class="accent">AI-Powered Marketing</span> That Drives Revenue for Bucks, Montgomery &amp; Lehigh Valley Businesses</h1>
-      <p class="lead">Corcoran Communications builds AI-crafted websites and runs lead generation, Google and social ads, SEO/AEO, and content marketing. Behind it all, AI agents watch your site, your rankings, and Google's algorithm changes around the clock. One senior marketer. No junior account teams.</p>
-      <div class="cta-row">
-        <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
-        <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+      <!-- The h1 stays full width above this row. Only the lead, the buttons
+           and the proof line share the row with the portrait, so the headline
+           keeps its 3 lines. The portrait is desktop only. -->
+      <div class="hero-body">
+        <div class="hero-copy">
+          <p class="lead">Corcoran Communications builds AI-crafted websites and runs lead generation, Google and social ads, SEO/AEO, and content marketing. Behind it all, AI agents watch your site, your rankings, and Google's algorithm changes around the clock. One senior marketer. No junior account teams.</p>
+          <div class="cta-row">
+            <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+            <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+          </div>
+          <p class="proof">Clients from Main Street to Disney on Ice · U.S. Navy veteran owned &amp; operated</p>
+        </div>
+        <!-- Name and role are the exact strings from the Team section. -->
+        <figure class="hero-portrait">
+          <img src="greg-quinn.jpg" width="480" height="480" fetchpriority="high" alt="Greg Quinn, owner and lead strategist of Corcoran Communications">
+          <figcaption>
+            <b>Greg Quinn</b>
+            <span>Owner · Lead Strategist</span>
+          </figcaption>
+        </figure>
       </div>
-      <p class="proof">Clients from Main Street to Disney on Ice · U.S. Navy veteran owned &amp; operated</p>
 
       <!-- Product mockup. Labels are the real check names from
            scripts/audit.py and the real current tally. -->
