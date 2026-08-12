@@ -28,6 +28,10 @@
   wordmark as text: white on dark panels, Midnight on light. The
   interpunct separator in CORCORAN·COMMUNICATIONS carries Signal Blue —
   the one accent note on the wordmark. Do not flatten it to Midnight.
+- The interpunct's accent follows the panel (decided 2026-08-11): Signal
+  Blue on light, Fresh Mint on dark. Signal Blue is 2.82:1 on Midnight,
+  so it cannot carry the accent in the footer. Never flatten the
+  separator to match the wordmark on either ground.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
 - No em dashes in site copy, ever, including schema text.
