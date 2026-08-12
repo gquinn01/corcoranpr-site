@@ -15,7 +15,7 @@ This document now travels inside your starter kit (`PLAYBOOK.md`), so everything
 **Your punch list, in order:**
 
 1. **Go live with the kit** (~30 min): follow `README.md` — GitHub account, upload this folder, add the API key, turn on Pages, press Run on both agents. Set the `SITE_URL` variable to `https://corcoranpr.com/` so the auditor benchmarks the old WordPress site weekly — that's your before/after story.
-2. **Create the Google Business Profile** exactly matching the site's footer: Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951, 850-619-5151. Home office: verify the address, display as a service-area business. This single step unlocks local-pack and "near me" visibility that no on-page work can substitute for.
+2. **Create the Google Business Profile** exactly matching the site's footer: Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951, 215-259-8304. Home office: verify the address, display as a service-area business. This single step unlocks local-pack and "near me" visibility that no on-page work can substitute for.
 3. **Confirm the socials** (Facebook, Instagram, X, LinkedIn) are alive and current — the site's schema now vouches for them to every AI system.
 4. **Chase the testimonial**: get the "10 to 1" client's permission to attribute the quote by name, and add your headshot to the site.
 5. **Cut over the domain when ready — not day one** (README's go-live section): preview on GitHub Pages first, change only web DNS records (never MX — that's your email), and 301-redirect the old blog URLs so six years of Google equity survives.

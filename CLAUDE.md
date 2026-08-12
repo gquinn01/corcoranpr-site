@@ -47,7 +47,7 @@
 - Anything unverifiable gets flagged to Greg, not guessed.
 - NAP (name/address/phone) must match everywhere exactly:
   Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951,
-  850-619-5151, greg@corcoranpr.com.
+  215-259-8304, greg@corcoranpr.com.
 
 ## Definition of done (every site change)
 - Run: python3 scripts/audit.py docs/index.html — must score 100/100.
