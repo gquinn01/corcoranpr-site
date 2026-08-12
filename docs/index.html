@@ -272,7 +272,7 @@
     .tally{display:flex;justify-content:center;gap:18px;margin-top:18px;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--slate)}
     .tally b{color:var(--green-text);font-size:1.05rem;display:block;letter-spacing:0}
     .checks{padding:22px 26px}
-    .crow{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--midnight)}
+    .crow{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--midnight)}
     .crow:last-child{border-bottom:0}
     .crow svg{width:17px;height:17px;flex:none;stroke:var(--green-text);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .crow .pass{margin-left:auto;font-size:.64rem;font-weight:700;letter-spacing:.12em;color:var(--green-text)}
@@ -295,6 +295,31 @@
     /* ---------- agent network diagram ---------- */
     .netwrap{max-width:760px;margin:0 auto 60px}
     .netwrap svg{width:100%;height:auto;display:block}
+
+    /* ---------- dashboard motion ----------
+       Initial hidden states are scoped to .js so the graphic is fully
+       visible if scripting is off. Everything is disabled under
+       prefers-reduced-motion. */
+    .mock{transition:transform .3s ease,box-shadow .3s ease}
+    .mockwrap:hover .mock{transform:translateY(-6px);box-shadow:0 6px 14px rgba(8,42,74,.12),0 42px 92px rgba(8,42,74,.34)}
+    .js .gauge-arc{stroke-dasharray:258;stroke-dashoffset:258;transition:stroke-dashoffset .6s cubic-bezier(.22,.61,.36,1) .08s}
+    .js .is-in .gauge-arc{stroke-dashoffset:0}
+    .js .reveal{opacity:0;transform:translateY(9px);transition:opacity .42s ease,transform .42s ease}
+    .js .is-in .reveal{opacity:1;transform:none}
+    .js .is-in .crow:nth-of-type(1){transition-delay:.16s}
+    .js .is-in .crow:nth-of-type(2){transition-delay:.24s}
+    .js .is-in .crow:nth-of-type(3){transition-delay:.32s}
+    .js .is-in .crow:nth-of-type(4){transition-delay:.40s}
+    .js .is-in .crow-note{transition-delay:.48s}
+    .js .float{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+    .js .is-in .f-sched{opacity:1;transform:none;transition-delay:.10s}
+    .js .is-in .f-report{opacity:1;transform:none;transition-delay:.58s}
+    .crow-note{font-size:.78rem;color:var(--slate);letter-spacing:.04em;margin-top:16px}
+    @media(prefers-reduced-motion:reduce){
+      .js .reveal,.js .float{opacity:1;transform:none;transition:none}
+      .js .gauge-arc{stroke-dashoffset:0;transition:none}
+      .mock,.mockwrap:hover .mock{transition:none;transform:none;box-shadow:var(--lift-xl)}
+    }
 
     /* ---------- stat band ---------- */
     .stats{padding-top:150px}
@@ -398,6 +423,7 @@
   </style>
 </head>
 <body>
+  <script>document.documentElement.classList.add('js')</script>
 
   <!-- ============ STICKY DARK NAV ============ -->
   <header class="nav">
@@ -455,25 +481,22 @@
             <div class="gauge-pane">
               <svg viewBox="0 0 200 118" role="img" aria-label="Health score 100 out of 100">
                 <path d="M18 106 A82 82 0 0 1 182 106" fill="none" stroke="#D8E4EF" stroke-width="15" stroke-linecap="round"/>
-                <path d="M18 106 A82 82 0 0 1 182 106" fill="none" stroke="#0E7A55" stroke-width="15" stroke-linecap="round"/>
-                <text x="100" y="96" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="42" font-weight="800" letter-spacing="-1.5" fill="#082A4A">100</text>
+                <path class="gauge-arc" d="M18 106 A82 82 0 0 1 182 106" fill="none" stroke="#0E7A55" stroke-width="15" stroke-linecap="round"/>
+                <text x="100" y="96" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="42" font-weight="800" letter-spacing="-1.5" fill="#082A4A" id="scoreNum">100</text>
               </svg>
               <p class="gauge-label">HEALTH SCORE</p>
               <div class="tally">
-                <span><b>11</b>passing</span>
+                <span><b>14</b>checks</span>
                 <span><b>0</b>warnings</span>
                 <span><b>0</b>critical</span>
               </div>
             </div>
             <div class="checks">
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Title tag<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Meta description<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Exactly one H1<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Structured data<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>FAQPage schema<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Open Graph tags<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Canonical URL<span class="pass">PASS</span></div>
-              <div class="crow"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Mobile viewport<span class="pass">PASS</span></div>
+              <div class="crow reveal"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Search visibility<span class="pass">PASS</span></div>
+              <div class="crow reveal"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>AI answer readiness<span class="pass">PASS</span></div>
+              <div class="crow reveal"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Technical health<span class="pass">PASS</span></div>
+              <div class="crow reveal"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Local signals<span class="pass">PASS</span></div>
+              <p class="crow-note reveal">14 checks run · Full report filed</p>
             </div>
           </div>
         </div>
@@ -802,5 +825,31 @@
     </div>
   </footer>
 
+
+  <script>
+  (function(){
+    var wrap=document.querySelector('.mockwrap');
+    if(!wrap) return;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var num=document.getElementById('scoreNum');
+    if(num&&!reduce) num.textContent='0';
+    function run(){
+      wrap.classList.add('is-in');
+      if(!num||reduce){ if(num) num.textContent='100'; return; }
+      var t0=null;
+      requestAnimationFrame(function step(t){
+        if(t0===null) t0=t;
+        var p=Math.min(1,(t-t0)/600);
+        num.textContent=Math.round(100*(1-Math.pow(1-p,3)));
+        if(p<1) requestAnimationFrame(step);
+      });
+    }
+    if(!('IntersectionObserver' in window)){ run(); return; }
+    var io=new IntersectionObserver(function(es){
+      for(var i=0;i<es.length;i++){ if(es[i].isIntersecting){ run(); io.disconnect(); return; } }
+    },{threshold:.3});
+    io.observe(wrap);
+  })();
+  </script>
 </body>
 </html>
