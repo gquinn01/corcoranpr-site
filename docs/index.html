@@ -263,12 +263,15 @@
        the full 950px it needs for 3 lines. Card chrome is the same surface,
        hairline and mint ring used everywhere else on a dark panel. Hidden
        under 1000px, where the hero is a single column. */
-    .hero-body{display:flex;align-items:center;gap:52px}
+    .hero-body{display:flex;align-items:center;gap:44px}
     .hero-copy{flex:1 1 auto;min-width:0;max-width:660px}
-    .hero-portrait{flex:0 0 300px;background:var(--surface);border:1px solid var(--hairline);border-radius:18px;padding:30px 26px;text-align:center;margin-left:auto}
-    .hero-portrait img{width:154px;height:154px;border-radius:50%;object-fit:cover;border:2px solid var(--mint);display:block;margin:0 auto 18px}
-    .hero-portrait b{display:block;color:var(--white);font-size:1.12rem;font-weight:700}
-    .hero-portrait span{display:block;color:var(--mint);font-size:.72rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;margin-top:7px}
+    /* The copy column grows to its 660px cap and freezes, so the leftover
+       width all lands in the card's auto margins. That centers the card in
+       the open space rather than pinning it to the right edge. */
+    .hero-portrait{flex:0 0 384px;margin:0 auto;background:var(--surface);border:1px solid var(--hairline);border-radius:22px;padding:40px 32px;text-align:center}
+    .hero-portrait img{width:228px;height:228px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto 24px}
+    .hero-portrait b{display:block;color:var(--white);font-size:1.34rem;font-weight:700}
+    .hero-portrait span{display:block;color:var(--mint);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;margin-top:9px}
 
     /* ---------- product mockup, the signature move ---------- */
     .mockwrap{position:relative;z-index:1;margin-top:84px;transform:translateY(60px)}
