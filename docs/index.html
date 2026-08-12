@@ -319,6 +319,8 @@
       .js .reveal,.js .float{opacity:1;transform:none;transition:none}
       .js .gauge-arc{stroke-dashoffset:0;transition:none}
       .mock,.mockwrap:hover .mock{transition:none;transform:none;box-shadow:var(--lift-xl)}
+      .faq-ico{transition:none}
+      details[open] p{animation:none}
     }
 
     /* ---------- stat band ---------- */
@@ -361,9 +363,20 @@
     /* Work runs straight into the FAQ, both light, so the usual 120 + 120
        between sections reads as dead space. Work's bottom padding is cut. */
     .clients{text-align:center;padding-bottom:36px}
-    details{background:var(--white);border-radius:14px;box-shadow:var(--lift);margin-bottom:12px;padding:22px 26px}
-    summary{cursor:pointer;font-weight:700;color:var(--midnight);font-size:1.05rem}
-    details p{margin-top:12px;color:var(--slate);font-size:.97rem}
+    /* FAQ accordions: native details, custom marker, mint chevron tile
+       that flips when open. Padding moves onto the summary and answer so
+       the whole row is a click target. */
+    details{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--lift);margin-bottom:12px;transition:box-shadow .2s ease}
+    details:hover,details[open]{box-shadow:var(--lift-hi)}
+    summary{display:flex;align-items:center;gap:18px;cursor:pointer;font-weight:700;color:var(--midnight);font-size:1.05rem;padding:22px 26px;list-style:none;transition:color .2s ease}
+    summary::-webkit-details-marker{display:none}
+    summary:hover,details[open] summary{color:var(--signal)}
+    .faq-ico{margin-left:auto;flex:none;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
+    .faq-ico svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    details[open] .faq-ico{transform:rotate(180deg)}
+    details p{margin:0;padding:0 26px 24px;color:var(--slate);font-size:.97rem}
+    details[open] p{animation:faqIn .3s ease both}
+    @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
     .contact{text-align:center}
     .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
     /* Same surface card and mint tile as the rest of the page, so the
@@ -733,15 +746,15 @@
         <h2 class="sec-title">Questions, Answered</h2>
         <p class="sec-sub">WHAT PROSPECTIVE CLIENTS ASK US FIRST</p>
       </div>
-      <details><summary>What services does Corcoran Communications offer?</summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media advertising, and content marketing. You can take it as one integrated growth program or as individual services.</p></details>
-      <details><summary>What is AEO, and why does my business need it?</summary><p>AEO, or answer engine optimization, is getting your business named in the answers AI tools like ChatGPT, Claude, Perplexity, and Google's AI give when customers ask for recommendations. A growing share of searches now end without a click, so the businesses inside the AI's answer win. We build and monitor for both classic search and AI answers.</p></details>
-      <details><summary>Who will actually work on my account?</summary><p>Greg Quinn, the owner. He's a U.S. Navy veteran with a staff of AI agents that monitor your site, your search rankings, and Google's algorithm changes around the clock. One senior marketer, no junior account teams, and you can see the agents' reports yourself.</p></details>
-      <details><summary>Do you require long-term contracts?</summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
-      <details><summary>What areas does Corcoran Communications serve?</summary><p>We're based in Quakertown, PA and serve businesses across Bucks and Montgomery Counties and the Greater Lehigh Valley, from Doylestown to Bethlehem, plus longtime clients throughout Pennsylvania, New York, and New Jersey.</p></details>
-      <details><summary>I already have a website. Do I have to start over?</summary><p>Not necessarily. The free audit tells us whether your current site is worth repairing or holding you back. Some sites need a handful of fixes; some cost less to rebuild than to rescue. Either way you'll see the evidence before you decide anything.</p></details>
-      <details><summary>How long does a website take?</summary><p>Most builds go live within two to four weeks, and you see progress along the way, not a big reveal at the end. Repairs to an existing site often take less. The audit comes first either way, within one business day.</p></details>
-      <details><summary>Won't an AI-built website look generic?</summary><p>Not the way we build them. AI does the heavy lifting, but every site is directed, edited, and fact-checked by a human marketer, in your voice, with your real story. The speed comes from the machines. The judgment doesn't.</p></details>
-      <details><summary>How do I get started with Corcoran Communications?</summary><p>Call or text 215-259-8304, or email greg@corcoranpr.com. We'll start with a free AI-powered audit of your current website so you can see exactly what's helping you, what's hurting you, and what it's worth fixing.</p></details>
+      <details><summary>What services does Corcoran Communications offer?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media advertising, and content marketing. You can take it as one integrated growth program or as individual services.</p></details>
+      <details><summary>What is AEO, and why does my business need it?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>AEO, or answer engine optimization, is getting your business named in the answers AI tools like ChatGPT, Claude, Perplexity, and Google's AI give when customers ask for recommendations. A growing share of searches now end without a click, so the businesses inside the AI's answer win. We build and monitor for both classic search and AI answers.</p></details>
+      <details><summary>Who will actually work on my account?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Greg Quinn, the owner. He's a U.S. Navy veteran with a staff of AI agents that monitor your site, your search rankings, and Google's algorithm changes around the clock. One senior marketer, no junior account teams, and you can see the agents' reports yourself.</p></details>
+      <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
+      <details><summary>What areas does Corcoran Communications serve?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>We're based in Quakertown, PA and serve businesses across Bucks and Montgomery Counties and the Greater Lehigh Valley, from Doylestown to Bethlehem, plus longtime clients throughout Pennsylvania, New York, and New Jersey.</p></details>
+      <details><summary>I already have a website. Do I have to start over?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Not necessarily. The free audit tells us whether your current site is worth repairing or holding you back. Some sites need a handful of fixes; some cost less to rebuild than to rescue. Either way you'll see the evidence before you decide anything.</p></details>
+      <details><summary>How long does a website take?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Most builds go live within two to four weeks, and you see progress along the way, not a big reveal at the end. Repairs to an existing site often take less. The audit comes first either way, within one business day.</p></details>
+      <details><summary>Won't an AI-built website look generic?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Not the way we build them. AI does the heavy lifting, but every site is directed, edited, and fact-checked by a human marketer, in your voice, with your real story. The speed comes from the machines. The judgment doesn't.</p></details>
+      <details><summary>How do I get started with Corcoran Communications?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Call or text 215-259-8304, or email greg@corcoranpr.com. We'll start with a free AI-powered audit of your current website so you can see exactly what's helping you, what's hurting you, and what it's worth fixing.</p></details>
     </div>
   </section>
 
