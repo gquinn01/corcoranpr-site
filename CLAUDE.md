@@ -11,9 +11,13 @@
   with dark text (#062018) on green fills. Use #0E7A55 for small green
   text on light backgrounds (contrast).
 - Buttons do NOT darken on hover. They leave green entirely and flip to a
-  Midnight fill with Fresh Mint text. Darkening to #0E7A55 would put the
-  mandated #062018 text at 3.2:1, under the 4.5:1 bar, and #0E7A55 is a
-  text color, not a fill. Do not "fix" this back to a green hover.
+  Fresh Mint fill with Midnight text, 12.91:1 (changed 2026-08-11 from the
+  old Midnight fill). Darkening to #0E7A55 would put the mandated #062018
+  text at 3.2:1, under the 4.5:1 bar, and #0E7A55 is a text color, not a
+  fill. Do not "fix" this back to a green hover.
+- The secondary (ghost) button hovers to a translucent white wash, NOT to
+  a mint fill. Both buttons hovering to mint made primary and secondary
+  identical on hover. Keep them distinct.
 - Fresh Mint #DDF7EC — light accents: card top-borders, eyebrow text
   and labels on dark panels.
 - Cloud #F3F8FC — page background. Cards stay white.
