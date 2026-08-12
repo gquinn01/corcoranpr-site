@@ -23,7 +23,15 @@
   #4A5A6A body and secondary text on light (7.1:1 on white), #D8E4EF
   hairline borders on light, #B6C9DD secondary text on Midnight (8.6:1).
   Never substitute a warm grey — it clashes with Cloud.
-- Solid colors only. No gradients, ever.
+- Gradients are allowed on SECTION BACKGROUNDS ONLY (decided 2026-08-11,
+  to get closer to the ServiceNow look). Everything else stays solid:
+  text, buttons, cards, icon tiles, borders, logo art. Build every field
+  from palette colors at low alpha over a solid palette base, so no new
+  hex enters the system. Fade stops to rgba(color,0), never to
+  `transparent` — some browsers interpolate that through black and smear
+  grey. Always re-check contrast at the field's BRIGHTEST point, not
+  against the base color: a background gradient can quietly push body
+  text under 4.5:1, and #B6C9DD is the first thing to fail.
 - Coral is RETIRED. The wordmark is image art (decided 2026-08-11),
   recolored from the old coral logo: docs/logo-light.png on light
   panels, docs/logo-dark.png on dark. There is no text wordmark and no
