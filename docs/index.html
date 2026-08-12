@@ -260,16 +260,22 @@
 
     /* Portrait beside the lead and buttons, filling the open right side of
        the hero. It sits BELOW the h1, never next to it, so the headline keeps
-       the full 950px it needs for 3 lines. Card chrome is the same surface,
-       hairline and mint ring used everywhere else on a dark panel. Hidden
-       under 1000px, where the hero is a single column. */
-    .hero-body{display:flex;align-items:center;gap:44px}
+       the full 950px it needs for 3 lines. Hidden under 1000px, where the
+       hero is a single column.
+       Top aligned, NOT centered: the portrait is taller than the copy, so
+       centering it pushed the lead down and opened a gap under the headline.
+       Do not put align-items:center back. */
+    .hero-body{display:flex;align-items:flex-start;gap:44px}
     .hero-copy{flex:1 1 auto;min-width:0;max-width:660px}
     /* The copy column grows to its 660px cap and freezes, so the leftover
-       width all lands in the card's auto margins. That centers the card in
-       the open space rather than pinning it to the right edge. */
-    .hero-portrait{flex:0 0 384px;margin:0 auto;background:var(--surface);border:1px solid var(--hairline);border-radius:22px;padding:40px 32px;text-align:center}
-    .hero-portrait img{width:228px;height:228px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto 24px}
+       width all lands in the portrait's auto margins. That centers it in the
+       open space rather than pinning it to the right edge.
+       No card box here. The lift comes from a translucent mint halo and a
+       deep Midnight shadow, both palette colors at low alpha, since the
+       --lift shadows are tuned for light panels and vanish on Midnight. */
+    .hero-portrait{flex:0 0 300px;margin:0 auto;text-align:center;transition:transform .25s ease}
+    .hero-portrait img{width:268px;height:268px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto 24px;box-shadow:0 0 0 14px rgba(221,247,236,.05),0 26px 56px rgba(8,42,74,.55)}
+    .hero-portrait:hover{transform:translateY(-6px)}
     .hero-portrait b{display:block;color:var(--white);font-size:1.34rem;font-weight:700}
     .hero-portrait span{display:block;color:var(--mint);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;margin-top:9px}
 
@@ -334,6 +340,7 @@
       .js .reveal,.js .float{opacity:1;transform:none;transition:none}
       .js .gauge-arc{stroke-dashoffset:0;transition:none}
       .mock,.mockwrap:hover .mock{transition:none;transform:none;box-shadow:var(--lift-xl)}
+      .hero-portrait,.hero-portrait:hover{transition:none;transform:none}
       .faq-ico{transition:none}
       details[open] p{animation:none}
     }
