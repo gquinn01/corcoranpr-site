@@ -158,11 +158,13 @@
 
     header{position:sticky;top:0;background:rgba(243,248,252,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-    .logo{font-weight:700;font-size:1.15rem;letter-spacing:.02em;color:var(--midnight)}
-    /* WHY: no logo art yet — wordmark renders as text, Midnight on light
-       panels and white on dark. The separator carries Signal Blue as the
-       one accent note; coral is retired. */
-    .logo em{font-style:normal;color:var(--signal)}
+    /* WHY: the 2026 wordmark art, recolored from the retired coral logo.
+       "Corcoran" carries the accent (Signal Blue on light, Fresh Mint on
+       dark) and "Communications" takes Midnight on light, white on dark.
+       The old tagline is cropped off: it named services the site does not
+       sell, and it renders about 6px tall at this size. */
+    .logo{line-height:0}
+    .logo img{display:block;width:200px;height:auto}
     nav ul{display:flex;gap:26px;list-style:none;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
     nav a{text-decoration:none;color:var(--midnight)}
     nav a:hover{color:var(--signal)}
@@ -250,11 +252,7 @@
     .foot-grid{display:grid;grid-template-columns:1.3fr .9fr 1.05fr 2.2fr;gap:40px;text-align:left;font-size:.85rem;letter-spacing:.02em;padding-bottom:30px}
     .foot-grid a{margin:0}
     .foot-head{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
-    /* The wordmark is white on dark per the brand rules. Its interpunct
-       cannot carry Signal Blue here (2.82:1 on Midnight), so it takes Fresh
-       Mint, the accent this palette assigns to dark panels. */
-    footer.site .logo{color:var(--white);margin-bottom:12px}
-    footer.site .logo em{color:var(--mint)}
+    footer.site .logo{margin-bottom:12px}
     .foot-tag{margin-bottom:14px}
     .foot-nap{line-height:1.9}
     .foot-links{list-style:none;line-height:2.1}
@@ -266,14 +264,14 @@
     /* Seven nav items crowd the logo and the audit button before the mobile
        breakpoint hides them, so the gap tightens first. */
     @media(max-width:1040px){ nav ul{gap:18px} }
-    @media(max-width:760px){ nav ul{display:none} }
+    @media(max-width:760px){ nav ul{display:none} .logo img{width:165px} }
   </style>
 </head>
 <body>
 
   <header>
     <div class="wrap nav">
-      <div class="logo">CORCORAN<em>·</em>COMMUNICATIONS</div>
+      <div class="logo"><img src="logo-light.png" alt="Corcoran Communications" width="467" height="40"></div>
       <nav aria-label="Main">
         <ul>
           <li><a href="#services">Services</a></li>
@@ -520,7 +518,7 @@
          Business Profile once created. This footer is the consistency anchor. -->
     <div class="wrap foot-grid">
       <div class="foot-brand">
-        <div class="logo">CORCORAN<em>·</em>COMMUNICATIONS</div>
+        <div class="logo"><img src="logo-dark.png" alt="Corcoran Communications" width="467" height="40"></div>
         <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
         <p class="foot-nap">
           Corcoran Communications<br>
