@@ -177,7 +177,7 @@
     .btn:hover{background:var(--mint);color:var(--midnight)}
     .btn-ghost{background:transparent;border:1.5px solid var(--mint);color:var(--mint);padding:13.5px 28px}
     .btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--mint)}
-    .btn-sm{padding:11px 22px;font-size:.8rem}
+    .btn-sm{padding:13px 28px;font-size:.92rem}
     /* Nav CTA carries Midnight ink rather than #062018, 5.63:1 on green.
        Signal Blue would be 2.00:1 here and is not usable on a green fill. */
     .nav .btn{color:var(--midnight)}
@@ -232,11 +232,14 @@
 
     /* ---------- sticky dark nav ---------- */
     .nav{position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--hairline)}
-    .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:15px 0}
-    .nav img{display:block;width:190px;height:auto}
-    .nav ul{display:flex;gap:26px;list-style:none;font-size:.85rem;font-weight:600}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:17px 0}
+    .nav img{display:block;width:230px;height:auto}
+    .nav ul{display:flex;gap:28px;list-style:none;font-size:1rem;font-weight:600}
     .nav a{color:var(--on-dark);text-decoration:none}
     .nav a:hover{color:var(--mint)}
+    /* Between 1000 and 1150 the enlarged nav gets tight, so it steps down
+       once before the mobile breakpoint hides it. */
+    @media(max-width:1150px){ .nav ul{gap:20px;font-size:.92rem} .nav img{width:200px} }
     @media(max-width:1000px){ .nav ul{display:none} }
 
     /* ---------- hero ---------- */
