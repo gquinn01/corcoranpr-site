@@ -24,14 +24,19 @@
   hairline borders on light, #B6C9DD secondary text on Midnight (8.6:1).
   Never substitute a warm grey — it clashes with Cloud.
 - Solid colors only. No gradients, ever.
-- Coral is RETIRED from the site. Until new logo art exists, render the
-  wordmark as text: white on dark panels, Midnight on light. The
-  interpunct separator in CORCORAN·COMMUNICATIONS carries Signal Blue —
-  the one accent note on the wordmark. Do not flatten it to Midnight.
-- The interpunct's accent follows the panel (decided 2026-08-11): Signal
-  Blue on light, Fresh Mint on dark. Signal Blue is 2.82:1 on Midnight,
-  so it cannot carry the accent in the footer. Never flatten the
-  separator to match the wordmark on either ground.
+- Coral is RETIRED. The wordmark is image art (decided 2026-08-11),
+  recolored from the old coral logo: docs/logo-light.png on light
+  panels, docs/logo-dark.png on dark. There is no text wordmark and no
+  interpunct any more — the color split between the two words IS the
+  accent note. "Corcoran" carries the accent, Signal Blue on light and
+  Fresh Mint on dark. "Communications" takes Midnight on light, white on
+  dark. Signal Blue is 2.82:1 on Midnight, so it never carries the
+  accent on a dark panel. Never render the mark in a single flat color.
+- The old logo's tagline, "Public Relations • Event Coordination", is
+  cropped out of both files and stays out unless those services are
+  actually listed on the site. It is also illegible at wordmark size.
+  The uncropped source art is not in the repo; ask Greg for it before
+  regenerating either PNG.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
 - No em dashes in site copy, ever, including schema text.
@@ -46,6 +51,8 @@
 ## Definition of done (every site change)
 - Run: python3 scripts/audit.py docs/index.html — must score 100/100.
 - Valid JSON-LD, title ≤60 chars, meta description ≤160, exactly one H1.
+- Every <img> needs real alt text. The audit counts alt="" as missing
+  and drops the score, so decorative-empty alt is not an option here.
 - Show me the diff before committing. Commit messages in plain English.
 
 ## Repo rules
