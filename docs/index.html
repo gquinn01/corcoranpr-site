@@ -366,6 +366,12 @@
     .card .tag + h3{margin-top:6px}
     .role{text-transform:uppercase}
 
+    /* ---------- client logo wall ---------- */
+    .logo-wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:20px;max-width:1180px;margin:0 auto}
+    .logo-tile{background:var(--white);border:1px solid var(--line);border-radius:14px;height:120px;display:flex;align-items:center;justify-content:center;padding:22px 26px;box-shadow:var(--lift);transition:transform .2s ease,box-shadow .2s ease}
+    .logo-tile:hover{transform:translateY(-4px);box-shadow:var(--lift-hi)}
+    .logo-tile img{max-width:100%;max-height:72px;width:auto;height:auto;display:block}
+
     /* ---------- footer ---------- */
     /* The contact band runs straight into the footer, both dark, so a mint
        hairline marks the seam exactly as it does on the live site. */
@@ -680,7 +686,18 @@
         <h2 class="sec-title">Work We're Proud Of</h2>
         <p class="sec-sub">FROM MAIN STREET TO THE BIG TOP</p>
       </div>
-      <p class="strip"><strong>Disney on Ice</strong> · <strong>Ringling Bros. Circus</strong> · <strong>Pittsburgh Craft Beer Week</strong> · <strong>SenArt Films</strong> · <strong>Spirit Financial</strong> · <strong>Tri County Collision</strong> · <strong>ILM</strong> · <strong>Distasio &amp; Kowalski</strong> · <strong>Choice One</strong> · <strong>Cork</strong></p>
+      <div class="logo-wall">
+        <div class="logo-tile"><img src="logos/disney-on-ice.png" width="360" height="140" alt="Disney on Ice" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/ringling-bros.png" width="360" height="140" alt="Ringling Bros. and Barnum &amp; Bailey" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/pittsburgh-craft-beer-week.png" width="360" height="140" alt="Pittsburgh Craft Beer Week" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/senart-films.png" width="360" height="140" alt="SenArt Films" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/spirit-financial.png" width="360" height="140" alt="Spirit Financial Credit Union" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/tri-county-collision.png" width="360" height="140" alt="Tri-County Collision" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/ilm.png" width="360" height="140" alt="ILM, Institute for Laser Medicine &amp; Aesthetics" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/distasio-kowalski-yelen.png" width="360" height="140" alt="Distasio, Kowalski &amp; Yelen, LLC, Attorneys at Law" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/choice-one.png" width="360" height="140" alt="Choice One Community Credit Union" loading="lazy"></div>
+        <div class="logo-tile"><img src="logos/cork.png" width="360" height="140" alt="Cork Bar &amp; Restaurant" loading="lazy"></div>
+      </div>
       <blockquote class="big">
         "Corcoran Communications maximized our promotion budgets by a measurable 10 to 1."
         <footer>Client, from our portfolio</footer>
