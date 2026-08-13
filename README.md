@@ -16,14 +16,27 @@ ai-agency-starter-kit/
 │                                     your punch list. Read this first.
 ├── docs/
 │   ├── index.html                  ← THE NEW CORCORANPR.COM (your rebuilt site!)
+│   ├── assets/
+│   │   ├── site.css                ← The shared stylesheet. The brand palette
+│   │   │                             lives here and ONLY here.
+│   │   └── site.js                 ← Shared behaviour (the mobile menu)
+│   ├── services/                   ← One page per service, all linked from
+│   │   ├── web-design/               the homepage cards and the footer
+│   │   ├── seo/                      (SEO also owns AEO + content marketing)
+│   │   ├── google-ads/
+│   │   ├── social-media-marketing/
+│   │   └── lead-generation/
 │   ├── llms.txt                    ← AI-agent guide to your business (AEO)
 │   ├── robots.txt                  ← Welcomes search + AI crawlers (AEO)
 │   └── sitemap.xml                 ← Table of contents for crawlers
 ├── templates/
-│   └── spa-local-business-template.html  ← The day-spa demo — your reusable
-│                                     template for pitching local businesses
+│   ├── spa-local-business-template.html  ← The day-spa demo — your reusable
+│   │                                 template for pitching local businesses
+│   └── service-page-template.html  ← Start here to add a service page.
+│                                     See the checklist in PLAYBOOK.md Part 4.
 ├── scripts/
-│   ├── audit.py                    ← The SEO + AEO scanner (14+ checks)
+│   ├── audit.py                    ← The SEO + AEO scanner (15+ checks).
+│   │                                 Scores EVERY page of the site separately.
 │   └── fetch_seo_news.py           ← Pulls Google/AI-search news from 4 trusted sources
 ├── agents/
 │   ├── site-auditor.md             ← Agent 1's job description (plain English — edit it!)

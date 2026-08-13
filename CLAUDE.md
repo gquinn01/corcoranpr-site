@@ -55,6 +55,17 @@
 - Above the fold, no industry jargon: no SEO, AEO, lead gen, or funnel.
   Trade terms live in service cards, FAQ, and schema. Hero copy must make
   sense to a reader who has never bought marketing.
+- SERVICE-PAGE EXCEPTION (decided 2026-08-13). The rule above governs the
+  HOMEPAGE hero, where the reader has not self-selected. On a service
+  page, the reader arrived by searching that exact term, so the page's
+  OWN primary keyword may appear above the fold in the title and H1, and
+  nothing else may. The lead paragraph explains it in plain English, no
+  other trade terms (no funnel, no CTR, no top-of-funnel), and AEO is
+  always spelled out as "answer engine optimization" on first use.
+  One keyword per page, its own, and no jargon creep beyond it.
+- Titles: all five service pages use the same suffix,
+  "| Corcoran Communications". Shorten the descriptive half, never the
+  brand half, to stay under 60 characters.
 - No em dashes in site copy, ever, including schema text.
 
 ## Facts are sacred
@@ -65,14 +76,39 @@
   215-259-8304, greg@corcoranpr.com.
 
 ## Definition of done (every site change)
-- Run: python3 scripts/audit.py docs/index.html — must score 100/100.
+- Run: python3 scripts/audit.py — EVERY page must score 100/100, not just
+  the one you touched. Add --strict to make the run exit nonzero when any
+  page falls short. A single path still works for a quick spot check:
+  python3 scripts/audit.py docs/services/seo/index.html
 - Valid JSON-LD, title ≤60 chars, meta description ≤160, exactly one H1.
 - Every <img> needs real alt text. The audit counts alt="" as missing
   and drops the score, so decorative-empty alt is not an option here.
 - Show me the diff before committing. Commit messages in plain English.
 
+## Adding a page (all four steps, every time)
+A page does not exist until it is in sitemap.xml AND llms.txt. The audit
+enforces both: a missing sitemap entry is a critical, a missing llms.txt
+entry is a warning, and either one drops that page below 100/100.
+1. Copy templates/service-page-template.html and replace every {{TOKEN}}.
+2. Add its <url> block to docs/sitemap.xml with the real publish date.
+3. Add its line to "## Key pages" in docs/llms.txt.
+4. Link it from the homepage service card and the footer Services column.
+Full checklist with the reasoning lives in PLAYBOOK.md.
+
+## Links (decided 2026-08-13)
+- EVERY internal link and asset path is RELATIVE and never starts with
+  "/". The site also serves from a project subpath
+  (gquinn01.github.io/corcoranpr-site/), where a leading slash 404s.
+  From a service page the site root is ../../ , so: ../../assets/site.css,
+  ../../logo-dark.png, ../../#services, ../seo/ for a sibling service.
+- The only absolute URLs are the ones the spec requires to be absolute:
+  canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
+- Verify with: grep -rn 'href="/\|src="/' docs/ — it must print nothing.
+
 ## Repo rules
-- docs/ = the live site. templates/ = client-pitch templates.
-  agents/ = agent job descriptions. Never touch .github/ or scripts/
-  without asking first.
+- docs/ = the live site. docs/assets/ = the shared stylesheet and script
+  used by every page; the palette lives ONLY in docs/assets/site.css, so
+  change it there and nowhere else. templates/ = client-pitch templates
+  plus the internal service-page template. agents/ = agent job
+  descriptions. Never touch .github/ or scripts/ without asking first.
 - Never put API keys or secrets in any file.

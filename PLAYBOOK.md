@@ -118,6 +118,19 @@ And a story worth retelling: when I first ran the auditor against my own demo si
 
 The kit's README walks you through going live in about 30 minutes with zero coding: create a free GitHub account, upload the folder, add an API key, click twice to turn on free hosting, and press "Run workflow." Your first AI-written SEO report appears in your Issues tab minutes later.
 
+### Adding a page to the site (the four-step checklist)
+
+As of 2026-08-13 the site is no longer one page. It has a homepage plus five service pages under `docs/services/`, and `scripts/audit.py` now scores **every page separately** so one weak page cannot hide behind a site average.
+
+When you add a page, all four of these happen or the page is not finished:
+
+1. **Build it from the template.** Copy `templates/service-page-template.html` to `docs/services/<slug>/index.html` and replace every `{{TOKEN}}`. The nav, footer, palette and schema shape come with it. All internal links must stay relative (`../../` is the site root from there), because the site also serves from a project subpath where a leading `/` would 404.
+2. **Put it in the sitemap.** Add a `<url>` block to `docs/sitemap.xml` with the absolute URL, a trailing slash, and `lastmod` set to the real date you published it. A missing sitemap entry is scored as **critical**.
+3. **Put it in llms.txt.** Add a line under `## Key pages` in `docs/llms.txt`, in the existing `- [Name](url): description` form. This is the file AI assistants read to learn what the business offers. A missing entry is scored as a **warning**.
+4. **Link to it.** The matching homepage service card gets its "More on ..." link, and the page goes in the footer Services column, which appears on every page.
+
+Then run `python3 scripts/audit.py`. Every page must read 100/100. Steps 2 and 3 are enforced by the scanner itself, so the sitemap, llms.txt and the actual pages cannot quietly drift apart. That is the point: the checklist is not a thing you have to remember, it is a thing the build fails without.
+
 ---
 
 ## Part 5: The 30-day path to the cutting edge
