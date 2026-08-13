@@ -17,8 +17,17 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
+      # With no SITE_URL set, the scan covers EVERY page under docs/ and
+      # scores each one separately. Set the SITE_URL repo variable to audit
+      # a live site instead (its page list comes from its own sitemap.xml),
+      # which is also how you audit a prospect's site.
       - name: Run the SEO scan
-        run: python3 scripts/audit.py "${{ vars.SITE_URL || 'docs/index.html' }}"
+        run: |
+          if [ -n "${{ vars.SITE_URL }}" ]; then
+            python3 scripts/audit.py "${{ vars.SITE_URL }}"
+          else
+            python3 scripts/audit.py
+          fi
 
       - name: Claude interprets the scan and files the report
         uses: anthropics/claude-code-action@v1

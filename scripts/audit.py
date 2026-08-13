@@ -11,18 +11,36 @@ It then writes a markdown report. In the GitHub workflow, an AI agent
 (Claude) reads this report, explains it in plain English, and files it
 as a GitHub Issue with recommended fixes.
 
+The site is no longer one page, so this audits EVERY page and scores
+each one separately. A single page dragging the site down is visible by
+name in the summary table instead of being averaged away.
+
 Usage:
-    python3 scripts/audit.py docs/index.html           # audit a local file
-    python3 scripts/audit.py https://example.com/       # audit a live URL
+    python3 scripts/audit.py                           # every page under docs/
+    python3 scripts/audit.py docs/index.html           # one local file
+    python3 scripts/audit.py docs/services/seo/        # a folder
+    python3 scripts/audit.py https://example.com/      # a live site, expanded
+                                                       # via its sitemap.xml
+    python3 scripts/audit.py --strict                  # exit 1 if any page < 100
 
 No external packages needed — pure Python standard library.
 """
 
+import argparse
+import glob
 import json
+import os
 import re
 import sys
 import urllib.request
 from html.parser import HTMLParser
+from urllib.parse import urlparse
+
+# The live site's page list comes from its own sitemap. Locally we glob
+# the folder that IS the live site.
+SITE_DIR = "docs"
+SITEMAP_PATH = os.path.join(SITE_DIR, "sitemap.xml")
+LLMS_PATH = os.path.join(SITE_DIR, "llms.txt")
 
 
 class PageParser(HTMLParser):
@@ -96,11 +114,18 @@ def load(source: str) -> str:
         return f.read()
 
 
+def is_url(source: str) -> bool:
+    return source.startswith(("http://", "https://"))
+
+
 def check_ai_access(base_url: str, warns: list, passes: list, notes: list):
     """AEO checks that only make sense against a LIVE site:
     is the site letting AI assistants' crawlers in, and does it offer
-    an llms.txt guide for AI agents?"""
-    from urllib.parse import urlparse
+    an llms.txt guide for AI agents?
+
+    These are properties of the SITE, not of any one page, so they run
+    once per run and are reported in their own section. Running them per
+    page would just refetch the same two files five more times."""
     parts = urlparse(base_url)
     root = f"{parts.scheme}://{parts.netloc}"
 
@@ -148,7 +173,10 @@ def check_ai_access(base_url: str, warns: list, passes: list, notes: list):
                      "tooling reads it — a 20-minute add for extra AI visibility.")
 
 
-def audit(source: str):
+def audit(source: str, coverage: dict = None):
+    """Scores one page. `coverage` carries the parsed sitemap.xml and
+    llms.txt for local runs, so a page that was built but never published
+    into either file gets caught here rather than by a customer."""
     html = load(source)
     p = PageParser()
     p.feed(html)
@@ -188,7 +216,20 @@ def audit(source: str):
         try:
             data = json.loads(block)
             items = data if isinstance(data, list) else [data]
+            # A page that describes several things at once (a business, a
+            # service, a breadcrumb, an FAQ) puts them in an @graph so they
+            # can reference each other by @id. Unwrap it, or every node
+            # inside is invisible and the page looks like it has no schema
+            # at all. Most modern CMS sites emit one, so this matters when
+            # auditing a prospect's site too.
+            unwrapped = []
             for item in items:
+                graph = item.get("@graph") if isinstance(item, dict) else None
+                if graph:
+                    unwrapped.extend(graph if isinstance(graph, list) else [graph])
+                else:
+                    unwrapped.append(item)
+            for item in unwrapped:
                 t2 = item.get("@type")
                 if t2:
                     types.extend(t2 if isinstance(t2, list) else [t2])
@@ -263,27 +304,151 @@ def audit(source: str):
     else:
         passes.append(f"Healthy content depth: ~{words} words on the page.")
 
-    # Live-site-only AEO checks (robots.txt AI-crawler policy, llms.txt)
-    if source.startswith(("http://", "https://")):
-        check_ai_access(source, warns, passes, notes)
+    # --- Published where crawlers can find it ---
+    # A page that exists but is in neither sitemap.xml nor llms.txt is a
+    # page Google and the AI assistants may never discover. On a live run
+    # this is moot: the page list came FROM the sitemap.
+    if coverage is not None and p.canonical:
+        canon = p.canonical.strip()
+        if canon in coverage["sitemap_locs"]:
+            passes.append(f"Listed in sitemap.xml, so crawlers get pointed at it: {canon}")
+        else:
+            fails.append(f"**Not listed in `docs/sitemap.xml`.** The page is live at {canon} but "
+                         "the sitemap never mentions it, so Google has to stumble on it. Add a "
+                         "`<url>` block with today's date.")
+        # Word-boundary match: without it, the homepage's canonical would
+        # match any deeper URL that starts with it and always "pass".
+        if re.search(re.escape(canon) + r"(?![\w/.\-])", coverage["llms_text"]):
+            passes.append("AEO: listed in llms.txt, so AI agents get a guided route to the page.")
+        else:
+            warns.append(f"**Not listed in `docs/llms.txt`.** Add {canon} under `## Key pages` so "
+                         "AI assistants reading the guide know this page exists.")
 
     return passes, warns, fails, notes
 
 
-def main():
-    source = sys.argv[1] if len(sys.argv) > 1 else "docs/index.html"
-    passes, warns, fails, notes = audit(source)
+def score_of(n_pass: int, n_warn: int, n_fail: int) -> int:
+    """Unchanged formula: the share of checks that passed. Notes are free."""
+    return round(100 * n_pass / max(1, n_pass + n_warn + n_fail))
 
-    score = round(100 * len(passes) / max(1, len(passes) + len(warns) + len(fails)))
-    lines = [f"# SEO + AEO Audit Report", "", f"**Page:** `{source}`", f"**Health score: {score}/100** — {len(passes)} passing · {len(warns)} warnings · {len(fails)} critical", ""]
-    if fails:
-        lines += ["## 🔴 Critical — fix these first", ""] + [f"- {x}" for x in fails] + [""]
-    if warns:
-        lines += ["## 🟡 Warnings — worth fixing", ""] + [f"- {x}" for x in warns] + [""]
-    if passes:
-        lines += ["## 🟢 Passing", ""] + [f"- {x}" for x in passes] + [""]
-    if notes:
-        lines += ["## ℹ️ Notes (optional improvements)", ""] + [f"- {x}" for x in notes] + [""]
+
+def expand_sitemap(url: str):
+    """A live site's page list comes from its own sitemap. If that can't
+    be read we still audit the URL we were given, and say why."""
+    parts = urlparse(url)
+    root = f"{parts.scheme}://{parts.netloc}"
+    try:
+        xml = load(root + "/sitemap.xml")
+        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
+        if locs:
+            return sorted(set(locs)), None
+        return [url], (f"{root}/sitemap.xml has no <loc> entries, so only the page you named "
+                       "was audited.")
+    except Exception:
+        return [url], (f"Could not read {root}/sitemap.xml, so only the page you named was "
+                       "audited. Add a sitemap so every page gets scanned.")
+
+
+def resolve_targets(args):
+    """No arguments audits the whole site. Paths, folders and URLs all work."""
+    if not args:
+        return sorted(glob.glob(os.path.join(SITE_DIR, "**", "*.html"), recursive=True)), None
+    if len(args) == 1 and is_url(args[0]):
+        return expand_sitemap(args[0])
+    targets = []
+    for a in args:
+        if is_url(a) or os.path.isfile(a):
+            targets.append(a)
+        elif os.path.isdir(a):
+            targets.extend(sorted(glob.glob(os.path.join(a, "**", "*.html"), recursive=True)))
+        else:
+            targets.append(a)   # let it fail loudly with a real filename
+    return targets, None
+
+
+def local_coverage():
+    """Reads sitemap.xml and llms.txt once, for the two publish checks."""
+    try:
+        with open(SITEMAP_PATH, encoding="utf-8") as f:
+            sitemap = f.read()
+        with open(LLMS_PATH, encoding="utf-8") as f:
+            llms = f.read()
+    except OSError:
+        return None
+    return {
+        "sitemap_locs": set(re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", sitemap)),
+        "llms_text": llms,
+    }
+
+
+def section(title: str, items: list, level: str = "###") -> list:
+    return [f"{level} {title}", ""] + [f"- {x}" for x in items] + [""] if items else []
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description="Audit every page of the site for SEO and AEO, scoring each one.")
+    ap.add_argument("targets", nargs="*",
+                    help="Files, folders or a live URL. Default: every .html under docs/")
+    ap.add_argument("--strict", action="store_true",
+                    help="Exit 1 if any page scores under 100. Use it in a build gate.")
+    opts = ap.parse_args()
+
+    targets, expand_note = resolve_targets(opts.targets)
+    if not targets:
+        print(f"No HTML pages found under {SITE_DIR}/.", file=sys.stderr)
+        return 1
+
+    live = [t for t in targets if is_url(t)]
+    coverage = None if live else local_coverage()
+
+    results = []
+    for t in targets:
+        passes, warns, fails, notes = audit(t, coverage=None if is_url(t) else coverage)
+        results.append({"source": t, "passes": passes, "warns": warns,
+                        "fails": fails, "notes": notes,
+                        "score": score_of(len(passes), len(warns), len(fails))})
+
+    # Site-wide AEO checks run once, against the live site only.
+    site_passes, site_warns, site_notes = [], [], []
+    if live:
+        check_ai_access(live[0], site_warns, site_passes, site_notes)
+    if expand_note:
+        site_notes.append(expand_note)
+
+    total_pass = sum(len(r["passes"]) for r in results) + len(site_passes)
+    total_warn = sum(len(r["warns"]) for r in results) + len(site_warns)
+    total_fail = sum(len(r["fails"]) for r in results)
+    site_score = score_of(total_pass, total_warn, total_fail)
+    perfect = [r for r in results if r["score"] == 100]
+
+    lines = [
+        "# SEO + AEO Audit Report", "",
+        f"**Site score: {site_score}/100** — {len(perfect)} of {len(results)} "
+        f"{'page' if len(results) == 1 else 'pages'} at 100/100",
+        f"**{total_pass} passing · {total_warn} warnings · {total_fail} critical** across the site",
+        "",
+        "| Page | Score | Passing | Warnings | Critical |",
+        "|---|---|---|---|---|",
+    ]
+    for r in results:
+        flag = "" if r["score"] == 100 else " ⚠️"
+        lines.append(f"| `{r['source']}` | {r['score']}/100{flag} | {len(r['passes'])} | "
+                     f"{len(r['warns'])} | {len(r['fails'])} |")
+    lines.append("")
+
+    if site_passes or site_warns or site_notes:
+        lines += ["## Site-wide", ""]
+        lines += section("🟡 Warnings — worth fixing", site_warns)
+        lines += section("🟢 Passing", site_passes)
+        lines += section("ℹ️ Notes (optional improvements)", site_notes)
+
+    for r in results:
+        lines += [f"## Page: `{r['source']}` — {r['score']}/100", ""]
+        lines += section("🔴 Critical — fix these first", r["fails"])
+        lines += section("🟡 Warnings — worth fixing", r["warns"])
+        lines += section("🟢 Passing", r["passes"])
+        lines += section("ℹ️ Notes (optional improvements)", r["notes"])
 
     report = "\n".join(lines)
     print(report)
@@ -291,6 +456,12 @@ def main():
         f.write(report)
     print("\n(Report saved to audit-report.md)", file=sys.stderr)
 
+    below = [r for r in results if r["score"] < 100]
+    if below:
+        print(f"{len(below)} page(s) under 100/100: "
+              + ", ".join(r["source"] for r in below), file=sys.stderr)
+    return 1 if (opts.strict and below) else 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
