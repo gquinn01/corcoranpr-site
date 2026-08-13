@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- WHY: the sitemap is the table of contents you hand to crawlers.
-     One page today; every page you add gets a line. Submit it once in
+     Every page you add gets a line, and scripts/audit.py fails any page
+     that is missing from this file, so the two cannot drift apart.
+     Set lastmod to the real date the page changed. Submit this once in
      Google Search Console and Bing Webmaster Tools. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://corcoranpr.com/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/services/web-design/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/services/seo/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/services/google-ads/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/services/social-media-marketing/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/services/lead-generation/</loc>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

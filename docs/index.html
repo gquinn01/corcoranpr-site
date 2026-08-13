@@ -19,7 +19,7 @@
   <title>Corcoran PR | AI-Powered Marketing &amp; SEO | Quakertown, PA</title>
 
   <!-- WHY: results-page ad copy — identity, differentiator, action. ≤160 chars. -->
-  <meta name="description" content="Veteran-owned AI marketing agency in Quakertown, PA. Websites, SEO/AEO, lead gen, Google & social ads for Bucks, Montgomery & Lehigh Valley. 215-259-8304.">
+  <meta name="description" content="Veteran-owned AI marketing agency in Quakertown, PA. Web design, SEO/AEO, lead gen, Google Ads, social media marketing. Bucks & Lehigh Valley. 215-259-8304.">
 
   <link rel="canonical" href="https://corcoranpr.com/">
   <meta name="robots" content="index, follow">
@@ -48,9 +48,10 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://corcoranpr.com/#business",
     "name": "Corcoran Communications",
     "alternateName": "Corcoran PR",
-    "description": "Veteran-owned, AI-powered marketing agency in Quakertown, Pennsylvania. AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media advertising, and content marketing for businesses in Bucks and Montgomery Counties and the Greater Lehigh Valley.",
+    "description": "Veteran-owned, AI-powered marketing agency in Quakertown, Pennsylvania. AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, and content marketing for businesses in Bucks and Montgomery Counties and the Greater Lehigh Valley.",
     "url": "https://corcoranpr.com/",
     "telephone": "+1-215-259-8304",
     "email": "greg@corcoranpr.com",
@@ -79,7 +80,7 @@
       "https://twitter.com/Corcoran_PR",
       "https://www.linkedin.com/company/corcorancommunications/"
     ],
-    "knowsAbout": ["AI Website Design", "SEO", "Answer Engine Optimization", "Lead Generation", "Google Ads", "Social Media Advertising", "Content Marketing", "Public Relations"]
+    "knowsAbout": ["AI Website Design", "SEO", "Answer Engine Optimization", "Lead Generation", "Google Ads", "Social Media Marketing", "Content Marketing", "Public Relations"]
   }
   </script>
 
@@ -94,7 +95,7 @@
       {
         "@type": "Question",
         "name": "What services does Corcoran Communications offer?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media advertising, and content marketing. You can take it as one integrated growth program or as individual services." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, and content marketing. You can take it as one integrated growth program or as individual services." }
       },
       {
         "@type": "Question",
@@ -140,123 +141,23 @@
   }
   </script>
 
+  <!-- WHY: the palette, nav, footer, cards, buttons and fields are shared
+       with every service page, so they live in ONE stylesheet. A brand
+       change is one edit, which is what the standing orders require.
+       The path is relative on purpose: the site also serves from a
+       project subpath, where a leading slash would 404. -->
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+
   <style>
     /* ==========================================================
-       CORCORAN COMMUNICATIONS. Strategic Growth palette only.
-       Gradients are permitted on SECTION BACKGROUNDS ONLY (decided
-       2026-08-11). Text, buttons, cards, icons and borders stay
-       solid. Every field is palette color at low alpha over a solid
-       Midnight base, so no off-palette hex enters the system.
+       HOMEPAGE-ONLY CSS. Everything shared with the service pages
+       is in assets/site.css. What remains here is used on this
+       page and nowhere else: the hero portrait and dashboard
+       mockup, the agent-network diagram, the promise band, the
+       story portraits, the proof block and the client logo wall.
+       Strategic Growth palette only, tokens come from site.css.
        ========================================================== */
-    :root{
-      --midnight:#082A4A; --signal:#0B6BD3;
-      --green:#15B77E;    --green-ink:#062018; --green-text:#0E7A55;
-      --mint:#DDF7EC;     --cloud:#F3F8FC;     --white:#fff;
-      --slate:#4A5A6A;    --line:#D8E4EF;      --on-dark:#B6C9DD;
-      --surface:rgba(255,255,255,.05);
-      --surface-hi:rgba(255,255,255,.09);
-      --hairline:rgba(255,255,255,.13);
-      --lift:0 1px 2px rgba(8,42,74,.05), 0 10px 28px rgba(8,42,74,.08);
-      --lift-hi:0 2px 4px rgba(8,42,74,.07), 0 18px 44px rgba(8,42,74,.13);
-      --lift-xl:0 4px 10px rgba(8,42,74,.10), 0 30px 70px rgba(8,42,74,.28);
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--slate);background:var(--cloud);line-height:1.65;-webkit-font-smoothing:antialiased}
-    .wrap{max-width:1240px;margin:0 auto;padding:0 30px}
-    h1,h2,h3{line-height:1.1;letter-spacing:-.025em;color:var(--midnight)}
-    a{color:var(--signal)}
-    :focus-visible{outline:2px solid var(--signal);outline-offset:3px}
-    .dark :focus-visible,.nav :focus-visible{outline-color:var(--mint)}
-
-    /* ---------- pill buttons, ServiceNow shape ---------- */
-    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--green-ink);padding:15px 30px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:700;letter-spacing:.01em;transition:background .2s,color .2s,border-color .2s}
-    /* Hover leaves green for a Fresh Mint fill with Midnight ink, 12.91:1.
-       The secondary button keeps a translucent wash rather than the same
-       mint fill, so primary and secondary do not collide on hover. */
-    .btn:hover{background:var(--mint);color:var(--midnight)}
-    .btn-ghost{background:transparent;border:1.5px solid var(--mint);color:var(--mint);padding:13.5px 28px}
-    .btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--mint)}
-    .btn-sm{padding:13px 28px;font-size:.92rem}
-    /* Nav CTA carries Midnight ink rather than #062018, 5.63:1 on green.
-       Signal Blue would be 2.00:1 here and is not usable on a green fill. */
-    .nav .btn{color:var(--midnight)}
-    .nav .btn:hover{color:var(--midnight)}
-
-    /* APPROVED, UNCHANGED: 2px line icons, Signal Blue on Fresh Mint. */
-    .tile{width:56px;height:56px;border-radius:15px;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;flex:none}
-    .tile svg{width:27px;height:27px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
-
-    section{padding:120px 0}
-    .sec-head{max-width:780px;margin:0 auto 60px;text-align:center}
-    .sec-title{font-size:clamp(2.1rem,3.7vw,2.875rem);color:var(--signal);margin-bottom:14px}
-    .sec-sub{color:var(--slate);font-size:.8rem;letter-spacing:.15em;font-weight:700}
-
-    .card{background:var(--white);border-radius:16px;padding:38px 34px;box-shadow:var(--lift);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
-    .card:hover{transform:translateY(-5px);box-shadow:var(--lift-hi)}
-    .card h3{font-size:1.24rem;margin:22px 0 12px}
-    .card p{font-size:.97rem;color:var(--slate)}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-
-    /* ---------- dark sections ----------
-       Background gradients are built ONLY from palette colors at low alpha
-       over a solid Midnight base, so no off-palette hex enters the system.
-       Stops fade to rgba(color,0) rather than `transparent`, which some
-       browsers interpolate through black and smear grey. */
-    .dark{background-color:var(--midnight);color:var(--on-dark)}
-    .field-hero{
-      background-image:
-        radial-gradient(1100px 780px at 6% 112%, rgba(21,183,126,.26) 0%, rgba(21,183,126,0) 68%),
-        radial-gradient(980px 640px at 96% -12%, rgba(11,107,211,.28) 0%, rgba(11,107,211,0) 66%);
-    }
-    .field-blue{
-      background-image:
-        radial-gradient(900px 620px at 88% 0%, rgba(11,107,211,.24) 0%, rgba(11,107,211,0) 66%);
-    }
-    .field-green{
-      background-image:
-        radial-gradient(900px 640px at 10% 104%, rgba(21,183,126,.24) 0%, rgba(21,183,126,0) 66%);
-    }
-    .field-both{
-      background-image:
-        radial-gradient(820px 560px at 4% 106%, rgba(21,183,126,.22) 0%, rgba(21,183,126,0) 64%),
-        radial-gradient(820px 560px at 96% -6%, rgba(11,107,211,.22) 0%, rgba(11,107,211,0) 64%);
-    }
-    .dark .sec-title{color:var(--white)}   /* Signal Blue is 2.82:1 here */
-    .dark .sec-sub{color:var(--on-dark)}
-    .dark h2,.dark h3{color:var(--white)}
-    .dark .card{background:var(--surface);border:1px solid var(--hairline);box-shadow:none}
-    .dark .card:hover{background:var(--surface-hi);border-color:rgba(255,255,255,.22);box-shadow:none}
-    .dark .card p{color:var(--on-dark)}
-
-    /* ---------- sticky dark nav ---------- */
-    .nav{position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--hairline)}
-    .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:17px 0}
-    .nav img{display:block;width:230px;height:auto}
-    .nav ul{display:flex;gap:28px;list-style:none;font-size:1rem;font-weight:600}
-    .nav a{color:var(--on-dark);text-decoration:none}
-    .nav a:hover{color:var(--mint)}
-    /* Between 1000 and 1150 the enlarged nav gets tight, so it steps down
-       once before the mobile breakpoint hides it. */
-    @media(max-width:1150px){ .nav ul{gap:20px;font-size:.92rem} .nav img{width:200px} }
-    @media(max-width:1000px){ .nav ul{display:none} }
-
-    /* ---------- hero ---------- */
-    .hero{position:relative;background-color:var(--midnight);color:var(--white);padding:104px 0 0}
-    .gridfield{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-    .hero .wrap{position:relative;z-index:1}
-    /* Measured: 56px keeps this 88 character headline at 3 lines in 950px.
-       The accent clause stays INLINE. Forcing it to its own block adds a
-       fourth line, which breaks the 3 line rule. */
-    .hero h1{font-size:clamp(2.2rem,4.4vw,3.5rem);color:var(--white);max-width:950px}
-    /* ServiceNow puts the first clause in green. Green here is reserved for
-       CTAs and success markers, so the accent clause takes Fresh Mint. */
-    .hero h1 .accent{color:var(--mint)}
-    .hero .eyebrow{font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mint);font-weight:700;margin-bottom:22px}
-    .hero p.lead{font-size:1.12rem;color:var(--on-dark);margin:26px 0 34px;max-width:660px}
-    .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-    .hero .proof{margin-top:30px;font-size:.84rem;color:var(--on-dark)}
 
     /* Portrait beside the lead and buttons, filling the open right side of
        the hero. It sits BELOW the h1, never next to it, so the headline keeps
@@ -341,16 +242,7 @@
       .js .gauge-arc{stroke-dashoffset:0;transition:none}
       .mock,.mockwrap:hover .mock{transition:none;transform:none;box-shadow:var(--lift-xl)}
       .hero-portrait,.hero-portrait:hover{transition:none;transform:none}
-      .faq-ico{transition:none}
-      details[open] p{animation:none}
     }
-
-    /* ---------- stat band ---------- */
-    .stats{padding-top:150px}
-    .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .stat{background:var(--surface);border:1px solid var(--hairline);border-radius:18px;padding:36px 32px;text-align:center}
-    .stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.6rem);font-weight:800;color:var(--green);letter-spacing:-.035em;line-height:1;margin-bottom:12px}
-    .stat span{color:var(--on-dark);font-size:.98rem}
 
     /* ---------- promise ---------- */
     .promise{text-align:center}
@@ -361,15 +253,6 @@
     .promise .card{text-align:center}
     .promise .tile{margin:0 auto}
 
-    /* ---------- process ---------- */
-    .step{position:relative}
-    .step-head{display:flex;align-items:baseline;gap:14px;margin:22px 0 12px}
-    .step-num{font-size:2.15rem;font-weight:800;color:var(--signal);letter-spacing:-.03em;line-height:1}
-    .step h3{margin:0;font-size:1.22rem}
-    @media(min-width:1001px){
-      .step:not(:last-child)::after{content:"";position:absolute;top:66px;left:100%;width:26px;border-top:2px dashed var(--line)}
-    }
-
     /* ---------- people ---------- */
     .portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--mint);display:block}
     .person-top{display:flex;align-items:center;gap:22px;margin-bottom:20px}
@@ -378,55 +261,23 @@
     .story .portrait{width:148px;height:148px;margin:0 auto 30px;border-color:var(--signal)}
     .story p.body{max-width:840px;margin:0 auto;font-size:1.08rem;line-height:1.9}
 
-    /* ---------- proof, work, faq, contact ---------- */
+    /* ---------- proof, work ---------- */
     .proofblock{text-align:center}
     .proofblock .proof-copy{max-width:900px;margin:0 auto;font-size:1.06rem;color:var(--on-dark);line-height:1.95}
     .score{font-size:1.5em;font-weight:800;color:var(--green);letter-spacing:-.02em}
     .clients{text-align:center}
-    /* FAQ accordions: native details, custom marker, mint chevron tile
-       that flips when open. Padding moves onto the summary and answer so
-       the whole row is a click target. */
-    details{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--lift);margin-bottom:12px;transition:box-shadow .2s ease}
-    details:hover,details[open]{box-shadow:var(--lift-hi)}
-    summary{display:flex;align-items:center;gap:18px;cursor:pointer;font-weight:700;color:var(--midnight);font-size:1.05rem;padding:22px 26px;list-style:none;transition:color .2s ease}
-    summary::-webkit-details-marker{display:none}
-    summary:hover,details[open] summary{color:var(--signal)}
-    .faq-ico{margin-left:auto;flex:none;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
-    .faq-ico svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-    details[open] .faq-ico{transform:rotate(180deg)}
-    details p{margin:0;padding:0 26px 24px;color:var(--slate);font-size:.97rem}
-    details[open] p{animation:faqIn .3s ease both}
-    @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-    .contact{text-align:center}
-    .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
-    /* Same surface card and mint tile as the rest of the page, so the
-       contact details stop floating loose on the field. */
-    .ccard{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:34px 26px;transition:transform .2s ease,background .2s ease,border-color .2s ease}
-    .ccard:hover{transform:translateY(-5px);background:var(--surface-hi);border-color:rgba(255,255,255,.22)}
-    .ccard .tile{margin:0 auto 18px}
-    .ccard h3{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
-    .ccard p{color:var(--white);font-size:1.06rem;line-height:1.6}
-    .ccard a{color:var(--white);text-decoration:none}
-    .ccard a:hover{color:var(--mint);text-decoration:underline}
 
     @media(max-width:1000px){
-      section{padding:84px 0}
-      .hero{padding:76px 0 0}
       .hero-grid{grid-template-columns:1fr;gap:38px}
       .hero-body{display:block}
       .hero-copy{max-width:none}
       .hero-portrait{display:none}
-      .grid3,.grid2,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
       .mock-body{grid-template-columns:1fr}
       .gauge-pane{border-right:0;border-bottom:1px solid var(--line)}
       .mockwrap{margin-top:56px;transform:translateY(44px)}
-      .stats{padding-top:110px}
       .person-top{flex-direction:column;align-items:flex-start;gap:16px}
     }
 
-
-    .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-text);margin:20px 0 0}
-    .card .tag + h3{margin-top:6px}
     .role{text-transform:uppercase}
 
     /* ---------- client logo wall ---------- */
@@ -435,39 +286,20 @@
     .logo-tile:hover{transform:translateY(-4px);box-shadow:var(--lift-hi)}
     .logo-tile img{max-width:100%;max-height:72px;width:auto;height:auto;display:block}
 
-    /* ---------- footer ---------- */
-    /* The contact band runs straight into the footer, both dark, so a mint
-       hairline marks the seam exactly as it does on the live site. */
-    footer.site{background-color:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);padding:88px 0 40px;font-size:.88rem}
-    .foot-grid{display:grid;grid-template-columns:1.3fr .85fr 1fr 2fr;gap:44px;padding-bottom:44px}
-    .foot-grid img{display:block;width:200px;height:auto;margin-bottom:18px}
-    .foot-head{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mint);margin-bottom:16px}
-    .foot-links{list-style:none;line-height:2.15}
-    footer.site a{color:var(--on-dark);text-decoration:none}
-    footer.site a:hover{color:var(--mint);text-decoration:underline}
-    .foot-tag{margin-bottom:16px;max-width:30ch}
-    .foot-nap{line-height:1.95}
-    .foot-area ul{list-style:none;columns:3;column-gap:22px;line-height:1.95}
-    .foot-area p{margin-top:14px}
-    .foot-bottom{border-top:1px solid var(--hairline);padding-top:26px;text-align:center;font-size:.8rem;line-height:2}
-    .social{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
-    .social a{border:1px solid var(--hairline);border-radius:999px;padding:7px 18px;font-size:.78rem;font-weight:600}
-    .social a:hover{border-color:var(--mint);text-decoration:none}
-    @media(max-width:1000px){
-      .foot-grid{grid-template-columns:1fr;gap:34px}
-      .foot-area ul{columns:2}
-    }
-
   </style>
 </head>
 <body>
   <script>document.documentElement.classList.add('js')</script>
 
-  <!-- ============ STICKY DARK NAV ============ -->
+  <!-- ============ STICKY DARK NAV ============
+       The logo links home on every page (standard convention, and the
+       only way back for a visitor deep in the service pages).
+       Below 1000px the links move into the hamburger panel instead of
+       disappearing. Behaviour is in assets/site.js. -->
   <header class="nav">
     <div class="wrap inner">
-      <img src="logo-dark.png" alt="Corcoran Communications" width="467" height="40">
-      <nav aria-label="Main"><ul>
+      <a class="nav-home" href="." aria-label="Corcoran Communications home"><img src="logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#promise">Promise</a></li>
         <li><a href="#how">How It Works</a></li>
@@ -476,6 +308,10 @@
         <li><a href="#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
   </header>
 
@@ -581,36 +417,42 @@
           <p class="tag">Build</p>
           <h3>AI-Built Websites</h3>
           <p>A fast, modern site built with AI and tuned by hand, structured so both Google and AI assistants understand exactly what you do. You own it outright: no page-builder rental, and for most builds no monthly platform fee. Loads in a blink.</p>
+          <p class="card-more"><a href="services/web-design/">More on web design</a></p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
           <p class="tag">Monitor</p>
           <h3>Automated SEO / AEO Monitoring</h3>
           <p>AI agents scan your site's health weekly and watch Google's algorithm and AI-search changes daily, then report in plain English. You see every report. When something shifts, we already know.</p>
+          <p class="card-more"><a href="services/seo/">More on SEO &amp; AEO</a></p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4.5h18l-7 8.2V20l-4 1.6v-8.9z"/></svg></span>
           <p class="tag">Grow</p>
           <h3>Lead Generation</h3>
           <p>Landing pages, offers, follow-up, and tracking built as one funnel, so you know exactly which ad made the phone ring. Measured in calls, quotes, and booked business, not impressions.</p>
+          <p class="card-more"><a href="services/lead-generation/">More on lead generation</a></p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 11.9h.01"/></svg></span>
           <p class="tag">Grow</p>
           <h3>Google Ads</h3>
           <p>Search and local campaigns for people looking for you right now, tuned for lead quality over lead volume. Managed tightly, with AI watching spend and performance every day.</p>
+          <p class="card-more"><a href="services/google-ads/">More on Google Ads</a></p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12.5" rx="3.5"/><path d="M8.5 16.5V21l5.2-4.5"/></svg></span>
           <p class="tag">Grow</p>
-          <h3>Social Media Ads</h3>
+          <h3>Social Media Marketing</h3>
           <p>Facebook, Instagram, and TikTok campaigns that reach your next customer before they search. We handle creative, targeting, and testing. The ads sound like you, not like ads.</p>
+          <p class="card-more"><a href="services/social-media-marketing/">More on social media marketing</a></p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 16.8h4.5"/></svg></span>
           <p class="tag">Fuel</p>
           <h3>Content Marketing</h3>
           <p>Blogs, email, and web copy written to be the answer. Structured so AI search engines quote you when customers ask who to call.</p>
+          <p class="card-more"><a href="services/seo/#content-marketing">More on content marketing</a></p>
         </article>
       </div>
     </div>
@@ -826,7 +668,7 @@
         <h2 class="sec-title">Questions, Answered</h2>
         <p class="sec-sub">WHAT PROSPECTIVE CLIENTS ASK US FIRST</p>
       </div>
-      <details><summary>What services does Corcoran Communications offer?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media advertising, and content marketing. You can take it as one integrated growth program or as individual services.</p></details>
+      <details><summary>What services does Corcoran Communications offer?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, and content marketing. You can take it as one integrated growth program or as individual services.</p></details>
       <details><summary>What is AEO, and why does my business need it?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>AEO, or answer engine optimization, is getting your business named in the answers AI tools like ChatGPT, Claude, Perplexity, and Google's AI give when customers ask for recommendations. A growing share of searches now end without a click, so the businesses inside the AI's answer win. We build and monitor for both classic search and AI answers.</p></details>
       <details><summary>Who will actually work on my account?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Greg Quinn, the owner. He's a U.S. Navy veteran with a staff of AI agents that monitor your site, your search rankings, and Google's algorithm changes around the clock. One senior marketer, no junior account teams, and you can see the agents' reports yourself.</p></details>
       <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
@@ -845,7 +687,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <img src="logo-dark.png" alt="Corcoran Communications" width="467" height="40">
+          <a class="foot-home" href="." aria-label="Corcoran Communications home"><img src="logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
           <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
           <p class="foot-nap">
             Corcoran Communications<br>
@@ -864,6 +706,16 @@
             <li><a href="#work">Our Work</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#team">Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="services/web-design/">Web Design</a></li>
+            <li><a href="services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="services/google-ads/">Google Ads</a></li>
+            <li><a href="services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="services/lead-generation/">Lead Generation</a></li>
           </ul>
         </div>
         <div>

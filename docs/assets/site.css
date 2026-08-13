@@ -1,0 +1,269 @@
+/* ==============================================================
+   CORCORAN COMMUNICATIONS, shared stylesheet for every page.
+   Strategic Growth palette only. Extracted from index.html so the
+   palette lives in ONE place and cannot drift across pages.
+
+   What lives here: tokens, base, buttons, tiles, sections, cards,
+   grids, dark panels and gradient fields, the sticky nav and its
+   mobile menu, breadcrumbs, the page hero, steps, stats, FAQ,
+   contact cards and the footer.
+
+   What does NOT live here: anything only the homepage uses (the
+   hero dashboard mockup, the agent-network diagram, the promise
+   band, the story portraits, the proof block, the logo wall).
+   Those stay inline in index.html.
+
+   Gradients are permitted on SECTION BACKGROUNDS ONLY (decided
+   2026-08-11). Text, buttons, cards, icons and borders stay solid.
+   Every field is a palette color at low alpha over a solid
+   Midnight base, so no off-palette hex enters the system.
+   ============================================================== */
+
+:root{
+  --midnight:#082A4A; --signal:#0B6BD3;
+  --green:#15B77E;    --green-ink:#062018; --green-text:#0E7A55;
+  --mint:#DDF7EC;     --cloud:#F3F8FC;     --white:#fff;
+  --slate:#4A5A6A;    --line:#D8E4EF;      --on-dark:#B6C9DD;
+  --surface:rgba(255,255,255,.05);
+  --surface-hi:rgba(255,255,255,.09);
+  --hairline:rgba(255,255,255,.13);
+  --lift:0 1px 2px rgba(8,42,74,.05), 0 10px 28px rgba(8,42,74,.08);
+  --lift-hi:0 2px 4px rgba(8,42,74,.07), 0 18px 44px rgba(8,42,74,.13);
+  --lift-xl:0 4px 10px rgba(8,42,74,.10), 0 30px 70px rgba(8,42,74,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--slate);background:var(--cloud);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+h1,h2,h3{line-height:1.1;letter-spacing:-.025em;color:var(--midnight)}
+a{color:var(--signal)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.dark :focus-visible,.nav :focus-visible{outline-color:var(--mint)}
+
+/* ---------- pill buttons, ServiceNow shape ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--green-ink);padding:15px 30px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:700;letter-spacing:.01em;transition:background .2s,color .2s,border-color .2s}
+/* Hover leaves green for a Fresh Mint fill with Midnight ink, 12.91:1.
+   The secondary button keeps a translucent wash rather than the same
+   mint fill, so primary and secondary do not collide on hover. */
+.btn:hover{background:var(--mint);color:var(--midnight)}
+.btn-ghost{background:transparent;border:1.5px solid var(--mint);color:var(--mint);padding:13.5px 28px}
+.btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--mint)}
+.btn-sm{padding:13px 28px;font-size:.92rem}
+/* Nav CTA carries Midnight ink rather than #062018, 5.63:1 on green.
+   Signal Blue would be 2.00:1 here and is not usable on a green fill. */
+.nav .btn{color:var(--midnight)}
+.nav .btn:hover{color:var(--midnight)}
+
+/* APPROVED, UNCHANGED: 2px line icons, Signal Blue on Fresh Mint. */
+.tile{width:56px;height:56px;border-radius:15px;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;flex:none}
+.tile svg{width:27px;height:27px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+section{padding:120px 0}
+.sec-head{max-width:780px;margin:0 auto 60px;text-align:center}
+.sec-title{font-size:clamp(2.1rem,3.7vw,2.875rem);color:var(--signal);margin-bottom:14px}
+.sec-sub{color:var(--slate);font-size:.8rem;letter-spacing:.15em;font-weight:700}
+
+.card{background:var(--white);border-radius:16px;padding:38px 34px;box-shadow:var(--lift);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-5px);box-shadow:var(--lift-hi)}
+.card h3{font-size:1.24rem;margin:22px 0 12px}
+.card p{font-size:.97rem;color:var(--slate)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-text);margin:20px 0 0}
+.card .tag + h3{margin-top:6px}
+
+/* "Learn more" link at the foot of a service card. Signal Blue on the
+   white card, Fresh Mint on dark panels, since Signal Blue drops to
+   2.82:1 on Midnight. The arrow is CSS content, so it never lands in
+   the page text or in an audit's word count. */
+.card-more{margin-top:18px;font-size:.92rem;font-weight:700}
+.card-more a{color:var(--signal);text-decoration:none}
+.card-more a::after{content:" \2192"}
+.card-more a:hover{text-decoration:underline}
+.dark .card-more a{color:var(--mint)}
+
+/* ---------- dark sections ----------
+   Background gradients are built ONLY from palette colors at low alpha
+   over a solid Midnight base, so no off-palette hex enters the system.
+   Stops fade to rgba(color,0) rather than `transparent`, which some
+   browsers interpolate through black and smear grey. */
+.dark{background-color:var(--midnight);color:var(--on-dark)}
+.field-hero{
+  background-image:
+    radial-gradient(1100px 780px at 6% 112%, rgba(21,183,126,.26) 0%, rgba(21,183,126,0) 68%),
+    radial-gradient(980px 640px at 96% -12%, rgba(11,107,211,.28) 0%, rgba(11,107,211,0) 66%);
+}
+.field-blue{
+  background-image:
+    radial-gradient(900px 620px at 88% 0%, rgba(11,107,211,.24) 0%, rgba(11,107,211,0) 66%);
+}
+.field-green{
+  background-image:
+    radial-gradient(900px 640px at 10% 104%, rgba(21,183,126,.24) 0%, rgba(21,183,126,0) 66%);
+}
+.field-both{
+  background-image:
+    radial-gradient(820px 560px at 4% 106%, rgba(21,183,126,.22) 0%, rgba(21,183,126,0) 64%),
+    radial-gradient(820px 560px at 96% -6%, rgba(11,107,211,.22) 0%, rgba(11,107,211,0) 64%);
+}
+.dark .sec-title{color:var(--white)}   /* Signal Blue is 2.82:1 here */
+.dark .sec-sub{color:var(--on-dark)}
+.dark h2,.dark h3{color:var(--white)}
+.dark .card{background:var(--surface);border:1px solid var(--hairline);box-shadow:none}
+.dark .card:hover{background:var(--surface-hi);border-color:rgba(255,255,255,.22);box-shadow:none}
+.dark .card p{color:var(--on-dark)}
+
+/* ---------- sticky dark nav ---------- */
+.nav{position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--hairline)}
+.nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:17px 0}
+.nav-home{display:block;flex:none;line-height:0}
+.nav img{display:block;width:230px;height:auto}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:1rem;font-weight:600}
+.nav a{color:var(--on-dark);text-decoration:none}
+.nav a:hover{color:var(--mint)}
+/* The hamburger only exists below 1000px. Mint strokes on Midnight. */
+.navtoggle{display:none;background:transparent;border:1px solid var(--hairline);border-radius:11px;color:var(--mint);padding:9px;cursor:pointer;flex:none}
+.navtoggle:hover{border-color:var(--mint)}
+.navtoggle svg{display:block;width:22px;height:22px;stroke:currentColor;stroke-width:2;stroke-linecap:round;fill:none}
+.navtoggle .ico-close{display:none}
+.navtoggle[aria-expanded="true"] .ico-open{display:none}
+.navtoggle[aria-expanded="true"] .ico-close{display:block}
+/* Between 1000 and 1150 the enlarged nav gets tight, so it steps down
+   once before the mobile breakpoint moves it into the menu. */
+@media(max-width:1150px){ .nav ul{gap:20px;font-size:.92rem} .nav img{width:200px} }
+@media(max-width:1000px){
+  .navtoggle{display:inline-flex}
+  .nav .inner{gap:14px}
+  .nav img{width:172px}
+  /* The links move into a Midnight panel under the bar instead of
+     disappearing. With six pages the site needs real navigation on a
+     phone. The panel is absolutely positioned against the sticky
+     header, which is its containing block. */
+  .nav-main{position:absolute;left:0;right:0;top:100%;display:none;background-color:var(--midnight);border-bottom:1px solid var(--hairline);box-shadow:0 24px 44px rgba(8,42,74,.45)}
+  .nav-main.open{display:block}
+  .nav-main ul{display:block;padding:6px 30px 18px;font-size:1rem}
+  .nav-main li{border-bottom:1px solid var(--hairline)}
+  .nav-main li:last-child{border-bottom:0}
+  .nav-main a{display:block;padding:15px 2px}
+  .nav .btn-sm{padding:11px 20px;font-size:.84rem}
+}
+
+/* ---------- breadcrumb ----------
+   Sits at the top of a dark page hero, so it uses --on-dark (8.6:1 on
+   Midnight) with a Fresh Mint hover. Never Signal Blue here. */
+.crumb{font-size:.8rem;padding:30px 0 0}
+.crumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:9px;color:var(--on-dark)}
+.crumb a{color:var(--on-dark);text-decoration:none}
+.crumb a:hover{color:var(--mint);text-decoration:underline}
+.crumb li + li::before{content:"/";margin-right:9px;color:var(--on-dark);opacity:.55}
+.crumb [aria-current="page"]{color:var(--mint);font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background-color:var(--midnight);color:var(--white);padding:104px 0 0}
+.gridfield{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+/* Measured: 56px keeps this 88 character headline at 3 lines in 950px.
+   The accent clause stays INLINE. Forcing it to its own block adds a
+   fourth line, which breaks the 3 line rule. */
+.hero h1{font-size:clamp(2.2rem,4.4vw,3.5rem);color:var(--white);max-width:950px}
+/* ServiceNow puts the first clause in green. Green here is reserved for
+   CTAs and success markers, so the accent clause takes Fresh Mint. */
+.hero h1 .accent{color:var(--mint)}
+.hero .eyebrow{font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mint);font-weight:700;margin-bottom:22px}
+.hero p.lead{font-size:1.12rem;color:var(--on-dark);margin:26px 0 34px;max-width:660px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.hero .proof{margin-top:30px;font-size:.84rem;color:var(--on-dark)}
+
+/* Service-page hero: no dashboard mockup and no portrait, so it closes
+   itself off at the bottom instead of running under an overlap. The
+   breadcrumb supplies the top spacing. */
+.hero--page{padding:0 0 104px}
+.hero--page .eyebrow{margin-top:40px}
+.hero--page h1{max-width:900px}
+.hero--page p.lead{max-width:700px}
+
+/* ---------- stat band ---------- */
+.stats{padding-top:150px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.stat{background:var(--surface);border:1px solid var(--hairline);border-radius:18px;padding:36px 32px;text-align:center}
+.stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.6rem);font-weight:800;color:var(--green);letter-spacing:-.035em;line-height:1;margin-bottom:12px}
+.stat span{color:var(--on-dark);font-size:.98rem}
+
+/* ---------- process ---------- */
+.step{position:relative}
+.step-head{display:flex;align-items:baseline;gap:14px;margin:22px 0 12px}
+.step-num{font-size:2.15rem;font-weight:800;color:var(--signal);letter-spacing:-.03em;line-height:1}
+.step h3{margin:0;font-size:1.22rem}
+.dark .step-num{color:var(--mint)}   /* Signal Blue is 2.82:1 on Midnight */
+@media(min-width:1001px){
+  .step:not(:last-child)::after{content:"";position:absolute;top:66px;left:100%;width:26px;border-top:2px dashed var(--line)}
+}
+
+/* ---------- FAQ ----------
+   Native details, custom marker, mint chevron tile that flips when
+   open. Padding moves onto the summary and answer so the whole row is
+   a click target. */
+details{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--lift);margin-bottom:12px;transition:box-shadow .2s ease}
+details:hover,details[open]{box-shadow:var(--lift-hi)}
+summary{display:flex;align-items:center;gap:18px;cursor:pointer;font-weight:700;color:var(--midnight);font-size:1.05rem;padding:22px 26px;list-style:none;transition:color .2s ease}
+summary::-webkit-details-marker{display:none}
+summary:hover,details[open] summary{color:var(--signal)}
+.faq-ico{margin-left:auto;flex:none;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
+.faq-ico svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+details[open] .faq-ico{transform:rotate(180deg)}
+details p{margin:0;padding:0 26px 24px;color:var(--slate);font-size:.97rem}
+details[open] p{animation:faqIn .3s ease both}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- contact band ---------- */
+.contact{text-align:center}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+/* Same surface card and mint tile as the rest of the page, so the
+   contact details stop floating loose on the field. */
+.ccard{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:34px 26px;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.ccard:hover{transform:translateY(-5px);background:var(--surface-hi);border-color:rgba(255,255,255,.22)}
+.ccard .tile{margin:0 auto 18px}
+.ccard h3{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
+.ccard p{color:var(--white);font-size:1.06rem;line-height:1.6}
+.ccard a{color:var(--white);text-decoration:none}
+.ccard a:hover{color:var(--mint);text-decoration:underline}
+
+/* ---------- footer ---------- */
+/* The contact band runs straight into the footer, both dark, so a mint
+   hairline marks the seam exactly as it does on the live site. */
+footer.site{background-color:var(--midnight);border-top:1px solid var(--mint);color:var(--on-dark);padding:88px 0 40px;font-size:.88rem}
+/* Five columns since 2026-08-13: the Services column carries links to
+   every service page, so every page reaches every other page. */
+.foot-grid{display:grid;grid-template-columns:1.15fr .8fr .9fr .9fr 1.7fr;gap:38px;padding-bottom:44px}
+.foot-grid img{display:block;width:200px;height:auto;margin-bottom:18px}
+.foot-home{display:block;line-height:0}
+.foot-head{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mint);margin-bottom:16px}
+.foot-links{list-style:none;line-height:2.15}
+footer.site a{color:var(--on-dark);text-decoration:none}
+footer.site a:hover{color:var(--mint);text-decoration:underline}
+.foot-tag{margin-bottom:16px;max-width:30ch}
+.foot-nap{line-height:1.95}
+.foot-area ul{list-style:none;columns:3;column-gap:22px;line-height:1.95}
+.foot-area p{margin-top:14px}
+.foot-bottom{border-top:1px solid var(--hairline);padding-top:26px;text-align:center;font-size:.8rem;line-height:2}
+.social{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.social a{border:1px solid var(--hairline);border-radius:999px;padding:7px 18px;font-size:.78rem;font-weight:600}
+.social a:hover{border-color:var(--mint);text-decoration:none}
+
+@media(max-width:1000px){
+  section{padding:84px 0}
+  .hero{padding:76px 0 0}
+  .hero--page{padding:0 0 72px}
+  .hero--page .eyebrow{margin-top:30px}
+  .grid3,.grid2,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
+  .stats{padding-top:110px}
+  .foot-grid{grid-template-columns:1fr;gap:34px}
+  .foot-area ul{columns:2}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .faq-ico{transition:none}
+  details[open] p{animation:none}
+  .card,.card:hover,.ccard,.ccard:hover{transition:none;transform:none}
+}
