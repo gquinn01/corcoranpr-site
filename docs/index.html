@@ -80,7 +80,7 @@
       "https://twitter.com/Corcoran_PR",
       "https://www.linkedin.com/company/corcorancommunications/"
     ],
-    "knowsAbout": ["AI Website Design", "SEO", "Answer Engine Optimization", "Lead Generation", "Google Ads", "Social Media Marketing", "Content Marketing", "Public Relations", "marketing for auto and collision repair shops", "marketing for credit unions and financial services", "enrollment marketing for training centers and trade schools", "marketing for law firms", "marketing for restaurants, events and hospitality", "public relations and event promotion"]
+    "knowsAbout": ["AI Website Design", "SEO", "Answer Engine Optimization", "Lead Generation", "Google Ads", "Social Media Marketing", "Content Marketing", "Public Relations", "marketing for auto and collision repair shops", "marketing for credit unions and financial services", "enrollment marketing for training centers and trade schools", "marketing for law firms", "marketing for film and live entertainment", "marketing for restaurants, events and hospitality"]
   }
   </script>
 
@@ -95,12 +95,12 @@
       {
         "@type": "Question",
         "name": "What services does Corcoran Communications offer?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, content marketing, and public relations and event promotion. You can take it as one integrated growth program or as individual services." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, and content marketing. You can take it as one integrated growth program or as individual services." }
       },
       {
         "@type": "Question",
         "name": "What industries do you work with?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Our client work spans auto and collision repair, credit unions and financial services, training centers and trade schools, law firms, and restaurants and hospitality, from Main Street shops to Disney on Ice. If your industry is not listed, the free audit is a no-risk way to find out what we can do for it." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Our client work spans auto and collision repair, credit unions and financial services, training centers and trade schools, law firms, restaurants and hospitality, and film and live entertainment, from Main Street shops to Disney on Ice. If your industry is not listed, the free audit is a no-risk way to find out what we can do for it." }
       },
       {
         "@type": "Question",
@@ -284,17 +284,6 @@
 
     .role{text-transform:uppercase}
 
-    /* Five industry cards in a three-column grid leave a ragged last
-       row, so this grid centers the remainder instead. Card and tile
-       styles are untouched; only the track changes. */
-    .grid-center{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
-    .grid-center > *{flex:0 1 calc((100% - 52px) / 3)}
-    @media(max-width:1000px){
-      .grid-center{gap:20px}
-      .grid-center > *{flex:1 1 100%}
-    }
-
-
     /* ---------- client name marquee (Industries section) ----------
        The client names from the old logo wall, back as one slow row.
        The track holds the list twice, so shifting it by exactly half
@@ -449,15 +438,8 @@
       <div class="sec-head">
         <h2 class="sec-title">What We Do</h2>
         <p class="sec-sub">ONE INTEGRATED GROWTH PROGRAM, OR EXACTLY THE PIECE YOU NEED</p>
-        <article class="card">
-          <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.6v2.8a1.6 1.6 0 0 0 1.6 1.6h2.1l8.8 4.4V6.6l-8.8 4H5.1a1.6 1.6 0 0 0-1.6 1.6z"/><path d="M18.8 9.4a3.6 3.6 0 0 1 0 5.2M7.2 15v4.2l3.4 1.2V16.7"/></svg></span>
-          <p class="tag">Amplify</p>
-          <h3>Public Relations &amp; Event Promotion</h3>
-          <p>Earned media, launches, and events people show up for. Coverage that keeps working on your site and in the AI answers.</p>
-          <p class="card-more"><a href="services/public-relations/">More on public relations</a></p>
-        </article>
       </div>
-      <div class="grid-center">
+      <div class="grid3">
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.6 6.5h.01M9.6 6.5h.01"/></svg></span>
           <p class="tag">Build</p>
@@ -665,7 +647,7 @@
         <h2 class="sec-title">Industries We Know</h2>
         <p class="sec-sub">REAL CLIENT WORK, FROM MAIN STREET TO DISNEY ON ICE</p>
       </div>
-      <div class="grid-center">
+      <div class="grid3">
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 16.6v-3l2-5A2 2 0 0 1 7.5 7.3h9a2 2 0 0 1 1.9 1.3l2 5v3"/><path d="M3.6 13.6h16.8"/><circle cx="7.6" cy="16.6" r="1.7"/><circle cx="16.4" cy="16.6" r="1.7"/></svg></span>
           <h3>Auto &amp; Collision Repair</h3>
@@ -689,6 +671,11 @@
           <h3>Law Firms</h3>
           <p>Distasio, Kowalski &amp; Yelen</p>
           <p class="card-more"><a href="industries/law-firms/">Law firm marketing</a></p>
+        </article>
+        <article class="card">
+          <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8.2" width="18" height="12.2" rx="2.2"/><path d="M3.4 8.2l3.2-4.4 3.3 4.4M10 8.2l3.3-4.4 3.3 4.4"/></svg></span>
+          <h3>Film &amp; Live Entertainment</h3>
+          <p>SenArt Films, Disney on Ice, Ringling Bros.</p>
         </article>
         <article class="card">
           <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.6v5.4a2.2 2.2 0 0 0 4.4 0V3.6"/><path d="M8.8 9.4v11"/><path d="M17.2 3.6c-1.5 1.4-2.2 3.2-2.2 5.3 0 1.7.8 2.8 2.2 3.3v8.2"/></svg></span>
@@ -767,8 +754,8 @@
         <h2 class="sec-title">Questions, Answered</h2>
         <p class="sec-sub">WHAT PROSPECTIVE CLIENTS ASK US FIRST</p>
       </div>
-      <details><summary>What services does Corcoran Communications offer?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, content marketing, and public relations and event promotion. You can take it as one integrated growth program or as individual services.</p></details>
-      <details><summary>What industries do you work with?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Our client work spans auto and collision repair, credit unions and financial services, training centers and trade schools, law firms, and restaurants and hospitality, from Main Street shops to Disney on Ice. If your industry is not listed, the free audit is a no-risk way to find out what we can do for it.</p></details>
+      <details><summary>What services does Corcoran Communications offer?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Corcoran Communications offers AI-built websites, automated SEO and AEO monitoring, lead generation, Google Ads, social media marketing, and content marketing. You can take it as one integrated growth program or as individual services.</p></details>
+      <details><summary>What industries do you work with?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Our client work spans auto and collision repair, credit unions and financial services, training centers and trade schools, law firms, restaurants and hospitality, and film and live entertainment, from Main Street shops to Disney on Ice. If your industry is not listed, the free audit is a no-risk way to find out what we can do for it.</p></details>
       <details><summary>What is AEO, and why does my business need it?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>AEO, or answer engine optimization, is getting your business named in the answers AI tools like ChatGPT, Claude, Perplexity, and Google's AI give when customers ask for recommendations. A growing share of searches now end without a click, so the businesses inside the AI's answer win. We build and monitor for both classic search and AI answers.</p></details>
       <details><summary>Who will actually work on my account?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Greg Quinn, the owner. He's a U.S. Navy veteran with a staff of AI agents that monitor your site, your search rankings, and Google's algorithm changes around the clock. One senior marketer, no junior account teams, and you can see the agents' reports yourself.</p></details>
       <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
@@ -816,7 +803,6 @@
             <li><a href="services/google-ads/">Google Ads</a></li>
             <li><a href="services/social-media-marketing/">Social Media Marketing</a></li>
             <li><a href="services/lead-generation/">Lead Generation</a></li>
-            <li><a href="services/public-relations/">Public Relations</a></li>
           </ul>
         </div>
         <div>
