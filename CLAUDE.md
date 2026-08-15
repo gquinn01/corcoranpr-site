@@ -120,6 +120,31 @@ entry is a warning, and either one drops that page below 100/100.
 4. Link it from the homepage service card and the footer Services column.
 Full checklist with the reasoning lives in PLAYBOOK.md.
 
+## Location pages
+- Location pages are a three-tier tree: county hubs under
+  docs/locations/<county>/, town pages nested under their county, and
+  the footer. Every town in the footer links to its own page if one
+  exists, otherwise to its county hub. No town link may resolve to a
+  stub, a redirect, or a 404.
+- County hubs are real destinations: substantive prose about the
+  county's business mix and every served town named in the text.
+- Town pages are anchored to web design (our strongest local keyword)
+  and each must carry at least three true, checkable local facts, a
+  unique FAQ (not reused from other town pages), and section order and
+  phrasing varied from sibling pages. If a town cannot muster three true
+  facts, it does not get a page and stays as prose on the county hub.
+- Variance test before any town page ships: read it side by side with a
+  sibling town page with the town names covered; if they read the same,
+  it does not ship.
+- Schema: one business entity in Quakertown with areaServed listing the
+  counties and towns. Never a business address in any other town.
+- Town pages are built one at a time and judged by Search Console
+  impressions over the following weeks before the next is built. Never
+  in bulk.
+- Cross-linking is tree-shaped: town to county hub, county hub to
+  service pages and to the towns under it. Never every town to every
+  town.
+
 ## Links (decided 2026-08-13)
 - EVERY internal link and asset path is RELATIVE and never starts with
   "/". The site also serves from a project subpath
