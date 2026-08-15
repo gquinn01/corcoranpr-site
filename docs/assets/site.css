@@ -216,6 +216,12 @@ section{padding:120px 0}
 .hero-art{flex:0 0 400px;margin-left:auto}
 .hero-art svg{width:100%;height:auto;display:block}
 
+/* ---------- county hub town list ----------
+   The compact list under the prose on a county hub. Shared by every
+   county hub, so it lives here rather than inline on one page. */
+.town-list{list-style:none;columns:4;column-gap:26px;line-height:2.15;max-width:860px;margin:30px auto 0;text-align:center;font-weight:700;color:var(--midnight)}
+@media(max-width:1000px){ .town-list{columns:2} }
+
 /* ---------- stat band ---------- */
 .stats{padding-top:150px}
 .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
