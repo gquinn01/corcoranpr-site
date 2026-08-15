@@ -57,6 +57,13 @@ a{color:var(--signal)}
 /* APPROVED, UNCHANGED: 2px line icons, Signal Blue on Fresh Mint. */
 .tile{width:56px;height:56px;border-radius:15px;background:var(--mint);color:var(--signal);display:flex;align-items:center;justify-content:center;flex:none}
 .tile svg{width:27px;height:27px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+/* The same icon tile on a Midnight panel. A solid Fresh Mint block
+   glares on a dark band, so the fill becomes the translucent card
+   surface and the strokes go Fresh Mint, with one Growth Green accent
+   stroke per icon. The accent is set here rather than on the SVG so no
+   hex is written into the markup. */
+.tile-dark{background:var(--surface);border:1px solid var(--hairline);color:var(--mint)}
+.tile-dark svg .ico-accent{stroke:var(--green)}
 
 section{padding:120px 0}
 .sec-head{max-width:780px;margin:0 auto 60px;text-align:center}
@@ -69,6 +76,22 @@ section{padding:120px 0}
 .card p{font-size:.97rem;color:var(--slate)}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+/* Four across for benefit tiles and four-step processes. Steps down to
+   two before it reaches the single-column mobile breakpoint, because
+   four cards at 1100px are too narrow to read. */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.grid4 .card{padding:32px 26px}
+.grid4 .card h3{font-size:1.12rem}
+
+/* A one-sentence, jargon-free definition that sits above a section
+   heading. The sentence is body size and Midnight, so it reads as
+   something written to you rather than as a caption. Only the label is
+   eyebrow sized. Green label on light panels, Fresh Mint on dark, since
+   Signal Blue is 2.82:1 on Midnight. */
+.plain{max-width:860px;margin:0 auto 40px;text-align:center;font-size:1.2rem;line-height:1.7;color:var(--midnight)}
+.plain-label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.16em;line-height:1.4;color:var(--green-text);margin-bottom:12px}
+.dark .plain{color:var(--white)}
+.dark .plain-label{color:var(--mint)}
 
 .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-text);margin:20px 0 0}
 .card .tag + h3{margin-top:6px}
@@ -131,7 +154,7 @@ section{padding:120px 0}
 .navtoggle[aria-expanded="true"] .ico-close{display:block}
 /* Between 1000 and 1150 the enlarged nav gets tight, so it steps down
    once before the mobile breakpoint moves it into the menu. */
-@media(max-width:1150px){ .nav ul{gap:20px;font-size:.92rem} .nav img{width:200px} }
+@media(max-width:1150px){ .nav ul{gap:20px;font-size:.92rem} .nav img{width:200px} .grid4{grid-template-columns:repeat(2,1fr)} }
 @media(max-width:1000px){
   .navtoggle{display:inline-flex}
   .nav .inner{gap:14px}
@@ -182,6 +205,16 @@ section{padding:120px 0}
 .hero--page .eyebrow{margin-top:40px}
 .hero--page h1{max-width:900px}
 .hero--page p.lead{max-width:700px}
+
+/* Copy left, decorative art right. The art is ornament, not content:
+   it is aria-hidden and it disappears below 1000px, where the hero is a
+   single column and the headline needs the full width. Deliberately
+   separate class names from the homepage's .hero-body / .hero-portrait,
+   which stay inline in index.html. */
+.hero-split{display:flex;align-items:center;gap:56px}
+.hero-copy-col{flex:1 1 auto;min-width:0;max-width:700px}
+.hero-art{flex:0 0 400px;margin-left:auto}
+.hero-art svg{width:100%;height:auto;display:block}
 
 /* ---------- stat band ---------- */
 .stats{padding-top:150px}
@@ -256,7 +289,10 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
   .hero{padding:76px 0 0}
   .hero--page{padding:0 0 72px}
   .hero--page .eyebrow{margin-top:30px}
-  .grid3,.grid2,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
+  .hero-split{display:block}
+  .hero-copy-col{max-width:none}
+  .hero-art{display:none}
+  .grid3,.grid2,.grid4,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
   .stats{padding-top:110px}
   .foot-grid{grid-template-columns:1fr;gap:34px}
   .foot-area ul{columns:2}

@@ -156,20 +156,66 @@
             <li><span aria-current="page">Web Design</span></li>
           </ol>
         </nav>
-        <p class="eyebrow">Veteran-Owned · Quakertown, PA</p>
-        <h1>Web Design That Turns <span class="accent">Visitors Into Phone Calls</span></h1>
-        <p class="lead">Plenty of small business websites look fine and bring in nothing. Yours should bring in work. We build fast, clean sites that load in a blink, read properly on a phone, and make it obvious how to reach you. When it is done, you own it.</p>
-        <div class="cta-row">
-          <a class="btn" href="mailto:greg@corcoranpr.com?subject=Free%20AI%20Site%20Audit">Get Your Free AI Site Audit</a>
-          <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Veteran-Owned · Quakertown, PA</p>
+            <h1>Web Design That Turns <span class="accent">Visitors Into Phone Calls</span></h1>
+            <p class="lead">Plenty of small business websites look fine and bring in nothing. Yours should bring in work. We build fast, clean sites that load in a blink, read properly on a phone, and make it obvious how to reach you. When it is done, you own it.</p>
+            <div class="cta-row">
+              <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+              <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+            </div>
+            <p class="proof">Clients from Main Street to Disney on Ice · U.S. Navy veteran owned &amp; operated</p>
+          </div>
+
+          <!-- Decorative only, so aria-hidden and hidden below 1000px.
+               A clean browser wireframe with one obvious green call
+               button, which is the argument the page is making.
+               Hex values are hardcoded because CSS custom properties do
+               not reach inline SVG attributes; every one is a Strategic
+               Growth palette color, used solid or at low alpha over the
+               Midnight hero. No gradients, no new hex. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <!-- browser frame -->
+              <rect x="10" y="20" width="380" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <line x1="10" y1="53" x2="390" y2="53" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <circle cx="33" cy="37" r="4.5" fill="#15B77E"/>
+              <circle cx="49" cy="37" r="4.5" fill="#DDF7EC" fill-opacity=".35"/>
+              <circle cx="65" cy="37" r="4.5" fill="#DDF7EC" fill-opacity=".2"/>
+              <rect x="86" y="30" width="168" height="14" rx="7" fill="#DDF7EC" fill-opacity=".1"/>
+
+              <!-- headline and copy -->
+              <rect x="34" y="82" width="150" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".55"/>
+              <rect x="34" y="105" width="104" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="34" y="136" width="186" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="34" y="152" width="158" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+
+              <!-- the call button, the one Growth Green accent -->
+              <rect x="34" y="178" width="130" height="36" rx="18" fill="#15B77E"/>
+              <g transform="translate(50,187) scale(.75)" fill="none" stroke="#062018" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.6 3.5h3.1l1.5 3.9-2 1.4a12.2 12.2 0 0 0 5 5l1.4-2 3.9 1.5v3.1a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/>
+              </g>
+              <rect x="80" y="192" width="66" height="8" rx="4" fill="#062018" fill-opacity=".85"/>
+
+              <!-- side panel with a speed mark -->
+              <rect x="252" y="82" width="110" height="132" rx="12" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <path d="M311 118l-18 30h13.5l-3.5 22 18-32h-13.5z" fill="#15B77E" fill-opacity=".9"/>
+              <rect x="270" y="182" width="74" height="7" rx="3.5" fill="#DDF7EC" fill-opacity=".22"/>
+              <rect x="270" y="195" width="52" height="7" rx="3.5" fill="#DDF7EC" fill-opacity=".14"/>
+
+              <!-- footer rule -->
+              <rect x="34" y="236" width="328" height="8" rx="4" fill="#B6C9DD" fill-opacity=".16"/>
+            </svg>
+          </div>
         </div>
-        <p class="proof">Clients from Main Street to Disney on Ice · U.S. Navy veteran owned &amp; operated</p>
       </div>
     </section>
 
     <!-- ============ WHAT YOU GET ============ -->
     <section id="included">
       <div class="wrap">
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Web design is everything that makes your website work: the words, the layout, the speed, and the structure that lets Google and AI assistants understand what you do.</p>
         <div class="sec-head">
           <h2 class="sec-title">What You Get</h2>
           <p class="sec-sub">A SITE THAT EARNS ITS KEEP, NOT A BROCHURE THAT SITS THERE</p>
@@ -222,15 +268,31 @@
           <h2 class="sec-title">Built With AI, Tuned by Hand</h2>
           <p class="sec-sub">THE SPEED COMES FROM THE MACHINES. THE JUDGMENT DOES NOT.</p>
         </div>
-        <div class="grid2">
+        <div class="grid4">
           <article class="card">
-            <h3>Why it is faster</h3>
-            <p>AI does the heavy lifting: the first drafts, the repetitive markup, the structured data, the hundred small checks that used to eat a week. That is why a build takes two to four weeks instead of two to four months, and why the quote is a flat number instead of an open meter.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path class="ico-accent" d="M12 7.4V12l3.2 2.1"/></svg></span>
+            <h3>Weeks, not months</h3>
+            <p>AI does the heavy lifting, so your site goes live in two to four weeks instead of a season.</p>
           </article>
           <article class="card">
-            <h3>Why it does not look generic</h3>
-            <p>Every site is directed, edited, and fact-checked by a human marketer with 26 years in the business. Your words, your story, your photos, your real customers. Nothing goes live because a machine suggested it. If we cannot verify a claim, it does not go on your site.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path class="ico-accent" d="M8.7 14.2l2.2 2.2 4.3-4.7"/></svg></span>
+            <h3>One flat number</h3>
+            <p>The machines make the work predictable, so your quote is flat and agreed before anything starts.</p>
           </article>
+          <article class="card">
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L18.6 9.4a2.12 2.12 0 0 0-3-3L5 17z"/><path class="ico-accent" d="M13.6 8.4l3 3"/></svg></span>
+            <h3>Nothing generic</h3>
+            <p>A human marketer with 26 years in the business directs, edits, and fact-checks every page. Your words, your story, your customers.</p>
+          </article>
+          <article class="card">
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 20.5H3.5V3"/><path class="ico-accent" d="M7.6 17v-4.2M12 17V8.2M16.4 17v-6.6"/></svg></span>
+            <h3>Proof, not promises</h3>
+            <p>The agents' weekly reports come to you in plain English, so you can see the site working.</p>
+          </article>
+        </div>
+        <div class="cta-row" style="margin-top:52px;justify-content:center">
+          <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+          <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
         </div>
       </div>
     </section>
@@ -242,20 +304,25 @@
           <h2 class="sec-title">How It Works</h2>
           <p class="sec-sub">WHAT HAPPENS AFTER YOU CALL</p>
         </div>
-        <div class="grid3">
+        <div class="grid4">
           <article class="card step">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg></span>
             <div class="step-head"><span class="step-num">01</span><h3>Free AI site audit</h3></div>
             <p>We scan whatever you have now and hand you the plain-English report: what is helping you, what is hurting you, and whether the site is worth repairing or replacing. It comes back within one business day, and it costs nothing.</p>
           </article>
           <article class="card step">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.5a7.5 7.5 0 0 1-10.8 6.7L4 20.5l1.4-5.4A7.5 7.5 0 1 1 20.5 12.5z"/></svg></span>
+            <div class="step-head"><span class="step-num">02</span><h3>The plan and the number</h3></div>
+            <p>We walk you through the report together, agree what is worth building, and you get the flat quote in writing. No pressure, and no meter running.</p>
+          </article>
+          <article class="card step">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4.5 4.5 0 0 1-5.9 5.9L4 17v3h3l4.8-4.8a4.5 4.5 0 0 0 5.9-5.9l-2.5 2.5-2.1-2.1z"/></svg></span>
-            <div class="step-head"><span class="step-num">02</span><h3>Design and build</h3></div>
+            <div class="step-head"><span class="step-num">03</span><h3>Design and build</h3></div>
             <p>You approve the structure and the words before anything is designed. Then the site gets built, and you watch it come together page by page instead of waiting for a reveal at the end.</p>
           </article>
           <article class="card step">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V10M10 19.5V5M16 19.5v-7M21 19.5h-18"/></svg></span>
-            <div class="step-head"><span class="step-num">03</span><h3>Launch and watch</h3></div>
+            <div class="step-head"><span class="step-num">04</span><h3>Launch and watch</h3></div>
             <p>We put it live, submit it to search engines, and the agents start their weekly scans. You get the reports yourself, in plain English, so you can see the site working instead of taking our word for it.</p>
           </article>
         </div>
@@ -288,22 +355,42 @@
             <p>No annual lock-in, no early termination fee, and no auto-renewing term you have to remember to cancel. The free audit comes first, so you see the evidence before you spend a dollar.</p>
           </article>
         </div>
+        <div class="cta-row" style="margin-top:52px;justify-content:center">
+          <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+          <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+        </div>
       </div>
     </section>
 
-    <!-- ============ FAQ ============
-         Each answer is byte-identical to its acceptedAnswer text in the
-         FAQPage schema above. Edit one, edit both. -->
-    <section id="faq">
-      <div class="wrap" style="max-width:880px">
+    <!-- ============ STRONGER TOGETHER ============
+         Cross-links to the sibling service pages. Relative hrefs, since
+         the site also serves from a project subpath. -->
+    <section id="together">
+      <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title">Questions, Answered</h2>
-          <p class="sec-sub">WHAT PEOPLE ASK BEFORE THEY COMMIT TO A BUILD</p>
+          <h2 class="sec-title">Stronger Together</h2>
+          <p class="sec-sub">WHAT CLIENTS PAIR WITH A NEW SITE</p>
         </div>
-        <details><summary>How long does website design take?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Most builds go live within two to four weeks, and you see progress along the way, not a big reveal at the end. Repairs to an existing site often take less. The audit comes first either way, within one business day.</p></details>
-        <details><summary>Do I own the website when it is finished?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. You own the site outright. There is no page-builder rental, and for most builds no monthly platform fee. If you ever want to take it somewhere else, you can, and you leave with everything.</p></details>
-        <details><summary>I already have a website. Do I have to start over?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Not necessarily. The free audit tells us whether your current site is worth repairing or holding you back. Some sites need a handful of fixes; some cost less to rebuild than to rescue. Either way you'll see the evidence before you decide anything.</p></details>
-        <details><summary>Where are you based, and do you work with businesses near me?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>We are in Quakertown, PA, so if you have been searching for a web designer near me anywhere in upper Bucks County, Montgomery County, or the Greater Lehigh Valley, we are probably close by. We work with clients across Pennsylvania, New York, and New Jersey too.</p></details>
+        <div class="grid3">
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <h3>SEO Services</h3>
+            <p>A fast site is the foundation. SEO is how people find it, in Google and in the AI answers.</p>
+            <p class="card-more"><a href="../seo/">More on SEO services</a></p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 11.9h.01"/></svg></span>
+            <h3>Google Ads</h3>
+            <p>Ads put your new site in front of buyers on day one, while the rankings grow.</p>
+            <p class="card-more"><a href="../google-ads/">More on Google Ads</a></p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4.5h18l-7 8.2V20l-4 1.6v-8.9z"/></svg></span>
+            <h3>Lead Generation</h3>
+            <p>Tracking and follow-up built in, so every visitor the site wins has a way to become a job.</p>
+            <p class="card-more"><a href="../lead-generation/">More on lead generation</a></p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -337,6 +424,23 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ FAQ ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">WHAT PEOPLE ASK BEFORE THEY COMMIT TO A BUILD</p>
+        </div>
+        <details><summary>How long does website design take?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Most builds go live within two to four weeks, and you see progress along the way, not a big reveal at the end. Repairs to an existing site often take less. The audit comes first either way, within one business day.</p></details>
+        <details><summary>Do I own the website when it is finished?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. You own the site outright. There is no page-builder rental, and for most builds no monthly platform fee. If you ever want to take it somewhere else, you can, and you leave with everything.</p></details>
+        <details><summary>I already have a website. Do I have to start over?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Not necessarily. The free audit tells us whether your current site is worth repairing or holding you back. Some sites need a handful of fixes; some cost less to rebuild than to rescue. Either way you'll see the evidence before you decide anything.</p></details>
+        <details><summary>Where are you based, and do you work with businesses near me?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>We are in Quakertown, PA, so if you have been searching for a web designer near me anywhere in upper Bucks County, Montgomery County, or the Greater Lehigh Valley, we are probably close by. We work with clients across Pennsylvania, New York, and New Jersey too.</p></details>
+      </div>
+    </section>
+
 
   </main>
 
