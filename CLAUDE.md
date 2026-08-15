@@ -80,6 +80,9 @@
   to another page, and read for a human first. Pages are built one at a
   time from Greg's own experience, never in bulk. If a page fails this
   test, it does not ship.
+- Industry pages are earned: built from real client experience, one at a
+  time. Client-attributed numbers appear only with the client's written
+  permission. Trade schools shipped first.
 - Service pages follow the template: hero with per-page graphic, plain
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
