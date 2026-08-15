@@ -81,8 +81,11 @@
   time from Greg's own experience, never in bulk. If a page fails this
   test, it does not ship.
 - Industry pages are earned: built from real client experience, one at a
-  time. Client-attributed numbers appear only with the client's written
-  permission. Trade schools shipped first.
+  time. Industry pages carry no client-attributed numbers or results
+  without the client's written permission. Client names appear on
+  industry pages only where the client relationship is itself the point,
+  and only for clients already named publicly on the site. Trade schools
+  shipped first.
 - Service pages follow the template: hero with per-page graphic, plain
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
