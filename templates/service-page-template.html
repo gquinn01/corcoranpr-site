@@ -29,9 +29,13 @@
        as well. Do not introduce a leading slash: the site also serves
        from a project subpath, where /anything 404s.
 
-         {{PAGE_PATH}}      services/<slug>  or  industries/<slug>
-         {{PARENT_LABEL}}   Services         or  Industries
-         {{PARENT_ANCHOR}}  #services        or  #industries
+         {{PAGE_PATH}}      services/<slug>, industries/<slug>, or
+                            locations/<county>
+         {{PARENT_LABEL}}   Services, Industries, or Service Area
+         {{PARENT_ANCHOR}}  #services, #industries, or #service-area
+
+       A county hub under docs/locations/<county>/ sits at the same
+       depth, so {{SERVICES_PATH}} is ../../services/ there as well.
 
        ---------------------------------------------------------------
        PROOF LINE. {{PROOF_LINE}} defaults to the standard line used on
@@ -431,7 +435,7 @@
             <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
           </ul>
         </div>
-        <div class="foot-area">
+        <div class="foot-area" id="service-area">
           <h2 class="foot-head">Service Area</h2>
           <ul>
             <li><a href="../../locations/bucks-county/">Quakertown</a></li><li><a href="../../locations/bucks-county/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
