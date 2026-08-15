@@ -284,6 +284,30 @@
 
     .role{text-transform:uppercase}
 
+    /* ---------- client name marquee (Industries section) ----------
+       The client names from the old logo wall, back as one slow row.
+       The track holds the list twice, so shifting it by exactly half
+       its width loops seamlessly. The second copy is aria-hidden, so a
+       screen reader hears each client once.
+       The soft edges are an alpha MASK, not a color gradient: nothing
+       is painted there, the tiles just fade to whatever the section
+       background already is, so no new color enters the system.
+       Reduced motion gets no animation at all, just a row you can
+       push sideways by hand. */
+    .marquee{position:relative;margin-top:44px;overflow:hidden;
+      -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,1) 72px,rgba(0,0,0,1) calc(100% - 72px),rgba(0,0,0,0) 100%);
+      mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,1) 72px,rgba(0,0,0,1) calc(100% - 72px),rgba(0,0,0,0) 100%)}
+    .marquee-track{display:flex;width:max-content;animation:marquee 40s linear infinite}
+    .marquee:hover .marquee-track{animation-play-state:paused}
+    .marquee-copy{display:flex;flex:none}
+    .name-tile{flex:none;margin-right:18px;background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--lift);padding:16px 26px;font-size:.95rem;font-weight:700;color:var(--midnight);white-space:nowrap}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){
+      .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+      .marquee-track{animation:none}
+      .marquee-dup{display:none}
+    }
+
   </style>
 </head>
 <body>
@@ -650,6 +674,34 @@
         </article>
       </div>
       <p style="text-align:center;margin-top:40px;font-size:1.05rem">Your industry not here? Every one of these started the same way: with the free audit.</p>
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="marquee-copy">
+            <span class="name-tile">Disney on Ice</span>
+            <span class="name-tile">Ringling Bros. and Barnum &amp; Bailey</span>
+            <span class="name-tile">Pittsburgh Craft Beer Week</span>
+            <span class="name-tile">SenArt Films</span>
+            <span class="name-tile">Spirit Financial Credit Union</span>
+            <span class="name-tile">Tri-County Collision</span>
+            <span class="name-tile">ILM, Institute for Laser Medicine &amp; Aesthetics</span>
+            <span class="name-tile">Distasio, Kowalski &amp; Yelen, LLC, Attorneys at Law</span>
+            <span class="name-tile">Choice One Community Credit Union</span>
+            <span class="name-tile">Cork Bar &amp; Restaurant</span>
+          </div>
+          <div class="marquee-copy marquee-dup" aria-hidden="true">
+            <span class="name-tile">Disney on Ice</span>
+            <span class="name-tile">Ringling Bros. and Barnum &amp; Bailey</span>
+            <span class="name-tile">Pittsburgh Craft Beer Week</span>
+            <span class="name-tile">SenArt Films</span>
+            <span class="name-tile">Spirit Financial Credit Union</span>
+            <span class="name-tile">Tri-County Collision</span>
+            <span class="name-tile">ILM, Institute for Laser Medicine &amp; Aesthetics</span>
+            <span class="name-tile">Distasio, Kowalski &amp; Yelen, LLC, Attorneys at Law</span>
+            <span class="name-tile">Choice One Community Credit Union</span>
+            <span class="name-tile">Cork Bar &amp; Restaurant</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
