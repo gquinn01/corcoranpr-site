@@ -216,14 +216,18 @@ section{padding:120px 0}
 .hero-art{flex:0 0 400px;margin-left:auto}
 .hero-art svg{width:100%;height:auto;display:block}
 
-/* ---------- Fresh Mint panel ----------
+/* ---------- raised white panel ----------
    For a section that would otherwise sit light against a light
-   neighbour. Backgrounds have to alternate down every page, and a
-   gradient is not an option outside a section field, so this is a solid
-   palette colour. Contrast on Fresh Mint, measured: Midnight body
-   12.90:1, slate kicker 6.28:1, Signal Blue heading 4.58:1 and large
-   besides. White cards sit on it unchanged. */
-.band-mint{background-color:var(--mint);color:var(--midnight)}
+   neighbour. Backgrounds must alternate down the page and gradients are
+   not an option here, so this is a solid palette colour: white on the
+   Cloud page, edged with the standard hairline. It is the same relation
+   a card already has to the page, one step up in scale, which is why it
+   reads as deliberate rather than as a wash. Fresh Mint was tried at
+   full-section scale and looked washed out against the dark bands.
+   Cards sitting on this panel take the hairline border too, or a white
+   card on a white band would vanish. */
+.band-panel{background-color:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band-panel .card{border:1px solid var(--line)}
 /* The county hub town list is a list, not a feature, so it also takes
    tighter padding than a full section. */
 .band-towns{padding:84px 0}
