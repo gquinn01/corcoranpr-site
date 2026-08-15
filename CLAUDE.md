@@ -74,6 +74,12 @@
   six industry cards naming real clients. Nav and footer label it
   Industries. Industry cards gain links only when an earned industry
   page exists for them.
+- Every industry or location page must pass the doorway test before it
+  ships: it must contain substance a competitor without our client
+  history could not write, be a genuine destination rather than a funnel
+  to another page, and read for a human first. Pages are built one at a
+  time from Greg's own experience, never in bulk. If a page fails this
+  test, it does not ship.
 - Service pages follow the template: hero with per-page graphic, plain
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
