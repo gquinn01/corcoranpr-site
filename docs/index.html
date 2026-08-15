@@ -160,7 +160,7 @@
        is in assets/site.css. What remains here is used on this
        page and nowhere else: the hero portrait and dashboard
        mockup, the agent-network diagram, the promise band, the
-       story portraits, the proof block and the client logo wall.
+       story portraits and the proof block.
        Strategic Growth palette only, tokens come from site.css.
        ========================================================== */
 
@@ -270,7 +270,6 @@
     .proofblock{text-align:center}
     .proofblock .proof-copy{max-width:900px;margin:0 auto;font-size:1.06rem;color:var(--on-dark);line-height:1.95}
     .score{font-size:1.5em;font-weight:800;color:var(--green);letter-spacing:-.02em}
-    .clients{text-align:center}
 
     @media(max-width:1000px){
       .hero-grid{grid-template-columns:1fr;gap:38px}
@@ -284,12 +283,6 @@
     }
 
     .role{text-transform:uppercase}
-
-    /* ---------- client logo wall ---------- */
-    .logo-wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:20px;max-width:1180px;margin:0 auto}
-    .logo-tile{background:var(--white);border:1px solid var(--line);border-radius:14px;height:120px;display:flex;align-items:center;justify-content:center;padding:22px 26px;box-shadow:var(--lift);transition:transform .2s ease,box-shadow .2s ease}
-    .logo-tile:hover{transform:translateY(-4px);box-shadow:var(--lift-hi)}
-    .logo-tile img{max-width:100%;max-height:72px;width:auto;height:auto;display:block}
 
   </style>
 </head>
@@ -309,7 +302,7 @@
         <li><a href="#promise">Promise</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#team">Team</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#industries">Industries</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
@@ -613,36 +606,16 @@
     </div>
   </section>
 
-  <!-- ============ WORK (light) ============ -->
-  <section class="clients" id="work">
-    <div class="wrap">
-      <div class="sec-head" style="margin-bottom:40px">
-        <h2 class="sec-title">Work We're Proud Of</h2>
-        <p class="sec-sub">FROM MAIN STREET TO THE BIG TOP</p>
-      </div>
-      <div class="logo-wall">
-        <div class="logo-tile"><img src="logos/disney-on-ice.png" width="360" height="140" alt="Disney on Ice" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/ringling-bros.png" width="360" height="140" alt="Ringling Bros. and Barnum &amp; Bailey" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/pittsburgh-craft-beer-week.png" width="360" height="140" alt="Pittsburgh Craft Beer Week" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/senart-films.png" width="360" height="140" alt="SenArt Films" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/spirit-financial.png" width="360" height="140" alt="Spirit Financial Credit Union" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/tri-county-collision.png" width="360" height="140" alt="Tri-County Collision" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/ilm.png" width="360" height="140" alt="ILM, Institute for Laser Medicine &amp; Aesthetics" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/distasio-kowalski-yelen.png" width="360" height="140" alt="Distasio, Kowalski &amp; Yelen, LLC, Attorneys at Law" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/choice-one.png" width="360" height="140" alt="Choice One Community Credit Union" loading="lazy"></div>
-        <div class="logo-tile"><img src="logos/cork.png" width="360" height="140" alt="Cork Bar &amp; Restaurant" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INDUSTRIES ============
-       Every name below is a client already shown in the logo wall above.
-       Nothing speculative goes in this list. -->
+  <!-- ============ INDUSTRIES (light) ============
+       Light on purpose: it sits between the dark proof block and
+       the dark contact band, so the page keeps alternating.
+       Every client named below is real and current. Nothing
+       speculative goes in this list. -->
   <section id="industries">
     <div class="wrap">
       <div class="sec-head">
         <h2 class="sec-title">Industries We Know</h2>
-        <p class="sec-sub">REAL CLIENT WORK, NOT HYPOTHETICALS</p>
+        <p class="sec-sub">REAL CLIENT WORK, FROM MAIN STREET TO DISNEY ON ICE</p>
       </div>
       <div class="grid3">
         <article class="card">
@@ -754,7 +727,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#promise">The Promise</a></li>
             <li><a href="#how">How It Works</a></li>
-            <li><a href="#work">Our Work</a></li>
+            <li><a href="#industries">Industries</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#team">Team</a></li>
           </ul>

@@ -70,6 +70,10 @@
   calls, form fills, and booked jobs" (or a page-appropriate subset),
   never "leads" or "revenue" alone. Headlines may use "phone calls" for
   punch.
+- The homepage proof section is "Industries We Know" (id #industries):
+  six industry cards naming real clients. Nav and footer label it
+  Industries. Industry cards gain links only when an earned industry
+  page exists for them.
 - Service pages follow the template: hero with per-page graphic, plain
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
