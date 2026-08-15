@@ -133,4 +133,8 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   change it there and nowhere else. templates/ = client-pitch templates
   plus the internal service-page template. agents/ = agent job
   descriptions. Never touch .github/ or scripts/ without asking first.
+- The service page template is the master mold. When a shared structural
+  element changes on any live page, templates/service-page-template.html
+  changes in the same commit, so the template never falls behind the
+  site.
 - Never put API keys or secrets in any file.
