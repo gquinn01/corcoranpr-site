@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
   <!-- ============================================================
-       THE LEHIGH VALLEY. A COUNTY HUB in the location tree, built from
-       templates/service-page-template.html, with the Bucks County hub
-       as the gold master for structure, depth, breadcrumb and schema.
-       Not a county but a three-city metro, so the markets here divide
-       by city rather than by township. Every served town is named in
-       the text, and towns become links as they earn pages.
-       One business entity, in Quakertown. Never an address elsewhere.
+       QUAKERTOWN. The first TOWN page, nested under the Bucks County
+       hub, built from templates/service-page-template.html at three
+       levels deep (../../../ = ../../../).
+       Per the Location pages rules in CLAUDE.md: anchored to web
+       design, carrying facts specific to this town and a FAQ written
+       for it, and it ships only because it passes the variance test
+       against the county hub above it.
+       The checkable facts here are our own office in the borough, the
+       Route 309 corridor, the borough's Main Street core, and the
+       upper Bucks business mix. Nothing else is asserted about the
+       town. No client is named and no client number appears.
        Verified facts only. No em dashes. No price or review markup.
        ============================================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
 
-  <title>Lehigh Valley Marketing Agency | Corcoran Communications</title>
-  <meta name="description" content="Marketing, web design, and SEO for Lehigh Valley businesses, from Allentown to Bethlehem to Easton. Veteran-owned, one senior marketer. 215-259-8304.">
+  <title>Web Design in Quakertown, PA | Corcoran Communications</title>
+  <meta name="description" content="Web design for Quakertown, PA businesses, from a firm with its office in the borough. Fast sites that name your service area and ring the phone. 215-259-8304.">
 
-  <link rel="canonical" href="https://corcoranpr.com/locations/lehigh-valley/">
+  <link rel="canonical" href="https://corcoranpr.com/locations/bucks-county/quakertown/">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Lehigh Valley Marketing Agency | Corcoran Communications">
-  <meta property="og:description" content="Marketing, web design, and SEO for Lehigh Valley businesses, from Allentown to Bethlehem to Easton. Veteran-owned, one senior marketer.">
-  <meta property="og:url" content="https://corcoranpr.com/locations/lehigh-valley/">
+  <meta property="og:title" content="Web Design in Quakertown, PA | Corcoran Communications">
+  <meta property="og:description" content="Web design for Quakertown, PA businesses, from a firm with its office in the borough. Fast sites that name your service area and ring the phone.">
+  <meta property="og:url" content="https://corcoranpr.com/locations/bucks-county/quakertown/">
   <meta property="og:image" content="https://corcoranpr.com/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="../../assets/site.css">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script src="../../../assets/site.js" defer></script>
 
   <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
        as the homepage so every page resolves to one business entity. It
@@ -62,17 +66,6 @@
           "addressCountry": "US"
         },
         "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Lehigh Valley, Pennsylvania" },
-          { "@type": "Place", "name": "Allentown, Pennsylvania" },
-          { "@type": "Place", "name": "Bethlehem, Pennsylvania" },
-          { "@type": "Place", "name": "Easton, Pennsylvania" },
-          { "@type": "Place", "name": "Emmaus, Pennsylvania" },
-          { "@type": "Place", "name": "Macungie, Pennsylvania" },
-          { "@type": "Place", "name": "Whitehall, Pennsylvania" },
-          { "@type": "Place", "name": "Center Valley, Pennsylvania" },
-          { "@type": "Place", "name": "Coopersburg, Pennsylvania" }
-        ],
         "sameAs": [
           "https://www.facebook.com/CorcoranPR/",
           "https://www.instagram.com/corcoran_pr/",
@@ -82,30 +75,23 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://corcoranpr.com/locations/lehigh-valley/#webpage",
-        "url": "https://corcoranpr.com/locations/lehigh-valley/",
-        "name": "Lehigh Valley Marketing Agency | Corcoran Communications",
-        "description": "Marketing, web design, and SEO for Lehigh Valley businesses, from Allentown to Bethlehem to Easton. Veteran-owned, one senior marketer. 215-259-8304.",
-        "about": { "@id": "https://corcoranpr.com/locations/lehigh-valley/#service" },
+        "@id": "https://corcoranpr.com/locations/bucks-county/quakertown/#webpage",
+        "url": "https://corcoranpr.com/locations/bucks-county/quakertown/",
+        "name": "Web Design in Quakertown, PA | Corcoran Communications",
+        "description": "Web design for Quakertown, PA businesses, from a firm with its office in the borough. Fast sites that name your service area and ring the phone. 215-259-8304.",
+        "about": { "@id": "https://corcoranpr.com/locations/bucks-county/quakertown/#service" },
         "isPartOf": { "@id": "https://corcoranpr.com/#business" }
       },
       {
         "@type": "Service",
-        "@id": "https://corcoranpr.com/locations/lehigh-valley/#service",
-        "name": "Marketing Services for Lehigh Valley Businesses",
-        "serviceType": "Marketing services for Lehigh Valley businesses",
-        "description": "Marketing, web design, search engine optimization, and advertising for businesses across the Lehigh Valley in Pennsylvania, delivered from Quakertown by the owner rather than a junior account team.",
+        "@id": "https://corcoranpr.com/locations/bucks-county/quakertown/#service",
+        "name": "Web Design for Quakertown Businesses",
+        "serviceType": "Web design for Quakertown, PA businesses",
+        "description": "Web design for businesses in Quakertown, Pennsylvania and the surrounding upper Bucks County townships, covering fast mobile-first sites, clear service-area pages, and the local search details that decide whether a nearby customer finds the business.",
         "provider": { "@id": "https://corcoranpr.com/#business" },
         "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Lehigh Valley, Pennsylvania" },
-          { "@type": "Place", "name": "Allentown, Pennsylvania" },
-          { "@type": "Place", "name": "Bethlehem, Pennsylvania" },
-          { "@type": "Place", "name": "Easton, Pennsylvania" },
-          { "@type": "Place", "name": "Emmaus, Pennsylvania" },
-          { "@type": "Place", "name": "Macungie, Pennsylvania" },
-          { "@type": "Place", "name": "Whitehall, Pennsylvania" },
-          { "@type": "Place", "name": "Center Valley, Pennsylvania" },
-          { "@type": "Place", "name": "Coopersburg, Pennsylvania" }
+          { "@type": "Place", "name": "Quakertown, Pennsylvania" },
+          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" }
         ]
       },
       {
@@ -113,7 +99,8 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
           { "@type": "ListItem", "position": 2, "name": "Service Area", "item": "https://corcoranpr.com/#service-area" },
-          { "@type": "ListItem", "position": 3, "name": "Lehigh Valley", "item": "https://corcoranpr.com/locations/lehigh-valley/" }
+          { "@type": "ListItem", "position": 3, "name": "Bucks County", "item": "https://corcoranpr.com/locations/bucks-county/" },
+          { "@type": "ListItem", "position": 4, "name": "Quakertown", "item": "https://corcoranpr.com/locations/bucks-county/quakertown/" }
         ]
       },
       {
@@ -121,18 +108,18 @@
         "mainEntity": [
                     {
             "@type": "Question",
-            "name": "Do you work with businesses across the Lehigh Valley?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are based in Quakertown, a short drive south of the Valley, and work with businesses throughout it, including Allentown, Bethlehem, Easton, Emmaus, Macungie, Whitehall, Center Valley, and Coopersburg, plus Bucks and Montgomery counties." }
+            "name": "Are you actually based in Quakertown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our office is at 1808 Enclave Dr in Quakertown, and it is the only office we have. You can call the number on this page and reach the person who would build your site, not an account manager in another state." }
           },
           {
             "@type": "Question",
-            "name": "How is marketing in the Lehigh Valley different from a smaller market?",
-            "acceptedAnswer": { "@type": "Answer", "text": "There are more customers and more competitors for each search, so the fundamentals carry more weight: a complete business profile, consistent details, real reviews, and a fast site that clearly names the areas you serve. Businesses that do those things well stand out in a market this size, and it pays." }
+            "name": "Can a Quakertown business rank against firms in Allentown or Doylestown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "For local searches, often yes. Google weighs proximity heavily, so a customer searching near Quakertown is already being shown nearby businesses first. What decides it after that is whether your site is complete, fast, and clear about what you do and where. Those are the parts we control." }
           },
           {
             "@type": "Question",
-            "name": "Do I need to come to your office?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need." }
+            "name": "Most of my customers are in the townships, not the borough. Does that change the site?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It changes it quite a bit. A service-area business needs the towns and townships it covers named on the page, a clear statement that you travel to the customer, and a phone number that never scrolls out of reach. A storefront needs hours, parking, and a map link instead. We build for whichever one you are." }
           },
           {
             "@type": "Question",
@@ -150,14 +137,14 @@
   <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
   <header class="nav">
     <div class="wrap inner">
-      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <a class="nav-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
       <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
-        <li><a href="../../#services">Services</a></li>
-        <li><a href="../../#promise">Promise</a></li>
-        <li><a href="../../#how">How It Works</a></li>
-        <li><a href="../../#team">Team</a></li>
-        <li><a href="../../#industries">Industries</a></li>
-        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../../#services">Services</a></li>
+        <li><a href="../../../#promise">Promise</a></li>
+        <li><a href="../../../#how">How It Works</a></li>
+        <li><a href="../../../#team">Team</a></li>
+        <li><a href="../../../#industries">Industries</a></li>
+        <li><a href="../../../#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
@@ -175,16 +162,17 @@
              Same labels, or Google reports a mismatch. -->
         <nav class="crumb" aria-label="Breadcrumb">
           <ol>
-            <li><a href="../../">Home</a></li>
-            <li><a href="../../#service-area">Service Area</a></li>
-            <li><span aria-current="page">Lehigh Valley</span></li>
+            <li><a href="../../../">Home</a></li>
+            <li><a href="../../../#service-area">Service Area</a></li>
+            <li><a href="../">Bucks County</a></li>
+            <li><span aria-current="page">Quakertown</span></li>
           </ol>
         </nav>
         <div class="hero-split">
           <div class="hero-copy-col">
-            <p class="eyebrow">Service Area · The Lehigh Valley, Pennsylvania</p>
-            <h1>Marketing for Lehigh Valley Businesses, <span class="accent">Twenty Minutes Up the Road</span></h1>
-            <p class="lead">The Lehigh Valley is the third-largest metro in Pennsylvania and one of its fastest-growing business regions, and it starts a short drive north of our Quakertown office. We work with businesses across Allentown, Bethlehem, Easton, and the towns around them, in a market big enough to reward businesses that get found and busy enough to punish the ones that do not.</p>
+            <p class="eyebrow">Service Area · Quakertown, Bucks County</p>
+            <h1>Web Design in Quakertown, <span class="accent">Built by the Firm Down the Road</span></h1>
+            <p class="lead">Our office is in Quakertown, so this is the one town we do not have to research. We know the businesses in the industrial parks off Route 309, the shops and restaurants downtown, and the contractors who cover half of upper Bucks out of a truck. We build sites for all three, and they are not the same site.</p>
             <div class="cta-row">
               <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
               <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
@@ -199,24 +187,25 @@
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <path d="M46 118l58-40 74 16 62-28 76 24 38 46-30 62-84 26-92-12-70-32z" fill="#DDF7EC" fill-opacity=".07" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M56 150l70 26 88 6 92-24" fill="none" stroke="#DDF7EC" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="8 8"/>
-              <g transform="translate(96,86) scale(2.5)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="52" y="70" width="296" height="168" rx="16" fill="#DDF7EC" fill-opacity=".06" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <line x1="52" y1="104" x2="348" y2="104" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <circle cx="72" cy="87" r="4" fill="#15B77E"/>
+              <circle cx="86" cy="87" r="4" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="106" y="81" width="132" height="12" rx="6" fill="#DDF7EC" fill-opacity=".12"/>
+              <rect x="78" y="130" width="122" height="12" rx="6" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="78" y="152" width="86" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="78" y="186" width="112" height="32" rx="16" fill="#15B77E"/>
+              <g transform="translate(92,194) scale(.7)" fill="none" stroke="#062018" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.6 3.5h3.1l1.5 3.9-2 1.4a12.2 12.2 0 0 0 5 5l1.4-2 3.9 1.5v3.1a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/>
+              </g>
+              <rect x="114" y="197" width="58" height="8" rx="4" fill="#062018" fill-opacity=".85"/>
+              <rect x="232" y="130" width="94" height="88" rx="10" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <g transform="translate(262,146) scale(1.6)" fill="none" stroke="#DDF7EC" stroke-opacity=".7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
               </g>
-              <circle cx="113" cy="109" r="6" fill="#15B77E"/>
-              <g transform="translate(182,74) scale(2.5)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
-              </g>
-              <circle cx="199" cy="97" r="6" fill="#15B77E"/>
-              <g transform="translate(266,86) scale(2.5)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
-              </g>
-              <circle cx="283" cy="109" r="6" fill="#15B77E"/>
-              <circle cx="150" cy="196" r="5" fill="#DDF7EC" fill-opacity=".4"/>
-              <circle cx="222" cy="204" r="5" fill="#DDF7EC" fill-opacity=".34"/>
-              <rect x="104" y="256" width="92" height="9" rx="4.5" fill="#DDF7EC" fill-opacity=".3"/>
-              <rect x="208" y="256" width="64" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".2"/>
+              <circle cx="279" cy="163" r="5" fill="#15B77E"/>
+              <rect x="248" y="196" width="62" height="8" rx="4" fill="#DDF7EC" fill-opacity=".2"/>
+              <rect x="120" y="258" width="160" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".22"/>
 
             </svg>
           </div>
@@ -229,27 +218,47 @@
          service to someone who has never bought marketing. -->
     <section id="included">
       <div class="wrap">
-        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>This page is for business owners in the Lehigh Valley who want a marketing partner close enough to know the market and the searches that win customers here.</p>
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Web design in Quakertown means a site that loads fast on a phone, says plainly what you do and which towns you cover, and makes calling you the easiest thing on the page.</p>
         <div class="sec-head">
-          <h2 class="sec-title">One Valley, Several Different Markets</h2>
-          <p class="sec-sub">WHAT WE KNOW ABOUT WORKING HERE</p>
+          <h2 class="sec-title">What Quakertown Businesses Need From a Website</h2>
+          <p class="sec-sub">SIX KINDS OF BUSINESS HERE, SIX DIFFERENT JOBS</p>
         </div>
-        <div class="grid2">
+        <div class="grid3">
           <article class="card">
-            <h3>Allentown</h3>
-            <p>The Valley's largest city and its business center: a revitalized downtown, healthcare, logistics, and a deep bench of trades and services. The competition for every search is real, and the businesses with complete profiles and fast sites win it.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 16.6v-3l2-5A2 2 0 0 1 7.5 7.3h9a2 2 0 0 1 1.9 1.3l2 5v3"/><path d="M3.6 13.6h16.8"/><circle cx="7.6" cy="16.6" r="1.7"/><circle cx="16.4" cy="16.6" r="1.7"/></svg></span>
+            <p class="tag">Trades</p>
+            <h3>Contractors who work out of a truck</h3>
+            <p>Most of the trades here serve a radius, not an address. Your site has to say which townships you cover, load on a phone at a job site, and put the number under a thumb. A gallery of finished work does more than any slogan.</p>
           </article>
           <article class="card">
-            <h3>Bethlehem</h3>
-            <p>A city with a strong identity, a lively downtown, and a mix of hospitality, professional services, and industry. Customers here have plenty of choices, and they research before they choose.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.4L12 4.6l8.5 4.8"/><path d="M6 9.4v8M10 9.4v8M14 9.4v8M18 9.4v8"/><path d="M3.5 20.4h17"/></svg></span>
+            <p class="tag">Industry</p>
+            <h3>Manufacturers and suppliers along the corridor</h3>
+            <p>The businesses in the industrial parks off Route 309 sell to buyers who research before they call, and often from out of the area. That site needs capability, capacity, and certifications stated plainly, not a brochure.</p>
           </article>
           <article class="card">
-            <h3>Easton and the East</h3>
-            <p>Easton and the communities toward the river: a growing downtown, restaurants, trades, and businesses that serve both sides of the state line. Being clearly local matters.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.6v5.4a2.2 2.2 0 0 0 4.4 0V3.6"/><path d="M8.8 9.4v11"/><path d="M17.2 3.6c-1.5 1.4-2.2 3.2-2.2 5.3 0 1.7.8 2.8 2.2 3.3v8.2"/></svg></span>
+            <p class="tag">Main Street</p>
+            <h3>Shops and restaurants downtown</h3>
+            <p>Downtown Quakertown runs on walk-in trade and word of mouth. Hours, parking, the current menu or stock, and a map link matter more than anything clever. If the hours are wrong online, the door may as well be locked.</p>
           </article>
           <article class="card">
-            <h3>The Southern Valley</h3>
-            <p>Emmaus, Macungie, Center Valley, Coopersburg, and Whitehall: the towns closest to us and closest to Bucks County. Family businesses, contractors, and practices whose customers search 'near me' and expect a nearby answer.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.2v16.2M8 20.4h8"/><path d="M4.4 8.4h15.2"/><path d="M4.4 8.4L2.4 13.6a2.4 2.4 0 0 0 4 0z"/><path d="M19.6 8.4l-2 5.2a2.4 2.4 0 0 0 4 0z"/></svg></span>
+            <p class="tag">Practices</p>
+            <h3>Professional and medical offices</h3>
+            <p>A practice is chosen on trust before price. Real photos of the real people, plain answers to the questions patients and clients are nervous about, and an obvious way to book. Nothing here should feel like a stock template.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><circle cx="12" cy="10.1" r="2.6"/></svg></span>
+            <p class="tag">Service area</p>
+            <h3>Businesses with no storefront at all</h3>
+            <p>Plenty of good businesses here have no public address. The site has to make the service area unmistakable, because a customer two townships over needs to know you come to them before they call anyone else.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <p class="tag">Competing out</p>
+            <h3>Standing up against bigger-town firms</h3>
+            <p>Your customers also see results from Doylestown, Allentown, and Philadelphia. Being nearby only wins if the site says so clearly and loads faster than theirs. That is a build decision, not a marketing slogan.</p>
           </article>
         </div>
       </div>
@@ -262,19 +271,19 @@
     <section class="dark field-blue" id="approach">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title">Why a Local Firm Wins Local Searches</h2>
-          <p class="sec-sub">PROXIMITY IS A RANKING FACTOR, AND SO IS KNOWING THE PLACE</p>
+          <h2 class="sec-title">The Local Firm Is Actually Local</h2>
+          <p class="sec-sub">WE ARE NOT NEARBY. WE ARE HERE.</p>
         </div>
         <div class="grid2">
           <article class="card">
             <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><circle class="ico-accent" cx="12" cy="10.1" r="2.6"/></svg></span>
-            <h3>The searches that matter here</h3>
-            <p>A metro this size means more searches and more competitors for each one. Winning means the basics done properly: a complete business profile, consistent details, real reviews, and a fast site that names the places you serve. We build all of it.</p>
+            <h3>Our office is here</h3>
+            <p>Corcoran Communications works out of 1808 Enclave Dr in Quakertown. Not a mail drop in a town we picked off a map. When we say we know what a business here is up against, it is because we are one, on the same roads, in the same weather, reading the same local news.</p>
           </article>
           <article class="card">
-            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path class="ico-accent" d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
-            <h3>Our work in the Lehigh Valley</h3>
-            <p>The Valley is part of our daily territory, close enough that we know its towns and roads firsthand. We work with businesses here across trades and professions, and we bring the same local knowledge we have in Bucks and Montgomery.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/><path class="ico-accent" d="M7.8 11.2l1.9-2 2 2 2.3-3"/></svg></span>
+            <h3>What that changes about the work</h3>
+            <p>We know which searches carry a town name here and which ones are just near me, that a contractor off 309 and a shop on Main Street are two different problems, and that half your customers are in townships whose names never appear in a keyword tool. That shapes the site before a line of it is written.</p>
           </article>
         </div>
         <div class="statgrid" style="margin-top:44px">
@@ -289,32 +298,13 @@
       </div>
     </section>
 
-    <!-- ============ TOWNS ============
-         Every town named here is one we actually work in. Names become
-         links as each town earns its own page. -->
-    <section id="towns" class="band-panel band-towns">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2 class="sec-title">Towns We Serve in the Lehigh Valley</h2>
-          <p class="sec-sub">EVERY TOWN LISTED HERE IS ONE WE ACTUALLY WORK IN</p>
-        </div>
-        <p style="text-align:center;max-width:860px;margin:0 auto;font-size:1.05rem">Across the three cities that means Allentown, Bethlehem, and Easton. Through the southern end of the Valley, the part closest to us, it means Emmaus, Macungie, Whitehall, Center Valley, and Coopersburg, along with the townships around them.</p>
-        <ul class="town-list">
-          <li>Allentown</li>
-          <li>Bethlehem</li>
-          <li>Easton</li>
-          <li>Emmaus</li>
-          <li>Macungie</li>
-          <li>Whitehall</li>
-          <li>Center Valley</li>
-          <li>Coopersburg</li>
-        </ul>
-        <p style="text-align:center;margin-top:32px;font-size:1.05rem">If your town is not listed, we almost certainly still serve it. Call and ask.</p>
-      </div>
-    </section>
-
     <!-- ============ HOW IT WORKS ============
-         Four steps. Step 02 is standard on every page:
+         Four NUMBERED PROCESS steps, not benefit tiles. If you are
+         lifting them from a live page, take the grid4 inside that
+         page's own id="how" section: several pages have an earlier
+         grid4 in the differentiator band, and grabbing the first one
+         silently ships the wrong content.
+         Step 02 is standard on every page:
          "The plan and the number" / "We walk you through the report
          together, agree what is worth doing, and you get the flat quote
          in writing. No pressure, and no meter running." -->
@@ -383,32 +373,32 @@
     </section>
 
     <!-- ============ STRONGER TOGETHER ============
-         Three cross-links to sibling pages, through ../../services/
+         Three cross-links to sibling pages, through ../../../services/
          so the depth is right from either folder. -->
     <section id="together">
       <div class="wrap">
         <div class="sec-head">
           <h2 class="sec-title">Stronger Together</h2>
-          <p class="sec-sub">WHAT LEHIGH VALLEY BUSINESSES START WITH</p>
+          <p class="sec-sub">WHAT QUAKERTOWN BUSINESSES PAIR WITH A NEW SITE</p>
         </div>
         <div class="grid3">
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.6 6.5h.01M9.6 6.5h.01"/></svg></span>
             <h3>Web Design</h3>
-            <p>A fast, honest site that names the towns you serve and puts the phone number where a thumb already is.</p>
-            <p class="card-more"><a href="../../services/web-design/">More on web design</a></p>
+            <p>The full picture of how we build, what it includes, and what you own at the end.</p>
+            <p class="card-more"><a href="../../../services/web-design/">More on web design</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
             <h3>SEO Services</h3>
-            <p>The business profile, listings, and local pages that win 'near me' searches across the Valley.</p>
-            <p class="card-more"><a href="../../services/seo/">More on SEO services</a></p>
+            <p>The listing and local pages that decide whether you show up for 'near me' in this end of the county.</p>
+            <p class="card-more"><a href="../../../services/seo/">More on SEO services</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 11.9h.01"/></svg></span>
             <h3>Google Ads</h3>
-            <p>Tight campaigns aimed at the parts of the Lehigh Valley you actually serve, and nowhere else.</p>
-            <p class="card-more"><a href="../../services/google-ads/">More on Google Ads</a></p>
+            <p>Campaigns held to the townships you actually cover, for the weeks you need the work.</p>
+            <p class="card-more"><a href="../../../services/google-ads/">More on Google Ads</a></p>
           </article>
         </div>
       </div>
@@ -452,11 +442,11 @@
       <div class="wrap" style="max-width:880px">
         <div class="sec-head">
           <h2 class="sec-title">Questions, Answered</h2>
-          <p class="sec-sub">WHAT BUSINESS OWNERS HERE ASK US</p>
+          <p class="sec-sub">WHAT BUSINESS OWNERS IN TOWN ASK US</p>
         </div>
-        <details><summary>Do you work with businesses across the Lehigh Valley?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. We are based in Quakertown, a short drive south of the Valley, and work with businesses throughout it, including Allentown, Bethlehem, Easton, Emmaus, Macungie, Whitehall, Center Valley, and Coopersburg, plus Bucks and Montgomery counties.</p></details>
-        <details><summary>How is marketing in the Lehigh Valley different from a smaller market?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>There are more customers and more competitors for each search, so the fundamentals carry more weight: a complete business profile, consistent details, real reviews, and a fast site that clearly names the areas you serve. Businesses that do those things well stand out in a market this size, and it pays.</p></details>
-        <details><summary>Do I need to come to your office?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need.</p></details>
+        <details><summary>Are you actually based in Quakertown?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. Our office is at 1808 Enclave Dr in Quakertown, and it is the only office we have. You can call the number on this page and reach the person who would build your site, not an account manager in another state.</p></details>
+        <details><summary>Can a Quakertown business rank against firms in Allentown or Doylestown?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>For local searches, often yes. Google weighs proximity heavily, so a customer searching near Quakertown is already being shown nearby businesses first. What decides it after that is whether your site is complete, fast, and clear about what you do and where. Those are the parts we control.</p></details>
+        <details><summary>Most of my customers are in the townships, not the borough. Does that change the site?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>It changes it quite a bit. A service-area business needs the towns and townships it covers named on the page, a clear statement that you travel to the customer, and a phone number that never scrolls out of reach. A storefront needs hours, parking, and a map link instead. We build for whichever one you are.</p></details>
         <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
       </div>
     </section>
@@ -468,7 +458,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <a class="foot-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
           <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
           <p class="foot-nap">
             Corcoran Communications<br>
@@ -481,22 +471,22 @@
         <div>
           <h2 class="foot-head">Explore</h2>
           <ul class="foot-links">
-            <li><a href="../../#services">Services</a></li>
-            <li><a href="../../#promise">The Promise</a></li>
-            <li><a href="../../#how">How It Works</a></li>
-            <li><a href="../../#industries">Industries</a></li>
-            <li><a href="../../#faq">FAQ</a></li>
-            <li><a href="../../#team">Team</a></li>
+            <li><a href="../../../#services">Services</a></li>
+            <li><a href="../../../#promise">The Promise</a></li>
+            <li><a href="../../../#how">How It Works</a></li>
+            <li><a href="../../../#industries">Industries</a></li>
+            <li><a href="../../../#faq">FAQ</a></li>
+            <li><a href="../../../#team">Team</a></li>
           </ul>
         </div>
         <div>
           <h2 class="foot-head">Services</h2>
           <ul class="foot-links">
-            <li><a href="../../services/web-design/">Web Design</a></li>
-            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
-            <li><a href="../../services/google-ads/">Google Ads</a></li>
-            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
-            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+            <li><a href="../../../services/web-design/">Web Design</a></li>
+            <li><a href="../../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../../services/lead-generation/">Lead Generation</a></li>
           </ul>
         </div>
         <div>
@@ -510,14 +500,14 @@
         <div class="foot-area" id="service-area">
           <h2 class="foot-head">Service Area</h2>
           <ul>
-            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
-            <li><a href="../../locations/bucks-county/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
-            <li><a href="../../locations/montgomery-county/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
-            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
-            <li><a href="../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
-            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+            <li><a href="../../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../../locations/bucks-county/">Doylestown</a></li><li><a href="../../../locations/bucks-county/">Perkasie</a></li><li><a href="../../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../../locations/bucks-county/">Newtown</a></li><li><a href="../../../locations/bucks-county/">Warrington</a></li><li><a href="../../../locations/bucks-county/">New Hope</a></li><li><a href="../../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../../locations/montgomery-county/">Lansdale</a></li><li><a href="../../../locations/montgomery-county/">Souderton</a></li><li><a href="../../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../../locations/montgomery-county/">North Wales</a></li><li><a href="../../../locations/montgomery-county/">Blue Bell</a></li><li><a href="../../../locations/montgomery-county/">Collegeville</a></li><li><a href="../../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../../locations/lehigh-valley/">Easton</a></li><li><a href="../../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../../locations/lehigh-valley/">Coopersburg</a></li>
           </ul>
-          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+          <p>Serving <a href="../../../locations/bucks-county/">Bucks</a> and <a href="../../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
         </div>
       </div>
       <div class="foot-bottom">

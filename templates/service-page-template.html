@@ -34,13 +34,33 @@
        as well. Do not introduce a leading slash: the site also serves
        from a project subpath, where /anything 404s.
 
-         {{PAGE_PATH}}      services/<slug>, industries/<slug>, or
-                            locations/<county>
-         {{PARENT_LABEL}}   Services, Industries, or Service Area
-         {{PARENT_ANCHOR}}  #services, #industries, or #service-area
+         {{ROOT}}           the site root from this page. EVERY
+                            depth-dependent path goes through it: the
+                            stylesheet, the script, the logo, the nav,
+                            the footer, the breadcrumb.
+                              two levels down   ->  ../../
+                              three levels down ->  ../../../
+         {{SERVICES_PATH}}  where the service pages are from here
+                              service page      ->  ../
+                              industry page     ->  ../../services/
+                              county hub        ->  ../../services/
+                              town page         ->  ../../../services/
+         {{PAGE_PATH}}      services/<slug>, industries/<slug>,
+                            locations/<county>, or
+                            locations/<county>/<town>
 
-       A county hub under docs/locations/<county>/ sits at the same
-       depth, so {{SERVICES_PATH}} is ../../services/ there as well.
+       DEPTHS IN USE. Service, industry and county pages sit two levels
+       under docs/. A TOWN PAGE sits three, nested under its county hub,
+       so it needs {{ROOT}} = ../../../ and it links up to its hub with
+       a plain ../ Nothing else about the page changes.
+
+       BREADCRUMB. Two tokens, because the depth varies. Keep the
+       visible trail and the schema in the same order with the same
+       labels, and give the last item no link.
+         three levels (service, industry, county hub):
+           Home > Services|Industries|Service Area > This page
+         four levels (town page):
+           Home > Service Area > Bucks County > Quakertown
 
        ---------------------------------------------------------------
        PROOF LINE. {{PROOF_LINE}} defaults to the standard line used on
@@ -109,8 +129,8 @@
   <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="../../assets/site.css">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="{{ROOT}}assets/site.css">
+  <script src="{{ROOT}}assets/site.js" defer></script>
 
   <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
        as the homepage so every page resolves to one business entity. It
@@ -173,9 +193,7 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
-          { "@type": "ListItem", "position": 2, "name": "{{PARENT_LABEL}}", "item": "https://corcoranpr.com/{{PARENT_ANCHOR}}" },
-          { "@type": "ListItem", "position": 3, "name": "{{CRUMB_LABEL}}", "item": "https://corcoranpr.com/{{PAGE_PATH}}/" }
+{{BREADCRUMB_SCHEMA}}
         ]
       },
       {
@@ -193,14 +211,14 @@
   <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
   <header class="nav">
     <div class="wrap inner">
-      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <a class="nav-home" href="{{ROOT}}" aria-label="Corcoran Communications home"><img src="{{ROOT}}logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
       <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
-        <li><a href="../../#services">Services</a></li>
-        <li><a href="../../#promise">Promise</a></li>
-        <li><a href="../../#how">How It Works</a></li>
-        <li><a href="../../#team">Team</a></li>
-        <li><a href="../../#industries">Industries</a></li>
-        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="{{ROOT}}#services">Services</a></li>
+        <li><a href="{{ROOT}}#promise">Promise</a></li>
+        <li><a href="{{ROOT}}#how">How It Works</a></li>
+        <li><a href="{{ROOT}}#team">Team</a></li>
+        <li><a href="{{ROOT}}#industries">Industries</a></li>
+        <li><a href="{{ROOT}}#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
@@ -218,9 +236,7 @@
              Same labels, or Google reports a mismatch. -->
         <nav class="crumb" aria-label="Breadcrumb">
           <ol>
-            <li><a href="../../">Home</a></li>
-            <li><a href="../../{{PARENT_ANCHOR}}">{{PARENT_LABEL}}</a></li>
-            <li><span aria-current="page">{{CRUMB_LABEL}}</span></li>
+{{BREADCRUMB_HTML}}
           </ol>
         </nav>
         <div class="hero-split">
@@ -427,7 +443,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <a class="foot-home" href="{{ROOT}}" aria-label="Corcoran Communications home"><img src="{{ROOT}}logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
           <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
           <p class="foot-nap">
             Corcoran Communications<br>
@@ -440,12 +456,12 @@
         <div>
           <h2 class="foot-head">Explore</h2>
           <ul class="foot-links">
-            <li><a href="../../#services">Services</a></li>
-            <li><a href="../../#promise">The Promise</a></li>
-            <li><a href="../../#how">How It Works</a></li>
-            <li><a href="../../#industries">Industries</a></li>
-            <li><a href="../../#faq">FAQ</a></li>
-            <li><a href="../../#team">Team</a></li>
+            <li><a href="{{ROOT}}#services">Services</a></li>
+            <li><a href="{{ROOT}}#promise">The Promise</a></li>
+            <li><a href="{{ROOT}}#how">How It Works</a></li>
+            <li><a href="{{ROOT}}#industries">Industries</a></li>
+            <li><a href="{{ROOT}}#faq">FAQ</a></li>
+            <li><a href="{{ROOT}}#team">Team</a></li>
           </ul>
         </div>
         <div>
@@ -469,14 +485,14 @@
         <div class="foot-area" id="service-area">
           <h2 class="foot-head">Service Area</h2>
           <ul>
-            <li><a href="../../locations/bucks-county/">Quakertown</a></li><li><a href="../../locations/bucks-county/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
-            <li><a href="../../locations/bucks-county/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
-            <li><a href="../../locations/montgomery-county/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
-            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
-            <li><a href="../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
-            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+            <li><a href="{{ROOT}}locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="{{ROOT}}locations/bucks-county/">Doylestown</a></li><li><a href="{{ROOT}}locations/bucks-county/">Perkasie</a></li><li><a href="{{ROOT}}locations/bucks-county/">Sellersville</a></li>
+            <li><a href="{{ROOT}}locations/bucks-county/">Newtown</a></li><li><a href="{{ROOT}}locations/bucks-county/">Warrington</a></li><li><a href="{{ROOT}}locations/bucks-county/">New Hope</a></li><li><a href="{{ROOT}}locations/bucks-county/">Chalfont</a></li>
+            <li><a href="{{ROOT}}locations/montgomery-county/">Lansdale</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Souderton</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Harleysville</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Skippack</a></li>
+            <li><a href="{{ROOT}}locations/montgomery-county/">North Wales</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Blue Bell</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Collegeville</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Ambler</a></li>
+            <li><a href="{{ROOT}}locations/lehigh-valley/">Allentown</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Bethlehem</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Easton</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="{{ROOT}}locations/lehigh-valley/">Macungie</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Whitehall</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Center Valley</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Coopersburg</a></li>
           </ul>
-          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+          <p>Serving <a href="{{ROOT}}locations/bucks-county/">Bucks</a> and <a href="{{ROOT}}locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="{{ROOT}}locations/lehigh-valley/">Lehigh Valley</a>.</p>
         </div>
       </div>
       <div class="foot-bottom">
