@@ -13,6 +13,11 @@
        > differentiator band with icon tiles and a CTA row > four-step
        How It Works > What It Costs with a CTA row > Stronger Together
        > contact band > FAQ last.
+       A COUNTY HUB inserts Towns We Serve between the differentiator
+       band and How It Works, on a Fresh Mint panel so no two touching
+       sections share a background. Backgrounds alternate all the way
+       down: dark, light, dark, mint, light, dark, light, dark, light.
+       Check that rhythm after any section is added or moved.
 
        ---------------------------------------------------------------
        DEPTH. Both folders sit two levels under docs/, so the site root
@@ -280,8 +285,34 @@
       </div>
     </section>
 
+    <!-- ============ TOWNS WE SERVE, COUNTY HUBS ONLY ============
+         DELETE this whole section for a service or industry page.
+         Fresh Mint panel so it does not sit light against the light How
+         It Works band below, and tighter padding because it is a list
+         rather than a feature. Town names are plain text until a town
+         earns its own page, then the name becomes a link to it. Never
+         link a town to a stub or a page that does not exist. -->
+    <section id="towns" class="band-towns">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">{{TOWNS_TITLE}}</h2>
+          <p class="sec-sub">EVERY TOWN LISTED HERE IS ONE WE ACTUALLY WORK IN</p>
+        </div>
+        <p style="text-align:center;max-width:860px;margin:0 auto;font-size:1.05rem">{{TOWNS_PROSE}}</p>
+        <ul class="town-list">
+{{TOWNS_LIST}}
+        </ul>
+        <p style="text-align:center;margin-top:32px;font-size:1.05rem">If your town is not listed, we almost certainly still serve it. Call and ask.</p>
+      </div>
+    </section>
+
     <!-- ============ HOW IT WORKS ============
-         Four steps. Step 02 is standard on every page:
+         Four NUMBERED PROCESS steps, not benefit tiles. If you are
+         lifting them from a live page, take the grid4 inside that
+         page's own id="how" section: several pages have an earlier
+         grid4 in the differentiator band, and grabbing the first one
+         silently ships the wrong content.
+         Step 02 is standard on every page:
          "The plan and the number" / "We walk you through the report
          together, agree what is worth doing, and you get the flat quote
          in writing. No pressure, and no meter running." -->
