@@ -66,6 +66,15 @@
 - Titles: all five service pages use the same suffix,
   "| Corcoran Communications". Shorten the descriptive half, never the
   brand half, to stay under 60 characters.
+- When body copy describes outcomes, use the concrete triad "phone
+  calls, form fills, and booked jobs" (or a page-appropriate subset),
+  never "leads" or "revenue" alone. Headlines may use "phone calls" for
+  punch.
+- Service pages follow the template: hero with per-page graphic, plain
+  English line, What You Get, differentiator band with icon tiles and
+  CTA row, four-step How It Works, What It Costs with CTA row, Stronger
+  Together, contact band, FAQ last. Phone CTAs are tel: links; audit
+  CTAs go to #contact.
 - No em dashes in site copy, ever, including schema text.
 
 ## Facts are sacred
