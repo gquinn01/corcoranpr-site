@@ -1,5 +1,5 @@
 /* ==============================================================
-   CORCORAN COMMUNICATIONS, shared behaviour for every page.
+   CORCORAN COMMUNICATIONS, shared behavior for every page.
    Loaded with `defer` so it never blocks rendering.
 
    Contents: the mobile navigation menu, and nothing else. The hero

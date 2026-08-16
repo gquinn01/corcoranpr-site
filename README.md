@@ -19,7 +19,7 @@ ai-agency-starter-kit/
 │   ├── assets/
 │   │   ├── site.css                ← The shared stylesheet. The brand palette
 │   │   │                             lives here and ONLY here.
-│   │   └── site.js                 ← Shared behaviour (the mobile menu)
+│   │   └── site.js                 ← Shared behavior (the mobile menu)
 │   ├── services/                   ← One page per service, all linked from
 │   │   ├── web-design/               the homepage cards and the footer
 │   │   ├── seo/                      (SEO also owns AEO + content marketing)

@@ -110,7 +110,7 @@ section{padding:120px 0}
    Background gradients are built ONLY from palette colors at low alpha
    over a solid Midnight base, so no off-palette hex enters the system.
    Stops fade to rgba(color,0) rather than `transparent`, which some
-   browsers interpolate through black and smear grey. */
+   browsers interpolate through black and smear gray. */
 .dark{background-color:var(--midnight);color:var(--on-dark)}
 .field-hero{
   background-image:
@@ -218,8 +218,8 @@ section{padding:120px 0}
 
 /* ---------- raised white panel ----------
    For a section that would otherwise sit light against a light
-   neighbour. Backgrounds must alternate down the page and gradients are
-   not an option here, so this is a solid palette colour: white on the
+   neighbor. Backgrounds must alternate down the page and gradients are
+   not an option here, so this is a solid palette color: white on the
    Cloud page, edged with the standard hairline. It is the same relation
    a card already has to the page, one step up in scale, which is why it
    reads as deliberate rather than as a wash. Fresh Mint was tried at
