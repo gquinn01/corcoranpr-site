@@ -2,37 +2,43 @@
 <html lang="en">
 <head>
   <!-- ============================================================
-       BUCKS COUNTY. The first COUNTY HUB, and the gold master for the
-       other two. Built from templates/service-page-template.html.
-       Per the Location pages rules in CLAUDE.md: a county hub is a real
-       destination, with substantive prose about the county's business
-       mix and every served town named in the text. Towns link to their
-       own pages once those exist; until then the names are plain text.
-       One business entity, in Quakertown. Never an address elsewhere.
+       LANSDALE. A TOWN page under the Montgomery County hub, three
+       levels deep (ROOT = ../../../).
+       WE HAVE NO OFFICE HERE. The schema address stays Quakertown;
+       Lansdale and Montgomery County appear in areaServed on both the
+       business node and the Service node.
+       Facts used, all public or already published on this site:
+       Lansdale is the commercial center of the North Penn area, it has
+       a downtown, its business mix runs to manufacturers, contractors,
+       medical practices and long-established family businesses, and
+       Souderton, Harleysville and North Wales sit around it. Nothing
+       else is asserted: no employers, landmarks, streets, or figures.
+       Organized by WHO THE CUSTOMER IS, so it does not read as either
+       Bucks page or its Montgomery siblings.
        Verified facts only. No em dashes. No price or review markup.
        ============================================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
 
-  <title>Bucks County Marketing Agency | Corcoran Communications</title>
-  <meta name="description" content="Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer. 215-259-8304.">
+  <title>Web Design in Lansdale, PA | Corcoran Communications</title>
+  <meta name="description" content="Web design for Lansdale, PA businesses and the North Penn towns around it. Sites that get found by neighbors and answer them fast. 215-259-8304.">
 
-  <link rel="canonical" href="https://corcoranpr.com/locations/bucks-county/">
+  <link rel="canonical" href="https://corcoranpr.com/locations/montgomery-county/lansdale/">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bucks County Marketing Agency | Corcoran Communications">
-  <meta property="og:description" content="Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer.">
-  <meta property="og:url" content="https://corcoranpr.com/locations/bucks-county/">
+  <meta property="og:title" content="Web Design in Lansdale, PA | Corcoran Communications">
+  <meta property="og:description" content="Web design for Lansdale, PA businesses and the North Penn towns around it, built to get found by neighbors and answer them fast.">
+  <meta property="og:url" content="https://corcoranpr.com/locations/montgomery-county/lansdale/">
   <meta property="og:image" content="https://corcoranpr.com/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="../../assets/site.css">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script src="../../../assets/site.js" defer></script>
 
   <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
        as the homepage so every page resolves to one business entity. It
@@ -63,15 +69,8 @@
         },
         "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
         "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" },
-          { "@type": "Place", "name": "Quakertown, Pennsylvania" },
-          { "@type": "Place", "name": "Doylestown, Pennsylvania" },
-          { "@type": "Place", "name": "Perkasie, Pennsylvania" },
-          { "@type": "Place", "name": "Sellersville, Pennsylvania" },
-          { "@type": "Place", "name": "Newtown, Pennsylvania" },
-          { "@type": "Place", "name": "Warrington, Pennsylvania" },
-          { "@type": "Place", "name": "New Hope, Pennsylvania" },
-          { "@type": "Place", "name": "Chalfont, Pennsylvania" }
+          { "@type": "Place", "name": "Lansdale, Pennsylvania" },
+          { "@type": "AdministrativeArea", "name": "Montgomery County, Pennsylvania" }
         ],
         "sameAs": [
           "https://www.facebook.com/CorcoranPR/",
@@ -82,30 +81,23 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://corcoranpr.com/locations/bucks-county/#webpage",
-        "url": "https://corcoranpr.com/locations/bucks-county/",
-        "name": "Bucks County Marketing Agency | Corcoran Communications",
-        "description": "Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer. 215-259-8304.",
-        "about": { "@id": "https://corcoranpr.com/locations/bucks-county/#service" },
+        "@id": "https://corcoranpr.com/locations/montgomery-county/lansdale/#webpage",
+        "url": "https://corcoranpr.com/locations/montgomery-county/lansdale/",
+        "name": "Web Design in Lansdale, PA | Corcoran Communications",
+        "description": "Web design for Lansdale, PA businesses and the North Penn towns around it. Sites that get found by neighbors and answer them fast. 215-259-8304.",
+        "about": { "@id": "https://corcoranpr.com/locations/montgomery-county/lansdale/#service" },
         "isPartOf": { "@id": "https://corcoranpr.com/#business" }
       },
       {
         "@type": "Service",
-        "@id": "https://corcoranpr.com/locations/bucks-county/#service",
-        "name": "Marketing Services for Bucks County Businesses",
-        "serviceType": "Marketing services for Bucks County businesses",
-        "description": "Marketing, web design, search engine optimization, and advertising for businesses across Bucks County, Pennsylvania, delivered from Quakertown by the owner rather than a junior account team.",
+        "@id": "https://corcoranpr.com/locations/montgomery-county/lansdale/#service",
+        "name": "Web Design for Lansdale Businesses",
+        "serviceType": "Web design for Lansdale, PA businesses",
+        "description": "Web design for businesses in Lansdale, Pennsylvania and the surrounding North Penn area of Montgomery County, covering manufacturers, contractors, medical practices, downtown businesses, and long-established family firms.",
         "provider": { "@id": "https://corcoranpr.com/#business" },
         "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" },
-          { "@type": "Place", "name": "Quakertown, Pennsylvania" },
-          { "@type": "Place", "name": "Doylestown, Pennsylvania" },
-          { "@type": "Place", "name": "Perkasie, Pennsylvania" },
-          { "@type": "Place", "name": "Sellersville, Pennsylvania" },
-          { "@type": "Place", "name": "Newtown, Pennsylvania" },
-          { "@type": "Place", "name": "Warrington, Pennsylvania" },
-          { "@type": "Place", "name": "New Hope, Pennsylvania" },
-          { "@type": "Place", "name": "Chalfont, Pennsylvania" }
+          { "@type": "Place", "name": "Lansdale, Pennsylvania" },
+          { "@type": "AdministrativeArea", "name": "Montgomery County, Pennsylvania" }
         ]
       },
       {
@@ -113,7 +105,8 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
           { "@type": "ListItem", "position": 2, "name": "Service Area", "item": "https://corcoranpr.com/#service-area" },
-          { "@type": "ListItem", "position": 3, "name": "Bucks County", "item": "https://corcoranpr.com/locations/bucks-county/" }
+          { "@type": "ListItem", "position": 3, "name": "Montgomery County", "item": "https://corcoranpr.com/locations/montgomery-county/" },
+          { "@type": "ListItem", "position": 4, "name": "Lansdale", "item": "https://corcoranpr.com/locations/montgomery-county/lansdale/" }
         ]
       },
       {
@@ -121,18 +114,18 @@
         "mainEntity": [
                     {
             "@type": "Question",
-            "name": "Do you work with businesses across all of Bucks County?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are based in Quakertown in upper Bucks and work with businesses throughout the county, including Doylestown, Newtown, Perkasie, Sellersville, Warrington, New Hope, and Chalfont, plus Montgomery County and the Lehigh Valley next door." }
+            "name": "Do you have an office in Lansdale?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. We work out of Quakertown, minutes from the Montgomery county line, and it is the only office we have. Most of what we do happens by phone, video, and email, and we come to you when it helps." }
           },
           {
             "@type": "Question",
-            "name": "Does being local actually help with Google rankings?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For local searches, yes. Google weighs proximity and local relevance heavily for 'near me' and map results, and it rewards businesses with complete profiles, consistent details, real reviews, and sites that clearly name the areas they serve. Knowing the county also means we know which searches your customers actually run." }
+            "name": "Our customers come from Souderton and Harleysville as much as Lansdale. How does the site handle that?",
+            "acceptedAnswer": { "@type": "Answer", "text": "By naming them. A page that only ever says Lansdale tells Google, and the reader, that Lansdale is your limit. We put the towns you actually serve into the copy and the structured data, so a search two towns over still finds you." }
           },
           {
             "@type": "Question",
-            "name": "Do I need to come to your office?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need." }
+            "name": "We have been here for decades and most work comes by word of mouth. What does a website add?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It protects what you already have. A recommendation now gets checked online before anyone calls, and a thin or dated site quietly undoes the referral. The job is to confirm the reputation, not to replace it." }
           },
           {
             "@type": "Question",
@@ -150,14 +143,14 @@
   <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
   <header class="nav">
     <div class="wrap inner">
-      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <a class="nav-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
       <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
-        <li><a href="../../#services">Services</a></li>
-        <li><a href="../../#promise">Promise</a></li>
-        <li><a href="../../#how">How It Works</a></li>
-        <li><a href="../../#team">Team</a></li>
-        <li><a href="../../#industries">Industries</a></li>
-        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../../#services">Services</a></li>
+        <li><a href="../../../#promise">Promise</a></li>
+        <li><a href="../../../#how">How It Works</a></li>
+        <li><a href="../../../#team">Team</a></li>
+        <li><a href="../../../#industries">Industries</a></li>
+        <li><a href="../../../#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
@@ -175,16 +168,17 @@
              Same labels, or Google reports a mismatch. -->
         <nav class="crumb" aria-label="Breadcrumb">
           <ol>
-            <li><a href="../../">Home</a></li>
-            <li><a href="../../#service-area">Service Area</a></li>
-            <li><span aria-current="page">Bucks County</span></li>
+            <li><a href="../../../">Home</a></li>
+            <li><a href="../../../#service-area">Service Area</a></li>
+            <li><a href="../">Montgomery County</a></li>
+            <li><span aria-current="page">Lansdale</span></li>
           </ol>
         </nav>
         <div class="hero-split">
           <div class="hero-copy-col">
-            <p class="eyebrow">Service Area · Bucks County, Pennsylvania</p>
-            <h1>Marketing for Bucks County Businesses, <span class="accent">by a Bucks County Business</span></h1>
-            <p class="lead">We are based in Quakertown, in upper Bucks, and we have spent years working with businesses up and down the county, from the industrial parks along Route 309 to the professional offices around the Doylestown courthouse to the shops and restaurants of Newtown and New Hope. We know which searches your customers actually run here, and we build sites, ads, and content that win them.</p>
+            <p class="eyebrow">Service Area · Lansdale, Montgomery County</p>
+            <h1>Web Design in Lansdale, <span class="accent">for the Center of the North Penn Area</span></h1>
+            <p class="lead">Lansdale is where the North Penn area does its business, and a lot of what happens here serves Souderton, Harleysville, and North Wales as much as the town itself. That widens who has to find you, and it changes what the website has to say before anything else.</p>
             <div class="cta-row">
               <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
               <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
@@ -199,17 +193,18 @@
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <path d="M118 40l88 10 66 34-12 62 26 46-40 62-96 8-46-44 14-56-24-52z" fill="#DDF7EC" fill-opacity=".07" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5" stroke-linejoin="round"/>
-              <circle cx="150" cy="96" r="5" fill="#DDF7EC" fill-opacity=".55"/>
-              <circle cx="214" cy="140" r="5" fill="#DDF7EC" fill-opacity=".45"/>
-              <circle cx="176" cy="200" r="5" fill="#DDF7EC" fill-opacity=".45"/>
-              <circle cx="252" cy="214" r="5" fill="#DDF7EC" fill-opacity=".35"/>
-              <g transform="translate(120,44) scale(2.9)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
-              </g>
-              <circle cx="140" cy="73" r="7" fill="#15B77E"/>
-              <rect x="96" y="256" width="104" height="9" rx="4.5" fill="#DDF7EC" fill-opacity=".3"/>
-              <rect x="212" y="256" width="72" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".2"/>
+              <rect x="132" y="96" width="136" height="140" rx="12" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5"/>
+              <rect x="152" y="120" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="208" y="120" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="152" y="166" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".22"/>
+              <rect x="208" y="166" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".22"/>
+              <circle cx="200" cy="216" r="9" fill="#15B77E"/>
+              <circle cx="64" cy="110" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <circle cx="336" cy="110" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <circle cx="200" cy="42" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <path d="M84 118l44 20M316 118l-44 20M200 62v30" stroke="#DDF7EC" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="5 6"/>
+              <rect x="110" y="258" width="82" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".24"/>
+              <rect x="204" y="258" width="60" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".16"/>
 
             </svg>
           </div>
@@ -222,27 +217,47 @@
          service to someone who has never bought marketing. -->
     <section id="included">
       <div class="wrap">
-        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Business owners in Bucks County want a marketing partner who already knows the area: who is here, what they search for, and how to get found by them.</p>
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Web design in Lansdale means a site that a neighbor finds quickly, trusts on sight, and can act on from a phone, whether they are in town or three towns over.</p>
         <div class="sec-head">
-          <h2 class="sec-title">One County, Several Different Markets</h2>
-          <p class="sec-sub">WHAT WE KNOW ABOUT WORKING HERE</p>
+          <h2 class="sec-title">What Lansdale Businesses Need From a Website</h2>
+          <p class="sec-sub">SIX KINDS OF BUSINESS HERE, AND WHAT EACH ONE HAS TO PROVE</p>
         </div>
-        <div class="grid2">
+        <div class="grid3">
           <article class="card">
-            <h3>Upper Bucks</h3>
-            <p>Our home. Quakertown, Perkasie, Sellersville, and the townships around them: manufacturers, contractors, family-owned service businesses, and a Main Street economy where reputation travels by word of mouth and by Google review. Marketing here has to be local to the street level.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.4L12 4.6l8.5 4.8"/><path d="M6 9.4v8M10 9.4v8M14 9.4v8M18 9.4v8"/><path d="M3.5 20.4h17"/></svg></span>
+            <p class="tag">Industry</p>
+            <h3>Manufacturers and suppliers</h3>
+            <p>Buyers here shortlist before they call, often from outside the area entirely. What they want on the page is capability, capacity, tolerances, and who you already supply. Personality can wait until the meeting.</p>
           </article>
           <article class="card">
-            <h3>Central Bucks</h3>
-            <p>Doylestown, Chalfont, Warrington, and the professional corridor around the county seat: law firms, medical and dental practices, financial advisors, and the businesses that serve them. Trust and credibility signals decide most searches here.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 16.6v-3l2-5A2 2 0 0 1 7.5 7.3h9a2 2 0 0 1 1.9 1.3l2 5v3"/><path d="M3.6 13.6h16.8"/><circle cx="7.6" cy="16.6" r="1.7"/><circle cx="16.4" cy="16.6" r="1.7"/></svg></span>
+            <p class="tag">Trades</p>
+            <h3>Contractors covering North Penn</h3>
+            <p>If you work a radius rather than an address, the towns you cover belong on the page in plain words. A homeowner in Harleysville needs to see their own town named before they will believe you turn up.</p>
           </article>
           <article class="card">
-            <h3>Lower Bucks</h3>
-            <p>Newtown and the more densely populated south, closer to Philadelphia, with more competition for every search and more value in showing up in the map results and the AI answers when someone nearby asks.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
+            <p class="tag">Practices</p>
+            <h3>Medical and dental practices</h3>
+            <p>Patients here have several options within a short drive, so the decision turns on the small print: who they will see, what the first visit involves, which plans you take, and whether they can book without phoning at lunchtime.</p>
           </article>
           <article class="card">
-            <h3>The River Towns</h3>
-            <p>New Hope and the Delaware corridor: hospitality, galleries, weekend visitors, and businesses whose customers are searching before they arrive. Seasonal timing and social presence matter more here than anywhere else in the county.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.6v5.4a2.2 2.2 0 0 0 4.4 0V3.6"/><path d="M8.8 9.4v11"/><path d="M17.2 3.6c-1.5 1.4-2.2 3.2-2.2 5.3 0 1.7.8 2.8 2.2 3.3v8.2"/></svg></span>
+            <p class="tag">Downtown</p>
+            <h3>Shops and restaurants in town</h3>
+            <p>A downtown business lives or dies on whether the details online are current. Hours, parking, and what is actually available today. An out-of-date page turns a customer away more reliably than a closed door.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9 6.7 19.7l1.1-5.9L3.5 9.7l5.9-.8z"/></svg></span>
+            <p class="tag">Reputation</p>
+            <h3>Family businesses decades old</h3>
+            <p>A long reputation is an asset until the search results do not reflect it. Reviews, a complete listing, and a site that looks maintained are what carry forty years of goodwill into a search someone runs tonight.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><circle cx="12" cy="10.1" r="2.6"/></svg></span>
+            <p class="tag">Orbit</p>
+            <h3>Businesses serving the towns around it</h3>
+            <p>A Lansdale business often pulls from Souderton, Harleysville, and North Wales too. Say so on the page. Google will not assume your reach, and neither will the person deciding whether you are near enough.</p>
           </article>
         </div>
       </div>
@@ -255,19 +270,19 @@
     <section class="dark field-blue" id="approach">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title">Why a Local Firm Wins Local Searches</h2>
-          <p class="sec-sub">PROXIMITY IS A RANKING FACTOR, AND SO IS KNOWING THE PLACE</p>
+          <h2 class="sec-title">A Quakertown Firm That Works the Whole Cluster</h2>
+          <p class="sec-sub">ONE OFFICE, AND A CLUSTER OF TOWNS TO COVER</p>
         </div>
         <div class="grid2">
           <article class="card">
-            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><circle class="ico-accent" cx="12" cy="10.1" r="2.6"/></svg></span>
-            <h3>The searches that matter here</h3>
-            <p>Most of your customers do not type a town name. They search 'near me' and let Google decide who is close and credible. Winning that means a complete business profile, consistent details everywhere, reviews, and a fast site that names the places you actually serve. We build all of it.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><path class="ico-accent" d="M12 10.1h.01"/></svg></span>
+            <h3>Where we are</h3>
+            <p>Our office is in Quakertown, minutes from the Montgomery county line, and it is the only office we have. Most of the work happens by phone, video, and email, with a visit when it earns its place.</p>
           </article>
           <article class="card">
-            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path class="ico-accent" d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
-            <h3>Our work in Bucks County</h3>
-            <p>We have worked with Bucks County businesses across trades and professions for years, and we run our own business here. We know the towns, the roads, and the customers.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path class="ico-accent" d="M16.5 5.5a3.5 3.5 0 0 1 0 7M18 20c0-2.3-.7-4-1.9-5.2"/></svg></span>
+            <h3>Building for four towns, not one</h3>
+            <p>A business here is usually chosen by someone in one of four or five towns, not one. We build the site to be findable across that whole cluster rather than for the borough alone, because that is where your customers actually are.</p>
           </article>
         </div>
         <div class="statgrid" style="margin-top:44px">
@@ -282,32 +297,13 @@
       </div>
     </section>
 
-    <!-- ============ TOWNS ============
-         Every town named here is one we actually work in. Names become
-         links as each town earns its own page. -->
-    <section id="towns" class="band-panel band-towns">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2 class="sec-title">Towns We Serve in Bucks County</h2>
-          <p class="sec-sub">EVERY TOWN LISTED HERE IS ONE WE ACTUALLY WORK IN</p>
-        </div>
-        <p style="text-align:center;max-width:860px;margin:0 auto;font-size:1.05rem">In upper Bucks, our own end of the county, that means Quakertown, Perkasie, and Sellersville and the townships around them. Through central Bucks it means Doylestown, Chalfont, and Warrington, the professional corridor around the county seat. Further south we work with businesses in Newtown, and along the Delaware in New Hope.</p>
-        <ul class="town-list">
-          <li><a href="quakertown/">Quakertown</a></li>
-          <li><a href="doylestown/">Doylestown</a></li>
-          <li>Perkasie</li>
-          <li>Sellersville</li>
-          <li><a href="newtown/">Newtown</a></li>
-          <li>Warrington</li>
-          <li>New Hope</li>
-          <li>Chalfont</li>
-        </ul>
-        <p style="text-align:center;margin-top:32px;font-size:1.05rem">If your town is not listed, we almost certainly still serve it. Call and ask.</p>
-      </div>
-    </section>
-
     <!-- ============ HOW IT WORKS ============
-         Four steps. Step 02 is standard on every page:
+         Four NUMBERED PROCESS steps, not benefit tiles. If you are
+         lifting them from a live page, take the grid4 inside that
+         page's own id="how" section: several pages have an earlier
+         grid4 in the differentiator band, and grabbing the first one
+         silently ships the wrong content.
+         Step 02 is standard on every page:
          "The plan and the number" / "We walk you through the report
          together, agree what is worth doing, and you get the flat quote
          in writing. No pressure, and no meter running." -->
@@ -376,32 +372,32 @@
     </section>
 
     <!-- ============ STRONGER TOGETHER ============
-         Three cross-links to sibling pages, through ../../services/
+         Three cross-links to sibling pages, through ../../../services/
          so the depth is right from either folder. -->
     <section id="together">
       <div class="wrap">
         <div class="sec-head">
           <h2 class="sec-title">Stronger Together</h2>
-          <p class="sec-sub">WHAT BUCKS COUNTY BUSINESSES START WITH</p>
+          <p class="sec-sub">WHAT LANSDALE BUSINESSES PAIR WITH A NEW SITE</p>
         </div>
         <div class="grid3">
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.6 6.5h.01M9.6 6.5h.01"/></svg></span>
             <h3>Web Design</h3>
-            <p>A fast, honest site that names the towns you serve and puts the phone number where a thumb already is.</p>
-            <p class="card-more"><a href="../../services/web-design/">More on web design</a></p>
+            <p>How we build, what it includes, and what you own at the end.</p>
+            <p class="card-more"><a href="../../../services/web-design/">More on web design</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
             <h3>SEO Services</h3>
-            <p>The business profile, listings, and local pages that win 'near me' searches across the county.</p>
-            <p class="card-more"><a href="../../services/seo/">More on SEO services</a></p>
+            <p>The listing and local pages that put you in front of the towns around you, not just this one.</p>
+            <p class="card-more"><a href="../../../services/seo/">More on SEO services</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 11.9h.01"/></svg></span>
             <h3>Google Ads</h3>
-            <p>Tight campaigns aimed at the parts of Bucks County you actually serve, and nowhere else.</p>
-            <p class="card-more"><a href="../../services/google-ads/">More on Google Ads</a></p>
+            <p>Campaigns held to the North Penn towns you actually serve, for the weeks you want the work.</p>
+            <p class="card-more"><a href="../../../services/google-ads/">More on Google Ads</a></p>
           </article>
         </div>
       </div>
@@ -445,11 +441,11 @@
       <div class="wrap" style="max-width:880px">
         <div class="sec-head">
           <h2 class="sec-title">Questions, Answered</h2>
-          <p class="sec-sub">WHAT BUSINESS OWNERS HERE ASK US</p>
+          <p class="sec-sub">WHAT LANSDALE BUSINESS OWNERS ASK US</p>
         </div>
-        <details><summary>Do you work with businesses across all of Bucks County?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. We are based in Quakertown in upper Bucks and work with businesses throughout the county, including Doylestown, Newtown, Perkasie, Sellersville, Warrington, New Hope, and Chalfont, plus Montgomery County and the Lehigh Valley next door.</p></details>
-        <details><summary>Does being local actually help with Google rankings?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>For local searches, yes. Google weighs proximity and local relevance heavily for 'near me' and map results, and it rewards businesses with complete profiles, consistent details, real reviews, and sites that clearly name the areas they serve. Knowing the county also means we know which searches your customers actually run.</p></details>
-        <details><summary>Do I need to come to your office?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need.</p></details>
+        <details><summary>Do you have an office in Lansdale?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. We work out of Quakertown, minutes from the Montgomery county line, and it is the only office we have. Most of what we do happens by phone, video, and email, and we come to you when it helps.</p></details>
+        <details><summary>Our customers come from Souderton and Harleysville as much as Lansdale. How does the site handle that?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>By naming them. A page that only ever says Lansdale tells Google, and the reader, that Lansdale is your limit. We put the towns you actually serve into the copy and the structured data, so a search two towns over still finds you.</p></details>
+        <details><summary>We have been here for decades and most work comes by word of mouth. What does a website add?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>It protects what you already have. A recommendation now gets checked online before anyone calls, and a thin or dated site quietly undoes the referral. The job is to confirm the reputation, not to replace it.</p></details>
         <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
       </div>
     </section>
@@ -461,7 +457,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <a class="foot-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
           <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
           <p class="foot-nap">
             Corcoran Communications<br>
@@ -474,22 +470,22 @@
         <div>
           <h2 class="foot-head">Explore</h2>
           <ul class="foot-links">
-            <li><a href="../../#services">Services</a></li>
-            <li><a href="../../#promise">The Promise</a></li>
-            <li><a href="../../#how">How It Works</a></li>
-            <li><a href="../../#industries">Industries</a></li>
-            <li><a href="../../#faq">FAQ</a></li>
-            <li><a href="../../#team">Team</a></li>
+            <li><a href="../../../#services">Services</a></li>
+            <li><a href="../../../#promise">The Promise</a></li>
+            <li><a href="../../../#how">How It Works</a></li>
+            <li><a href="../../../#industries">Industries</a></li>
+            <li><a href="../../../#faq">FAQ</a></li>
+            <li><a href="../../../#team">Team</a></li>
           </ul>
         </div>
         <div>
           <h2 class="foot-head">Services</h2>
           <ul class="foot-links">
-            <li><a href="../../services/web-design/">Web Design</a></li>
-            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
-            <li><a href="../../services/google-ads/">Google Ads</a></li>
-            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
-            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+            <li><a href="../../../services/web-design/">Web Design</a></li>
+            <li><a href="../../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../../services/lead-generation/">Lead Generation</a></li>
           </ul>
         </div>
         <div>
@@ -503,14 +499,14 @@
         <div class="foot-area" id="service-area">
           <h2 class="foot-head">Service Area</h2>
           <ul>
-            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
-            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
-            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
-            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
-            <li><a href="../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
-            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+            <li><a href="../../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../../locations/bucks-county/">Perkasie</a></li><li><a href="../../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../../locations/bucks-county/">Warrington</a></li><li><a href="../../../locations/bucks-county/">New Hope</a></li><li><a href="../../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../../locations/montgomery-county/">Souderton</a></li><li><a href="../../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../../locations/montgomery-county/">North Wales</a></li><li><a href="../../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../../locations/lehigh-valley/">Easton</a></li><li><a href="../../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../../locations/lehigh-valley/">Coopersburg</a></li>
           </ul>
-          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+          <p>Serving <a href="../../../locations/bucks-county/">Bucks</a> and <a href="../../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
         </div>
       </div>
       <div class="foot-bottom">

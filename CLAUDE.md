@@ -94,6 +94,9 @@
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
   Together, contact band, FAQ last. Phone CTAs are tel: links; audit
   CTAs go to #contact.
+- American spelling everywhere: center not centre, neighbor not
+  neighbour, skeptical not sceptical, organized not organised. Applies
+  to code comments too, not just site copy.
 - No em dashes in site copy, ever, including schema text.
 
 ## Facts are sacred
