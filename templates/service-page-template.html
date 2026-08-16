@@ -79,6 +79,14 @@
        - Six cards on a town page are six KINDS OF BUSINESS in that
          town, not six features. That is what makes the page specific
          enough to pass the variance test against its county hub.
+       - SCHEMA ON A LOCATION PAGE. The business address is ALWAYS
+         Quakertown, on every page, because it is the only office we
+         have. Never put an address in a town we do not sit in. The
+         town is declared through areaServed instead, and it goes on
+         BOTH nodes: the business node gets the town plus its county,
+         and the Service node gets the same. A county hub does the same
+         thing with the county plus every town under it. Getting this
+         half right is easy to miss, so check both nodes.
 
        ---------------------------------------------------------------
        PROOF LINE. {{PROOF_LINE}} defaults to the standard line used on
