@@ -2,37 +2,40 @@
 <html lang="en">
 <head>
   <!-- ============================================================
-       BUCKS COUNTY. The first COUNTY HUB, and the gold master for the
-       other two. Built from templates/service-page-template.html.
-       Per the Location pages rules in CLAUDE.md: a county hub is a real
-       destination, with substantive prose about the county's business
-       mix and every served town named in the text. Towns link to their
-       own pages once those exist; until then the names are plain text.
-       One business entity, in Quakertown. Never an address elsewhere.
+       DOYLESTOWN. A TOWN page under the Bucks County hub, three levels
+       deep (ROOT = ../../../).
+       WE HAVE NO OFFICE HERE. The business address in the schema stays
+       Quakertown; Doylestown appears in areaServed only. The page says
+       plainly where we are.
+       Facts used, all public and checkable: Doylestown is the county
+       seat of Bucks County, the courthouse and the professional cluster
+       around it, the walkable downtown business district, and its role
+       as the hub of central Bucks. Nothing else about the town is
+       asserted: no landmarks, employers, streets, or figures.
        Verified facts only. No em dashes. No price or review markup.
        ============================================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
 
-  <title>Bucks County Marketing Agency | Corcoran Communications</title>
-  <meta name="description" content="Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer. 215-259-8304.">
+  <title>Web Design in Doylestown, PA | Corcoran Communications</title>
+  <meta name="description" content="Web design for Doylestown, PA businesses: the practices around the county courthouse and the shops of the downtown district. 215-259-8304.">
 
-  <link rel="canonical" href="https://corcoranpr.com/locations/bucks-county/">
+  <link rel="canonical" href="https://corcoranpr.com/locations/bucks-county/doylestown/">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bucks County Marketing Agency | Corcoran Communications">
-  <meta property="og:description" content="Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer.">
-  <meta property="og:url" content="https://corcoranpr.com/locations/bucks-county/">
+  <meta property="og:title" content="Web Design in Doylestown, PA | Corcoran Communications">
+  <meta property="og:description" content="Web design for Doylestown, PA businesses, from the practices around the county courthouse to the shops of the downtown district.">
+  <meta property="og:url" content="https://corcoranpr.com/locations/bucks-county/doylestown/">
   <meta property="og:image" content="https://corcoranpr.com/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="../../assets/site.css">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script src="../../../assets/site.js" defer></script>
 
   <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
        as the homepage so every page resolves to one business entity. It
@@ -62,17 +65,6 @@
           "addressCountry": "US"
         },
         "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" },
-          { "@type": "Place", "name": "Quakertown, Pennsylvania" },
-          { "@type": "Place", "name": "Doylestown, Pennsylvania" },
-          { "@type": "Place", "name": "Perkasie, Pennsylvania" },
-          { "@type": "Place", "name": "Sellersville, Pennsylvania" },
-          { "@type": "Place", "name": "Newtown, Pennsylvania" },
-          { "@type": "Place", "name": "Warrington, Pennsylvania" },
-          { "@type": "Place", "name": "New Hope, Pennsylvania" },
-          { "@type": "Place", "name": "Chalfont, Pennsylvania" }
-        ],
         "sameAs": [
           "https://www.facebook.com/CorcoranPR/",
           "https://www.instagram.com/corcoran_pr/",
@@ -82,30 +74,23 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://corcoranpr.com/locations/bucks-county/#webpage",
-        "url": "https://corcoranpr.com/locations/bucks-county/",
-        "name": "Bucks County Marketing Agency | Corcoran Communications",
-        "description": "Marketing, web design, and SEO for Bucks County businesses, from Quakertown to Doylestown to Newtown. Veteran-owned, one senior marketer. 215-259-8304.",
-        "about": { "@id": "https://corcoranpr.com/locations/bucks-county/#service" },
+        "@id": "https://corcoranpr.com/locations/bucks-county/doylestown/#webpage",
+        "url": "https://corcoranpr.com/locations/bucks-county/doylestown/",
+        "name": "Web Design in Doylestown, PA | Corcoran Communications",
+        "description": "Web design for Doylestown, PA businesses: the practices around the county courthouse and the shops of the downtown district. 215-259-8304.",
+        "about": { "@id": "https://corcoranpr.com/locations/bucks-county/doylestown/#service" },
         "isPartOf": { "@id": "https://corcoranpr.com/#business" }
       },
       {
         "@type": "Service",
-        "@id": "https://corcoranpr.com/locations/bucks-county/#service",
-        "name": "Marketing Services for Bucks County Businesses",
-        "serviceType": "Marketing services for Bucks County businesses",
-        "description": "Marketing, web design, search engine optimization, and advertising for businesses across Bucks County, Pennsylvania, delivered from Quakertown by the owner rather than a junior account team.",
+        "@id": "https://corcoranpr.com/locations/bucks-county/doylestown/#service",
+        "name": "Web Design for Doylestown Businesses",
+        "serviceType": "Web design for Doylestown, PA businesses",
+        "description": "Web design for businesses in Doylestown, Pennsylvania, the county seat of Bucks County, covering the professional practices clustered around the courthouse, the shops and restaurants of the downtown district, and the businesses that serve them.",
         "provider": { "@id": "https://corcoranpr.com/#business" },
         "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" },
-          { "@type": "Place", "name": "Quakertown, Pennsylvania" },
           { "@type": "Place", "name": "Doylestown, Pennsylvania" },
-          { "@type": "Place", "name": "Perkasie, Pennsylvania" },
-          { "@type": "Place", "name": "Sellersville, Pennsylvania" },
-          { "@type": "Place", "name": "Newtown, Pennsylvania" },
-          { "@type": "Place", "name": "Warrington, Pennsylvania" },
-          { "@type": "Place", "name": "New Hope, Pennsylvania" },
-          { "@type": "Place", "name": "Chalfont, Pennsylvania" }
+          { "@type": "AdministrativeArea", "name": "Bucks County, Pennsylvania" }
         ]
       },
       {
@@ -113,7 +98,8 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
           { "@type": "ListItem", "position": 2, "name": "Service Area", "item": "https://corcoranpr.com/#service-area" },
-          { "@type": "ListItem", "position": 3, "name": "Bucks County", "item": "https://corcoranpr.com/locations/bucks-county/" }
+          { "@type": "ListItem", "position": 3, "name": "Bucks County", "item": "https://corcoranpr.com/locations/bucks-county/" },
+          { "@type": "ListItem", "position": 4, "name": "Doylestown", "item": "https://corcoranpr.com/locations/bucks-county/doylestown/" }
         ]
       },
       {
@@ -121,18 +107,18 @@
         "mainEntity": [
                     {
             "@type": "Question",
-            "name": "Do you work with businesses across all of Bucks County?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are based in Quakertown in upper Bucks and work with businesses throughout the county, including Doylestown, Newtown, Perkasie, Sellersville, Warrington, New Hope, and Chalfont, plus Montgomery County and the Lehigh Valley next door." }
+            "name": "Do you have an office in Doylestown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. We work out of Quakertown, up the county in upper Bucks, and it is the only office we have. Doylestown is our county seat as much as yours, and most of what we do happens by phone, video, and email, with a visit when it helps." }
           },
           {
             "@type": "Question",
-            "name": "Does being local actually help with Google rankings?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For local searches, yes. Google weighs proximity and local relevance heavily for 'near me' and map results, and it rewards businesses with complete profiles, consistent details, real reviews, and sites that clearly name the areas they serve. Knowing the county also means we know which searches your customers actually run." }
+            "name": "Most of our work comes from referral. Does a website still matter?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It matters more, not less. A referral almost always gets checked online before anyone picks up the phone, and that check is where a good recommendation quietly dies. The site does not have to win the client. It has to confirm what the person who referred you said." }
           },
           {
             "@type": "Question",
-            "name": "Do I need to come to your office?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need." }
+            "name": "How do we stand out from the other practices around the courthouse?",
+            "acceptedAnswer": { "@type": "Answer", "text": "By answering the questions the others leave to a contact form. Who the client will actually work with, what the first meeting costs and covers, how long things take, and what you do not do. Specifics are the whole advantage, and most sites in a professional cluster avoid them." }
           },
           {
             "@type": "Question",
@@ -150,14 +136,14 @@
   <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
   <header class="nav">
     <div class="wrap inner">
-      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <a class="nav-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
       <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
-        <li><a href="../../#services">Services</a></li>
-        <li><a href="../../#promise">Promise</a></li>
-        <li><a href="../../#how">How It Works</a></li>
-        <li><a href="../../#team">Team</a></li>
-        <li><a href="../../#industries">Industries</a></li>
-        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../../#services">Services</a></li>
+        <li><a href="../../../#promise">Promise</a></li>
+        <li><a href="../../../#how">How It Works</a></li>
+        <li><a href="../../../#team">Team</a></li>
+        <li><a href="../../../#industries">Industries</a></li>
+        <li><a href="../../../#faq">FAQ</a></li>
       </ul></nav>
       <a class="btn btn-sm" href="#contact">Get Started</a>
       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
@@ -175,16 +161,17 @@
              Same labels, or Google reports a mismatch. -->
         <nav class="crumb" aria-label="Breadcrumb">
           <ol>
-            <li><a href="../../">Home</a></li>
-            <li><a href="../../#service-area">Service Area</a></li>
-            <li><span aria-current="page">Bucks County</span></li>
+            <li><a href="../../../">Home</a></li>
+            <li><a href="../../../#service-area">Service Area</a></li>
+            <li><a href="../">Bucks County</a></li>
+            <li><span aria-current="page">Doylestown</span></li>
           </ol>
         </nav>
         <div class="hero-split">
           <div class="hero-copy-col">
-            <p class="eyebrow">Service Area · Bucks County, Pennsylvania</p>
-            <h1>Marketing for Bucks County Businesses, <span class="accent">by a Bucks County Business</span></h1>
-            <p class="lead">We are based in Quakertown, in upper Bucks, and we have spent years working with businesses up and down the county, from the industrial parks along Route 309 to the professional offices around the Doylestown courthouse to the shops and restaurants of Newtown and New Hope. We know which searches your customers actually run here, and we build sites, ads, and content that win them.</p>
+            <p class="eyebrow">Service Area · Doylestown, Bucks County</p>
+            <h1>Web Design in Doylestown, <span class="accent">for the County Seat and Its Downtown</span></h1>
+            <p class="lead">Doylestown is the county seat, and it works like one. The practices clustered around the courthouse trade on credibility, and the downtown district trades on being walkable and worth the trip. Those are two different websites, and most of the businesses here are running the wrong one.</p>
             <div class="cta-row">
               <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
               <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
@@ -199,17 +186,19 @@
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <path d="M118 40l88 10 66 34-12 62 26 46-40 62-96 8-46-44 14-56-24-52z" fill="#DDF7EC" fill-opacity=".07" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5" stroke-linejoin="round"/>
-              <circle cx="150" cy="96" r="5" fill="#DDF7EC" fill-opacity=".55"/>
-              <circle cx="214" cy="140" r="5" fill="#DDF7EC" fill-opacity=".45"/>
-              <circle cx="176" cy="200" r="5" fill="#DDF7EC" fill-opacity=".45"/>
-              <circle cx="252" cy="214" r="5" fill="#DDF7EC" fill-opacity=".35"/>
-              <g transform="translate(120,44) scale(2.9)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
-              </g>
-              <circle cx="140" cy="73" r="7" fill="#15B77E"/>
-              <rect x="96" y="256" width="104" height="9" rx="4.5" fill="#DDF7EC" fill-opacity=".3"/>
-              <rect x="212" y="256" width="72" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".2"/>
+              <path d="M120 232V132l80-46 80 46v100" fill="#DDF7EC" fill-opacity=".07" stroke="#DDF7EC" stroke-opacity=".26" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M104 232h192" stroke="#DDF7EC" stroke-opacity=".3" stroke-width="2" stroke-linecap="round"/>
+              <path d="M146 232v-62M176 232v-62M206 232v-62M236 232v-62" stroke="#DDF7EC" stroke-opacity=".34" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M132 148h136" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="200" cy="112" r="9" fill="#15B77E"/>
+              <rect x="96" y="252" width="94" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="204" y="252" width="66" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".18"/>
+              <rect x="286" y="86" width="72" height="58" rx="10" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <rect x="298" y="100" width="48" height="8" rx="4" fill="#DDF7EC" fill-opacity=".4"/>
+              <rect x="298" y="116" width="34" height="7" rx="3.5" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="42" y="86" width="72" height="58" rx="10" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <rect x="54" y="100" width="48" height="8" rx="4" fill="#DDF7EC" fill-opacity=".4"/>
+              <rect x="54" y="116" width="34" height="7" rx="3.5" fill="#B6C9DD" fill-opacity=".3"/>
 
             </svg>
           </div>
@@ -222,27 +211,47 @@
          service to someone who has never bought marketing. -->
     <section id="included">
       <div class="wrap">
-        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Business owners in Bucks County want a marketing partner who already knows the area: who is here, what they search for, and how to get found by them.</p>
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>Web design in Doylestown means a site that earns trust in the first few seconds for a practice, or gets someone off the sidewalk and through the door for a shop, and loads fast either way.</p>
         <div class="sec-head">
-          <h2 class="sec-title">One County, Several Different Markets</h2>
-          <p class="sec-sub">WHAT WE KNOW ABOUT WORKING HERE</p>
+          <h2 class="sec-title">What Doylestown Businesses Need From a Website</h2>
+          <p class="sec-sub">SIX KINDS OF BUSINESS AROUND THE COUNTY SEAT</p>
         </div>
-        <div class="grid2">
+        <div class="grid3">
           <article class="card">
-            <h3>Upper Bucks</h3>
-            <p>Our home. Quakertown, Perkasie, Sellersville, and the townships around them: manufacturers, contractors, family-owned service businesses, and a Main Street economy where reputation travels by word of mouth and by Google review. Marketing here has to be local to the street level.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.2v16.2M8 20.4h8"/><path d="M4.4 8.4h15.2"/><path d="M4.4 8.4L2.4 13.6a2.4 2.4 0 0 0 4 0z"/><path d="M19.6 8.4l-2 5.2a2.4 2.4 0 0 0 4 0z"/></svg></span>
+            <p class="tag">Law</p>
+            <h3>Firms near the courthouse</h3>
+            <p>A practice at the county seat gets work from referral and from search, and the site has to serve both. The lawyer being recommended gets checked online before the call. Real people, plain answers, and clear practice areas do more than a masthead and a stock gavel.</p>
           </article>
           <article class="card">
-            <h3>Central Bucks</h3>
-            <p>Doylestown, Chalfont, Warrington, and the professional corridor around the county seat: law firms, medical and dental practices, financial advisors, and the businesses that serve them. Trust and credibility signals decide most searches here.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
+            <p class="tag">Medical</p>
+            <h3>Medical and dental practices</h3>
+            <p>Patients pick on trust and convenience, in that order. Who they will see, what the first visit is like, what insurance you take, and how to book without phoning during work hours. A slow site reads as a slow office.</p>
           </article>
           <article class="card">
-            <h3>Lower Bucks</h3>
-            <p>Newtown and the more densely populated south, closer to Philadelphia, with more competition for every search and more value in showing up in the map results and the AI answers when someone nearby asks.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V10M10 19.5V5M16 19.5v-7M21 19.5h-18"/></svg></span>
+            <p class="tag">Finance</p>
+            <h3>Financial and accounting practices</h3>
+            <p>The decision here takes weeks and starts quietly. Credentials, the kind of client you serve best, and answers to what people are too embarrassed to ask a stranger. This is a site that has to be readable on a Sunday night.</p>
           </article>
           <article class="card">
-            <h3>The River Towns</h3>
-            <p>New Hope and the Delaware corridor: hospitality, galleries, weekend visitors, and businesses whose customers are searching before they arrive. Seasonal timing and social presence matter more here than anywhere else in the county.</p>
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.6v5.4a2.2 2.2 0 0 0 4.4 0V3.6"/><path d="M8.8 9.4v11"/><path d="M17.2 3.6c-1.5 1.4-2.2 3.2-2.2 5.3 0 1.7.8 2.8 2.2 3.3v8.2"/></svg></span>
+            <p class="tag">Downtown</p>
+            <h3>Shops and restaurants in the district</h3>
+            <p>A walkable downtown lives on whether someone decides to make the trip. Current hours, where to park, what is on today, and a map link. Get the hours wrong online and you have closed the door yourself.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 16.8h4.5"/></svg></span>
+            <p class="tag">B2B</p>
+            <h3>The firms that serve the firms</h3>
+            <p>Bookkeepers, IT, print, staffing, and the rest of the businesses whose customers are the practices around them. Buyers here compare capability, not personality, and they want it stated plainly on one page.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <p class="tag">Reach</p>
+            <h3>Anyone competing beyond the borough</h3>
+            <p>Plenty of Doylestown businesses are chosen by people who never come downtown. If you serve central Bucks or farther, the site has to name where you work, or Google will assume you mean the block you are on.</p>
           </article>
         </div>
       </div>
@@ -255,19 +264,19 @@
     <section class="dark field-blue" id="approach">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title">Why a Local Firm Wins Local Searches</h2>
-          <p class="sec-sub">PROXIMITY IS A RANKING FACTOR, AND SO IS KNOWING THE PLACE</p>
+          <h2 class="sec-title">We Are Up the County, in Quakertown</h2>
+          <p class="sec-sub">WHERE WE ARE, AND WHY IT MATTERS HERE</p>
         </div>
         <div class="grid2">
           <article class="card">
-            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><circle class="ico-accent" cx="12" cy="10.1" r="2.6"/></svg></span>
-            <h3>The searches that matter here</h3>
-            <p>Most of your customers do not type a town name. They search 'near me' and let Google decide who is close and credible. Winning that means a complete business profile, consistent details everywhere, reviews, and a fast site that names the places you actually serve. We build all of it.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/><path class="ico-accent" d="M12 10.1h.01"/></svg></span>
+            <h3>Where we are</h3>
+            <p>Our office is in Quakertown, in upper Bucks. We do not have one in Doylestown, and we will not pretend otherwise. Doylestown is our county seat too, which means the courts, the records, and a good deal of the professional network we deal with are the same ones you deal with.</p>
           </article>
           <article class="card">
-            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path class="ico-accent" d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
-            <h3>Our work in Bucks County</h3>
-            <p>We have worked with Bucks County businesses across trades and professions for years, and we run our own business here. We know the towns, the roads, and the customers.</p>
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/><path class="ico-accent" d="M7.8 11.2l1.9-2 2 2 2.3-3"/></svg></span>
+            <h3>What that changes about the work</h3>
+            <p>We already know how search behaves across this county: which terms carry a town name, which are just near me, and how far a central Bucks business realistically pulls from. That is the difference between a site built for Doylestown and a site built for anywhere.</p>
           </article>
         </div>
         <div class="statgrid" style="margin-top:44px">
@@ -282,32 +291,13 @@
       </div>
     </section>
 
-    <!-- ============ TOWNS ============
-         Every town named here is one we actually work in. Names become
-         links as each town earns its own page. -->
-    <section id="towns" class="band-panel band-towns">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2 class="sec-title">Towns We Serve in Bucks County</h2>
-          <p class="sec-sub">EVERY TOWN LISTED HERE IS ONE WE ACTUALLY WORK IN</p>
-        </div>
-        <p style="text-align:center;max-width:860px;margin:0 auto;font-size:1.05rem">In upper Bucks, our own end of the county, that means Quakertown, Perkasie, and Sellersville and the townships around them. Through central Bucks it means Doylestown, Chalfont, and Warrington, the professional corridor around the county seat. Further south we work with businesses in Newtown, and along the Delaware in New Hope.</p>
-        <ul class="town-list">
-          <li><a href="quakertown/">Quakertown</a></li>
-          <li><a href="doylestown/">Doylestown</a></li>
-          <li>Perkasie</li>
-          <li>Sellersville</li>
-          <li><a href="newtown/">Newtown</a></li>
-          <li>Warrington</li>
-          <li>New Hope</li>
-          <li>Chalfont</li>
-        </ul>
-        <p style="text-align:center;margin-top:32px;font-size:1.05rem">If your town is not listed, we almost certainly still serve it. Call and ask.</p>
-      </div>
-    </section>
-
     <!-- ============ HOW IT WORKS ============
-         Four steps. Step 02 is standard on every page:
+         Four NUMBERED PROCESS steps, not benefit tiles. If you are
+         lifting them from a live page, take the grid4 inside that
+         page's own id="how" section: several pages have an earlier
+         grid4 in the differentiator band, and grabbing the first one
+         silently ships the wrong content.
+         Step 02 is standard on every page:
          "The plan and the number" / "We walk you through the report
          together, agree what is worth doing, and you get the flat quote
          in writing. No pressure, and no meter running." -->
@@ -376,32 +366,32 @@
     </section>
 
     <!-- ============ STRONGER TOGETHER ============
-         Three cross-links to sibling pages, through ../../services/
+         Three cross-links to sibling pages, through ../../../services/
          so the depth is right from either folder. -->
     <section id="together">
       <div class="wrap">
         <div class="sec-head">
           <h2 class="sec-title">Stronger Together</h2>
-          <p class="sec-sub">WHAT BUCKS COUNTY BUSINESSES START WITH</p>
+          <p class="sec-sub">WHAT DOYLESTOWN BUSINESSES PAIR WITH A NEW SITE</p>
         </div>
         <div class="grid3">
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.6 6.5h.01M9.6 6.5h.01"/></svg></span>
             <h3>Web Design</h3>
-            <p>A fast, honest site that names the towns you serve and puts the phone number where a thumb already is.</p>
-            <p class="card-more"><a href="../../services/web-design/">More on web design</a></p>
+            <p>How we build, what it includes, and what you own at the end.</p>
+            <p class="card-more"><a href="../../../services/web-design/">More on web design</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M7.6 11.4l1.9-2 2 2 2.4-3.2"/><path d="M15.4 15.4L21 21"/></svg></span>
             <h3>SEO Services</h3>
-            <p>The business profile, listings, and local pages that win 'near me' searches across the county.</p>
-            <p class="card-more"><a href="../../services/seo/">More on SEO services</a></p>
+            <p>The listing and local pages that decide who shows up first around the county seat.</p>
+            <p class="card-more"><a href="../../../services/seo/">More on SEO services</a></p>
           </article>
           <article class="card">
             <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 11.9h.01"/></svg></span>
             <h3>Google Ads</h3>
-            <p>Tight campaigns aimed at the parts of Bucks County you actually serve, and nowhere else.</p>
-            <p class="card-more"><a href="../../services/google-ads/">More on Google Ads</a></p>
+            <p>Campaigns aimed at central Bucks and nowhere else, for the weeks you want the work.</p>
+            <p class="card-more"><a href="../../../services/google-ads/">More on Google Ads</a></p>
           </article>
         </div>
       </div>
@@ -445,11 +435,11 @@
       <div class="wrap" style="max-width:880px">
         <div class="sec-head">
           <h2 class="sec-title">Questions, Answered</h2>
-          <p class="sec-sub">WHAT BUSINESS OWNERS HERE ASK US</p>
+          <p class="sec-sub">WHAT DOYLESTOWN BUSINESS OWNERS ASK US</p>
         </div>
-        <details><summary>Do you work with businesses across all of Bucks County?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. We are based in Quakertown in upper Bucks and work with businesses throughout the county, including Doylestown, Newtown, Perkasie, Sellersville, Warrington, New Hope, and Chalfont, plus Montgomery County and the Lehigh Valley next door.</p></details>
-        <details><summary>Does being local actually help with Google rankings?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>For local searches, yes. Google weighs proximity and local relevance heavily for 'near me' and map results, and it rewards businesses with complete profiles, consistent details, real reviews, and sites that clearly name the areas they serve. Knowing the county also means we know which searches your customers actually run.</p></details>
-        <details><summary>Do I need to come to your office?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Most of our work happens by phone, video, and email, and we come to you when it helps. Being nearby means we can, and it means we understand your market, but it never means extra meetings you do not need.</p></details>
+        <details><summary>Do you have an office in Doylestown?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. We work out of Quakertown, up the county in upper Bucks, and it is the only office we have. Doylestown is our county seat as much as yours, and most of what we do happens by phone, video, and email, with a visit when it helps.</p></details>
+        <details><summary>Most of our work comes from referral. Does a website still matter?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>It matters more, not less. A referral almost always gets checked online before anyone picks up the phone, and that check is where a good recommendation quietly dies. The site does not have to win the client. It has to confirm what the person who referred you said.</p></details>
+        <details><summary>How do we stand out from the other practices around the courthouse?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>By answering the questions the others leave to a contact form. Who the client will actually work with, what the first meeting costs and covers, how long things take, and what you do not do. Specifics are the whole advantage, and most sites in a professional cluster avoid them.</p></details>
         <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
       </div>
     </section>
@@ -461,7 +451,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <a class="foot-home" href="../../../" aria-label="Corcoran Communications home"><img src="../../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
           <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
           <p class="foot-nap">
             Corcoran Communications<br>
@@ -474,22 +464,22 @@
         <div>
           <h2 class="foot-head">Explore</h2>
           <ul class="foot-links">
-            <li><a href="../../#services">Services</a></li>
-            <li><a href="../../#promise">The Promise</a></li>
-            <li><a href="../../#how">How It Works</a></li>
-            <li><a href="../../#industries">Industries</a></li>
-            <li><a href="../../#faq">FAQ</a></li>
-            <li><a href="../../#team">Team</a></li>
+            <li><a href="../../../#services">Services</a></li>
+            <li><a href="../../../#promise">The Promise</a></li>
+            <li><a href="../../../#how">How It Works</a></li>
+            <li><a href="../../../#industries">Industries</a></li>
+            <li><a href="../../../#faq">FAQ</a></li>
+            <li><a href="../../../#team">Team</a></li>
           </ul>
         </div>
         <div>
           <h2 class="foot-head">Services</h2>
           <ul class="foot-links">
-            <li><a href="../../services/web-design/">Web Design</a></li>
-            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
-            <li><a href="../../services/google-ads/">Google Ads</a></li>
-            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
-            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+            <li><a href="../../../services/web-design/">Web Design</a></li>
+            <li><a href="../../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../../services/lead-generation/">Lead Generation</a></li>
           </ul>
         </div>
         <div>
@@ -503,14 +493,14 @@
         <div class="foot-area" id="service-area">
           <h2 class="foot-head">Service Area</h2>
           <ul>
-            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
-            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
-            <li><a href="../../locations/montgomery-county/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
-            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
-            <li><a href="../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
-            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+            <li><a href="../../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../../locations/bucks-county/">Perkasie</a></li><li><a href="../../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../../locations/bucks-county/">Warrington</a></li><li><a href="../../../locations/bucks-county/">New Hope</a></li><li><a href="../../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../../locations/montgomery-county/">Lansdale</a></li><li><a href="../../../locations/montgomery-county/">Souderton</a></li><li><a href="../../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../../locations/montgomery-county/">North Wales</a></li><li><a href="../../../locations/montgomery-county/">Blue Bell</a></li><li><a href="../../../locations/montgomery-county/">Collegeville</a></li><li><a href="../../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Allentown</a></li><li><a href="../../../locations/lehigh-valley/">Bethlehem</a></li><li><a href="../../../locations/lehigh-valley/">Easton</a></li><li><a href="../../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../../locations/lehigh-valley/">Coopersburg</a></li>
           </ul>
-          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+          <p>Serving <a href="../../../locations/bucks-county/">Bucks</a> and <a href="../../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
         </div>
       </div>
       <div class="foot-bottom">
