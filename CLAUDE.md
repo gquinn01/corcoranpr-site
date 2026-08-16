@@ -141,9 +141,13 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   it does not ship.
 - Schema: one business entity in Quakertown with areaServed listing the
   counties and towns. Never a business address in any other town.
-- Town pages are built one at a time and judged by Search Console
-  impressions over the following weeks before the next is built. Never
-  in bulk.
+- The planned nine town pages (Quakertown, Doylestown, Newtown,
+  Lansdale, Blue Bell, Collegeville, Allentown, Bethlehem, Easton) are
+  built on the doorway and variance tests alone. Any town page beyond
+  those nine waits for Search Console evidence from the existing pages
+  before it is built. Rationale: no page can earn impressions until the
+  domain cutover, and the per-page tests, not the count, are the
+  doorway protection.
 - Cross-linking is tree-shaped: town to county hub, county hub to
   service pages and to the towns under it. Never every town to every
   town.
