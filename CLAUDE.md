@@ -52,6 +52,9 @@
   both live PNGs. Regenerate from there, never by hand.
 - Voice: plain English, confident, no hype. Every claim ties to leads,
   calls, or revenue.
+- The page speaks to the reader, never about itself: no remarks about
+  our process, no arguing with competitors the reader did not raise.
+  State the fact and stop.
 - Above the fold, no industry jargon: no SEO, AEO, lead gen, or funnel.
   Trade terms live in service cards, FAQ, and schema. Hero copy must make
   sense to a reader who has never bought marketing.
