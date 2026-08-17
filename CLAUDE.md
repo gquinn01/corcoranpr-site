@@ -115,6 +115,9 @@
 - Valid JSON-LD, title ≤60 chars, meta description ≤160, exactly one H1.
 - Every <img> needs real alt text. The audit counts alt="" as missing
   and drops the score, so decorative-empty alt is not an option here.
+- Mobile layout checks must use a true-viewport method (the iframe
+  technique documented in scripts/); a headless-Chrome window
+  screenshot below ~500px is not evidence of a layout defect.
 - Show me the diff before committing. Commit messages in plain English.
 
 ## Adding a page (all four steps, every time)
