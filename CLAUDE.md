@@ -92,8 +92,14 @@
 - Service pages follow the template: hero with per-page graphic, plain
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
-  Together, contact band, FAQ last. Phone CTAs are tel: links; audit
-  CTAs go to #contact.
+  Together, contact band, FAQ last. Phone CTAs are tel: links.
+- Every primary "Get Your Free AI Site Audit" button links to the free
+  audit page, docs/free-audit/, at the correct relative depth (changed
+  2026-08-16 from #contact). The only exception is the free audit page
+  itself, where the same button is #contact and scrolls to the form.
+  The footer Get Started column's "Free AI Site Audit" item follows the
+  same rule. Ghost phone buttons stay tel: links, and the contact band
+  on every page keeps its form.
 - American spelling everywhere: center not centre, neighbor not
   neighbour, skeptical not sceptical, organized not organised. Applies
   to code comments too, not just site copy. (The British words in this

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       FREE AUDIT PAGE. Built from templates/service-page-template.html
+       with the section names swapped:
+         What You Get      -> What We Check (six cards)
+         (extra section)   -> What You Get (three cards, white panel)
+         differentiator    -> Why It Is Free (dark, with the stat band)
+         How It Works      -> What Happens After (three steps)
+         What It Costs     -> dropped, the whole page is about a free thing
+         Stronger Together -> dropped
+
+       DEPTH. This page sits ONE level under docs/, like docs/about/,
+       so the site root is ../ and the service pages are ../services/.
+       Do not copy the ../../ paths used by service and industry pages.
+
+       THIS IS THE DESTINATION FOR EVERY PRIMARY AUDIT BUTTON ON THE
+       SITE. Every other page's "Get Your Free AI Site Audit" button
+       links here. On THIS page the same button is href="#contact" and
+       scrolls to the form, because the reader has already arrived.
+
+       BACKGROUND RHYTHM. dark, light, white panel, dark, light, dark,
+       light. The stat band and the CTA row both sit inside the dark
+       Why It Is Free section rather than standing alone, which is what
+       keeps two light sections from touching. Same pattern as the SEO
+       and About pages.
+
+       HONESTY. The six What We Check cards separate what the agents
+       scan (titles, descriptions, headings, structured data, robots
+       rules, alt text, page depth) from what a person checks by hand
+       (phone speed, business profile, NAP consistency, whether the
+       next step is obvious). Do not let a rewrite blur that line: the
+       hero promises agents scan and a human reads, and the page has to
+       stay true to it.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Free AI Website Audit | Corcoran Communications</title>
+  <meta name="description" content="Free AI website audit for Bucks, Montgomery, and Lehigh Valley businesses. Agents scan, a human reads, plain-English report in one business day. No obligation.">
+
+  <link rel="canonical" href="https://corcoranpr.com/free-audit/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free AI Website Audit | Corcoran Communications">
+  <meta property="og:description" content="Our agents scan your site the way search engines and AI assistants do, a senior marketer reads the results, and you get a plain-English report in one business day.">
+  <meta property="og:url" content="https://corcoranpr.com/free-audit/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as the homepage so every page resolves to one business entity.
+       The audit is a Service node like any other, with no offers,
+       priceRange, hasOfferCatalog, Review or AggregateRating. It is
+       free, but "free" is still a price, and this site publishes none. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://corcoranpr.com/free-audit/#webpage",
+        "url": "https://corcoranpr.com/free-audit/",
+        "name": "Free AI Website Audit | Corcoran Communications",
+        "description": "Free AI website audit for Bucks, Montgomery, and Lehigh Valley businesses. Agents scan, a human reads, plain-English report in one business day. No obligation.",
+        "about": { "@id": "https://corcoranpr.com/free-audit/#service" },
+        "isPartOf": { "@id": "https://corcoranpr.com/#business" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://corcoranpr.com/free-audit/#service",
+        "name": "Free AI Website Audit",
+        "serviceType": "Free website audit",
+        "description": "A free website audit for local businesses. AI agents scan the site the way search engines and AI assistants read it, covering titles, meta descriptions, headings, structured data, crawler access and image alt text. A senior marketer then reviews the results by hand, checks phone speed, business profile, name-address-phone consistency and whether the next step is obvious, and writes a plain-English report delivered within one business day. No obligation.",
+        "provider": { "@id": "https://corcoranpr.com/#business" },
+        "areaServed": [
+          "Bucks County PA", "Montgomery County PA", "Lehigh County PA",
+          "Northampton County PA", "Quakertown PA", "Doylestown PA",
+          "Allentown PA", "Bethlehem PA", "Easton PA", "Lehigh Valley",
+          "Pennsylvania", "New York", "New Jersey"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Free Audit" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the audit really free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. No card, no trial, and no invoice at the end. You get the report whether or not you ever hire us. If you would rather not hear from us again after it, say so in the note on the form and you will not." }
+          },
+          {
+            "@type": "Question",
+            "name": "What do you need from me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Your website address and a way to reach you. That is the name, business, website and email on the form, and it takes about a minute. The phone number and the note are optional. If you do not have a website yet, put none in that field and we will talk about what to build instead." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take?",
+            "acceptedAnswer": { "@type": "Answer", "text": "One business day. Send it on a Friday afternoon and it comes back Monday. If you need it sooner than that, call or text 215-259-8304 and say so." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you require long-term contracts?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#promise">Promise</a></li>
+        <li><a href="../#how">How It Works</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../#industries">Industries</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../">Home</a></li>
+            <li aria-current="page">Free Audit</li>
+          </ol>
+        </nav>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Free &middot; No Obligation &middot; One Business Day</p>
+            <h1>Your Free AI Website Audit, Explained</h1>
+            <p class="lead">Every button on this site offers a free audit, so here is exactly what that means: our AI agents scan your website the way search engines and AI assistants do, a senior marketer reads the results, and you get a plain-English report within one business day. No sales pitch dressed up as a report, and no obligation.</p>
+            <div class="cta-row">
+              <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+              <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+            </div>
+            <p class="proof">Clients from Main Street to Disney on Ice &middot; U.S. Navy veteran owned &amp; operated</p>
+          </div>
+
+          <!-- Decorative only: an audit report card with a score gauge,
+               the checks that passed, and the written read underneath.
+               Hex values are hardcoded because CSS custom properties do
+               not reach inline SVG attributes. Every one is a Strategic
+               Growth palette color, solid or at low alpha. No gradients. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <rect x="10" y="20" width="380" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="34" y="44" width="88" height="9" rx="4.5" fill="#DDF7EC" fill-opacity=".3"/>
+              <!-- score gauge -->
+              <path d="M56 150 A44 44 0 0 1 144 150" fill="none" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="11" stroke-linecap="round"/>
+              <path d="M56 150 A44 44 0 0 1 133.9 122" fill="none" stroke="#15B77E" stroke-width="11" stroke-linecap="round"/>
+              <circle cx="133.9" cy="122" r="5" fill="#DDF7EC"/>
+              <rect x="70" y="166" width="60" height="9" rx="4.5" fill="#DDF7EC" fill-opacity=".34"/>
+              <!-- the checks -->
+              <circle cx="192" cy="100" r="12" fill="#15B77E"/>
+              <path d="M186.6 100.2l3.5 3.5 6.9-7.4" fill="none" stroke="#062018" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="214" y="94" width="104" height="11" rx="5.5" fill="#DDF7EC" fill-opacity=".48"/>
+              <circle cx="192" cy="140" r="12" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".3" stroke-width="1.5"/>
+              <rect x="214" y="134" width="138" height="11" rx="5.5" fill="#DDF7EC" fill-opacity=".34"/>
+              <circle cx="192" cy="180" r="12" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".3" stroke-width="1.5"/>
+              <rect x="214" y="174" width="86" height="11" rx="5.5" fill="#DDF7EC" fill-opacity=".26"/>
+              <!-- the written read -->
+              <rect x="34" y="205" width="332" height="1.5" fill="#DDF7EC" fill-opacity=".14"/>
+              <rect x="34" y="220" width="300" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="34" y="234" width="262" height="8" rx="4" fill="#B6C9DD" fill-opacity=".24"/>
+              <rect x="34" y="248" width="190" height="8" rx="4" fill="#B6C9DD" fill-opacity=".18"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE CHECK ============ -->
+    <section id="checked">
+      <div class="wrap">
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>A website audit is a checkup: it finds what is helping your site get found and trusted, what is hurting it, and what to fix first.</p>
+        <div class="sec-head">
+          <h2 class="sec-title">What We Check</h2>
+          <p class="sec-sub">SIX THINGS THAT DECIDE WHETHER YOU GET FOUND AND CALLED</p>
+        </div>
+        <div class="grid3">
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <h3>Search basics</h3>
+            <p>Titles, descriptions, and headings, page by page. The question is whether Google can tell in one pass what each page is for and who it serves. A page with no description, or with three headings competing to be the main one, is a page that is guessing.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7.5" width="16" height="12" rx="2.5"/><path d="M12 4.5v3M8.5 12.5v2M15.5 12.5v2"/></svg></span>
+            <h3>AI readiness</h3>
+            <p>Structured data an assistant can actually read, real questions answered in plain language on the page, and whether your robots file welcomes the AI crawlers or quietly blocks them. Some templates block them by default and nobody tells the owner.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.8 5.4h2.4M12 18.2v.1"/></svg></span>
+            <h3>Speed and mobile</h3>
+            <p>We open your site on a phone, on a normal connection, and time it. Then we use it the way a customer would. If it is slow to load or awkward to tap, very little else on this list will save it.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7.5 3.3v5c0 4.6-3.1 8.3-7.5 9.5-4.4-1.2-7.5-4.9-7.5-9.5v-5z"/><path d="M8.9 12.1l2.2 2.2 4.1-4.6"/></svg></span>
+            <h3>Trust signals</h3>
+            <p>Contact details that are present, correct, and the same on every page. Real photographs instead of stock, with alt text that describes them. Small things, and they are what a stranger uses to decide you are a real business.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.4" r="2.6"/></svg></span>
+            <h3>Local presence</h3>
+            <p>Your Google Business Profile, whether your name, address, and phone number match everywhere they appear, and whether a reader can tell in one look which towns you actually serve.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 5.9 5.9l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg></span>
+            <h3>Conversion</h3>
+            <p>Whether the phone number is obvious on a phone, whether every page has one clear next step, and whether the form on your site actually delivers. Visitors who cannot find how to reach you are not leads.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT YOU GET ============
+         Raised white panel: this page has an extra light section, and
+         without it this band and What We Check above would both be
+         light against each other. -->
+    <section id="deliverable" class="band-panel">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">What You Get</h2>
+          <p class="sec-sub">THREE THINGS, IN WRITING, WITHIN ONE BUSINESS DAY</p>
+        </div>
+        <div class="grid3">
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 16.8h4.5"/></svg></span>
+            <h3>A plain-English report</h3>
+            <p>A score, what is working, what is not, and what to fix first, in the order we would fix it. Written so you can read it yourself and act on it yourself, with no jargon and nothing you need us to interpret.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L18.6 9.4a2.12 2.12 0 0 0-3-3L5 17z"/><path d="M13.6 8.4l3 3"/></svg></span>
+            <h3>Repair or replace, answered</h3>
+            <p>Sometimes a site needs a handful of fixes and sometimes it needs replacing. We tell you which one it is and why, including when the answer is that what you have is fine and your money belongs somewhere else.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17"/><path d="M16.5 7.2c-.9-1.2-2.5-1.9-4.5-1.9-2.5 0-4.2 1.1-4.2 2.9 0 4.4 9.2 2.4 9.2 7 0 2-1.9 3.3-4.8 3.3-2.2 0-3.9-.7-4.9-2"/></svg></span>
+            <h3>A flat quote, only if you want one</h3>
+            <p>If you want the work done, you get one number in writing, agreed before anything starts. If you do not, the report is still yours and that is the end of it. You never have to ask for a price to get the read.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY IT IS FREE ============ -->
+    <section class="dark field-blue" id="why-free">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Why It Is Free</h2>
+          <p class="sec-sub">NO CATCH, AND HERE IS THE REASONING</p>
+        </div>
+        <div class="grid2">
+          <article class="card">
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle class="ico-accent" cx="12" cy="12" r="3.2"/></svg></span>
+            <h3>It shows you how we work</h3>
+            <p>The report is the same kind our clients get every week. If it is useful to you, you already know what working with us feels like, and you did not have to spend anything to find out. If it is not useful, you have lost the minute it took to send the form and nothing else.</p>
+          </article>
+          <article class="card">
+            <span class="tile tile-dark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7.5" width="16" height="12" rx="2.5"/><path d="M12 4.5v3"/><path class="ico-accent" d="M8.5 12.5v2M15.5 12.5v2"/></svg></span>
+            <h3>It costs us little and tells you a lot</h3>
+            <p>The agents do the scanning, so the part that used to take an afternoon takes minutes and costs us almost nothing. The human judgment on top is the part you would be paying for later, if you choose to. Giving away the read is not charity, it is arithmetic.</p>
+          </article>
+        </div>
+        <div class="statgrid" style="margin-top:44px">
+          <div class="stat"><b>98%</b><span>Client retention</span></div>
+          <div class="stat"><b>908%</b><span>Average client ROAS</span></div>
+          <div class="stat"><b>26 years</b><span>In business</span></div>
+        </div>
+        <div class="cta-row" style="margin-top:52px;justify-content:center">
+          <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+          <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT HAPPENS AFTER ============ -->
+    <section id="after">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">What Happens After</h2>
+          <p class="sec-sub">THREE STEPS, AND THE THIRD ONE IS THE END UNLESS YOU SAY OTHERWISE</p>
+        </div>
+        <div class="grid3">
+          <article class="card step">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 16.8h4.5"/></svg></span>
+            <div class="step-head"><span class="step-num">01</span><h3>You send the form</h3></div>
+            <p>Your website address, your name, and a way to reach you. That is the whole ask, and it takes about a minute. If you would rather talk first, call or text 215-259-8304 instead.</p>
+          </article>
+          <article class="card step">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <div class="step-head"><span class="step-num">02</span><h3>We scan it and read it</h3></div>
+            <p>The agents run the scan. Greg reads what came back and writes up what actually matters for your business, rather than handing you a printout of everything a machine noticed. Within one business day.</p>
+          </article>
+          <article class="card step">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+            <div class="step-head"><span class="step-num">03</span><h3>You get the report</h3></div>
+            <p>It lands in your inbox with a straight answer at the top. You read it, you keep it, and you do whatever you want with it. Nothing else happens unless you ask us for it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT (identical on every page except the heading) ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Request Your Free Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below.
+             The Google Ads conversion tag goes in assets/site.js, in the
+             success branch marked CONVERSION TAG. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer must be byte-identical to its acceptedAnswer text in
+         the FAQPage schema above. Edit one, edit both. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">WHAT PEOPLE ASK BEFORE THEY SEND THE FORM</p>
+        </div>
+        <details><summary>Is the audit really free?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Yes. No card, no trial, and no invoice at the end. You get the report whether or not you ever hire us. If you would rather not hear from us again after it, say so in the note on the form and you will not.</p></details>
+        <details><summary>What do you need from me?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Your website address and a way to reach you. That is the name, business, website and email on the form, and it takes about a minute. The phone number and the note are optional. If you do not have a website yet, put none in that field and we will talk about what to build instead.</p></details>
+        <details><summary>How long does it take?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>One business day. Send it on a Friday afternoon and it comes back Monday. If you need it sooner than that, call or text 215-259-8304 and say so.</p></details>
+        <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            1808 Enclave Dr<br>
+            Quakertown, PA 18951<br>
+            215-259-8304<br>
+            greg@corcoranpr.com
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../#services">Services</a></li>
+            <li><a href="../#promise">The Promise</a></li>
+            <li><a href="../#how">How It Works</a></li>
+            <li><a href="../#industries">Industries</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="../about/">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../services/web-design/">Web Design</a></li>
+            <li><a href="../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../services/google-ads/">Google Ads</a></li>
+            <li><a href="../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../locations/bucks-county/">Perkasie</a></li><li><a href="../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../locations/bucks-county/">Warrington</a></li><li><a href="../locations/bucks-county/">New Hope</a></li><li><a href="../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../locations/montgomery-county/">Souderton</a></li><li><a href="../locations/montgomery-county/">Harleysville</a></li><li><a href="../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../locations/montgomery-county/">North Wales</a></li><li><a href="../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../locations/lehigh-valley/">Macungie</a></li><li><a href="../locations/lehigh-valley/">Whitehall</a></li><li><a href="../locations/lehigh-valley/">Center Valley</a></li><li><a href="../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../locations/bucks-county/">Bucks</a> and <a href="../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · 1808 Enclave Dr, Quakertown, PA 18951 · 215-259-8304 · greg@corcoranpr.com</p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

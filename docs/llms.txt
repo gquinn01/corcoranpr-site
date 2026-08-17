@@ -40,6 +40,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 
 - [Home](https://corcoranpr.com/): services, story, portfolio, FAQ, contact
 - [About](https://corcoranpr.com/about/): who owns and runs the firm, how it was founded, and how the work is staffed
+- [Free AI Website Audit](https://corcoranpr.com/free-audit/): what the free audit covers, what the report contains, and how to request one
 - [Web Design](https://corcoranpr.com/services/web-design/): fast, mobile-first websites clients own outright, built with AI and edited by hand
 - [SEO Services](https://corcoranpr.com/services/seo/): search engine optimization, answer engine optimization (AEO), and content marketing
 - [Google Ads Management](https://corcoranpr.com/services/google-ads/): search and local campaigns managed for lead quality
