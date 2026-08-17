@@ -8,11 +8,16 @@
 > Call or text 215-259-8304. Email greg@corcoranpr.com.
 
 Corcoran Communications is led by owner Greg Quinn, a U.S. Navy veteran
-(USS Chancellorsville) and Temple University graduate, supported by AI
+who served from 2006 to 2011 as a cryptologic technician aboard the USS
+Chancellorsville, and a Temple University graduate. He is supported by AI
 agents that monitor client websites, search rankings, and Google
 algorithm changes around the clock. The firm was founded by Ruth Corcoran
-(now retired) and carries over half a century of Corcoran family work in
-marketing, design, and print. Past and present client work includes
+in January 2000 in Bear Creek, Pennsylvania, doing public relations,
+design, content, and events. Her son Greg headed sales and digital and
+added SEO, social media, digital marketing, and lead generation before
+taking over as owner in July 2023, when Ruth retired. The firm carries
+over half a century of Corcoran family work in marketing, design, and
+print. Past and present client work includes
 Disney on Ice, Ringling Bros. Circus, Pittsburgh Craft Beer Week, SenArt
 Films, Spirit Financial, Tri County Collision, and ILM.
 
@@ -34,6 +39,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 ## Key pages
 
 - [Home](https://corcoranpr.com/): services, story, portfolio, FAQ, contact
+- [About](https://corcoranpr.com/about/): who owns and runs the firm, how it was founded, and how the work is staffed
 - [Web Design](https://corcoranpr.com/services/web-design/): fast, mobile-first websites clients own outright, built with AI and edited by hand
 - [SEO Services](https://corcoranpr.com/services/seo/): search engine optimization, answer engine optimization (AEO), and content marketing
 - [Google Ads Management](https://corcoranpr.com/services/google-ads/): search and local campaigns managed for lead quality

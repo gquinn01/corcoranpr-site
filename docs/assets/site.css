@@ -6,7 +6,7 @@
    What lives here: tokens, base, buttons, tiles, sections, cards,
    grids, dark panels and gradient fields, the sticky nav and its
    mobile menu, breadcrumbs, the page hero, steps, stats, FAQ,
-   contact cards and the footer.
+   contact cards, the About page photo blocks, and the footer.
 
    What does NOT live here: anything only the homepage uses (the
    hero dashboard mockup, the agent-network diagram, the promise
@@ -247,6 +247,37 @@ section{padding:120px 0}
 .stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.6rem);font-weight:800;color:var(--green);letter-spacing:-.035em;line-height:1;margin-bottom:12px}
 .stat span{color:var(--on-dark);font-size:.98rem}
 
+/* ---------- about page ----------
+   The About page is the only page where a photograph of a person is
+   the content rather than decoration, so these do NOT reuse .hero-art
+   (aria-hidden, hidden below 1000px). A face stays visible on a phone.
+   Deliberately separate from the homepage's inline .hero-portrait and
+   .story, which carry a name plate and a light-background border and
+   are not what this page needs. */
+.hero-photo{flex:0 0 300px;margin-left:auto}
+.hero-photo img{width:274px;height:274px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto;box-shadow:0 0 0 14px rgba(221,247,236,.05),0 26px 56px rgba(8,42,74,.55)}
+
+/* Bio prose beside a documentary photo. The photo column is a FIXED
+   width, not a fraction: the photograph is portrait orientation, so a
+   fractional column would make it 700px tall next to 400px of prose.
+   Centered rather than top-aligned for the same reason. */
+.person-split{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center}
+.person-split p+p{margin-top:18px}
+.photo-figure{margin:0}
+.photo-figure img{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);display:block;box-shadow:var(--lift)}
+.photo-figure figcaption{margin-top:14px;font-size:.9rem;line-height:1.6;color:var(--slate)}
+
+/* Founder portrait and lead on the dark story band. Mint border, not
+   Signal Blue: Signal Blue is 2.82:1 on Midnight and never carries an
+   accent on a dark panel. */
+.story-portrait{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto 30px}
+.story-lead{max-width:850px;margin:0 auto 46px;text-align:center;font-size:1.08rem;line-height:1.9;color:var(--on-dark)}
+.story-lead a{color:var(--mint)}
+
+/* Dated milestones. A .card on the dark band already supplies the
+   surface, so the year is all this adds. */
+.era{display:block;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--mint);margin-bottom:10px}
+
 /* ---------- process ---------- */
 .step{position:relative}
 .step-head{display:flex;align-items:baseline;gap:14px;margin:22px 0 12px}
@@ -348,6 +379,16 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
   .hero-split{display:block}
   .hero-copy-col{max-width:none}
   .hero-art{display:none}
+  /* The photo is content, so it stays. It shrinks and moves above the
+     headline instead of disappearing, which is why the About hero
+     needs flex here where the others get display:block. */
+  .hero-split-photo{display:flex;flex-direction:column;align-items:flex-start}
+  /* flex:0 0 auto, not the desktop 0 0 300px: in a column the basis is a
+     HEIGHT, and 300px would leave 100px of dead space under a 196px
+     photo. The eyebrow's own margin-top supplies the gap below it. */
+  .hero-photo{order:-1;flex:0 0 auto;margin:0}
+  .hero-photo img{width:196px;height:196px;margin:0}
+  .person-split{grid-template-columns:1fr;gap:34px}
   .grid3,.grid2,.grid4,.statgrid{grid-template-columns:1fr;gap:20px}
 
   .stats{padding-top:110px}

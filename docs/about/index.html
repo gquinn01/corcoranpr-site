@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       ABOUT PAGE. Built from templates/service-page-template.html,
+       with the service-specific sections swapped out:
+         What You Get      -> Who You Work With
+         differentiator    -> The Corcoran Story (dark, with the stat band)
+         How It Works      -> How We Work
+         What It Costs     -> dropped, the FAQ carries the contracts answer
+         Stronger Together -> dropped, the story links out inline instead
+
+       DEPTH. This page sits ONE level under docs/, not two, so the
+       site root is ../ and the service pages are ../services/. Every
+       other page built from the template so far is two or three levels
+       down. Do not copy ../../ paths in here.
+
+       FACTS. Every date, rank, place and role on this page came from
+       Greg directly on 2026-08-16 and is recorded nowhere else in the
+       repo. If any of it changes, it changes here, in llms.txt, and in
+       the schema below at the same time.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>About Corcoran Communications | Quakertown, PA</title>
+  <meta name="description" content="Ruth Corcoran founded this firm in 2000. Her son Greg Quinn, a Navy veteran, has owned it since 2023. One senior marketer, a staff of AI agents.">
+
+  <link rel="canonical" href="https://corcoranpr.com/about/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Corcoran Communications | Quakertown, PA">
+  <meta property="og:description" content="Ruth Corcoran founded this firm in 2000. Her son Greg Quinn, a Navy veteran, has owned it since 2023. One senior marketer, a staff of AI agents.">
+  <meta property="og:url" content="https://corcoranpr.com/about/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as the homepage so every page resolves to one business entity.
+       This page adds two things no other page has: a Person node for
+       Greg, referenced from the business node's employee property, and
+       AboutPage as the page type.
+       No offers, priceRange, hasOfferCatalog, Review or AggregateRating
+       anywhere: pricing is not published on this site. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "foundingDate": "2000-01",
+        "founder": { "@type": "Person", "name": "Ruth Corcoran", "description": "Founder, retired" },
+        "employee": { "@id": "https://corcoranpr.com/about/#greg-quinn" },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://corcoranpr.com/about/#greg-quinn",
+        "name": "Greg Quinn",
+        "jobTitle": "Owner & Lead Strategist",
+        "worksFor": { "@id": "https://corcoranpr.com/#business" },
+        "image": "https://corcoranpr.com/greg-quinn.jpg",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Temple University" },
+        "description": "Owner of Corcoran Communications in Quakertown, Pennsylvania. U.S. Navy veteran, cryptologic technician aboard the USS Chancellorsville from 2006 to 2011, Petty Officer 2nd Class. Temple University graduate. Son of founder Ruth Corcoran.",
+        "sameAs": [
+          "https://www.linkedin.com/in/greg-quinn-0b584435/"
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://corcoranpr.com/about/#webpage",
+        "url": "https://corcoranpr.com/about/",
+        "name": "About Corcoran Communications | Quakertown, PA",
+        "description": "Ruth Corcoran founded this firm in 2000. Her son Greg Quinn, a Navy veteran, has owned it since 2023. One senior marketer, a staff of AI agents.",
+        "about": { "@id": "https://corcoranpr.com/#business" },
+        "mainEntity": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/#business" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "About" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who will I actually work with?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Greg Quinn, the owner. He runs every account personally, from the first audit through the work itself. There is no junior account team, no coordinator in the middle, and no hand-off after you sign. Call or text 215-259-8304 and you are talking to the person who does the work." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Ruth still involved?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Ruth Corcoran founded the firm in January 2000 and retired in July 2023, when her son, Greg Quinn, took over as owner. The standard she set is still the one the work is measured against, but she is not on any account." }
+          },
+          {
+            "@type": "Question",
+            "name": "Are you really just one person?",
+            "acceptedAnswer": { "@type": "Answer", "text": "One senior marketer, yes, plus a staff of AI agents that carry the volume work a junior team used to do. An auditor scans client sites every week and a watcher tracks Google and AI search changes every morning. Their reports come straight to you, so you can see what changed without waiting for a meeting." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you require long-term contracts?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#promise">Promise</a></li>
+        <li><a href="../#how">How It Works</a></li>
+        <li><a href="./">About</a></li>
+        <li><a href="../#industries">Industries</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../">Home</a></li>
+            <li aria-current="page">About</li>
+          </ol>
+        </nav>
+        <!-- hero-split-photo, not the plain hero-split: the photograph is
+             content, so it stays visible on a phone instead of being
+             hidden the way the decorative .hero-art is. -->
+        <div class="hero-split hero-split-photo">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Founded 2000 &middot; Quakertown, PA</p>
+            <h1>The People Behind Corcoran Communications</h1>
+            <p class="lead">A mother started this firm in 2000. Her son runs it now. When you hire us, the owner is the one who answers the phone, writes the plan, and does the work.</p>
+            <div class="cta-row">
+              <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+              <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+            </div>
+            <p class="proof">Clients from Main Street to Disney on Ice &middot; U.S. Navy veteran owned &amp; operated</p>
+          </div>
+          <div class="hero-photo">
+            <img src="../greg-quinn.jpg" width="640" height="640" fetchpriority="high" alt="Greg Quinn, owner of Corcoran Communications">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHO YOU WORK WITH ============ -->
+    <section id="who">
+      <div class="wrap">
+        <p class="plain"><span class="plain-label">IN PLAIN ENGLISH</span>There is no account team here. You call Greg, and Greg does the work.</p>
+        <div class="sec-head">
+          <h2 class="sec-title">Who You Work With</h2>
+          <p class="sec-sub">GREG QUINN, OWNER AND LEAD STRATEGIST</p>
+        </div>
+        <div class="person-split">
+          <div>
+            <p>Greg Quinn owns Corcoran Communications and leads every account himself.</p>
+            <p>He served five years in the U.S. Navy, from 2006 to 2011, as a cryptologic technician aboard the USS Chancellorsville, and reached Petty Officer 2nd Class. He is a graduate of Temple University.</p>
+            <p>He came into the family firm and built its digital half. Heading sales and digital, he added <a href="../services/seo/">SEO</a>, <a href="../services/social-media-marketing/">social media</a>, digital marketing, and <a href="../services/lead-generation/">lead generation</a> to a lineup his mother had built on public relations, design, content, and events. In July 2023 he took over as owner.</p>
+            <p>His client work runs from Main Street to national tours: Disney on Ice, Ringling Bros. and Barnum &amp; Bailey, Pittsburgh Craft Beer Week, SenArt Films, Spirit Financial Credit Union, Choice One Community Credit Union, Tri-County Collision, Distasio, Kowalski &amp; Yelen, ILM, and Cork Bar &amp; Restaurant. The fuller work history is on his <a href="https://www.linkedin.com/in/greg-quinn-0b584435/">LinkedIn profile</a>.</p>
+          </div>
+          <figure class="photo-figure">
+            <img src="../greg-navy.jpg" width="760" height="1148" loading="lazy" alt="Greg Quinn in U.S. Navy dress blues aboard the USS Chancellorsville">
+            <figcaption>Aboard the USS Chancellorsville. Five years in the U.S. Navy, 2006 to 2011, as a cryptologic technician.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CORCORAN STORY ============ -->
+    <section class="dark field-blue" id="story">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">The Corcoran Story</h2>
+          <p class="sec-sub">BEAR CREEK IN 2000, QUAKERTOWN TODAY</p>
+        </div>
+        <img class="story-portrait" src="../ruth-corcoran.jpg" width="480" height="480" loading="lazy" alt="Ruth Corcoran, founder of Corcoran Communications">
+        <p class="story-lead">Ruth Corcoran opened this firm in January 2000 in Bear Creek, Pennsylvania, doing public relations, design, content, and events. She built it on a simple idea: know the client, tell the truth, and make every dollar work. The Corcoran family has been in marketing, design, and print for over half a century. Ruth retired in July 2023. The standard did not.</p>
+        <div class="grid4">
+          <article class="card">
+            <span class="era">January 2000</span>
+            <h3>Ruth opens the doors</h3>
+            <p>Ruth Corcoran founds Corcoran Communications in Bear Creek, Pennsylvania. Public relations, design, content, and events, for clients who mostly arrive by word of mouth.</p>
+          </article>
+          <article class="card">
+            <span class="era">Before 2023</span>
+            <h3>The digital half gets built</h3>
+            <p>Greg heads sales and digital for the firm and adds SEO, social media, digital marketing, and lead generation to what it sells. The trade changes. The client list keeps growing.</p>
+          </article>
+          <article class="card">
+            <span class="era">July 2023</span>
+            <h3>Greg takes over</h3>
+            <p>Ruth retires and Greg becomes owner of the firm his mother founded. The clients, the standard, and the phone number all stay the same.</p>
+          </article>
+          <article class="card">
+            <span class="era">2026</span>
+            <h3>The agents go to work</h3>
+            <p>AI agents join the staff: an auditor that scans client sites every week, and a watcher that tracks Google and AI search changes every morning. Clients read the reports themselves.</p>
+          </article>
+        </div>
+        <div class="statgrid" style="margin-top:44px">
+          <div class="stat"><b>98%</b><span>Client retention</span></div>
+          <div class="stat"><b>908%</b><span>Average client ROAS</span></div>
+          <div class="stat"><b>26 years</b><span>In business</span></div>
+        </div>
+        <div class="cta-row" style="margin-top:52px;justify-content:center">
+          <a class="btn" href="#contact">Get Your Free AI Site Audit</a>
+          <a class="btn btn-ghost" href="tel:+12152598304">Call or Text 215-259-8304</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW WE WORK ============ -->
+    <section id="how-we-work">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">How We Work</h2>
+          <p class="sec-sub">ONE SENIOR MARKETER, A STAFF OF AI AGENTS, AND NOTHING IN BETWEEN</p>
+        </div>
+        <div class="grid4">
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.4a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4z"/><path d="M4.5 20.4c0-3.6 3.4-5.6 7.5-5.6s7.5 2 7.5 5.6"/></svg></span>
+            <h3>One senior marketer</h3>
+            <p>The owner runs your account. The person who quotes the work is the person who does it, so nothing is lost in a hand-off and nobody has to be brought up to speed.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7.5" width="16" height="12" rx="2.5"/><path d="M12 4.5v3M8.5 12.5v2M15.5 12.5v2"/></svg></span>
+            <h3>AI agents on staff</h3>
+            <p>An auditor scans your site every week. A watcher tracks Google's algorithm and AI search changes every morning. They carry the volume that used to need a department.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 16.8h4.5"/></svg></span>
+            <h3>Plain-English reports</h3>
+            <p>You get the agents' reports the way we get them: what changed, what we did about it, and what it means for phone calls and form fills. No dashboard you will never log into.</p>
+          </article>
+          <article class="card">
+            <span class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 3v3M16 3v3"/></svg></span>
+            <h3>Month to month</h3>
+            <p>No annual lock-in, no early termination fee, and nothing that auto-renews on you. You keep the website either way, and we earn the next month.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT (identical on every page) ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below.
+             The Google Ads conversion tag goes in assets/site.js, in the
+             success branch marked CONVERSION TAG. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer must be byte-identical to its acceptedAnswer text in
+         the FAQPage schema above. Edit one, edit both. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">STRAIGHT ANSWERS ABOUT WHO YOU ARE HIRING</p>
+        </div>
+        <details><summary>Who will I actually work with?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Greg Quinn, the owner. He runs every account personally, from the first audit through the work itself. There is no junior account team, no coordinator in the middle, and no hand-off after you sign. Call or text 215-259-8304 and you are talking to the person who does the work.</p></details>
+        <details><summary>Is Ruth still involved?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Ruth Corcoran founded the firm in January 2000 and retired in July 2023, when her son, Greg Quinn, took over as owner. The standard she set is still the one the work is measured against, but she is not on any account.</p></details>
+        <details><summary>Are you really just one person?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>One senior marketer, yes, plus a staff of AI agents that carry the volume work a junior team used to do. An auditor scans client sites every week and a watcher tracks Google and AI search changes every morning. Their reports come straight to you, so you can see what changed without waiting for a meeting.</p></details>
+        <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No. Monitoring and marketing plans run month to month, and you can walk anytime. We keep clients by delivering results they can read in their own reports, not by locking the door.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            1808 Enclave Dr<br>
+            Quakertown, PA 18951<br>
+            215-259-8304<br>
+            greg@corcoranpr.com
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../#services">Services</a></li>
+            <li><a href="../#promise">The Promise</a></li>
+            <li><a href="../#how">How It Works</a></li>
+            <li><a href="../#industries">Industries</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="./">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../services/web-design/">Web Design</a></li>
+            <li><a href="../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../services/google-ads/">Google Ads</a></li>
+            <li><a href="../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../locations/bucks-county/">Perkasie</a></li><li><a href="../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../locations/bucks-county/">Warrington</a></li><li><a href="../locations/bucks-county/">New Hope</a></li><li><a href="../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../locations/montgomery-county/">Souderton</a></li><li><a href="../locations/montgomery-county/">Harleysville</a></li><li><a href="../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../locations/montgomery-county/">North Wales</a></li><li><a href="../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../locations/lehigh-valley/">Macungie</a></li><li><a href="../locations/lehigh-valley/">Whitehall</a></li><li><a href="../locations/lehigh-valley/">Center Valley</a></li><li><a href="../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../locations/bucks-county/">Bucks</a> and <a href="../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · 1808 Enclave Dr, Quakertown, PA 18951 · 215-259-8304 · greg@corcoranpr.com</p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
