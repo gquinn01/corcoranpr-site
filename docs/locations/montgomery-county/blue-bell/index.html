@@ -407,73 +407,56 @@
           <h2 class="sec-title">Start With the Free AI Site Audit</h2>
           <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
         </div>
-        <div class="contact-split">
-          <div class="contact-main">
-          <!-- ============ AUDIT REQUEST FORM ============
-               Posts to a hosted Formspree endpoint, so there is no server code
-               in this repo and nothing to maintain. It works with JavaScript
-               off: the browser submits normally and Formspree returns its own
-               confirmation. With JavaScript on, assets/site.js intercepts it,
-               posts in the background, and swaps in the thank you below.
-               The Google Ads conversion tag goes in assets/site.js, in the
-               success branch marked CONVERSION TAG. -->
-          <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
-            <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
-            <!-- Honeypot. Hidden from people and from screen readers, so
-                 anything that fills it in is a bot and Formspree drops it. -->
-            <div class="af-hp" aria-hidden="true">
-              <label for="af-company">Leave this field empty</label>
-              <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="af-grid">
-              <p class="af-field">
-                <label for="af-name">Your name</label>
-                <input type="text" id="af-name" name="name" required autocomplete="name">
-              </p>
-              <p class="af-field">
-                <label for="af-business">Business name</label>
-                <input type="text" id="af-business" name="business" required autocomplete="organization">
-              </p>
-              <p class="af-field af-wide af-url">
-                <label for="af-website">Your website address</label>
-                <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
-                <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
-              </p>
-              <p class="af-field">
-                <label for="af-email">Email</label>
-                <input type="email" id="af-email" name="email" required autocomplete="email">
-              </p>
-              <p class="af-field">
-                <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
-                <input type="tel" id="af-phone" name="phone" autocomplete="tel">
-              </p>
-              <p class="af-field af-wide">
-                <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
-                <textarea id="af-note" name="note" rows="3"></textarea>
-              </p>
-            </div>
-            <p class="af-error" role="alert" hidden></p>
-            <button class="btn af-submit" type="submit">Send My Free Audit</button>
-          </form>
-          <div class="af-thanks" role="status" hidden>
-            <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below.
+             The Google Ads conversion tag goes in assets/site.js, in the
+             success branch marked CONVERSION TAG. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
           </div>
-          <aside class="contact-stack" aria-label="Other ways to reach us">
-            <div>
-              <span class="cs-label">Call or text</span>
-              <a href="tel:+12152598304">215-259-8304</a>
-            </div>
-            <div>
-              <span class="cs-label">Email</span>
-              <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
-            </div>
-            <div>
-              <span class="cs-label">Service area</span>
-              <p>Bucks &amp; Montgomery Counties and the Greater Lehigh Valley</p>
-            </div>
-          </aside>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
         </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
       </div>
     </section>
 
