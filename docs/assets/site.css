@@ -273,18 +273,21 @@ details p{margin:0;padding:0 26px 24px;color:var(--slate);font-size:.97rem}
 details[open] p{animation:faqIn .3s ease both}
 @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
-/* ---------- contact band ---------- */
 .contact{text-align:center}
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
-/* Same surface card and mint tile as the rest of the page, so the
-   contact details stop floating loose on the field. */
-.ccard{background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:34px 26px;transition:transform .2s ease,background .2s ease,border-color .2s ease}
-.ccard:hover{transform:translateY(-5px);background:var(--surface-hi);border-color:rgba(255,255,255,.22)}
-.ccard .tile{margin:0 auto 18px}
-.ccard h3{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
-.ccard p{color:var(--white);font-size:1.06rem;line-height:1.6}
-.ccard a{color:var(--white);text-decoration:none}
-.ccard a:hover{color:var(--mint);text-decoration:underline}
+/* Two columns on a desktop: the form is the primary action and takes the
+   wider share, with the other ways to reach us in a slim stack beside
+   it. The three cards this replaced pushed the band far taller than it
+   needed to be. Source order puts the form first, so on a phone the
+   single column already reads form then contacts with no reordering. */
+.contact-split{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start;text-align:left;margin-top:44px}
+.contact-main .audit-form,.contact-main .af-thanks{max-width:none;margin:0}
+/* A stack, not cards: a hairline between each entry and nothing else. */
+.contact-stack>div{border-bottom:1px solid var(--hairline);padding:16px 0}
+.contact-stack>div:first-child{border-top:1px solid var(--hairline)}
+.cs-label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:7px}
+.contact-stack a{color:var(--white);text-decoration:none;font-size:1.12rem;font-weight:700;overflow-wrap:anywhere}
+.contact-stack a:hover{color:var(--mint);text-decoration:underline}
+.contact-stack p{margin:0;color:var(--white);font-size:1rem;line-height:1.55}
 
 /* ---------- audit request form ----------
    Lives in the contact band, so it sits on Midnight. Inputs are white
@@ -349,7 +352,8 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
   .hero-split{display:block}
   .hero-copy-col{max-width:none}
   .hero-art{display:none}
-  .grid3,.grid2,.grid4,.statgrid,.contact-grid{grid-template-columns:1fr;gap:20px}
+  .grid3,.grid2,.grid4,.statgrid{grid-template-columns:1fr;gap:20px}
+  .contact-split{grid-template-columns:1fr;gap:32px;margin-top:34px}
   .stats{padding-top:110px}
   .foot-grid{grid-template-columns:1fr;gap:34px}
   .foot-area ul{columns:2}
@@ -358,5 +362,5 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
 @media(prefers-reduced-motion:reduce){
   .faq-ico{transition:none}
   details[open] p{animation:none}
-  .card,.card:hover,.ccard,.ccard:hover{transition:none;transform:none}
+  .card,.card:hover{transition:none;transform:none}
 }
