@@ -176,4 +176,6 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   element changes on any live page, templates/service-page-template.html
   changes in the same commit, so the template never falls behind the
   site.
+- Contact form: audit request form on every page, posting to a hosted
+  Formspree endpoint; no server code.
 - Never put API keys or secrets in any file.

@@ -286,6 +286,39 @@ details[open] p{animation:faqIn .3s ease both}
 .ccard a{color:var(--white);text-decoration:none}
 .ccard a:hover{color:var(--mint);text-decoration:underline}
 
+/* ---------- audit request form ----------
+   Lives in the contact band, so it sits on Midnight. Inputs are white
+   with Midnight text, which is the most legible pairing we have and
+   matches the card language. Labels are real and always visible, never
+   placeholder only. Every control clears 52px so it is a comfortable
+   thumb target, and the grid collapses to one column well before 375px.
+   The website field is the point of the form, so it sits in a raised
+   surface block. Growth Green stays on the button, where the palette
+   rules put it, rather than being spent on a border. */
+.audit-form{max-width:640px;margin:46px auto 0;text-align:left}
+.af-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.af-field{margin:0;display:flex;flex-direction:column}
+.af-wide{grid-column:1 / -1}
+.af-field label{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin-bottom:8px}
+.af-opt{text-transform:none;letter-spacing:0;font-weight:600;color:var(--on-dark)}
+.af-field input,.af-field textarea{width:100%;font-family:inherit;font-size:1rem;line-height:1.5;color:var(--midnight);background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-height:52px}
+.af-field textarea{min-height:92px;resize:vertical}
+.af-field input:focus-visible,.af-field textarea:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.af-field input[aria-invalid="true"]{border-color:var(--green-text);border-width:2px}
+.af-url{background:var(--surface);border:1px solid var(--hairline);border-radius:14px;padding:16px}
+.af-hint{font-size:.82rem;color:var(--on-dark);margin-top:8px}
+.af-error{margin:18px 0 0;background:var(--surface-hi);border:1px solid var(--hairline);border-radius:12px;padding:13px 16px;color:var(--white);font-size:.94rem}
+.af-error a{color:var(--mint)}
+.af-submit{margin-top:22px;width:100%;justify-content:center}
+.af-thanks{max-width:640px;margin:46px auto 0;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;padding:30px 28px;color:var(--white);font-size:1.06rem;line-height:1.7}
+.af-thanks a{color:var(--mint)}
+/* Off-screen rather than display:none, so bots still fill it in. */
+.af-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+@media(max-width:1000px){
+  .audit-form,.af-thanks{margin-top:36px}
+  .af-grid{grid-template-columns:1fr;gap:16px}
+}
+
 /* ---------- footer ---------- */
 /* The contact band runs straight into the footer, both dark, so a mint
    hairline marks the seam exactly as it does on the live site. */
