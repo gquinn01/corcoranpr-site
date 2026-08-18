@@ -254,8 +254,18 @@ section{padding:120px 0}
    Deliberately separate from the homepage's inline .hero-portrait and
    .story, which carry a name plate and a light-background border and
    are not what this page needs. */
-.hero-photo{flex:0 0 300px;margin-left:auto}
-.hero-photo img{width:274px;height:274px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto;box-shadow:0 0 0 14px rgba(221,247,236,.05),0 26px 56px rgba(8,42,74,.55)}
+.hero-photo{flex:0 0 420px;margin-left:auto}
+/* A landscape candid, not a circular headshot: this frame holds two
+   people, the founder and the owner, and a circle crop fits one face.
+   Rounded rectangle, mint border because Signal Blue is 2.82:1 on
+   Midnight. 420px keeps 700px of copy plus the 56px gap inside the
+   1180px wrap, so the copy column never has to shrink. */
+.hero-photo img{width:100%;height:auto;aspect-ratio:3/2;border-radius:18px;object-fit:cover;border:3px solid var(--mint);display:block;box-shadow:0 0 0 14px rgba(221,247,236,.05),0 26px 56px rgba(8,42,74,.55)}
+/* Names the two faces, which the hero copy implies but never labels.
+   Sized and colored to match .hero .proof rather than .photo-figure
+   figcaption: that one is --slate, a light-background color, and this
+   caption sits on Midnight. */
+.hero-photo figcaption{margin-top:18px;text-align:center;font-size:.84rem;line-height:1.6;color:var(--on-dark)}
 
 /* Bio prose beside a documentary photo. The photo column is a FIXED
    width, not a fraction: the photograph is portrait orientation, so a
@@ -383,11 +393,16 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
      headline instead of disappearing, which is why the About hero
      needs flex here where the others get display:block. */
   .hero-split-photo{display:flex;flex-direction:column;align-items:flex-start}
-  /* flex:0 0 auto, not the desktop 0 0 300px: in a column the basis is a
-     HEIGHT, and 300px would leave 100px of dead space under a 196px
-     photo. The eyebrow's own margin-top supplies the gap below it. */
-  .hero-photo{order:-1;flex:0 0 auto;margin:0}
-  .hero-photo img{width:196px;height:196px;margin:0}
+  /* flex:0 0 auto, not the desktop 0 0 420px: in a column the basis is a
+     HEIGHT, and 420px would leave a slab of dead space under the photo.
+     align-self:stretch because the parent is align-items:flex-start,
+     which would otherwise shrink the photo to its content width.
+     The eyebrow's own margin-top supplies the gap below it. */
+  .hero-photo{order:-1;flex:0 0 auto;margin:0;align-self:stretch}
+  .hero-photo img{width:100%;margin:0}
+  /* Left, not centered: on a phone the caption stacks directly above the
+     eyebrow and headline, and a centered line breaks that left edge. */
+  .hero-photo figcaption{text-align:left;margin-top:14px}
   .person-split{grid-template-columns:1fr;gap:34px}
   .grid3,.grid2,.grid4,.statgrid{grid-template-columns:1fr;gap:20px}
 
