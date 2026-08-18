@@ -267,13 +267,17 @@ section{padding:120px 0}
    caption sits on Midnight. */
 .hero-photo figcaption{margin-top:18px;text-align:center;font-size:.84rem;line-height:1.6;color:var(--on-dark)}
 
-/* Bio prose beside a documentary photo. The photo column is a FIXED
-   width, not a fraction: the photograph is portrait orientation, so a
-   fractional column would make it 700px tall next to 400px of prose.
-   Centered rather than top-aligned for the same reason. */
-.person-split{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center}
+/* Bio prose around a documentary photo. FLOATED, not a grid column:
+   two columns leave whichever one runs shorter as dead space, and a
+   513px-tall portrait beside four paragraphs left a band of it above
+   the text. Floated, the prose wraps down the side of the photo and
+   then runs full width underneath, so neither has to match the other's
+   height. The photo is cropped landscape to keep that underhang short.
+   Requires the figure to come first in the DOM. */
+.person-split{display:block}
+.person-split::after{content:"";display:block;clear:both}
 .person-split p+p{margin-top:18px}
-.photo-figure{margin:0}
+.photo-figure{float:right;width:380px;margin:5px 0 26px 48px}
 .photo-figure img{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);display:block;box-shadow:var(--lift)}
 .photo-figure figcaption{margin-top:14px;font-size:.9rem;line-height:1.6;color:var(--slate)}
 
@@ -403,7 +407,9 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
   /* Left, not centered: on a phone the caption stacks directly above the
      eyebrow and headline, and a centered line breaks that left edge. */
   .hero-photo figcaption{text-align:left;margin-top:14px}
-  .person-split{grid-template-columns:1fr;gap:34px}
+  /* No float on a phone: 380px of photo would leave a column of
+     prose too narrow to read beside it. */
+  .photo-figure{float:none;width:100%;margin:0 0 34px}
   .grid3,.grid2,.grid4,.statgrid{grid-template-columns:1fr;gap:20px}
 
   .stats{padding-top:110px}
