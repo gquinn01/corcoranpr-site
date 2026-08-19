@@ -212,7 +212,12 @@
     .frow{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--midnight);padding:5px 0}
     .frow .cad{margin-left:auto;font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--green-text)}
     .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
-    .f-sched{top:-34px;left:-26px;width:270px}
+    /* Five agents instead of two makes this card 225px tall, and at the
+       old top:-34px it grew straight down over the gauge. It is pinned
+       higher so it grows UPWARD instead: the bottom edge now clears the
+       gauge pane, while the card still laps 47px over the title bar,
+       which is the overlap that gives the graphic its depth. */
+    .f-sched{top:-190px;left:-26px;width:270px}
     .f-report{bottom:-30px;right:-24px;width:250px}
     .f-report .big{display:flex;align-items:center;gap:11px;font-size:.92rem;font-weight:700;color:var(--midnight)}
     .f-report svg{width:20px;height:20px;stroke:var(--green-text);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -384,6 +389,9 @@
           <h4>AGENT SCHEDULE</h4>
           <div class="frow"><span class="pulse"></span>Site auditor<span class="cad">WEEKLY</span></div>
           <div class="frow"><span class="pulse"></span>Algorithm watcher<span class="cad">DAILY</span></div>
+          <div class="frow"><span class="pulse"></span>Ads industry watcher<span class="cad">WEEKLY</span></div>
+          <div class="frow"><span class="pulse"></span>Ad account watcher<span class="cad">WEEKLY</span></div>
+          <div class="frow"><span class="pulse"></span>Ads strategist<span class="cad">WEEKLY</span></div>
         </div>
         <div class="float f-report">
           <div class="big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Report filed</div>
