@@ -305,6 +305,10 @@
        it, so nothing shifts when the bytes land. object-fit:cover because
        a square dropped into a circle would otherwise stretch. */
     .person-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;flex:none;display:block}
+    /* The picture element, not the img, is the flex item now, so the
+       no-shrink lives here. Both files are the same 400px square, so the
+       circle, the crop and the reserved box are identical either way. */
+    .person-photo-wrap{flex:none;display:block}
     .role{color:var(--mint);font-size:.74rem;letter-spacing:.15em;font-weight:700;margin-top:6px}
     .story{text-align:center}
     .story .portrait{width:148px;height:148px;margin:0 auto 30px;border-color:var(--signal)}
@@ -648,12 +652,24 @@
           <div class="person-top">
             <!-- A real face here rather than the icon tile the Agent Team
                  card uses beside it: that card stands for software, this one
-                 stands for a person. Two photos of Greg run on this page,
-                 the professional headshot greg-quinn.jpg in the hero and the
-                 casual outdoor photo greg-quinn-casual.jpg on this card.
-                 Same 120px circle as that tile, and flex:none like it, so
-                 the pair still sits level. -->
-            <img class="person-photo" src="greg-quinn-casual.jpg" width="400" height="400" loading="lazy" alt="Greg Quinn, owner of Corcoran Communications">
+                 stands for a person. WHICH face depends on width, because
+                 the hero portrait is display:none at 1000px and below.
+                 Above 1000px the hero already carries the professional
+                 headshot greg-quinn.jpg, so this card shows the casual
+                 outdoor photo greg-quinn-casual.jpg for contrast. At 1000px
+                 and below the headshot appears nowhere else on the page, so
+                 this card shows it instead, as greg-quinn-400.jpg, a card
+                 sized 400px copy rather than the 640px hero file.
+                 The source media query is min-width:1001px, the exact
+                 complement of the max-width:1000px rule that hides the hero
+                 portrait, so the two never disagree and only the file that
+                 will actually be seen is downloaded.
+                 Same 120px circle as the tile beside it, and flex:none like
+                 it, so the pair still sits level. -->
+            <picture class="person-photo-wrap">
+              <source media="(min-width:1001px)" srcset="greg-quinn-casual.jpg">
+              <img class="person-photo" src="greg-quinn-400.jpg" width="400" height="400" loading="lazy" alt="Greg Quinn, owner of Corcoran Communications">
+            </picture>
             <div><h3>Greg Quinn</h3><p class="role">Owner · Lead Strategist</p></div>
           </div>
           <p>U.S. Navy veteran (USS Chancellorsville) and Temple University graduate. Greg has run digital marketing, SEO, and ad campaigns for clients from local shops to national tours. Today he leads every account personally, backed by AI systems most agencies don't have yet.</p>
