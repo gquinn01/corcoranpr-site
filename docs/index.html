@@ -299,6 +299,12 @@
     /* ---------- people ---------- */
     .portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--mint);display:block}
     .person-top{display:flex;align-items:center;gap:22px;margin-bottom:20px}
+    /* The file is a 400px square so it stays sharp on a retina screen at
+       this 120px slot. width/height attributes on the tag reserve the box
+       from the first layout, and the CSS box below is what actually sizes
+       it, so nothing shifts when the bytes land. object-fit:cover because
+       a square dropped into a circle would otherwise stretch. */
+    .person-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;flex:none;display:block}
     .role{color:var(--mint);font-size:.74rem;letter-spacing:.15em;font-weight:700;margin-top:6px}
     .story{text-align:center}
     .story .portrait{width:148px;height:148px;margin:0 auto 30px;border-color:var(--signal)}
@@ -640,10 +646,11 @@
       <div class="grid2">
         <article class="card">
           <div class="person-top">
-            <!-- Greg's photo now runs in the hero, so this card takes the same
-                 icon tile as the Agent Team card beside it. Two photos of the
-                 same person on one page, and the pair sat lopsided. -->
-            <span class="tile" style="width:120px;height:120px;border-radius:50%"><svg viewBox="0 0 24 24" style="width:52px;height:52px" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span>
+            <!-- A real face here rather than the icon tile the Agent Team
+                 card uses beside it: that card stands for software, this one
+                 stands for a person. Same 120px circle as that tile, and
+                 flex:none like it, so the pair still sits level. -->
+            <img class="person-photo" src="greg-quinn-casual.jpg" width="400" height="400" loading="lazy" alt="Greg Quinn, owner of Corcoran Communications">
             <div><h3>Greg Quinn</h3><p class="role">Owner · Lead Strategist</p></div>
           </div>
           <p>U.S. Navy veteran (USS Chancellorsville) and Temple University graduate. Greg has run digital marketing, SEO, and ad campaigns for clients from local shops to national tours. Today he leads every account personally, backed by AI systems most agencies don't have yet.</p>
