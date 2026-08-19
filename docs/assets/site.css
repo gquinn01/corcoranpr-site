@@ -244,7 +244,12 @@ section{padding:120px 0}
 .stats{padding-top:150px}
 .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .stat{background:var(--surface);border:1px solid var(--hairline);border-radius:18px;padding:36px 32px;text-align:center}
-.stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.6rem);font-weight:800;color:var(--green);letter-spacing:-.035em;line-height:1;margin-bottom:12px}
+/* tabular-nums for the count-up in site.js. The tile itself cannot jump,
+   because this b is a block filling a 1fr grid cell whatever it says,
+   but the digits are centered, and proportional glyphs make a rolling
+   number twitch left and right as a 1 gives way to an 8. Tabular figures
+   are all one width, so the number counts up in place. */
+.stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.6rem);font-weight:800;color:var(--green);letter-spacing:-.035em;line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
 .stat span{color:var(--on-dark);font-size:.98rem}
 
 /* ---------- about page ----------

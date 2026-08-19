@@ -2,8 +2,9 @@
    CORCORAN COMMUNICATIONS, shared behavior for every page.
    Loaded with `defer` so it never blocks rendering.
 
-   Contents: the mobile navigation menu, and nothing else. The hero
-   dashboard animation is homepage-only and stays inline there.
+   Contents: the mobile navigation menu, the audit request form, and
+   the stat band count-up. The hero dashboard animation is homepage-only
+   and stays inline there.
    ============================================================== */
 (function () {
   var toggle = document.querySelector('.navtoggle');
@@ -92,4 +93,83 @@
            'and we will pick it up from there, or call or text 215-259-8304.');
     });
   });
+})();
+
+/* ---------- stat band count-up ----------
+   The real numbers live in the HTML as text, so the audit, a crawler and
+   a reader with JavaScript off all see 98%, 908% and 26 years. Nothing
+   here is the source of those values. This reads whatever the markup
+   already says, drops it to zero, and counts back up to the same number
+   the first time the band scrolls into view.
+
+   Parsed rather than hardcoded for the same reason: if the numbers in
+   the markup are ever corrected, the animation follows them instead of
+   counting up to a stale figure the script remembers.
+
+   Only the digits animate. The suffix is whatever followed them, so
+   "%" and " years" are carried through untouched on every frame.
+
+   The homepage hero gauge does the same thing with its own inline
+   script and is deliberately left alone. */
+(function () {
+  var bands = document.querySelectorAll('.statgrid');
+  if (!bands.length) return;
+
+  /* No animation at all under reduced motion. Returning here leaves the
+     markup exactly as it shipped, which IS the final value, so there is
+     nothing to restore. */
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function collect(band) {
+    var nodes = band.querySelectorAll('.stat b');
+    var items = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var m = /^(\d[\d,]*)(.*)$/.exec(nodes[i].textContent.trim());
+      if (!m) continue;   // not a number we can count, so leave it alone
+      items.push({
+        el: nodes[i],
+        to: parseInt(m[1].replace(/,/g, ''), 10),
+        suffix: m[2]
+      });
+      nodes[i].textContent = '0' + m[2];
+    }
+    return items;
+  }
+
+  /* Cubic ease-out, the same curve as the homepage gauge, so the two
+     decelerate alike. p reaches exactly 1, so the last frame always
+     writes the true number rather than a rounded near miss. */
+  function run(items) {
+    var t0 = null;
+    requestAnimationFrame(function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / 1100);
+      var eased = 1 - Math.pow(1 - p, 3);
+      for (var i = 0; i < items.length; i++) {
+        items[i].el.textContent = Math.round(items[i].to * eased) + items[i].suffix;
+      }
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  for (var b = 0; b < bands.length; b++) {
+    (function (band) {
+      var items = collect(band);
+      if (!items.length) return;
+
+      // No observer, no trigger to wait for: just show the count.
+      if (!('IntersectionObserver' in window)) { run(items); return; }
+
+      var io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            run(items);
+            io.disconnect();   // once per page load, never again
+            return;
+          }
+        }
+      }, { threshold: .3 });
+      io.observe(band);
+    })(bands[b]);
+  }
 })();
