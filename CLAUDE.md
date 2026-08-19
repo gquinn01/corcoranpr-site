@@ -121,6 +121,17 @@
 - Describe agents by role in customer-facing copy, not by name. The
   names above are internal. On the site an agent is "an auditor that
   scans your site every week", never "Site Auditor".
+- CANONICAL AGENT DESCRIPTION, to reuse verbatim or paraphrase:
+  "Two site agents: an auditor that scans the website every week, and a
+  watcher that tracks Google and AI-search changes every morning. Three
+  ads agents: one follows what Google Ads is changing, one reports on
+  the client's account weekly, one turns the reports into a plan.
+  Automated watchdogs check ad spend and tracking daily. Greg approves
+  every change."
+  The two site agents do NOT both watch the website. One audits the
+  site, the other watches the search world around it. Never write "two
+  watch your website"; it is the imprecision this description exists to
+  prevent.
 - NAP (name/address/phone) must match everywhere exactly:
   Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951,
   215-259-8304, greg@corcoranpr.com.
