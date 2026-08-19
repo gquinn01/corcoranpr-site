@@ -9,11 +9,16 @@
 
 Corcoran Communications is led by owner Greg Quinn, a U.S. Navy veteran
 who served from 2006 to 2011 as a cryptologic technician aboard the USS
-Chancellorsville, and a Temple University graduate. He is supported by AI
-agents that monitor client websites, search rankings, and Google
-algorithm changes around the clock. The firm was founded by Ruth Corcoran
-in January 2000 in Bear Creek, Pennsylvania, doing public relations,
-design, content, and events. Her son Greg headed sales and digital and
+Chancellorsville, and a Temple University graduate. He is supported by
+five AI agents. Two watch client websites: one audits site health every
+week, one tracks Google and AI-search changes every day. Three watch
+client advertising: one follows what Google Ads is changing, one reports
+weekly on the account, and one turns those reports into an action plan.
+Automated watchdog scripts inside client ad accounts check spend pacing
+and conversion tracking daily. Greg reviews and approves every change.
+The firm was founded by Ruth Corcoran in January 2000 in Bear Creek,
+Pennsylvania, doing public relations, design, content, and events. Her
+son Greg headed sales and digital and
 added SEO, social media, digital marketing, and lead generation before
 taking over as owner in July 2023, when Ruth retired. The firm carries
 over half a century of Corcoran family work in marketing, design, and
@@ -26,7 +31,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 - AI-Built Websites: fast, modern, schema-structured sites with no platform fees
 - Automated SEO/AEO Monitoring: AI agents scan site health weekly and watch Google/AI-search changes daily, with plain-English reports clients can read
 - Lead Generation: landing pages, offers, follow-up, and tracking measured in calls and booked jobs
-- Google Ads: search and local campaigns, tightly managed
+- Google Ads: search and local campaigns, tightly managed, with watchdog scripts checking spend pacing and conversion tracking daily and AI agents reviewing the account weekly
 - Social Media Marketing: Facebook, Instagram, and TikTok content and campaigns
 - Content Marketing: blogs, email, and web copy structured to be quoted by AI search
 

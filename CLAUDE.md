@@ -109,6 +109,18 @@
 ## Facts are sacred
 - Never invent facts, numbers, years, reviews, or testimonials.
 - Anything unverifiable gets flagged to Greg, not guessed.
+- The agent roster, as of 2026-08-18, is FIVE agents plus scripts.
+  Site agents: Site Auditor (weekly), Google Watcher (daily).
+  Ads agents: Industry Watcher (weekly, sweeps Google Ads announcements
+  and trade press), Account Watcher (weekly, reports on client ad
+  accounts: pacing, waste, anomalies, tracking health), Strategist
+  (weekly, reads the other reports and produces a tagged action plan).
+  Plus automated watchdog scripts inside client ad accounts checking
+  spend pacing and tracking daily. A human reviews and approves every
+  change; nothing ships on a machine's say-so.
+- Describe agents by role in customer-facing copy, not by name. The
+  names above are internal. On the site an agent is "an auditor that
+  scans your site every week", never "Site Auditor".
 - NAP (name/address/phone) must match everywhere exactly:
   Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951,
   215-259-8304, greg@corcoranpr.com.
