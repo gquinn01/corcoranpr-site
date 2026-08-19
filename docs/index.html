@@ -232,6 +232,32 @@
     .netwrap{max-width:760px;margin:0 auto 60px}
     .netwrap svg{width:100%;height:auto;display:block}
 
+    /* One dot per spoke drifting from the outer node in to the hub, so
+       the connections read as live. Purely additive: the lines and the
+       static dots are untouched, and a spark's resting state is
+       opacity:0, so with scripting off the diagram is exactly what it
+       was rather than showing five dots frozen on the lines. */
+    .spark{fill:var(--mint);opacity:0}
+    .js .spark{animation-iteration-count:infinite;animation-timing-function:linear;animation-play-state:paused}
+    .js .netwrap.is-live .spark{animation-play-state:running}
+    /* Five different durations rather than one duration with five
+       delays: equal durations re-sync into lockstep every cycle no
+       matter how they are offset. The negative delays start each dot
+       part way along its own run, so the first cycle is staggered too. */
+    .js .sp-a{animation-name:spark-a;animation-duration:3.4s;animation-delay:0s}
+    .js .sp-b{animation-name:spark-b;animation-duration:3.9s;animation-delay:-1.1s}
+    .js .sp-c{animation-name:spark-c;animation-duration:3.6s;animation-delay:-2.3s}
+    .js .sp-d{animation-name:spark-d;animation-duration:4.1s;animation-delay:-0.7s}
+    .js .sp-e{animation-name:spark-e;animation-duration:3.2s;animation-delay:-1.8s}
+    /* Offsets are node minus hub: the hub is at 380,160. Opacity holds
+       between 20% and 70% so the dot is already invisible by the time it
+       passes under the node it left and the hub it arrives at. */
+    @keyframes spark-a{0%{transform:translate(-270px,-90px);opacity:0}20%{opacity:.5}70%{opacity:.5}82%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+    @keyframes spark-b{0%{transform:translate(270px,-90px);opacity:0}20%{opacity:.5}70%{opacity:.5}82%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+    @keyframes spark-c{0%{transform:translate(-270px,90px);opacity:0}20%{opacity:.5}70%{opacity:.5}82%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+    @keyframes spark-d{0%{transform:translate(270px,90px);opacity:0}20%{opacity:.5}70%{opacity:.5}82%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+    @keyframes spark-e{0%{transform:translate(0,196px);opacity:0}20%{opacity:.5}70%{opacity:.5}82%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+
     /* ---------- dashboard motion ----------
        Initial hidden states are scoped to .js so the graphic is fully
        visible if scripting is off. Everything is disabled under
@@ -256,6 +282,7 @@
       .js .gauge-arc{stroke-dashoffset:0;transition:none}
       .mock,.mockwrap:hover .mock{transition:none;transform:none;box-shadow:var(--lift-xl)}
       .hero-portrait,.hero-portrait:hover{transition:none;transform:none}
+      .js .spark{animation:none;opacity:0}
     }
 
     /* ---------- promise ---------- */
@@ -580,6 +607,18 @@
             <circle cx="272" cy="196" r="3"/><circle cx="218" cy="214" r="2.4"/>
             <circle cx="488" cy="196" r="3"/><circle cx="542" cy="214" r="2.4"/>
             <circle cx="380" cy="238" r="3"/><circle cx="380" cy="278" r="2.4"/>
+          </g>
+          <!-- Signal sparks, decorative. Each starts parked on the hub and
+               is pushed back out to its own node by the keyframes, so one
+               pair of coordinates serves every spoke. Declared here, ahead
+               of the node and hub circles, so a spark slides UNDER the
+               artwork at both ends of its run instead of over it. -->
+          <g>
+            <circle class="spark sp-a" cx="380" cy="160" r="2.4"/>
+            <circle class="spark sp-b" cx="380" cy="160" r="2.4"/>
+            <circle class="spark sp-c" cx="380" cy="160" r="2.4"/>
+            <circle class="spark sp-d" cx="380" cy="160" r="2.4"/>
+            <circle class="spark sp-e" cx="380" cy="160" r="2.4"/>
           </g>
           <g fill="#082A4A" stroke="#DDF7EC" stroke-width="1.5">
             <circle cx="110" cy="70" r="38"/><circle cx="650" cy="70" r="38"/>
@@ -914,6 +953,22 @@
       for(var i=0;i<es.length;i++){ if(es[i].isIntersecting){ run(); io.disconnect(); return; } }
     },{threshold:.3});
     io.observe(wrap);
+  })();
+
+  /* Diagram sparks. The motion itself is CSS; this only decides when it
+     is allowed to run, so nothing animates while the section is off
+     screen. threshold 0 on purpose: any higher and the sparks would sit
+     frozen mid line while the diagram is already partly visible. The
+     observer keeps observing rather than disconnecting, because this
+     toggles both ways. */
+  (function(){
+    var net=document.querySelector('.netwrap');
+    if(!net) return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(!('IntersectionObserver' in window)){ net.classList.add('is-live'); return; }
+    new IntersectionObserver(function(es){
+      for(var i=0;i<es.length;i++) net.classList.toggle('is-live',es[i].isIntersecting);
+    },{threshold:0}).observe(net);
   })();
   </script>
 </body>
