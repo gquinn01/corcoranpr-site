@@ -236,24 +236,29 @@
        first, so a ripple appears to run from the node in to the hub.
        Nothing is added and nothing moves: these are the ten circles that
        were already on the lines. Their rest state is exactly the current
-       look, solid Fresh Mint at r 2.4 and r 3, and the pulse is a brief
-       bloom off that, larger and part transparent, and back.
+       look, solid Fresh Mint, and the animation only ever plays off that.
+       The dot settles BELOW full mint and flares up to it, rather than
+       starting at full and dimming: at full opacity there is nothing
+       brighter to move toward, and a dot that only fades reads as
+       disappearing, not pulsing. The calm value lives inside the
+       keyframes, never on .pd itself, so with the animation off the dots
+       are solid mint exactly as before.
        transform-box:fill-box so each dot scales about its own center. A
        bare scale() on an SVG circle is measured from the SVG origin, so
        without it the dots would slide up the lines instead of swelling. */
     .pd{transform-box:fill-box;transform-origin:center}
     .js .pd{animation-name:dotpulse;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-play-state:paused}
     .js .netwrap.is-live .pd{animation-play-state:running}
-    @keyframes dotpulse{0%,100%{transform:scale(1);opacity:1}6%{transform:scale(1.5);opacity:.55}18%{transform:scale(1);opacity:1}}
+    @keyframes dotpulse{0%,100%{transform:scale(1);opacity:.45}9%{transform:scale(2);opacity:1}30%{transform:scale(1);opacity:.45}}
     /* One duration per line, all five different, so the lines never fall
-       into lockstep. Inside a line the inner dot runs .34s behind the
+       into lockstep. Inside a line the inner dot runs .4s behind the
        outer one, and that lag is what makes the ripple read as heading
        toward the hub rather than the two just blinking together. */
-    .js .l1o{animation-duration:3.3s;animation-delay:0s}     .js .l1i{animation-duration:3.3s;animation-delay:.34s}
-    .js .l2o{animation-duration:3.7s;animation-delay:-1.3s}  .js .l2i{animation-duration:3.7s;animation-delay:-.96s}
-    .js .l3o{animation-duration:3.5s;animation-delay:-2.1s}  .js .l3i{animation-duration:3.5s;animation-delay:-1.76s}
-    .js .l4o{animation-duration:3.9s;animation-delay:-.6s}   .js .l4i{animation-duration:3.9s;animation-delay:-.26s}
-    .js .l5o{animation-duration:3.1s;animation-delay:-1.7s}  .js .l5i{animation-duration:3.1s;animation-delay:-1.36s}
+    .js .l1o{animation-duration:3.2s;animation-delay:0s}     .js .l1i{animation-duration:3.2s;animation-delay:.4s}
+    .js .l2o{animation-duration:3.6s;animation-delay:-1.3s}  .js .l2i{animation-duration:3.6s;animation-delay:-.9s}
+    .js .l3o{animation-duration:3.4s;animation-delay:-2.1s}  .js .l3i{animation-duration:3.4s;animation-delay:-1.7s}
+    .js .l4o{animation-duration:3.8s;animation-delay:-.6s}   .js .l4i{animation-duration:3.8s;animation-delay:-.2s}
+    .js .l5o{animation-duration:3.0s;animation-delay:-1.7s}  .js .l5i{animation-duration:3.0s;animation-delay:-1.3s}
 
     /* ---------- dashboard motion ----------
        Initial hidden states are scoped to .js so the graphic is fully
@@ -951,9 +956,13 @@
     if(!net) return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if(!('IntersectionObserver' in window)){ net.classList.add('is-live'); return; }
-    new IntersectionObserver(function(es){
+    /* Held in a variable on purpose. An observer with no reference of its
+       own is not reliably kept alive by its observations in every engine,
+       and a collected observer stops toggling silently. */
+    var netio=new IntersectionObserver(function(es){
       for(var i=0;i<es.length;i++) net.classList.toggle('is-live',es[i].isIntersecting);
-    },{threshold:0}).observe(net);
+    },{threshold:0});
+    netio.observe(net);
   })();
   </script>
 </body>
