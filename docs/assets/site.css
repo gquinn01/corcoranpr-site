@@ -260,8 +260,9 @@ section{padding:120px 0}
    .story, which carry a name plate and a light-background border and
    are not what this page needs. */
 .hero-photo{flex:0 0 420px;margin-left:auto}
-/* A landscape candid, not a circular headshot: this frame holds two
-   people, the founder and the owner, and a circle crop fits one face.
+/* greg-phillies.jpg is a landscape candid, not a circular headshot: the
+   frame holds two people, the founder and the owner, and a circle crop
+   fits one face.
    Rounded rectangle, mint border because Signal Blue is 2.82:1 on
    Midnight. 420px keeps 700px of copy plus the 56px gap inside the
    1180px wrap, so the copy column never has to shrink. */
@@ -272,12 +273,13 @@ section{padding:120px 0}
    caption sits on Midnight. */
 .hero-photo figcaption{margin-top:18px;text-align:center;font-size:.84rem;line-height:1.6;color:var(--on-dark)}
 
-/* Bio prose around a documentary photo. FLOATED, not a grid column:
-   two columns leave whichever one runs shorter as dead space, and a
-   513px-tall portrait beside four paragraphs left a band of it above
-   the text. Floated, the prose wraps down the side of the photo and
-   then runs full width underneath, so neither has to match the other's
-   height. The photo is cropped landscape to keep that underhang short.
+/* Bio prose around greg-navy-wide.jpg. FLOATED, not a grid column: two
+   columns leave whichever one runs shorter as dead space, and the
+   513px-tall portrait greg-navy.jpg beside four paragraphs left a band
+   of it above the text. Floated, the prose wraps down the side of the
+   photo and then runs full width underneath, so neither has to match
+   the other's height. greg-navy-wide.jpg is that portrait cropped
+   landscape, which keeps the underhang short.
    Requires the figure to come first in the DOM. */
 .person-split{display:block}
 .person-split::after{content:"";display:block;clear:both}
@@ -286,7 +288,7 @@ section{padding:120px 0}
 .photo-figure img{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);display:block;box-shadow:var(--lift)}
 .photo-figure figcaption{margin-top:14px;font-size:.9rem;line-height:1.6;color:var(--slate)}
 
-/* Founder portrait and lead on the dark story band. Mint border, not
+/* ruth-corcoran.jpg and the lead on the dark story band. Mint border, not
    Signal Blue: Signal Blue is 2.82:1 on Midnight and never carries an
    accent on a dark panel. */
 .story-portrait{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);display:block;margin:0 auto 30px}
