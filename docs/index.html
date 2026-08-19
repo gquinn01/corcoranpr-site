@@ -212,12 +212,16 @@
     .frow{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--midnight);padding:5px 0}
     .frow .cad{margin-left:auto;font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--green-text)}
     .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none}
-    /* Five agents instead of two makes this card 225px tall, and at the
-       old top:-34px it grew straight down over the gauge. It is pinned
-       higher so it grows UPWARD instead: the bottom edge now clears the
-       gauge pane, while the card still laps 47px over the title bar,
-       which is the overlap that gives the graphic its depth. */
-    .f-sched{top:-190px;left:-26px;width:270px}
+    /* Five agents instead of two makes this card 225px tall, where two
+       rows were 117px. There is a 284px corridor to put it in: the hero
+       proof line ends 188px above the mock and the gauge arc starts 96px
+       below its top edge. At the old top:-34px the card grew down into
+       the gauge. Sitting it at -156px leaves 44px of air under the hero
+       copy and 15px above the gauge arc, and still laps the whole title
+       bar, which is the overlap the graphic's depth comes from. That
+       last 19px of lap onto the gauge pane's padding is the same overlap
+       the two-row card had, and it does not touch the arc itself. */
+    .f-sched{top:-156px;left:-26px;width:270px}
     .f-report{bottom:-30px;right:-24px;width:250px}
     .f-report .big{display:flex;align-items:center;gap:11px;font-size:.92rem;font-weight:700;color:var(--midnight)}
     .f-report svg{width:20px;height:20px;stroke:var(--green-text);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
