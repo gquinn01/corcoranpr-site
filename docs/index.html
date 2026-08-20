@@ -188,10 +188,13 @@
     /* ---------- product mockup, the signature move ---------- */
     .mockwrap{position:relative;z-index:1;margin-top:84px;transform:translateY(60px)}
     .mock{background:var(--white);border-radius:20px;box-shadow:var(--lift-xl);overflow:hidden}
-    .mock-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid var(--line)}
-    .mock-id{display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:700;color:var(--midnight);letter-spacing:.02em}
+    /* wrap, so that when the title and the pill cannot share a row the pill
+       drops onto its own line instead of squeezing the pill until its text
+       breaks in two. */
+    .mock-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid var(--line)}
+    .mock-id{display:flex;align-items:center;gap:10px;min-width:0;font-size:.82rem;font-weight:700;color:var(--midnight);letter-spacing:.02em}
     .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
-    .chip{background:var(--mint);color:var(--midnight);font-size:.66rem;font-weight:700;letter-spacing:.13em;padding:6px 12px;border-radius:999px}
+    .chip{background:var(--mint);color:var(--midnight);font-size:.66rem;font-weight:700;letter-spacing:.13em;padding:6px 12px;border-radius:999px;white-space:nowrap;text-align:center}
     .mock-body{display:grid;grid-template-columns:.85fr 1.15fr;gap:0}
     .gauge-pane{padding:34px 30px;border-right:1px solid var(--line);text-align:center}
     .gauge-pane svg{width:100%;max-width:230px}

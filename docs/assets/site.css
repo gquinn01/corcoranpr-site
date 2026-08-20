@@ -164,7 +164,19 @@ section{padding:120px 0}
 @media(max-width:1000px){
   .navtoggle{display:inline-flex}
   .nav .inner{gap:14px}
-  .nav img{width:172px}
+  /* .nav .inner outranks .wrap and zeroes its side padding, so on a phone
+     the wordmark and the toggle sat flush against the screen edges, and at
+     320px the toggle spilled past the viewport. Restore a real inset, and
+     let it grow to clear an iOS notch when the phone is held sideways.
+     The plain padding first is the fallback for browsers without max(). */
+  .nav .inner{padding-left:20px;padding-right:20px;
+    padding-left:max(20px,env(safe-area-inset-left,0px));
+    padding-right:max(20px,env(safe-area-inset-right,0px))}
+  /* The wordmark scales with the screen instead of holding 172px, which is
+     what makes the logo, the button and the toggle still fit once the bar
+     has padding again. */
+  .nav img{width:min(172px,36vw)}
+  .nav .btn-sm{white-space:nowrap}
   /* The links move into a Midnight panel under the bar instead of
      disappearing. With six pages the site needs real navigation on a
      phone. The panel is absolutely positioned against the sticky
@@ -239,6 +251,14 @@ section{padding:120px 0}
 .band-towns{padding:84px 0}
 .band-towns .sec-head{margin-bottom:38px}
 @media(max-width:1000px){ .band-towns{padding:60px 0} }
+/* Below 360px the three bar items stop fitting once the bar carries side
+   padding again, so the button gives up some padding and the gaps tighten.
+   That is what keeps 320px, the narrowest phone worth supporting, clear of
+   the viewport edge. */
+@media(max-width:360px){
+  .nav .inner{gap:10px}
+  .nav .btn-sm{padding:9px 12px;font-size:.78rem}
+}
 
 /* ---------- county hub town list ----------
    The compact list under the prose on a county hub. Shared by every
