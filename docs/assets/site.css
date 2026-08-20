@@ -388,8 +388,8 @@ footer.site a:hover{color:var(--mint);text-decoration:underline}
 /* The NAP lines are links (map, tel, mailto) but must not read as a link
    list: they keep the footer's own text color, and the only thing a
    pointer or the keyboard changes is the underline. */
-footer.site .foot-nap a{color:inherit;text-decoration:none}
-footer.site .foot-nap a:hover,footer.site .foot-nap a:focus,footer.site .foot-nap a:focus-visible{color:inherit;text-decoration:underline}
+footer.site .foot-nap a,footer.site .foot-bottom p a{color:inherit;text-decoration:none}
+footer.site .foot-nap a:hover,footer.site .foot-nap a:focus,footer.site .foot-nap a:focus-visible,footer.site .foot-bottom p a:hover,footer.site .foot-bottom p a:focus,footer.site .foot-bottom p a:focus-visible{color:inherit;text-decoration:underline}
 .foot-area ul{list-style:none;columns:3;column-gap:22px;line-height:1.95}
 .foot-area p{margin-top:14px}
 .foot-bottom{border-top:1px solid var(--hairline);padding-top:26px;text-align:center;font-size:.8rem;line-height:2}
