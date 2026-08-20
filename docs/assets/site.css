@@ -145,7 +145,13 @@ section{padding:120px 0}
 
 /* ---------- sticky dark nav ---------- */
 .nav{position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--hairline)}
-.nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:17px 0}
+/* The side padding matters: .nav .inner outranks .wrap, so whatever it sets
+   here is the header's only inset. With 0 the wordmark sat against the
+   viewport edge on every screen narrower than .wrap's 1240px max-width, and
+   only touched it more gently above that, where the centering margin is
+   0.5px at 1241. 30px matches .wrap, so the header lines up with the
+   sections under it at every width. */
+.nav .inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:17px 30px}
 .nav-home{display:block;flex:none;line-height:0}
 .nav img{display:block;width:230px;height:auto}
 .nav ul{display:flex;gap:28px;list-style:none;font-size:1rem;font-weight:600}
@@ -164,11 +170,10 @@ section{padding:120px 0}
 @media(max-width:1000px){
   .navtoggle{display:inline-flex}
   .nav .inner{gap:14px}
-  /* .nav .inner outranks .wrap and zeroes its side padding, so on a phone
-     the wordmark and the toggle sat flush against the screen edges, and at
-     320px the toggle spilled past the viewport. Restore a real inset, and
-     let it grow to clear an iOS notch when the phone is held sideways.
-     The plain padding first is the fallback for browsers without max(). */
+  /* A tighter inset than the 30px above, because a phone has no width to
+     spare, and it grows to clear an iOS notch when the phone is held
+     sideways. The plain padding first is the fallback for browsers
+     without max(). */
   .nav .inner{padding-left:20px;padding-right:20px;
     padding-left:max(20px,env(safe-area-inset-left,0px));
     padding-right:max(20px,env(safe-area-inset-right,0px))}
