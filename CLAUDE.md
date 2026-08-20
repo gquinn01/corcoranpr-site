@@ -144,6 +144,9 @@
 - Valid JSON-LD, title ≤60 chars, meta description ≤160, exactly one H1.
 - Every <img> needs real alt text. The audit counts alt="" as missing
   and drops the score, so decorative-empty alt is not an option here.
+- Accessible text (aria-labels, alt text) describes what is actually
+  rendered; any edit to a visible element updates its accessible
+  description in the same commit.
 - Mobile layout checks must use a true-viewport method (the iframe
   technique documented in scripts/); a headless-Chrome window
   screenshot below ~500px is not evidence of a layout defect.
