@@ -73,7 +73,13 @@ section{padding:120px 0}
 .card{background:var(--white);border-radius:16px;padding:38px 34px;box-shadow:var(--lift);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
 .card:hover{transform:translateY(-5px);box-shadow:var(--lift-hi)}
 .card h3{font-size:1.24rem;margin:22px 0 12px}
-.card p{font-size:.97rem;color:var(--slate)}
+/* Card body text. The labeled paragraphs carry their own size and color,
+   so they are excluded here rather than left to lose the cascade: .card p
+   is (0,1,1) and a bare component class is (0,1,0), so .card p silently
+   defeated .tag, .role and .card-more on every card. Excluding them costs
+   nothing, because the color they inherit is the same one this rule sets:
+   body is --slate and .dark is --on-dark. */
+.card p:not(.tag):not(.role):not(.card-more){font-size:.97rem;color:var(--slate)}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 /* Four across for benefit tiles and four-step processes. Steps down to
@@ -135,7 +141,7 @@ section{padding:120px 0}
 .dark h2,.dark h3{color:var(--white)}
 .dark .card{background:var(--surface);border:1px solid var(--hairline);box-shadow:none}
 .dark .card:hover{background:var(--surface-hi);border-color:rgba(255,255,255,.22);box-shadow:none}
-.dark .card p{color:var(--on-dark)}
+.dark .card p:not(.tag):not(.role):not(.card-more){color:var(--on-dark)}
 
 /* ---------- sticky dark nav ---------- */
 .nav{position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--hairline)}

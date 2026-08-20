@@ -147,6 +147,8 @@
 - Accessible text (aria-labels, alt text) describes what is actually
   rendered; any edit to a visible element updates its accessible
   description in the same commit.
+- After any shared-CSS change, the cascade analyzer in scripts/ should
+  come back clean for component-vs-ancestor overrides.
 - Mobile layout checks must use a true-viewport method (the iframe
   technique documented in scripts/); a headless-Chrome window
   screenshot below ~500px is not evidence of a layout defect.
