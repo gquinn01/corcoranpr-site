@@ -131,6 +131,57 @@ When you add a page, all four of these happen or the page is not finished:
 
 Then run `python3 scripts/audit.py`. Every page must read 100/100. Steps 2 and 3 are enforced by the scanner itself, so the sitemap, llms.txt and the actual pages cannot quietly drift apart. That is the point: the checklist is not a thing you have to remember, it is a thing the build fails without.
 
+### The domain cutover checklist
+
+The site is built for `corcoranpr.com` and is not served from it yet. Every absolute URL in the repo already points there: all 26 canonical tags, all 26 `<loc>` entries in `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and 204 `@id`/`url` values across the schema blocks. Meanwhile `corcoranpr.com` still resolves to the old WordPress site.
+
+That gap is not neutral, and it is the reason not to let this drag. Right now every page on the GitHub Pages address tells Google *the real version of this page lives at corcoranpr.com* — and the page that answers there is the old site. The longer both are up, the longer you are pointing crawlers at the thing you replaced.
+
+**Before you touch DNS.**
+
+1. **Check the MX records first.** `greg@corcoranpr.com` is a live business mailbox on this domain, and it is the only step here that can take down something you rely on today. Changing the A record does not touch mail. *Moving the nameservers* moves everything, and MX records that are not recreated on the new provider mean mail stops arriving with no error and no bounce you will see. Export the full current zone before changing one record. Today the domain answers from `dns101.register.com` / `dns102.register.com`, with the apex pointing at `162.211.81.218`.
+2. **Save the old site.** It is 28 URLs: 14 pages and 14 blog posts, listed in its own `page-sitemap.xml` and `post-sitemap.xml`. Once DNS moves, that content is gone unless you have a copy. Pull the HTML and any images worth keeping.
+3. **Decide the redirect map** (next section). Do this *before* cutover, not after, because the window where old URLs are dead is the window where the rankings bleed.
+
+**The cutover itself.**
+
+4. **Add `docs/CNAME`**, one line, `corcoranpr.com`, no protocol and no trailing slash. The repo has no CNAME file today. Without it GitHub Pages drops the custom domain on the next deploy.
+5. **Set the custom domain** in Settings → Pages. The Pages API currently reports `cname: null`, serving from `main` branch, `/docs` path.
+6. **Point DNS at GitHub.** Apex `corcoranpr.com` needs four A records (and the matching AAAA records) at GitHub's Pages IPs; `www` gets a CNAME to `gquinn01.github.io`. Read the current IPs off [GitHub's own docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) on the day you do it rather than trusting any list written earlier, this one included.
+7. **Wait, then enforce HTTPS.** The certificate is issued after DNS resolves, so the "Enforce HTTPS" box stays greyed out until propagation finishes. Come back for it; do not skip it.
+
+**After it is live.**
+
+8. **Restore `SITE_URL`**: `gh variable set SITE_URL --body "https://corcoranpr.com/"`. See the rule in `CLAUDE.md`. This is what puts the weekly audit back on the live site, and it is what turns the site-wide AEO checks back on — `robots.txt` and `llms.txt` are fetched from a domain root, so while the scan runs on local files those two checks do not run at all.
+9. **Confirm `robots.txt` is finally real.** The file says so itself in its own header comment: on a project subpath it is decorative. At a domain root it starts working, and the AI-crawler `Allow` rules that are the whole point of it take effect.
+10. **Search Console.** Add `corcoranpr.com` as a property, verify it, submit `sitemap.xml`. Do not use Change of Address — that tool is for moving between different domains, and this is the same domain changing what it serves.
+11. **Re-run the audit against the live site** once, by hand: `python3 scripts/audit.py https://corcoranpr.com/`. The page list comes from the live sitemap, so this is also the check that the sitemap deployed correctly.
+12. **Update the profiles that carry the URL** — Google Business Profile first, then the four social accounts in the schema `sameAs` array.
+13. **Clean up the pre-cutover language.** The `SITE_URL` rule in `CLAUDE.md` and the site-wide AEO instruction in `agents/site-auditor.md` are both written "until the domain cutover." Once it has happened they are stale.
+
+#### The redirect map: decide it, don't default it
+
+`.nojekyll` is in `docs/`, which turns Jekyll off, so `jekyll-redirect-from` is not available. GitHub Pages serves static files and cannot issue a real 301. A redirect here is an HTML file at the old path with a `meta refresh` and a `rel="canonical"` at the new one. Google follows those and passes most of the signal, but it is a weaker instrument than a server redirect, so spend it where it counts.
+
+The temptation is to point all 28 old URLs at the homepage. Don't. Google treats a mass redirect of unrelated pages to one page as a soft 404 and drops them anyway, so it buys nothing and costs you a pile of files to maintain. Redirect only where the new page genuinely answers what the old page answered. Let the rest 404 honestly.
+
+| Old URL | Where it should go | Why |
+|---|---|---|
+| `/` | `/` | Same URL. Nothing to do. |
+| `/about/` | `/about/` | Same URL, and the new page is better. Free win. |
+| `/social-media-marketing/` | `/services/social-media-marketing/` | Clean one-to-one match. |
+| `/portfolio/` | `/#industries` | Industries We Know is the closest thing we now have to a portfolio. |
+| `/contact/` | `/free-audit/` | The new site has no contact page; the free audit is the front door. |
+| `/digital-marketing-services/` | `/#services` | Broad old page, no single new equivalent. |
+| `/content-marketing/` | **Decide** | `llms.txt` lists content marketing as a service, but no page exists for it yet. Either build the page or let this 404. |
+| `/public-relations/` | **Decide** | No equivalent. PR is not a service the new site sells. |
+| `/graphic-design-services/` | **Decide** | No equivalent. |
+| `/branding-agency/` | **Decide** | No equivalent. |
+| `/blog/`, `/blog/weekly-podcast/`, 14 posts | **Decide** | There is no blog on the new site. These 16 URLs are the real question: they are the only pages on the old domain with any age on them. Porting the two or three that still read well is worth more than redirecting all 16 to nothing. |
+| `/landing-page-template/`, `/thanks/` | Let them 404 | Leftovers. Nobody links to them. |
+
+A 404 is not a failure state. It is the correct, honest answer for a page that no longer exists, and it is what Google prefers to a redirect that lies about relevance. Which is also the argument for **adding `docs/404.html`** while you are in here: there is none today, so a wrong URL currently lands on GitHub's default page with none of your branding, no nav, and no way back into the site.
+
 ---
 
 ## Part 5: The 30-day path to the cutting edge
