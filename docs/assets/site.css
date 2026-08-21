@@ -438,19 +438,29 @@ footer.site .social a:hover{border-color:var(--mint);text-decoration:none}
   .hero-split{display:block}
   .hero-copy-col{max-width:none}
   .hero-art{display:none}
-  /* The photo is content, so it stays. It shrinks and moves above the
-     headline instead of disappearing, which is why the About hero
-     needs flex here where the others get display:block. */
-  .hero-split-photo{display:flex;flex-direction:column;align-items:flex-start}
-  /* flex:0 0 auto, not the desktop 0 0 420px: in a column the basis is a
+  /* The photo is content, so it stays instead of disappearing the way
+     .hero-art does, which is why the About hero needs flex here where
+     the others get display:block. It shrinks and follows the copy.
+     align-items:stretch, not flex-start: flex-start sizes each child to
+     its own content, and at 320px the copy column's min-content width
+     (set by the two CTA buttons, which do not wrap) is 273px against
+     260px of available room, so the text pushed 13px past the wrap's
+     right padding and the hero read 30px left, 17px right. Stretch
+     holds both children to the wrap and the insets come back even. */
+  .hero-split-photo{display:flex;flex-direction:column;align-items:stretch}
+  /* No order property on purpose. The figure already follows the copy
+     column in the DOM, so source order is the order we want: headline
+     first on the phone screen, photo under the lead. This carried
+     order:-1 until 2026-08-20, which floated the photo above the
+     headline and pushed the H1 off the first screen.
+     flex:0 0 auto, not the desktop 0 0 420px: in a column the basis is a
      HEIGHT, and 420px would leave a slab of dead space under the photo.
-     align-self:stretch because the parent is align-items:flex-start,
-     which would otherwise shrink the photo to its content width.
-     The eyebrow's own margin-top supplies the gap below it. */
-  .hero-photo{order:-1;flex:0 0 auto;margin:0;align-self:stretch}
+     The margin-top opens the gap under the copy column, a job the
+     eyebrow's own margin-top did while the photo led. */
+  .hero-photo{flex:0 0 auto;margin:38px 0 0}
   .hero-photo img{width:100%;margin:0}
-  /* Left, not centered: on a phone the caption stacks directly above the
-     eyebrow and headline, and a centered line breaks that left edge. */
+  /* Left, not centered: the photo's left edge lines up with the copy
+     stacked above it, and a centered caption breaks that edge. */
   .hero-photo figcaption{text-align:left;margin-top:14px}
   /* No float on a phone: 380px of photo would leave a column of
      prose too narrow to read beside it. */
