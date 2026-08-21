@@ -131,6 +131,20 @@
 ## Facts are sacred
 - Never invent facts, numbers, years, reviews, or testimonials.
 - Anything unverifiable gets flagged to Greg, not guessed.
+- Two tenures exist and they are not interchangeable (recorded
+  2026-08-21, after the firm's 26 years was found on three pages
+  described as Greg's own). The FIRM has 26 years: Ruth Corcoran founded
+  it in January 2000, and that is what the "26 years / In business" stat
+  band on 19 pages counts. GREG has 10 years: he joined in September
+  2016 to head sales and digital, and became owner in July 2023. Never
+  give the firm's 26 years to Greg personally. The dates behind both
+  numbers are on the About page timeline; check there before writing any
+  experience claim.
+- The firm's history is not the same as its services. It did public
+  relations, design, content, and events from 2000, and only added
+  digital, SEO, and lead generation in 2016. So "founded in 2000" is
+  true anywhere, but "doing web design since 2000" is not. Do not date
+  a service earlier than the year the firm started selling it.
 - The agent roster, as of 2026-08-18, is FIVE agents plus scripts.
   Site agents: Site Auditor (weekly), Google Watcher (daily).
   Ads agents: Industry Watcher (weekly, sweeps Google Ads announcements
