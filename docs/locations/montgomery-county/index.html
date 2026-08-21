@@ -199,26 +199,32 @@
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-          <!-- Montgomery County's real silhouette: a broad wedge running
-               northwest to southeast, tapering to the point where it meets
-               Philadelphia. The Schuylkill runs its length. -->
-          <path d="M84 78 L140 70 L196 84 L246 108 L292 140 L332 182 L294 208 L242 210 L188 200 L136 186 L92 172 L70 140 Z"
-                fill="#DDF7EC" fill-opacity=".07" stroke="#DDF7EC" stroke-opacity=".30" stroke-width="1.5" stroke-linejoin="round"/>
-          <!-- The Schuylkill, the river that organizes the county. -->
-          <path d="M80 130 L114 146 L148 148 L180 162 L212 168 L244 182 L276 190 L308 196"
-                fill="none" stroke="#B6C9DD" stroke-opacity=".40" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Collegeville, Lansdale and Blue Bell: the three towns with
-               their own pages under this hub. -->
-          <circle cx="158" cy="122" r="4.5" fill="#DDF7EC" fill-opacity=".52"/>
-          <circle cx="212" cy="118" r="4.5" fill="#DDF7EC" fill-opacity=".45"/>
-          <circle cx="244" cy="152" r="4" fill="#DDF7EC" fill-opacity=".40"/>
-          <!-- Quakertown sits outside the county, minutes past the line,
-               which is the claim the headline makes. -->
-          <path d="M188 56 L196 74" fill="none" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.4" stroke-dasharray="4 5"/>
-          <g transform="translate(174.4,29.4) scale(1.1)" fill="none" stroke="#15B77E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 21.2s6.9-5.6 6.9-11a6.9 6.9 0 1 0-13.8 0c0 5.4 6.9 11 6.9 11z"/>
+          <!-- The argument this page makes, drawn: a local search, and the
+               client's listing sitting first with the green marker. Built
+               from rectangles on purpose. An earlier version tried to draw
+               the county itself and a hand-drawn boundary that is only
+               nearly right reads worse than no map at all. -->
+          <rect x="40" y="30" width="320" height="240" rx="14" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+          <!-- The search box. -->
+          <rect x="64" y="56" width="272" height="34" rx="10" fill="none" stroke="#DDF7EC" stroke-opacity=".30" stroke-width="1.5"/>
+          <g fill="none" stroke="#DDF7EC" stroke-opacity=".45" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="86" cy="71" r="5.5"/><path d="M90 75l4.5 4.5"/>
           </g>
-          <circle cx="187.6" cy="41.5" r="2.4" fill="#15B77E"/>
+          <rect x="106" y="69" width="118" height="5" rx="2.5" fill="#DDF7EC" fill-opacity=".32"/>
+          <!-- First result: green rail and marker, the only green on the
+               panel, because it is the one thing the page is selling. -->
+          <rect x="64" y="110" width="272" height="42" rx="9" fill="#DDF7EC" fill-opacity=".10" stroke="#15B77E" stroke-opacity=".55" stroke-width="1.5"/>
+          <rect x="64" y="110" width="4" height="42" rx="2" fill="#15B77E"/>
+          <rect x="86" y="121" width="152" height="6" rx="3" fill="#DDF7EC" fill-opacity=".62"/>
+          <rect x="86" y="136" width="98" height="5" rx="2.5" fill="#DDF7EC" fill-opacity=".30"/>
+          <circle cx="316" cy="131" r="5.5" fill="#15B77E"/>
+          <!-- The competitors, dimmer the further down they sit. -->
+          <rect x="64" y="164" width="272" height="42" rx="9" fill="none" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+          <rect x="86" y="175" width="130" height="6" rx="3" fill="#DDF7EC" fill-opacity=".30"/>
+          <rect x="86" y="190" width="84" height="5" rx="2.5" fill="#DDF7EC" fill-opacity=".16"/>
+          <rect x="64" y="218" width="272" height="42" rx="9" fill="none" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+          <rect x="86" y="229" width="112" height="6" rx="3" fill="#DDF7EC" fill-opacity=".24"/>
+          <rect x="86" y="244" width="72" height="5" rx="2.5" fill="#DDF7EC" fill-opacity=".14"/>
         </svg>
           </div>
         </div>
