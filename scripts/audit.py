@@ -269,10 +269,22 @@ def audit(source: str, coverage: dict = None):
                      "and its reviews.")
 
     # --- Social sharing ---
-    if p.meta.get("og:title") and p.meta.get("og:description"):
-        passes.append("Open Graph tags present — the site will look right when shared on social.")
-    else:
+    # The 160-character ceiling on og:description is a HOUSE RULE, not a
+    # standard. Open Graph itself sets no limit, and the networks all cut
+    # at different points (and move the goalposts), so nobody can tell you
+    # the "correct" length. What we can do is keep one number in the head
+    # of every page: the meta description is capped at 160 above, and the
+    # two descriptions are usually near-copies of each other, so letting
+    # og: run longer just means the pair drifts apart. Warning, never
+    # critical: an over-long og:description still shares fine, it is only
+    # inconsistent with the rest of the site.
+    og_d = p.meta.get("og:description", "").strip()
+    if not (p.meta.get("og:title") and og_d):
         warns.append("**Missing Open Graph tags** (og:title / og:description) — shared links will look broken or bare on Facebook/LinkedIn.")
+    elif len(og_d) > 160:
+        warns.append(f"**og:description is {len(og_d)} characters** (house rule: ≤160, the same cap the meta description keeps): “{og_d[:80]}…”")
+    else:
+        passes.append(f"Open Graph tags present ({len(og_d)}-char og:description) — the site will look right when shared on social.")
 
     # --- Technical basics ---
     if p.canonical:
