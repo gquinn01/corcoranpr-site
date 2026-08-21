@@ -42,6 +42,13 @@ SITE_DIR = "docs"
 SITEMAP_PATH = os.path.join(SITE_DIR, "sitemap.xml")
 LLMS_PATH = os.path.join(SITE_DIR, "llms.txt")
 
+# The NAP phone and email, in the formats they could plausibly be typed.
+# Every visible mention of either is meant to be tappable: a reader on a
+# phone should never have to memorize a number and retype it in the
+# dialer. Mentions inside JSON-LD are data, not copy, and are skipped.
+NAP_PHONE_RE = re.compile(r"\(?215\)?[\s.\-]?259[\s.\-]?8304")
+NAP_EMAIL_RE = re.compile(r"greg@corcoranpr\.com")
+
 
 class PageParser(HTMLParser):
     """Walks the HTML and collects everything the audit needs."""
@@ -60,9 +67,15 @@ class PageParser(HTMLParser):
         self.links_external = 0
         self.canonical = None
         self.has_viewport = False
+        self.contacts_linked = 0  # phone/email mentions inside tel:/mailto:
+        self.contacts_bare = []   # (line, kind) for the ones that are not
+        self._href_stack = []     # open <a> hrefs, innermost last
+        self._skip_depth = 0      # inside <script>/<style>
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag in ("script", "style"):
+            self._skip_depth += 1
         if tag == "title":
             self._in_title = True
         elif tag == "h1":
@@ -83,6 +96,7 @@ class PageParser(HTMLParser):
             self.images.append((a.get("src", ""), a.get("alt")))
         elif tag == "a":
             href = a.get("href", "")
+            self._href_stack.append(href)
             if href.startswith("http"):
                 self.links_external += 1
             elif href and not href.startswith(("#", "mailto:", "tel:")):
@@ -93,8 +107,13 @@ class PageParser(HTMLParser):
             self._in_title = False
         elif tag == "h1":
             self._in_h1 = False
+        elif tag == "a":
+            if self._href_stack:
+                self._href_stack.pop()
         elif tag == "script":
             self._in_jsonld = False
+        if tag in ("script", "style") and self._skip_depth:
+            self._skip_depth -= 1
 
     def handle_data(self, data):
         if self._in_title:
@@ -103,6 +122,15 @@ class PageParser(HTMLParser):
             self.h1s[-1] += data
         if self._in_jsonld and self.jsonld_blocks:
             self.jsonld_blocks[-1] += data
+        if self._skip_depth:
+            return
+        linked = any(h.startswith(("tel:", "mailto:")) for h in self._href_stack)
+        for kind, rx in (("phone", NAP_PHONE_RE), ("email", NAP_EMAIL_RE)):
+            for _ in rx.finditer(data):
+                if linked:
+                    self.contacts_linked += 1
+                else:
+                    self.contacts_bare.append((self.getpos()[0], kind))
 
 
 def load(source: str) -> str:
@@ -310,6 +338,21 @@ def audit(source: str, coverage: dict = None):
         warns.append(f"**{len(missing_alt)} of {len(p.images)} images missing alt text.** Alt text helps image search and accessibility.")
     elif p.images:
         passes.append(f"All {len(p.images)} images have alt text.")
+
+    # --- Tappable phone and email ---
+    # A bare number in body copy is a number the reader has to memorize
+    # and retype. Every visible mention should be a tel:/mailto: link, so
+    # a phone reader taps once. Silent regression is the real risk here:
+    # this is the kind of thing that gets missed when a new FAQ answer or
+    # card is written, which is exactly why it is checked on every page.
+    if p.contacts_bare:
+        where = ", ".join(f"line {ln} ({kind})" for ln, kind in p.contacts_bare[:5])
+        warns.append(f"**{len(p.contacts_bare)} phone/email mention(s) not linked** ({where}). "
+                     "Wrap each one so it is tappable on a phone: "
+                     "`<a href=\"tel:+12152598304\">215-259-8304</a>` or "
+                     "`<a href=\"mailto:greg@corcoranpr.com\">greg@corcoranpr.com</a>`.")
+    elif p.contacts_linked:
+        passes.append(f"All {p.contacts_linked} phone/email mentions are tappable tel:/mailto: links.")
 
     # --- Word count (thin content check) ---
     text = re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>|<[^>]+>", " ", html)
