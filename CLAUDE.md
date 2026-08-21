@@ -93,13 +93,29 @@
   English line, What You Get, differentiator band with icon tiles and
   CTA row, four-step How It Works, What It Costs with CTA row, Stronger
   Together, contact band, FAQ last. Phone CTAs are tel: links.
-- Every primary "Get Your Free AI Site Audit" button links to the free
-  audit page, docs/free-audit/, at the correct relative depth (changed
-  2026-08-16 from #contact). The only exception is the free audit page
-  itself, where the same button is #contact and scrolls to the form.
-  The footer Get Started column's "Free AI Site Audit" item follows the
-  same rule. Ghost phone buttons stay tel: links, and the contact band
-  on every page keeps its form.
+- CTA arrangement (decided 2026-08-21, reversing the 2026-08-16 change
+  that sent buttons to the free audit page). Every button lands on a
+  form; the explainer is reached by text link, not by button.
+  - Every primary "Get Your Free AI Site Audit" button links to
+    #contact, its own page's form. No exceptions, including the free
+    audit page, whose buttons scroll to its own form as before.
+  - The free audit page stays reachable two ways from every page: the
+    nav "Free Audit" item, and the footer Get Started column's "Free AI
+    Site Audit" item. Both point at docs/free-audit/ at the correct
+    relative depth. On the free audit page itself the nav item is
+    href="./", matching how About is handled on the About page.
+  - "Free Audit" replaced "How It Works" in the nav on all 26 pages and
+    the template. It is plain nav text like its siblings, not a button.
+    "How It Works" keeps its footer Explore link everywhere, so the
+    homepage section is still linked from every page.
+  - No exit links next to any form. The fine print under the form stays
+    phone and email only. A reader who has reached a form should have
+    nothing to click but the form, the phone, or the email.
+  - The free audit page remains the ads landing destination at cutover,
+    which is why it keeps its own form and its own buttons pointing at
+    it.
+  - Ghost phone buttons stay tel: links, and the contact band on every
+    page keeps its form.
 - American spelling everywhere: center not centre, neighbor not
   neighbour, skeptical not sceptical, organized not organised. Applies
   to code comments too, not just site copy. (The British words in this
