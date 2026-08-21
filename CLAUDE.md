@@ -215,4 +215,17 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   site.
 - Contact form: audit request form on every page, posting to a hosted
   Formspree endpoint; no server code.
+- SITE_URL, the repo variable the weekly Site Auditor reads, is UNSET as
+  of 2026-08-20 and goes back to https://corcoranpr.com/ after the domain
+  cutover. Restore it with:
+  gh variable set SITE_URL --body "https://corcoranpr.com/"
+  Set, the weekly scan audits that live URL instead of docs/. It was set
+  until 2026-08-20, and because the cutover has not happened the domain
+  still served the old WordPress site, so every weekly report to date
+  scored the OLD site, not ours. Unset, the scan covers all 26 pages
+  under docs/ and scores what we actually build. The cost of leaving it
+  unset: check_ai_access only runs against a live URL, so the site-wide
+  robots.txt and llms.txt checks do not run at all, and the report says
+  so. That is the trade until cutover: real pages with two missing
+  site-wide checks beats a complete audit of somebody else's site.
 - Never put API keys or secrets in any file.
