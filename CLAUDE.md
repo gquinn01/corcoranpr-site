@@ -99,11 +99,17 @@
   - Every primary "Get Your Free AI Site Audit" button links to
     #contact, its own page's form. No exceptions, including the free
     audit page, whose buttons scroll to its own form as before.
-  - The free audit page stays reachable two ways from every page: the
-    nav "Free Audit" item, and the footer Get Started column's "Free AI
-    Site Audit" item. Both point at docs/free-audit/ at the correct
-    relative depth. On the free audit page itself the nav item is
-    href="./", matching how About is handled on the About page.
+  - The nav "Free Audit" item is the route to the free audit page from
+    every other page. It points at docs/free-audit/ at the correct
+    relative depth. On the free audit page itself it is href="./",
+    matching how About is handled on the About page.
+  - The footer Get Started column's "Free AI Site Audit" item is
+    #contact, the page's own form, not a link to the free audit page
+    (decided 2026-08-21). Get Started is a column of ways to start, so
+    all three of its items now act: the form, the phone, the email.
+    That leaves the nav item as the only cross-page route to the free
+    audit page, which is the accepted cost of every button and footer
+    CTA landing on a form.
   - "Free Audit" replaced "How It Works" in the nav on all 26 pages and
     the template. It is plain nav text like its siblings, not a button.
     "How It Works" keeps its footer Explore link everywhere, so the
