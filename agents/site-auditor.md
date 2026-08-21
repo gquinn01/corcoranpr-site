@@ -49,6 +49,18 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
      and the single best AEO improvement to make next. Remember: ranking in
      Google and being *the answer* an AI assistant gives are two different
      games; report on both.
+
+     **If there is no `## Site-wide` section, say so.** Those checks only
+     run when the scan is pointed at a live URL, because robots.txt and
+     llms.txt have to be fetched from a domain root. Until the domain
+     cutover the scan runs against the local files in `docs/`, so the
+     robots.txt and llms.txt checks do not run at all. That is a hole in
+     the evidence, not a clean bill of health, and a "0 warnings"
+     headline is less complete than it looks. Never report those two as
+     passing when they never ran. Read `docs/robots.txt` and
+     `docs/llms.txt` yourself, report what they say, and label it as
+     checked by hand. Note that robots.txt only takes effect at a real
+     domain root, so it does nothing on the GitHub Pages address.
    - **Publishing gaps are critical.** If any page is flagged as missing
      from `docs/sitemap.xml` or `docs/llms.txt`, report it as a critical
      issue in plain terms: the page is live but crawlers and AI assistants
