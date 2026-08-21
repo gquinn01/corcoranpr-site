@@ -275,16 +275,19 @@ def audit(source: str, coverage: dict = None):
     # the "correct" length. What we can do is keep one number in the head
     # of every page: the meta description is capped at 160 above, and the
     # two descriptions are usually near-copies of each other, so letting
-    # og: run longer just means the pair drifts apart. Warning, never
-    # critical: an over-long og:description still shares fine, it is only
-    # inconsistent with the rest of the site.
+    # og: run longer just means the pair drifts apart. A NOTE, not a
+    # warning and never a critical: notes are the one bucket score_of()
+    # does not count, which is right for a rule we invented. An over-long
+    # og:description still shares fine, so it should never be the reason
+    # a page drops off 100. The missing-tags case below stays a warning,
+    # because that one is a real defect.
     og_d = p.meta.get("og:description", "").strip()
     if not (p.meta.get("og:title") and og_d):
         warns.append("**Missing Open Graph tags** (og:title / og:description) — shared links will look broken or bare on Facebook/LinkedIn.")
-    elif len(og_d) > 160:
-        warns.append(f"**og:description is {len(og_d)} characters** (house rule: ≤160, the same cap the meta description keeps): “{og_d[:80]}…”")
     else:
         passes.append(f"Open Graph tags present ({len(og_d)}-char og:description) — the site will look right when shared on social.")
+        if len(og_d) > 160:
+            notes.append(f"og:description is {len(og_d)} characters, past the 160 the meta description keeps. House consistency rule, not a spec: trim it when convenient, preserving the promises over the connectives. “{og_d[:80]}…”")
 
     # --- Technical basics ---
     if p.canonical:
