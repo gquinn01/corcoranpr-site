@@ -15,8 +15,9 @@ one audits site health every week, one tracks Google and AI-search
 changes every morning. Three watch client advertising: one follows what
 Google Ads is changing, one reports weekly on the account, and one turns
 those reports into an action plan.
-Automated watchdog scripts inside client ad accounts check spend pacing
-and conversion tracking daily. Greg reviews and approves every change.
+On top of the five, automated watchdog scripts inside client ad accounts
+check spend pacing and conversion tracking daily. Greg reviews and
+approves every change.
 The firm was founded by Ruth Corcoran in January 2000 in Bear Creek,
 Pennsylvania, doing public relations, design, content, and events. Her
 son Greg headed sales and digital and
