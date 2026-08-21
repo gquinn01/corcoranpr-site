@@ -419,7 +419,22 @@ def main():
 
     results = []
     for t in targets:
-        passes, warns, fails, notes = audit(t, coverage=None if is_url(t) else coverage)
+        # One unreadable page must never take the whole run down with it.
+        # load() reaches the network for a live URL, and every network
+        # error is an exception: DNS, TLS, timeout, 500, a redirect loop.
+        # Uncaught, that ends the process with a traceback, no report file
+        # is written, and the weekly agent has nothing to read — which is
+        # exactly how the 2026-08-17 scheduled run died on a transient DNS
+        # failure at the runner. A page we cannot read is a finding, so
+        # record it as a critical against that page and keep going.
+        try:
+            passes, warns, fails, notes = audit(t, coverage=None if is_url(t) else coverage)
+        except Exception as e:
+            passes, warns, notes = [], [], []
+            fails = [f"**Could not read this page** ({type(e).__name__}: {e}). "
+                     "For a live URL that usually means the site or the network was "
+                     "unreachable when the scan ran, not that the page is broken. "
+                     "Re-run before acting on it."]
         results.append({"source": t, "passes": passes, "warns": warns,
                         "fails": fails, "notes": notes,
                         "score": score_of(len(passes), len(warns), len(fails))})
