@@ -32,6 +32,18 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    - **Top 3 priorities** for the week, chosen across the *whole site*, each
      with: what's wrong, which page(s) it affects, why it matters for
      leads/revenue (not jargon), and the specific fix.
+   - **Advisory notes.** The report carries `ℹ️ Notes (optional
+     improvements)` sections, one under `## Site-wide` and one under any
+     page that has them. List every note, after the priorities above,
+     with the page it came from and one line on what it means and why it
+     is worth doing. Notes do not count toward the score, so a page can
+     sit at 100/100 and still carry one: an over-long `og:description`,
+     for example, shares fine and breaks nothing, it just drifts from the
+     160-character cap the rest of the site keeps. That is exactly why
+     they need reporting. Nothing forces a note to the surface, no build
+     fails over it, and an unread note is one that never gets fixed. They
+     rank below the priorities and never displace them. If the report has
+     no notes, say "No advisory notes this week."
    - An **"AI visibility (AEO)"** line: what the `## Site-wide` section says
      about AI-crawler access and llms.txt, which pages carry FAQPage schema,
      and the single best AEO improvement to make next. Remember: ranking in
@@ -49,8 +61,10 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
 
 4. **Keep it honest.** If **every page** is at 100/100, say so plainly and
    suggest the next *growth* move instead (new service page, new content,
-   reviews). Never invent problems to look busy, and never downgrade a real
-   finding to keep the report short.
+   reviews). A clean scoreboard does not excuse you from the notes: still
+   list them, because a perfect week is the week they are easiest to clear.
+   Never invent problems to look busy, and never downgrade a real finding
+   to keep the report short.
 
 ## Style
 
