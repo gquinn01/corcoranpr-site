@@ -126,6 +126,14 @@
   neighbour, skeptical not sceptical, organized not organised. Applies
   to code comments too, not just site copy. (The British words in this
   rule are the examples, not a violation of it.)
+- "near me" in copy is the phrase customers type, not a description
+  of distance, so it takes quotes: they search 'near me' and let
+  Google decide. Bare, it reads as "close to me" and the sentence
+  turns to mush. Never paste a whole search query into a sentence
+  as if the reader talks that way ("if you have been searching for
+  a web designer near me" was live for a while and did not parse).
+  Proximity is earned by naming the real towns and counties and by
+  areaServed in the schema, not by planting the string in prose.
 - No em dashes in site copy, ever, including schema text.
 
 ## Facts are sacred
