@@ -186,27 +186,31 @@
           </div>
 
           <!-- Decorative only, so aria-hidden and hidden below 1000px.
-               Draw the thing the page is about. Hex values are hardcoded
+               All nine town pages share one graphic family: the same browser
+               frame, palette, and baseline, with the interior varied per
+               page so no two heroes are identical (decided 2026-08-24).
+               The county hubs keep their own. Hex values are hardcoded
                because CSS custom properties do not reach inline SVG
                attributes; every one must be a Strategic Growth palette
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <path d="M200 40v220" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="2" stroke-dasharray="9 9"/>
-              <rect x="52" y="104" width="120" height="112" rx="12" fill="#DDF7EC" fill-opacity=".09" stroke="#DDF7EC" stroke-opacity=".26" stroke-width="1.5"/>
-              <rect x="228" y="104" width="120" height="112" rx="12" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
-              <rect x="72" y="128" width="72" height="10" rx="5" fill="#DDF7EC" fill-opacity=".42"/>
-              <rect x="72" y="150" width="56" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
-              <rect x="72" y="168" width="64" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
-              <rect x="248" y="128" width="72" height="10" rx="5" fill="#DDF7EC" fill-opacity=".26"/>
-              <rect x="248" y="150" width="56" height="8" rx="4" fill="#B6C9DD" fill-opacity=".18"/>
-              <rect x="248" y="168" width="64" height="8" rx="4" fill="#B6C9DD" fill-opacity=".14"/>
-              <path d="M172 160h56" stroke="#15B77E" stroke-width="3" stroke-linecap="round"/>
-              <path d="M214 152l14 8-14 8" fill="none" stroke="#15B77E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="112" cy="196" r="7" fill="#15B77E"/>
-              <rect x="118" y="258" width="72" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".24"/>
-              <rect x="206" y="258" width="56" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".14"/>
-
+              <rect x="52" y="70" width="296" height="168" rx="16" fill="#DDF7EC" fill-opacity=".06" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <line x1="52" y1="104" x2="348" y2="104" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <circle cx="72" cy="87" r="4" fill="#15B77E"/>
+              <circle cx="86" cy="87" r="4" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="106" y="81" width="132" height="12" rx="6" fill="#DDF7EC" fill-opacity=".12"/>
+              <rect x="70" y="120" width="116" height="84" rx="10" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="82" y="134" width="78" height="10" rx="5.0" fill="#DDF7EC" fill-opacity=".4"/>
+              <rect x="82" y="152" width="62" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".28"/>
+              <rect x="82" y="168" width="70" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".2"/>
+              <rect x="214" y="120" width="116" height="84" rx="10" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="226" y="134" width="78" height="10" rx="5.0" fill="#DDF7EC" fill-opacity=".4"/>
+              <rect x="226" y="152" width="62" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".28"/>
+              <rect x="226" y="168" width="70" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".2"/>
+              <line x1="200" y1="112" x2="200" y2="182" stroke="#DDF7EC" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="5 6"/>
+              <rect x="164" y="196" width="72" height="22" rx="11" fill="#15B77E"/>
+              <rect x="120" y="258" width="160" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".22"/>
             </svg>
           </div>
         </div>

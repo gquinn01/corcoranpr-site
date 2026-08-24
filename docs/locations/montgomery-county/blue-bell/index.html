@@ -187,22 +187,31 @@
           </div>
 
           <!-- Decorative only, so aria-hidden and hidden below 1000px.
-               Draw the thing the page is about. Hex values are hardcoded
+               All nine town pages share one graphic family: the same browser
+               frame, palette, and baseline, with the interior varied per
+               page so no two heroes are identical (decided 2026-08-24).
+               The county hubs keep their own. Hex values are hardcoded
                because CSS custom properties do not reach inline SVG
                attributes; every one must be a Strategic Growth palette
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <rect x="56" y="112" width="60" height="122" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
-              <rect x="128" y="72" width="68" height="162" rx="8" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5"/>
-              <rect x="208" y="98" width="60" height="136" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
-              <rect x="280" y="126" width="56" height="108" rx="8" fill="#DDF7EC" fill-opacity=".06" stroke="#DDF7EC" stroke-opacity=".2" stroke-width="1.5"/>
-              <path d="M70 132h32M70 152h32M70 172h32M142 92h40M142 112h40M142 132h40M142 152h40M222 118h32M222 138h32M222 158h32M294 146h28M294 166h28" stroke="#DDF7EC" stroke-opacity=".3" stroke-width="4" stroke-linecap="round"/>
-              <path d="M40 250h320" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="2" stroke-linecap="round"/>
-              <path d="M40 250h150" stroke="#15B77E" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="190" cy="250" r="8" fill="#15B77E"/>
-              <rect x="212" y="262" width="72" height="8" rx="4" fill="#B6C9DD" fill-opacity=".24"/>
-
+              <rect x="52" y="70" width="296" height="168" rx="16" fill="#DDF7EC" fill-opacity=".06" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <line x1="52" y1="104" x2="348" y2="104" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <circle cx="72" cy="87" r="4" fill="#15B77E"/>
+              <circle cx="86" cy="87" r="4" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="106" y="81" width="132" height="12" rx="6" fill="#DDF7EC" fill-opacity=".12"/>
+              <rect x="78" y="126" width="100" height="12" rx="6.0" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="78" y="148" width="118" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="78" y="164" width="96" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".22"/>
+              <rect x="78" y="180" width="108" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".18"/>
+              <line x1="210" y1="120" x2="210" y2="214" stroke="#DDF7EC" stroke-opacity=".14" stroke-width="1.5"/>
+              <rect x="228" y="126" width="92" height="62" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="240" y="140" width="68" height="8" rx="4.0" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="240" y="156" width="52" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".25"/>
+              <rect x="228" y="196" width="92" height="22" rx="11" fill="#15B77E"/>
+              <rect x="244" y="203" width="60" height="8" rx="4" fill="#062018" fill-opacity=".85"/>
+              <rect x="120" y="258" width="160" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".22"/>
             </svg>
           </div>
         </div>

@@ -189,25 +189,31 @@
           </div>
 
           <!-- Decorative only, so aria-hidden and hidden below 1000px.
-               Draw the thing the page is about. Hex values are hardcoded
+               All nine town pages share one graphic family: the same browser
+               frame, palette, and baseline, with the interior varied per
+               page so no two heroes are identical (decided 2026-08-24).
+               The county hubs keep their own. Hex values are hardcoded
                because CSS custom properties do not reach inline SVG
                attributes; every one must be a Strategic Growth palette
                color, used solid or at low alpha. No gradients. -->
           <div class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 400 300" focusable="false">
-              <rect x="132" y="96" width="136" height="140" rx="12" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".28" stroke-width="1.5"/>
-              <rect x="152" y="120" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".3"/>
-              <rect x="208" y="120" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".3"/>
-              <rect x="152" y="166" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".22"/>
-              <rect x="208" y="166" width="40" height="30" rx="5" fill="#DDF7EC" fill-opacity=".22"/>
-              <circle cx="200" cy="216" r="9" fill="#15B77E"/>
-              <circle cx="64" cy="110" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
-              <circle cx="336" cy="110" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
-              <circle cx="200" cy="42" r="20" fill="#DDF7EC" fill-opacity=".1" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
-              <path d="M84 118l44 20M316 118l-44 20M200 62v30" stroke="#DDF7EC" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="5 6"/>
-              <rect x="110" y="258" width="82" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".24"/>
-              <rect x="204" y="258" width="60" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".16"/>
-
+              <rect x="52" y="70" width="296" height="168" rx="16" fill="#DDF7EC" fill-opacity=".06" stroke="#DDF7EC" stroke-opacity=".24" stroke-width="1.5"/>
+              <line x1="52" y1="104" x2="348" y2="104" stroke="#DDF7EC" stroke-opacity=".18" stroke-width="1.5"/>
+              <circle cx="72" cy="87" r="4" fill="#15B77E"/>
+              <circle cx="86" cy="87" r="4" fill="#DDF7EC" fill-opacity=".3"/>
+              <rect x="106" y="81" width="132" height="12" rx="6" fill="#DDF7EC" fill-opacity=".12"/>
+              <rect x="168" y="118" width="64" height="22" rx="7" fill="#DDF7EC" fill-opacity=".4"/>
+              <path d="M200 140v12M110 152h180M110 152v16M200 152v16M290 152v16" fill="none" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="84" y="168" width="52" height="36" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="174" y="168" width="52" height="36" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="264" y="168" width="52" height="36" rx="8" fill="#DDF7EC" fill-opacity=".08" stroke="#DDF7EC" stroke-opacity=".16" stroke-width="1.5"/>
+              <rect x="94" y="180" width="32" height="7" rx="3.5" fill="#DDF7EC" fill-opacity=".34"/>
+              <rect x="184" y="180" width="32" height="7" rx="3.5" fill="#DDF7EC" fill-opacity=".34"/>
+              <rect x="274" y="180" width="32" height="7" rx="3.5" fill="#DDF7EC" fill-opacity=".34"/>
+              <circle cx="200" cy="196" r="4" fill="#15B77E"/>
+              <rect x="84" y="216" width="232" height="8" rx="4.0" fill="#B6C9DD" fill-opacity=".18"/>
+              <rect x="120" y="258" width="160" height="9" rx="4.5" fill="#B6C9DD" fill-opacity=".22"/>
             </svg>
           </div>
         </div>
