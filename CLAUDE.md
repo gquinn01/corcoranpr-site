@@ -179,6 +179,13 @@
 - NAP (name/address/phone) must match everywhere exactly:
   Corcoran Communications, 1808 Enclave Dr, Quakertown, PA 18951,
   215-259-8304, greg@corcoranpr.com.
+- The office municipality is MILFORD TOWNSHIP (recorded 2026-08-24).
+  1808 Enclave Dr carries a Quakertown 18951 mailing address but sits
+  in Milford Township, not Quakertown Borough. "Our office is in
+  Quakertown" and the NAP stay exactly as they are: the postal city is
+  correct and has to match everywhere. Never write that the office is
+  in the borough, downtown, or on Broad Street, and never add Milford
+  Township to the address block. "Upper Bucks" is always safe.
 
 ## Definition of done (every site change)
 - Run: python3 scripts/audit.py — EVERY page must score 100/100, not just
@@ -236,6 +243,12 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
 - Cross-linking is tree-shaped: town to county hub, county hub to
   service pages and to the towns under it. Never every town to every
   town.
+- Regional names are checkable facts, not flavor. North Penn is
+  Lansdale, North Wales, and Hatfield; Souderton and Harleysville are
+  Indian Valley, per the county planning commission. Newtown is lower
+  Bucks, Doylestown central Bucks, Quakertown upper Bucks. Quakertown's
+  downtown is West Broad Street, not Main Street. Getting one of these
+  wrong is what makes a local page read as written from a map.
 
 ## Links (decided 2026-08-13)
 - EVERY internal link and asset path is RELATIVE and never starts with
