@@ -122,6 +122,13 @@
     it.
   - Ghost phone buttons stay tel: links, and the contact band on every
     page keeps its form.
+  - The film and live entertainment page is the one exception to the
+    audit CTA (decided 2026-08-26). It carries no audit button, no audit
+    form, and no How It Works or What It Costs section, because
+    production work is project-scoped to a run rather than sold as the
+    audit, flat quote, month-to-month product. Its buttons and its
+    footer Get Started item point at #contact, which is direct contact
+    by phone and email.
 - American spelling everywhere: center not centre, neighbor not
   neighbour, skeptical not sceptical, organized not organised. Applies
   to code comments too, not just site copy. (The British words in this
