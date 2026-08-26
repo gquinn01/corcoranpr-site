@@ -34,7 +34,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 - Automated SEO/AEO Monitoring: AI agents scan site health weekly and watch Google/AI-search changes daily, with plain-English reports clients can read
 - Lead Generation: landing pages, offers, follow-up, and tracking measured in calls and booked jobs
 - Google Ads: search and local campaigns, tightly managed, with watchdog scripts checking spend pacing and conversion tracking daily and AI agents reviewing the account weekly
-- Social Media Marketing: Facebook, Instagram, and TikTok content and campaigns
+- Social Media Marketing: Paid ads on Facebook, Instagram, and TikTok
 - Content Marketing: blogs, email, and web copy structured to be quoted by AI search
 
 ## Location and service area
@@ -51,7 +51,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 - [Web Design](https://corcoranpr.com/services/web-design/): fast, mobile-first websites clients own outright, built with AI and edited by hand
 - [SEO Services](https://corcoranpr.com/services/seo/): search engine optimization, answer engine optimization (AEO), and content marketing
 - [Google Ads Management](https://corcoranpr.com/services/google-ads/): search and local campaigns managed for lead quality
-- [Social Media Marketing](https://corcoranpr.com/services/social-media-marketing/): Facebook, Instagram, and TikTok content and campaigns
+- [Social Media Marketing](https://corcoranpr.com/services/social-media-marketing/): Paid ads on Facebook, Instagram, and TikTok
 - [Lead Generation](https://corcoranpr.com/services/lead-generation/): landing pages, offers, follow-up, and tracking measured in calls and booked jobs
 - [Trade School Marketing](https://corcoranpr.com/industries/training-centers/): enrollment marketing for training centers and trade schools, measured in enrollments rather than clicks
 - [Credit Union Marketing](https://corcoranpr.com/industries/credit-unions/): marketing for credit unions and community financial institutions, measured in applications and new accounts
