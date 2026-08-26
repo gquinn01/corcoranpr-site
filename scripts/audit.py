@@ -71,6 +71,17 @@ class PageParser(HTMLParser):
         self.contacts_bare = []   # (line, kind) for the ones that are not
         self._href_stack = []     # open <a> hrefs, innermost last
         self._skip_depth = 0      # inside <script>/<style>
+        # Visible FAQ items, as (question, answer) of rendered text. The
+        # house rule is that each one is byte-identical to its schema
+        # twin, so this collects what a reader sees and the FAQ mirror
+        # check compares it against the FAQPage node.
+        self.faq_visible = []
+        self._details_depth = 0
+        self._in_summary = False
+        self._in_faq_answer = False
+        self._faq_q = None
+        self._faq_a = None
+        self._skip_faq_ico = 0    # the chevron <span>, art with no words
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -94,6 +105,17 @@ class PageParser(HTMLParser):
             self.jsonld_blocks.append("")
         elif tag == "img":
             self.images.append((a.get("src", ""), a.get("alt")))
+        elif tag == "details":
+            self._details_depth += 1
+            self._faq_q, self._faq_a = None, None
+        elif tag == "summary" and self._details_depth:
+            self._in_summary = True
+            self._faq_q = ""
+        elif tag == "span" and self._in_summary and "faq-ico" in (a.get("class") or ""):
+            self._skip_faq_ico += 1
+        elif tag == "p" and self._details_depth and self._faq_a is None:
+            self._in_faq_answer = True
+            self._faq_a = ""
         elif tag == "a":
             href = a.get("href", "")
             self._href_stack.append(href)
@@ -107,6 +129,18 @@ class PageParser(HTMLParser):
             self._in_title = False
         elif tag == "h1":
             self._in_h1 = False
+        elif tag == "summary":
+            self._in_summary = False
+        elif tag == "span" and self._skip_faq_ico:
+            self._skip_faq_ico -= 1
+        elif tag == "p" and self._in_faq_answer:
+            self._in_faq_answer = False
+        elif tag == "details":
+            if self._details_depth:
+                self._details_depth -= 1
+            if self._faq_q is not None:
+                self.faq_visible.append((self._faq_q.strip(), (self._faq_a or "").strip()))
+            self._faq_q, self._faq_a = None, None
         elif tag == "a":
             if self._href_stack:
                 self._href_stack.pop()
@@ -122,6 +156,10 @@ class PageParser(HTMLParser):
             self.h1s[-1] += data
         if self._in_jsonld and self.jsonld_blocks:
             self.jsonld_blocks[-1] += data
+        if self._in_summary and not self._skip_faq_ico and self._faq_q is not None:
+            self._faq_q += data
+        if self._in_faq_answer and self._faq_a is not None:
+            self._faq_a += data
         if self._skip_depth:
             return
         linked = any(h.startswith(("tel:", "mailto:")) for h in self._href_stack)
@@ -240,6 +278,7 @@ def audit(source: str, coverage: dict = None):
 
     # --- Structured data (JSON-LD) ---
     types = []
+    faq_nodes = []            # every FAQPage node found, for the mirror check
     for block in p.jsonld_blocks:
         try:
             data = json.loads(block)
@@ -261,6 +300,8 @@ def audit(source: str, coverage: dict = None):
                 t2 = item.get("@type")
                 if t2:
                     types.extend(t2 if isinstance(t2, list) else [t2])
+                    if "FAQPage" in (t2 if isinstance(t2, list) else [t2]):
+                        faq_nodes.append(item)
         except (json.JSONDecodeError, AttributeError):
             warns.append("**A JSON-LD block failed to parse** — broken structured data is invisible to Google. Validate at validator.schema.org.")
     if types:
@@ -285,6 +326,69 @@ def audit(source: str, coverage: dict = None):
         warns.append("**AEO gap: no FAQPage schema.** Add a real FAQ section (the questions customers "
                      "actually call to ask) marked up as FAQPage — it's the closest thing to raising "
                      "your hand when an AI assembles an answer.")
+
+    # --- FAQ mirror: does the schema say what the page says? ---
+    # Assistants and rich results quote acceptedAnswer, not the visible
+    # copy, so the two drifting apart means the machines are handing out a
+    # sentence the reader never sees. The house rule is that each visible
+    # question and answer is byte-identical to its schema twin: edit one,
+    # edit both. Runs on parsed page text, so it works the same against a
+    # local file or a fetched live URL.
+    schema_faq = []
+    for node in faq_nodes:
+        entities = node.get("mainEntity") or []
+        for q in entities if isinstance(entities, list) else [entities]:
+            if not isinstance(q, dict):
+                continue
+            ans = q.get("acceptedAnswer") or {}
+            schema_faq.append((str(q.get("name", "")).strip(),
+                               str(ans.get("text", "")).strip() if isinstance(ans, dict) else ""))
+    if schema_faq and not p.faq_visible:
+        # Schema but nothing this check can read. On our pages that means
+        # the FAQ section is gone; on a prospect's it usually means their
+        # FAQ is built from divs we do not recognize. Not worth scoring a
+        # stranger's site down for markup we simply cannot see, so it says
+        # so and stops.
+        notes.append(f"{len(schema_faq)} FAQ question(s) in FAQPage schema, but no visible "
+                     f"<details>/<summary> FAQ was found to compare them against. Either the "
+                     f"page's FAQ is missing, or it is built with markup this check does not read.")
+    elif p.faq_visible and not schema_faq:
+        # The AEO check above already warns that FAQPage schema is absent,
+        # and that warning is itself a scoring defect. Saying it again per
+        # question would punish one mistake several times over.
+        pass
+    elif schema_faq or p.faq_visible:
+        by_schema = dict(schema_faq)
+        by_page = dict(p.faq_visible)
+        only_schema = [q for q in by_schema if q not in by_page]
+        only_page = [q for q in by_page if q not in by_schema]
+        mismatched = [q for q in by_schema if q in by_page and by_schema[q] != by_page[q]]
+
+        # One on each side is almost always the same item with its
+        # question edited in one place only. Say that, rather than
+        # reporting it twice as two unrelated absences.
+        if len(only_schema) == 1 and len(only_page) == 1:
+            fails.append(
+                f"**FAQ question text differs between the page and its schema.** "
+                f"Schema asks “{only_schema[0][:90]}”, the page asks “{only_page[0][:90]}”. "
+                f"Each question must be byte-identical in both: edit one, edit both.")
+            only_schema, only_page = [], []
+        for q in only_schema:
+            fails.append(f"**FAQ in schema but not on the page: “{q[:90]}”.** "
+                         f"Schema promising an answer the reader never sees is the kind of thing "
+                         f"Google penalizes as mismatched structured data. Add it or drop it.")
+        for q in only_page:
+            fails.append(f"**FAQ on the page but not in schema: “{q[:90]}”.** "
+                         f"It cannot be quoted by AI answers or rich results until it is in the "
+                         f"FAQPage node.")
+        for q in mismatched:
+            fails.append(f"**FAQ answer does not match its schema: “{q[:70]}”.** "
+                         f"The page says “{by_page[q][:80]}…” and the schema says "
+                         f"“{by_schema[q][:80]}…”. Assistants quote the schema, so this is the "
+                         f"sentence being handed out instead of yours. Edit one, edit both.")
+        if not (only_schema or only_page or mismatched) and schema_faq:
+            passes.append(f"All {len(schema_faq)} FAQ questions and answers are byte-identical "
+                          f"between the visible page and the FAQPage schema.")
 
     # Entity clarity: sameAs links tie the business to its profiles
     # (Google Business Profile, Yelp, Instagram...), which is how AI
