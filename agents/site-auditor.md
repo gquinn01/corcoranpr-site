@@ -13,6 +13,16 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    site score of 100 does not mean every page is at 100, so always check
    the table rather than the headline.
 
+   **Not every row is a page.** Since 2026-08-27 the scan covers 43
+   files: **27 real pages**, **15 redirect stubs** standing at the old
+   WordPress URLs, and **1 error page** (`docs/404.html`). The headline
+   line names the mix, so read it rather than calling 43 a page count.
+   Stubs and the 404 page are scored against short rubrics of their own
+   and are *supposed* to be absent from `sitemap.xml` and `llms.txt`;
+   for them that absence is a pass, not the critical it would be on a
+   real page. A stub showing 4 passing checks is healthy, not thin. When
+   you report growth moves, count the 27.
+
 2. **Check in with your teammate.** List open GitHub Issues with the label
    `google-update` (use `gh issue list --label google-update --state open`).
    These are alerts filed by the Google Watch Agent about recent algorithm

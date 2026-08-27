@@ -16,7 +16,29 @@ The pre-2026 logo, 500x100 RGBA on transparency. Three tiers:
 Coral is retired and the tagline is cropped out, because Event
 Coordination is not a service the site offers. See CLAUDE.md.
 
+## logo-original-white-reverse.png
+
+The same pre-2026 logo, 500x100 RGBA, same alpha bounding box
+(16, 29, 483, 90), but with "Corcoran" set in WHITE rather than coral.
+An all-white reverse variant that was sitting in the old site's media
+library alongside the coral one. Salvaged 2026-08-27, on the last pass
+before cutover. It is not a resolution gain and nothing on the live site
+is derived from it; it is archived because it is a second original of
+the same art and there will be no second chance to take it.
+
 ## Resolution ceiling
+
+**SETTLED 2026-08-27. Checked against the old site's live media library,
+and no vector exists.** The evidence, so this is not re-litigated: the
+logo the old header actually rendered is
+`wp-content/uploads/Corcoran-Communications-Logo-Reverse-1.png`, and it
+is byte-identical (SHA-256) to `logo-original-coral.png` in this folder.
+The full media library, 140 items read through the WordPress REST API,
+contains no SVG, EPS, AI or PDF. The uploads directory listing returns
+403 and eight likely vector filenames returned 404. The theme's
+customizer favicon turned out to be the previous web vendor's own squid
+logo, not Corcoran art at all. The ceiling is permanent, and every
+square-format asset below is a reconstruction for good.
 
 467x40 is the largest logo art that exists. `logo-original-coral.png` is
 500x100, and the wordmark inside it occupies roughly 464x35, so it is no
@@ -30,9 +52,10 @@ with all 53 levels of antialiasing carried in alpha, so upscaling alpha
 and re-filling with the exact brand color keeps the edges clean and the
 colors exact. Resampling RGB muddies both.
 
-This ceiling lifts if the original art turns up in the old site's media
-library, which is on the pre-cutover checklist in PLAYBOOK.md, step 2.
-Until that is checked, treat every square-format asset as provisional.
+The media library was checked before cutover, per PLAYBOOK.md step 2,
+and it held nothing better. Do not treat the square assets as
+provisional any more, and do not go looking again: the domain is the
+only place that art could have been, and it has been read.
 
 ## How the live wordmarks were derived
 

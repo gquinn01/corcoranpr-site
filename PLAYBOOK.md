@@ -133,14 +133,14 @@ Then run `python3 scripts/audit.py`. Every page must read 100/100. Steps 2 and 3
 
 ### The domain cutover checklist
 
-The site is built for `corcoranpr.com` and is not served from it yet. Every absolute URL in the repo already points there: all 26 canonical tags, all 26 `<loc>` entries in `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and 204 `@id`/`url` values across the schema blocks. Meanwhile `corcoranpr.com` still resolves to the old WordPress site.
+The site is built for `corcoranpr.com` and is not served from it yet. Every absolute URL in the repo already points there: all 27 canonical tags, all 27 `<loc>` entries in `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and 204 `@id`/`url` values across the schema blocks. Meanwhile `corcoranpr.com` still resolves to the old WordPress site.
 
 That gap is not neutral, and it is the reason not to let this drag. Right now every page on the GitHub Pages address tells Google *the real version of this page lives at corcoranpr.com* — and the page that answers there is the old site. The longer both are up, the longer you are pointing crawlers at the thing you replaced.
 
 **Before you touch DNS.**
 
 1. **Check the MX records first.** `greg@corcoranpr.com` is a live business mailbox on this domain, and it is the only step here that can take down something you rely on today. Changing the A record does not touch mail. *Moving the nameservers* moves everything, and MX records that are not recreated on the new provider mean mail stops arriving with no error and no bounce you will see. Export the full current zone before changing one record. Today the domain answers from `dns101.register.com` / `dns102.register.com`, with the apex pointing at `162.211.81.218`.
-2. **Save the old site.** It is 28 URLs: 14 pages and 14 blog posts, listed in its own `page-sitemap.xml` and `post-sitemap.xml`. Once DNS moves, that content is gone unless you have a copy. Pull the HTML and any images worth keeping. **While you are in there, hunt the media library for the original logo art.** The largest logo in this repo is `docs/logo-light.png` at 467x40, and `brand/logo-original-coral.png` is only 500x100, so every square or large-format slot has to be reconstructed by upscaling. A vector (SVG, EPS, AI) or any larger raster of the pre-2026 wordmark would make those exact instead. WordPress keeps full-size uploads under `/wp-content/uploads/`, and the theme's customizer logo is often a separate, larger file than the one the header renders. Anything you find goes in `brand/` with a line in `brand/README.md` saying what it is. This is the last chance: when the domain goes dark, so does the media library.
+2. ~~**Save the old site.**~~ **DONE 2026-08-27.** The full crawl is in `archive/old-site/`: all 28 pages as served, plus 73 Corcoran-specific media originals. The logo hunt came back empty, and that is now settled rather than open: the live header logo is byte-identical to `brand/logo-original-coral.png`, the media library holds no SVG, EPS, AI or PDF, the uploads directory listing is 403, and eight likely vector filenames returned 404. One new variant was found and archived, `brand/logo-original-white-reverse.png`, same 500x100 geometry with "Corcoran" in white instead of coral. The old favicon turned out to be the previous web vendor's own squid logo, not Corcoran art. See `brand/README.md`. What follows is the original instruction, kept for the record. It was 28 URLs: 14 pages and 14 blog posts, listed in its own `page-sitemap.xml` and `post-sitemap.xml`. Once DNS moves, that content is gone unless you have a copy. Pull the HTML and any images worth keeping. **While you are in there, hunt the media library for the original logo art.** The largest logo in this repo is `docs/logo-light.png` at 467x40, and `brand/logo-original-coral.png` is only 500x100, so every square or large-format slot has to be reconstructed by upscaling. A vector (SVG, EPS, AI) or any larger raster of the pre-2026 wordmark would make those exact instead. WordPress keeps full-size uploads under `/wp-content/uploads/`, and the theme's customizer logo is often a separate, larger file than the one the header renders. Anything you find goes in `brand/` with a line in `brand/README.md` saying what it is. This is the last chance: when the domain goes dark, so does the media library.
 3. **Decide the redirect map** (next section). Do this *before* cutover, not after, because the window where old URLs are dead is the window where the rankings bleed.
 
 **The cutover itself.**
@@ -156,6 +156,12 @@ That gap is not neutral, and it is the reason not to let this drag. Right now ev
 9. **Confirm `robots.txt` is finally real.** The file says so itself in its own header comment: on a project subpath it is decorative. At a domain root it starts working, and the AI-crawler `Allow` rules that are the whole point of it take effect.
 10. **Search Console.** Add `corcoranpr.com` as a property, verify it, submit `sitemap.xml`. Do not use Change of Address — that tool is for moving between different domains, and this is the same domain changing what it serves.
 11. **Re-run the audit against the live site** once, by hand: `python3 scripts/audit.py https://corcoranpr.com/`. The page list comes from the live sitemap, so this is also the check that the sitemap deployed correctly.
+11a. **The tracking that came across, and the tracking that did not.** The new site runs exactly one tag: Google Analytics 4, property `G-BNLRK8YR6Y`, the same property the WordPress site fed, so the history is continuous across the cutover. The old site's other five tags were dropped on purpose: the `GTM-MFPHPDK` container, a Meta pixel (`214048892700199`), a dead Universal Analytics property (`UA-62592023-10`, which stopped processing in July 2023), Jetpack Stats, and reCAPTCHA. There is no consent banner and there was not one before; `/privacy/` is the disclosure, which is why that page has to stay true to what actually ships.
+
+11b. **The Meta pixel gets re-added deliberately or not at all.** If Corcoran ever runs Meta ads *for itself*, the pixel goes back in as a decision, with the privacy page updated in the same commit. It never goes back in by default, and never because a plugin or a template put it there.
+
+11c. **When Corcoran runs its own Google Ads.** The firm has never run its own ads and has no Google Ads account today, which is why there is no `AW-` conversion tag anywhere and no placeholder for one. When that changes: create the account under the MCC, link it to GA4, import the `form_submit` key event as the conversion rather than hand-rolling a second tag, and update `/privacy/` in the same commit to say an advertising tag now runs. One tag, one source of truth for the conversion.
+
 12. **Update the profiles that carry the URL** — Google Business Profile first, then the four social accounts in the schema `sameAs` array.
 13. **Clean up the pre-cutover language.** The `SITE_URL` rule in `CLAUDE.md` and the site-wide AEO instruction in `agents/site-auditor.md` are both written "until the domain cutover." Once it has happened they are stale.
 
@@ -165,22 +171,44 @@ That gap is not neutral, and it is the reason not to let this drag. Right now ev
 
 The temptation is to point all 28 old URLs at the homepage. Don't. Google treats a mass redirect of unrelated pages to one page as a soft 404 and drops them anyway, so it buys nothing and costs you a pile of files to maintain. Redirect only where the new page genuinely answers what the old page answered. Let the rest 404 honestly.
 
-| Old URL | Where it should go | Why |
-|---|---|---|
-| `/` | `/` | Same URL. Nothing to do. |
-| `/about/` | `/about/` | Same URL, and the new page is better. Free win. |
-| `/social-media-marketing/` | `/services/social-media-marketing/` | Clean one-to-one match. |
-| `/portfolio/` | `/#industries` | Industries We Know is the closest thing we now have to a portfolio. |
-| `/contact/` | `/free-audit/` | The new site has no contact page; the free audit is the front door. |
-| `/digital-marketing-services/` | `/#services` | Broad old page, no single new equivalent. |
-| `/content-marketing/` | **Decide** | `llms.txt` lists content marketing as a service, but no page exists for it yet. Either build the page or let this 404. |
-| `/public-relations/` | **Decide** | No equivalent. PR is not a service the new site sells. |
-| `/graphic-design-services/` | **Decide** | No equivalent. |
-| `/branding-agency/` | **Decide** | No equivalent. |
-| `/blog/`, `/blog/weekly-podcast/`, 14 posts | **Decide** | There is no blog on the new site. These 16 URLs are the real question: they are the only pages on the old domain with any age on them. Porting the two or three that still read well is worth more than redirecting all 16 to nothing. |
-| `/landing-page-template/`, `/thanks/` | Let them 404 | Leftovers. Nobody links to them. |
+**DECIDED AND BUILT, 2026-08-27.** 15 stubs exist at `docs/<old-slug>/index.html`; everything not in this table 404s. Each stub is a `rel=canonical` at the target, a `meta refresh`, a `location.replace`, and a real visible link. The canonical carries no fragment even where the refresh target does, because Google strips fragments from canonicals: the reader lands on the anchor, the crawler is told the page. Stubs are out of `sitemap.xml` and out of `llms.txt`, and `scripts/audit.py` scores them against a rubric of their own. Adding a stub later means adding its row here in the same commit.
 
-A 404 is not a failure state. It is the correct, honest answer for a page that no longer exists, and it is what Google prefers to a redirect that lies about relevance. Which is also the argument for **adding `docs/404.html`** while you are in here: there is none today, so a wrong URL currently lands on GitHub's default page with none of your branding, no nav, and no way back into the site.
+| Old URL | Goes to | Why |
+|---|---|---|
+| `/` | *(nothing to do)* | Same URL, the new homepage serves it |
+| `/about/` | *(nothing to do)* | Same URL, and the new page is better |
+| `/social-media-marketing/` | `/services/social-media-marketing/` | Clean one-to-one match |
+| `/portfolio/` | `/#industries` | Industries We Know is the closest successor |
+| `/contact/` | `/free-audit/` | No contact page on the new site; the audit is the front door |
+| `/digital-marketing-services/` | `/#services` | Broad old page, no single new equivalent |
+| `/content-marketing/` | `/services/seo/#content-marketing` | Content marketing lives inside the SEO page |
+| `/public-relations/` | `/about/` | PR is not a service the new site sells, but it is the firm's history |
+| `/family-business-collide/` | `/about/` | 2,487 words on Ruth and Greg; the About page tells that story now |
+| `/developing-social-media-marketing-plan-build-brand/` | `/services/social-media-marketing/` | Paid social topic |
+| `/facebook-ad-benchmarks/` | `/services/social-media-marketing/` | Paid social topic |
+| `/facebook-ads-campaign-budget-optimization/` | `/services/social-media-marketing/` | Paid social topic |
+| `/are-you-setting-up-facebooks-ad-algorithm-for-success/` | `/services/social-media-marketing/` | Paid social topic |
+| `/using-facebook-pixel-increase-sales/` | `/services/social-media-marketing/` | Conversion tracking for Facebook ads |
+| `/blogging-build-business/` | `/services/seo/#content-marketing` | Content marketing topic |
+| `/content-marketing-ideas-for-growth/` | `/services/seo/#content-marketing` | Content marketing topic |
+| `/marketing-micro-moment/` | `/services/seo/` | Mobile search intent |
+
+**Deliberate 404s, and the reasoning, so nobody "fixes" them later.**
+
+| Old URL | Why it 404s |
+|---|---|
+| `/graphic-design-services/`, `/branding-agency/` | Not services the new site sells |
+| `/blog/` | A container, not a topic. Pointing a blog index at a service anchor is the lying redirect. Revisit only if a notes section ever launches |
+| `/blog/weekly-podcast/` | Placeholder; its H1 is literally "Headline" |
+| `/landing-page-template/`, `/thanks/` | Leftovers, nobody links to them |
+| `/harness-the-power-of-influencer-marketing/`, `/finding-social-media-influencers/`, `/influencer-marketing/` | Influencer marketing is not a service. Social is paid ads only |
+| `/11-instagram-marketing-tips/` | Organic posting tips, and we do not post |
+| `/battling-facebooks-algorithm/` | About organic reach dying. An organic-reach topic does not map to a paid-ads page |
+| 167 tag URLs, 139 attachment URLs, 2 category URLs, 2 author URLs | Thin taxonomy pages with no successor |
+
+One more thing the old sitemap will drag along: Search Console has `/sitemap_index.xml` on file and the new site serves `/sitemap.xml`. That is step 10 below, and it is not optional.
+
+A 404 is not a failure state. It is the correct, honest answer for a page that no longer exists, and it is what Google prefers to a redirect that lies about relevance. Which was the argument for **`docs/404.html`**, built 2026-08-27. It carries the nav, the footer, a plain line saying the page is not here, and links to the homepage, the services and the free audit. It is the one file in `docs/` allowed root-relative paths, because Pages serves it at whatever URL was missing and relative paths resolve against a directory that does not exist. Until cutover it renders unstyled on the project subpath, which is the accepted cost; see the Links section of `CLAUDE.md`.
 
 ---
 

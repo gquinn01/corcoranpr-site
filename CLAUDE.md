@@ -110,7 +110,7 @@
     That leaves the nav item as the only cross-page route to the free
     audit page, which is the accepted cost of every button and footer
     CTA landing on a form.
-  - "Free Audit" replaced "How It Works" in the nav on all 26 pages and
+  - "Free Audit" replaced "How It Works" in the nav on all 27 pages and
     the template. It is plain nav text like its siblings, not a button.
     "How It Works" keeps its footer Explore link everywhere, so the
     homepage section is still linked from every page.
@@ -265,7 +265,92 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   ../../logo-dark.png, ../../#services, ../seo/ for a sibling service.
 - The only absolute URLs are the ones the spec requires to be absolute:
   canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
-- Verify with: grep -rn 'href="/\|src="/' docs/ — it must print nothing.
+- ONE EXCEPTION, docs/404.html (decided 2026-08-27). GitHub Pages
+  serves that file at whatever URL was missing, so the browser's address
+  stays /some/deep/typo/ and every relative path on it resolves against
+  a directory that does not exist. Relative paths are meaningless there,
+  so the 404 page uses ROOT-RELATIVE paths throughout: stylesheet,
+  script, logo, and every link. Inlining the CSS instead was rejected,
+  because it would put the palette in a second file. The cost is that
+  the 404 renders unstyled on the project subpath until cutover, which
+  is when the page starts mattering anyway. No other file may take this
+  exception.
+- Verify with: grep -rn 'href="/\|src="/' docs/ --exclude=404.html
+  — it must print nothing. The --exclude is the 404 rule above; without
+  it the check reports the exception it already knows about.
+
+## Privacy, analytics and tracking (decided 2026-08-27)
+- ONE ANALYTICS TAG, and only one: Google Analytics 4, property
+  G-BNLRK8YR6Y, carried over from the old WordPress site so its history
+  survives the cutover. The base gtag snippet sits in the head of every
+  page and the template, above the stylesheet link. The form_submit
+  event already in docs/assets/site.js reaches GA4 through it; GA4's own
+  enhanced measurement cannot see that submit, because the handler calls
+  preventDefault() to keep the no-reload thank you.
+- THE OLD SITE'S OTHER FIVE TAGS DID NOT COME ACROSS, deliberately: the
+  GTM-MFPHPDK container, a Meta pixel (214048892700199), a dead
+  Universal Analytics property (UA-62592023-10, stopped processing in
+  July 2023), Jetpack Stats, and reCAPTCHA. Do not restore any of them
+  by default.
+- NO GOOGLE ADS CONVERSION TAG. Corcoran has no Google Ads account of
+  its own; Greg manages client accounts, and the firm has never run its
+  own ads. There is no AW- ID and none may be invented. When the firm
+  does run its own ads, see the two lines in PLAYBOOK.md.
+- Redirect stubs carry no analytics. They are machine-facing files that
+  a browser leaves in under a second.
+- docs/privacy/ IS THE DISCLOSURE. There is no consent banner, and the
+  privacy page is what stands in its place, so it has to stay true. Any
+  change to what the form collects, to who processes it, or to what
+  tracking runs, updates docs/privacy/ IN THE SAME COMMIT and moves the
+  "Last updated" date in its hero. No invented legal boilerplate ever
+  goes on it, and it claims compliance with no framework we have not
+  verified.
+- The privacy page is the THIRD sanctioned exception to the contracts
+  question that ends every other page's FAQ, after web-design and
+  film-live-entertainment. A privacy policy has no product to contract
+  for. It also carries no audit form: its contact band is direct phone
+  and email, following the film page, because phone and email are how a
+  reader asks to have their information deleted.
+- Every page's footer bottom line ends with a Privacy Policy link, at
+  the correct relative depth, or ./ on the privacy page itself, the same
+  way About and Free Audit handle their own.
+
+## Redirect stubs and the 404 page (decided 2026-08-27)
+- The old WordPress site's 28 URLs were mapped before cutover. 15 have a
+  page here that genuinely answers what they answered, and each of those
+  is a stub at docs/<old-slug>/index.html: a rel=canonical at the target,
+  a meta refresh, a location.replace, and a real visible link. The other
+  13, plus the 167 tag, 139 attachment, 2 category and 2 author URLs,
+  404 on purpose. A redirect that lies about relevance is worse than an
+  honest 404, and Google treats a mass redirect of unrelated pages to
+  one page as a soft 404 anyway.
+- A stub's canonical carries NO FRAGMENT even when its refresh target
+  does. Google strips fragments from canonicals, so the reader lands on
+  the anchor and the crawler is told the page.
+- STUBS AND THE 404 PAGE STAY OUT OF sitemap.xml AND llms.txt. That is
+  the point of them, not an oversight.
+- Both declare themselves in the head so the audit can tell:
+  <meta name="corcoran-page" content="redirect-stub"> and
+  content="error-404". scripts/audit.py scores each against a short
+  rubric of its own, and they still have to reach 100/100.
+- The full decided map lives in PLAYBOOK.md. Building a new stub means
+  adding a row there in the same commit.
+
+## Asset cache-busting (decided 2026-08-27)
+- docs/assets/site.css and site.js are referenced everywhere as
+  assets/site.css?v=<first 8 hex of that file's SHA-256>.
+- After changing either file, run in the same commit:
+  python3 scripts/stamp-assets.py
+  It rewrites every reference under docs/ and in templates/, and it is
+  idempotent. Add --check to report stale stamps without writing.
+- WHY: GitHub Pages serves both files with cache-control: max-age=600,
+  so a browser holds either for up to ten minutes without revalidating.
+  Twice during the build that looked exactly like a CSS bug and got
+  chased as one. A hash, not a date: two edits on one day share a date,
+  and the second would serve stale.
+- Forgetting is not possible. scripts/audit.py records a stale or
+  missing stamp as a CRITICAL against that page, which drops it under
+  100/100 and fails --strict, the same way a missing sitemap entry does.
 
 ## Repo rules
 - docs/ = the live site. docs/assets/ = the shared stylesheet and script
@@ -278,7 +363,9 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   changes in the same commit, so the template never falls behind the
   site.
 - Contact form: audit request form on every page, posting to a hosted
-  Formspree endpoint; no server code.
+  Formspree endpoint; no server code. Two pages carry a direct contact
+  band instead, phone and email with no form: film-live-entertainment
+  and privacy. Redirect stubs and the 404 page carry neither.
 - SITE_URL, the repo variable the weekly Site Auditor reads, is UNSET as
   of 2026-08-20 and goes back to https://corcoranpr.com/ after the domain
   cutover. Restore it with:
@@ -286,8 +373,9 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   Set, the weekly scan audits that live URL instead of docs/. It was set
   until 2026-08-20, and because the cutover has not happened the domain
   still served the old WordPress site, so every weekly report to date
-  scored the OLD site, not ours. Unset, the scan covers all 26 pages
-  under docs/ and scores what we actually build. The cost of leaving it
+  scored the OLD site, not ours. Unset, the scan covers all 27 pages
+  under docs/, plus the 15 redirect stubs and the 404 page, and scores
+  what we actually build. The cost of leaving it
   unset: check_ai_access only runs against a live URL, so the site-wide
   robots.txt and llms.txt checks do not run at all, and the report says
   so. That is the trade until cutover: real pages with two missing

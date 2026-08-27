@@ -126,11 +126,13 @@ with, tweak it, and only then cut over. When you're ready:
    **Do not change MX records — those are your email.** greg@corcoranpr.com
    keeps working untouched.
 4. Check "Enforce HTTPS" once GitHub offers it (minutes to an hour).
-5. **Redirects matter:** your old blog posts and pages have Google
-   equity. Before cutover, list the old URLs that get traffic and either
-   keep them (export the posts into the new site as pages) or 301-redirect
-   them. Paste the old URL list into Claude and ask it to generate the
-   redirect setup — this is a 20-minute AI job, not a weekend.
+5. ~~**Redirects matter**~~ — **already done, 2026-08-27.** The old
+   site's 28 URLs were crawled, inventoried and mapped before cutover.
+   15 have a redirect stub waiting for them under `docs/`; the rest 404
+   on purpose, because a redirect that lies about relevance is worse
+   than an honest 404. The decided map is the table in `PLAYBOOK.md`,
+   and the old site itself is archived in `archive/old-site/`. Nothing
+   to do here at cutover except let DNS move.
 
 If any of this feels hairy, it's a perfect first Claude Code task:
 "Here's my repo and my registrar — walk me through the cutover."
