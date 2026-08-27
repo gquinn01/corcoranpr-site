@@ -51,6 +51,30 @@ from this file by:
 | logo-light.png  | Signal `#0B6BD3`  | Midnight `#082A4A`| header (Cloud) |
 | logo-dark.png   | Mint `#DDF7EC`    | White `#FFFFFF`   | footer (Midnight) |
 
+## Square and avatar assets
+
+Three derived files, built 2026-08-26 for the Google Business Profile
+slots. All are reconstructions under the ceiling above, and all were
+made the same way: the letterforms were lifted from the wordmark's ALPHA
+channel, upscaled with Lanczos-3, and re-filled with the exact brand
+hex. No font was identified and none was guessed. Every shape here is
+the original art's own geometry.
+
+| File | Job |
+|------|-----|
+| `corcoran-gbp-avatar-720.png` | 720x720. Small circular avatar slots. A white "C", the one from Corcoran, on Midnight `#082A4A` filling the whole canvas so a circular crop has no white edge. Chosen over the Signal Blue version for contrast at 48px, which is where these are actually read. It does NOT match the site header's colors; that was the accepted trade. |
+| `corcoran-gbp-logo-720.png` | 720x720. Large square slots. The stacked wordmark, "Corcoran" over "Communications", on white, sized inside a circle-safe zone. Keeps the site's colors, Signal `#0B6BD3` over Midnight `#082A4A`. Unreadable at avatar size, which is why the avatar file exists. |
+| `corcoran-logo-stacked.png` | 297x94. The stacked lockup at native resolution, no upscaling at all. The source to rebuild the other two from, or to scale for any new square slot. |
+
+The stacked lockup splits the wordmark at x 170 in cropped coordinates,
+the same split point the color mapping uses, so the two words separate
+where they always have.
+
+Note the two capital C's are not the same: the one in "Corcoran" has
+roughly 8px strokes at source and the one in "Communications" roughly
+5px. The original logo sets the two words in different weights. The
+avatar uses the heavier one.
+
 ## og-card.png
 
 `docs/og-card.png` is 1200x630: solid Midnight, the dark wordmark at
