@@ -16,6 +16,24 @@ The pre-2026 logo, 500x100 RGBA on transparency. Three tiers:
 Coral is retired and the tagline is cropped out, because Event
 Coordination is not a service the site offers. See CLAUDE.md.
 
+## Resolution ceiling
+
+467x40 is the largest logo art that exists. `logo-original-coral.png` is
+500x100, and the wordmark inside it occupies roughly 464x35, so it is no
+better. There is no vector anywhere in this repo.
+
+Anything that needs a square or large format, a Google Business Profile
+logo, an app icon, a favicon at size, is therefore a RECONSTRUCTION:
+upscaled from this art rather than rendered from a source. Reconstruct
+from the alpha channel, not the color pixels. Each word is one flat hex
+with all 53 levels of antialiasing carried in alpha, so upscaling alpha
+and re-filling with the exact brand color keeps the edges clean and the
+colors exact. Resampling RGB muddies both.
+
+This ceiling lifts if the original art turns up in the old site's media
+library, which is on the pre-cutover checklist in PLAYBOOK.md, step 2.
+Until that is checked, treat every square-format asset as provisional.
+
 ## How the live wordmarks were derived
 
 Both `docs/logo-light.png` and `docs/logo-dark.png` are 467x40, made
