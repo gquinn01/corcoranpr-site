@@ -28,13 +28,14 @@ No external packages needed — pure Python standard library.
 
 import argparse
 import glob
+import hashlib
 import json
 import os
 import re
 import sys
 import urllib.request
 from html.parser import HTMLParser
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 # The live site's page list comes from its own sitemap. Locally we glob
 # the folder that IS the live site.
@@ -48,6 +49,209 @@ LLMS_PATH = os.path.join(SITE_DIR, "llms.txt")
 # dialer. Mentions inside JSON-LD are data, not copy, and are skipped.
 NAP_PHONE_RE = re.compile(r"\(?215\)?[\s.\-]?259[\s.\-]?8304")
 NAP_EMAIL_RE = re.compile(r"greg@corcoranpr\.com")
+
+# The site's own base URL, used to work out what URL a local file will
+# serve at. That is how the two checks below know whether a page is in
+# sitemap.xml under its OWN address rather than under some other page's.
+SITE_BASE = "https://corcoranpr.com/"
+
+# --- Pages that are not pages -----------------------------------------
+# Two kinds of file under docs/ exist for machines rather than readers: a
+# redirect stub standing at an old WordPress URL, and the 404 page. Both
+# would fail the page rubric for things that are deliberate. A stub has
+# no FAQ, no schema and forty words; the 404 page has no canonical,
+# because a canonical on an error page would claim the URL is the real
+# version of something. Above all, neither belongs in sitemap.xml, and
+# "not listed in sitemap.xml" is a critical for a real page.
+#
+# So each declares itself in the head and gets a short rubric of its own:
+#   <meta name="corcoran-page" content="redirect-stub">
+#   <meta name="corcoran-page" content="error-404">
+# They still score through the same formula and still appear in the
+# table, so a malformed stub drops off 100/100 and fails --strict exactly
+# like anything else. What changes is WHICH checks apply.
+SPECIAL_KINDS = ("redirect-stub", "error-404")
+
+REFRESH_RE = re.compile(
+    r"""<meta[^>]+http-equiv=["']refresh["'][^>]*content=["']\s*\d+\s*;\s*url=([^"']+)["']""",
+    re.I)
+
+# --- Cache-busting stamps ---------------------------------------------
+# docs/assets/site.css and site.js are referenced as
+# `assets/site.css?v=<first 8 hex of the file's SHA-256>`, written by
+# scripts/stamp-assets.py. GitHub Pages serves both with
+# `cache-control: max-age=600`, so without the stamp a ten-minute-old
+# browser cache hands back the OLD stylesheet, which during the build
+# twice looked exactly like a CSS bug and got chased as one.
+#
+# The stamper is a command someone has to run. This check is what makes
+# forgetting to run it impossible: a stale or missing stamp is a critical
+# against the page, same as a missing sitemap entry.
+STAMPED_ASSETS = ("assets/site.css", "assets/site.js")
+STAMP_RE = {
+    a: re.compile(r'(?:href|src)="(?:\{\{ROOT\}\}|/|(?:\.\./)*)'
+                  + re.escape(a) + r'(\?v=([0-9a-f]+))?"')
+    for a in STAMPED_ASSETS
+}
+
+
+def current_stamps() -> dict:
+    """First 8 hex of each stamped asset's SHA-256. Empty dict if they
+    cannot be read, which is the case on a live-URL run, and the check
+    then does nothing rather than guessing."""
+    out = {}
+    for a in STAMPED_ASSETS:
+        try:
+            with open(os.path.join(SITE_DIR, a), "rb") as f:
+                out[a] = hashlib.sha256(f.read()).hexdigest()[:8]
+        except OSError:
+            return {}
+    return out
+
+
+def page_url(source: str) -> str:
+    """The absolute URL a local file will serve at, so a page can be
+    looked up in the sitemap under its own address."""
+    rel = os.path.relpath(source, SITE_DIR).replace(os.sep, "/")
+    if rel == "index.html":
+        rel = ""
+    elif rel.endswith("/index.html"):
+        rel = rel[:-len("index.html")]
+    return SITE_BASE + rel
+
+
+def check_asset_stamps(html: str, stamps: dict, passes: list, fails: list):
+    """Every page that links the shared stylesheet or script must carry
+    the CURRENT stamp for it."""
+    if not stamps:
+        return
+    for asset, rx in STAMP_RE.items():
+        m = rx.search(html)
+        if not m:
+            continue                      # this page does not use it
+        want = stamps[asset]
+        if m.group(2) == want:
+            passes.append(f"`{asset}` carries the current cache-busting stamp `?v={want}`.")
+        elif m.group(1) is None:
+            fails.append(
+                f"**`{asset}` is referenced with no `?v=` stamp.** GitHub Pages serves it with "
+                f"`max-age=600`, so a browser can hand back a ten-minute-old copy and make a "
+                f"shipped change look broken. Run `python3 scripts/stamp-assets.py`.")
+        else:
+            fails.append(
+                f"**`{asset}` carries a stale stamp** (`?v={m.group(2)}`, the file is now "
+                f"`?v={want}`). The page will serve a cached older copy of the file. Run "
+                f"`python3 scripts/stamp-assets.py`.")
+
+
+def special_audit(source: str, html: str, p, kind: str, coverage: dict):
+    """The short rubric for a redirect stub or the 404 page.
+
+    Both are scored on what they are actually FOR, and both are checked
+    for the thing that matters most about them: that they stayed out of
+    sitemap.xml. Neither is checked against llms.txt, which lists pages a
+    reader or an assistant would want, and these are not that."""
+    passes, warns, fails, notes = [], [], [], []
+    own = page_url(source)
+    listed = coverage is not None and own in coverage["sitemap_locs"]
+
+    if kind == "redirect-stub":
+        canon = (p.canonical or "").strip()
+        if canon.startswith(SITE_BASE):
+            passes.append(f"Canonical points at the new page: {canon}")
+        else:
+            fails.append(
+                f"**A redirect stub needs an absolute `rel=canonical` at its target.** "
+                f"Found: {canon or 'nothing'}. That tag is what passes the old URL's ranking "
+                f"signal to the page that replaced it.")
+
+        m = REFRESH_RE.search(html)
+        if not m:
+            fails.append(
+                "**No `<meta http-equiv=\"refresh\">`.** GitHub Pages cannot issue a real 301, "
+                "so the meta refresh is what actually moves a reader. Without it this file is a "
+                "dead end with a canonical on it.")
+        else:
+            raw = m.group(1).strip()
+            # Fragments are compared away: the canonical deliberately
+            # carries none (Google strips them anyway) while the refresh
+            # target keeps its anchor so the reader lands in the right
+            # section. Same page, two jobs.
+            target = urljoin(own, raw).split("#")[0]
+            if target == canon.split("#")[0]:
+                passes.append(f"Meta refresh and canonical agree on the destination: {target}")
+            else:
+                fails.append(
+                    f"**The meta refresh and the canonical disagree.** The refresh sends readers "
+                    f"to {target} and the canonical sends crawlers to {canon.split('#')[0]}. "
+                    f"Pick one destination and use it in both.")
+            if re.search(r"<a[^>]+href=\"" + re.escape(raw) + r"\"", html):
+                passes.append("A real link to the destination is on the page, for anyone the "
+                              "refresh and the script both miss.")
+            else:
+                warns.append(
+                    f"**No visible link to {raw}.** If the refresh is blocked and JavaScript is "
+                    f"off, the reader is stranded. Add one sentence with a real link.")
+    else:
+        t = p.title.strip()
+        if not t:
+            fails.append("**Missing <title> tag.** The error page is a page a reader lands on; "
+                         "give it a name.")
+        elif len(t) > 60:
+            warns.append(f"**Title is {len(t)} characters** (aim for \u226460): \u201c{t}\u201d")
+        else:
+            passes.append(f"Title tag present and a good length ({len(t)} chars): \u201c{t}\u201d")
+
+        d = p.meta.get("description", "").strip()
+        if not d:
+            fails.append("**Missing meta description.**")
+        elif len(d) > 160:
+            warns.append(f"**Meta description is {len(d)} characters** (aim for \u2264160).")
+        else:
+            passes.append(f"Meta description present and a good length ({len(d)} chars).")
+
+        h1s = [h.strip() for h in p.h1s if h.strip()]
+        if len(h1s) != 1:
+            fails.append(f"**{len(h1s)} H1 headings found** \u2014 the error page needs exactly one.")
+        else:
+            passes.append(f"Exactly one H1: \u201c{h1s[0][:80]}\u201d")
+
+        if p.has_viewport:
+            passes.append("Mobile viewport tag present.")
+        else:
+            fails.append("**No viewport meta tag.**")
+
+        missing_alt = [src for src, alt in p.images if alt is None or not alt.strip()]
+        if p.images and missing_alt:
+            fails.append(f"**{len(missing_alt)} of {len(p.images)} images missing alt text.**")
+        elif p.images:
+            passes.append(f"All {len(p.images)} images have alt text.")
+
+        check_asset_stamps(html, current_stamps(), passes, fails)
+
+        notes.append("Scored as the error page, not as a page: no canonical is expected on it "
+                     "(one would claim this URL is the real version of something), and it is "
+                     "deliberately absent from sitemap.xml and llms.txt.")
+
+    if coverage is None:
+        pass
+    elif listed:
+        fails.append(
+            f"**Listed in `docs/sitemap.xml` at {own}, and it must not be.** A "
+            + ("redirect stub is not a page; listing it asks Google to index a file whose only "
+               "job is to point at another one."
+               if kind == "redirect-stub" else
+               "sitemap is a list of pages worth visiting, and an error page is not one.")
+            + " Remove its `<url>` block.")
+    else:
+        passes.append(f"Correctly absent from `docs/sitemap.xml`: {own}")
+
+    if kind == "redirect-stub":
+        notes.append("Scored as a redirect stub, not as a page: no schema, no FAQ, no word count "
+                     "and no llms.txt entry are expected on it.")
+    return passes, warns, fails, notes
+
+
 
 
 class PageParser(HTMLParser):
@@ -246,6 +450,14 @@ def audit(source: str, coverage: dict = None):
     html = load(source)
     p = PageParser()
     p.feed(html)
+
+    # A redirect stub or the 404 page declares itself in the head and is
+    # scored against its own short rubric instead of this one. See
+    # SPECIAL_KINDS at the top of the file for why.
+    kind = (p.meta.get("corcoran-page") or "").strip().lower()
+    if kind in SPECIAL_KINDS:
+        return special_audit(source, html, p, kind, coverage) + (kind,)
+    kind = "page"
 
     passes, warns, fails, notes = [], [], [], []
 
@@ -466,6 +678,9 @@ def audit(source: str, coverage: dict = None):
     else:
         passes.append(f"Healthy content depth: ~{words} words on the page.")
 
+    # --- Cache-busting stamps on the shared assets ---
+    check_asset_stamps(html, current_stamps() if not is_url(source) else {}, passes, fails)
+
     # --- Published where crawlers can find it ---
     # A page that exists but is in neither sitemap.xml nor llms.txt is a
     # page Google and the AI assistants may never discover. On a live run
@@ -486,7 +701,7 @@ def audit(source: str, coverage: dict = None):
             warns.append(f"**Not listed in `docs/llms.txt`.** Add {canon} under `## Key pages` so "
                          "AI assistants reading the guide know this page exists.")
 
-    return passes, warns, fails, notes
+    return passes, warns, fails, notes, kind
 
 
 def score_of(n_pass: int, n_warn: int, n_fail: int) -> int:
@@ -575,15 +790,15 @@ def main():
         # failure at the runner. A page we cannot read is a finding, so
         # record it as a critical against that page and keep going.
         try:
-            passes, warns, fails, notes = audit(t, coverage=None if is_url(t) else coverage)
+            passes, warns, fails, notes, kind = audit(t, coverage=None if is_url(t) else coverage)
         except Exception as e:
-            passes, warns, notes = [], [], []
+            passes, warns, notes, kind = [], [], [], "page"
             fails = [f"**Could not read this page** ({type(e).__name__}: {e}). "
                      "For a live URL that usually means the site or the network was "
                      "unreachable when the scan ran, not that the page is broken. "
                      "Re-run before acting on it."]
         results.append({"source": t, "passes": passes, "warns": warns,
-                        "fails": fails, "notes": notes,
+                        "fails": fails, "notes": notes, "kind": kind,
                         "score": score_of(len(passes), len(warns), len(fails))})
 
     # Site-wide AEO checks run once, against the live site only.
@@ -599,10 +814,25 @@ def main():
     site_score = score_of(total_pass, total_warn, total_fail)
     perfect = [r for r in results if r["score"] == 100]
 
+    # The audited set is no longer all one thing: real pages, redirect
+    # stubs standing at old WordPress URLs, and the 404 page. Spelling out
+    # the mix keeps the headline count from reading as a page count.
+    def _n(kind):
+        return sum(1 for r in results if r.get("kind") == kind)
+
+    parts = []
+    if _n("page"):
+        parts.append(f"{_n('page')} page{'' if _n('page') == 1 else 's'}")
+    if _n("redirect-stub"):
+        parts.append(f"{_n('redirect-stub')} redirect stub{'' if _n('redirect-stub') == 1 else 's'}")
+    if _n("error-404"):
+        parts.append(f"{_n('error-404')} error page")
+    mix = f" ({', '.join(parts)})" if len(parts) > 1 else ""
+
     lines = [
         "# SEO + AEO Audit Report", "",
         f"**Site score: {site_score}/100** — {len(perfect)} of {len(results)} "
-        f"{'page' if len(results) == 1 else 'pages'} at 100/100",
+        f"{'page' if len(results) == 1 else 'pages'} at 100/100{mix}",
         f"**{total_pass} passing · {total_warn} warnings · {total_fail} critical** across the site",
         "",
         "| Page | Score | Passing | Warnings | Critical |",

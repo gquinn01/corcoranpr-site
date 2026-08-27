@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       PRIVACY POLICY. Built from templates/service-page-template.html
+       with the selling sections removed: no What You Get, no
+       differentiator band, no How It Works, no What It Costs, no
+       Stronger Together. What remains is the shell (nav, hero, contact
+       band, FAQ, footer) wrapped around six prose sections.
+
+       DEPTH. This page sits ONE level under docs/, like docs/about/
+       and docs/free-audit/, so the site root is ../ and the service
+       pages are ../services/.
+
+       NO AUDIT FORM, DELIBERATELY. The contact band is direct contact
+       by phone and email, following the film and live entertainment
+       page. The whole point of this page is that phone and email are
+       how you reach us to have your information deleted, so pointing
+       the reader at a form that collects MORE information would be
+       working against the page.
+
+       NO CONTRACTS QUESTION IN THE FAQ. Every other page ends its FAQ
+       with "Do you require long-term contracts?". This page is the
+       third sanctioned exception, after web-design and
+       film-live-entertainment. A privacy policy has no product to
+       contract for. Recorded in CLAUDE.md, decided 2026-08-27.
+
+       EVERY STATEMENT HERE MUST STAY TRUE. This page describes what
+       the site actually does, not what a template says a privacy
+       policy says. There is no invented legal boilerplate on it and no
+       claim to comply with any framework we have not verified. If the
+       form changes, if Formspree is replaced, or if any tracking is
+       added or removed, this page changes in the SAME commit and the
+       date in the hero moves.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Privacy Policy | Corcoran Communications</title>
+  <meta name="description" content="What the audit form collects, who handles it, what we do with it, and how to have it deleted, in plain English.">
+
+  <link rel="canonical" href="https://corcoranpr.com/privacy/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Policy | Corcoran Communications">
+  <meta property="og:description" content="What the audit form collects, who handles it, what we do with it, and how to have it deleted, in plain English.">
+  <meta property="og:url" content="https://corcoranpr.com/privacy/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site so six years of history survives the cutover.
+       This is the ONLY tracking on the site. The old site also ran a
+       tag manager container, a Meta pixel, a dead Universal Analytics
+       tag and Jetpack Stats; none of them came across. Do not add one
+       back without updating this page in the same commit.
+       The form_submit event in assets/site.js reaches GA4 through the
+       gtag() function defined here. GA4's own enhanced measurement
+       cannot see that submit, because the handler calls
+       preventDefault() to keep the no-reload thank you, so the
+       explicit call is what records it. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../assets/site.css?v=6581d554">
+  <script src="../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as the homepage so every page resolves to one business entity.
+       No Service node: a privacy policy is not a service we sell. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://corcoranpr.com/privacy/#webpage",
+        "url": "https://corcoranpr.com/privacy/",
+        "name": "Privacy Policy | Corcoran Communications",
+        "description": "What the audit form collects, who handles it, what we do with it, and how to have it deleted, in plain English.",
+        "isPartOf": { "@id": "https://corcoranpr.com/#business" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy Policy" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you sell or share what I send you?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No, we do not sell your information, rent it, or hand it to anyone else for their own use. The only company that touches your form submission is Formspree, which delivers it to our inbox." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get my information deleted?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Email greg@corcoranpr.com, or call or text 215-259-8304, and say you want it deleted. We remove the email and the copy Formspree holds, and we tell you when it is done. You do not have to give a reason." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this site use cookies?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Google Analytics sets cookies so we can measure visits, traffic sources, and form fills. It does not receive your name, your email, or anything else you typed into the form. Nothing else on this site sets a cookie." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#promise">Promise</a></li>
+        <li><a href="../free-audit/">Free Audit</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../#industries">Industries</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with no decorative art. Every other page pairs the copy
+         column with an illustration; this one does not, because there
+         is nothing here to illustrate and a graphic would only make a
+         plain page look like it was selling something. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../">Home</a></li>
+            <li aria-current="page">Privacy Policy</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Privacy</p>
+        <h1>Privacy Policy</h1>
+        <p class="lead">This page says what we collect, who touches it, and how to get it deleted. Last updated August 27, 2026.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT THE FORM COLLECTS ============ -->
+    <section id="collected">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">What the Form Collects</h2>
+          <p class="sec-sub">SIX FIELDS, FOUR OF THEM REQUIRED</p>
+        </div>
+        <p class="story-lead">The only thing this site collects is what you type into the audit request form. That is your name, your business name, your website address, and your email address. A phone number and a message are optional, and the form sends without them.</p>
+        <p class="story-lead">There is nothing else. No account to create, no mailing list, no hidden fields except one empty box that never shows on screen and exists to catch spam bots.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHO HANDLES IT ============ -->
+    <section class="dark field-blue" id="handled">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Who Handles It</h2>
+          <p class="sec-sub">YOUR BROWSER, FORMSPREE, OUR INBOX</p>
+        </div>
+        <p class="story-lead">The form posts to Formspree, a hosted form service, which delivers the submission to <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>. That is the whole path: your browser, Formspree, our inbox. This site has no database and no server code of ours behind it.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE DO WITH IT ============ -->
+    <section id="used">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">What We Do With It</h2>
+          <p class="sec-sub">ANSWER YOU, AND RUN THE AUDIT YOU ASKED FOR</p>
+        </div>
+        <p class="story-lead">We use what you send to answer you and to run the audit you asked for. That means looking at the website address you gave us, scanning it, and emailing you the report. If you left a phone number, we may call or text you about it.</p>
+        <p class="story-lead">We do not sell your information. We do not rent it, and we do not hand it to anyone else for their own use.</p>
+      </div>
+    </section>
+
+    <!-- ============ COOKIES AND ANALYTICS ============
+         Describes what actually ships. Google Analytics 4 property
+         G-BNLRK8YR6Y is the only tracking on the site. If a tag is
+         ever added, including a Google Ads conversion tag or a Meta
+         pixel, this section changes in the same commit. -->
+    <section class="dark field-blue" id="cookies">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Cookies and Analytics</h2>
+          <p class="sec-sub">ONE TOOL, COUNTING VISITS</p>
+        </div>
+        <p class="story-lead">This site runs Google Analytics. It sets cookies in your browser so we can measure how many people visit, which pages they read, where they came from, and how many fill in the audit form.</p>
+        <p class="story-lead">Analytics does not receive what you typed. It records that a form was sent, not your name, your email, or your message. If you would rather not be counted, your browser's cookie settings turn it off, and Google publishes an analytics opt-out add-on that does the same.</p>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO HAVE IT DELETED ============ -->
+    <section id="deletion">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">How to Have It Deleted</h2>
+          <p class="sec-sub">ONE EMAIL OR ONE PHONE CALL, NO REASON REQUIRED</p>
+        </div>
+        <p class="story-lead">Email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>, or call or text <a href="tel:+12152598304">215-259-8304</a>, and say you want your information deleted. We remove the email and the copy Formspree holds, and we tell you when it is done. You do not have to give a reason.</p>
+        <p class="story-lead">If what we do with your information changes, this page changes with it, and the date at the top moves.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT (direct, no form: see the note in the head) ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:34px">
+          <h2 class="sec-title">Questions About Any of This?</h2>
+          <p class="sec-sub">ASK GREG DIRECTLY.</p>
+        </div>
+        <div class="cta-row" style="justify-content:center">
+          <a class="btn" href="tel:+12152598304">Call or Text 215-259-8304</a>
+          <a class="btn btn-ghost" href="mailto:greg@corcoranpr.com">Email Greg</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer must be byte-identical to its acceptedAnswer text
+         in the FAQPage schema above. Edit one, edit both.
+         This page deliberately does NOT carry the standard contracts
+         question. See the note in the head. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">THE THREE PEOPLE ACTUALLY ASK</p>
+        </div>
+        <details><summary>Do you sell or share what I send you?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No, we do not sell your information, rent it, or hand it to anyone else for their own use. The only company that touches your form submission is Formspree, which delivers it to our inbox.</p></details>
+        <details><summary>How do I get my information deleted?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>, or call or text <a href="tel:+12152598304">215-259-8304</a>, and say you want it deleted. We remove the email and the copy Formspree holds, and we tell you when it is done. You do not have to give a reason.</p></details>
+        <details><summary>Does this site use cookies?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Google Analytics sets cookies so we can measure visits, traffic sources, and form fills. It does not receive your name, your email, or anything else you typed into the form. Nothing else on this site sets a cookie.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../#services">Services</a></li>
+            <li><a href="../#promise">The Promise</a></li>
+            <li><a href="../#how">How It Works</a></li>
+            <li><a href="../#industries">Industries</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="../about/">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../services/web-design/">Web Design</a></li>
+            <li><a href="../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../services/google-ads/">Google Ads</a></li>
+            <li><a href="../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../locations/bucks-county/">Perkasie</a></li><li><a href="../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../locations/bucks-county/">Warrington</a></li><li><a href="../locations/bucks-county/">New Hope</a></li><li><a href="../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../locations/montgomery-county/">Souderton</a></li><li><a href="../locations/montgomery-county/">Harleysville</a></li><li><a href="../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../locations/montgomery-county/">North Wales</a></li><li><a href="../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../locations/lehigh-valley/">Macungie</a></li><li><a href="../locations/lehigh-valley/">Whitehall</a></li><li><a href="../locations/lehigh-valley/">Center Valley</a></li><li><a href="../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../locations/bucks-county/">Bucks</a> and <a href="../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="./">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

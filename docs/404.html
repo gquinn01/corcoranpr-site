@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       CUSTOM 404. GitHub Pages serves this file for any path it
+       cannot find, anywhere under the site.
+
+       THIS PAGE IS THE ONE DOCUMENTED EXCEPTION TO THE RELATIVE-PATH
+       RULE, and it has to be. Pages serves this file at whatever URL
+       was missing, so the browser's address stays /some/deep/typo/ and
+       a relative link to the stylesheet would resolve to
+       /some/deep/typo/assets/site.css. Relative paths are meaningless
+       here, so every path on this page is ROOT-RELATIVE.
+
+       Inlining the stylesheet instead was considered and rejected: it
+       would put the palette in a second file, and the palette lives
+       ONLY in docs/assets/site.css.
+
+       The cost, which is temporary: until the domain cutover the site
+       serves from a project subpath, where /assets/... does not
+       resolve, so this page renders unstyled during preview. At the
+       domain root it is correct. That trade is recorded in CLAUDE.md
+       along with the amended verification grep, which excludes this
+       file.
+
+       NOT IN sitemap.xml AND NOT IN llms.txt, deliberately. An error
+       page is not a destination. scripts/audit.py recognizes the
+       corcoran-page marker below and scores it against a short rubric
+       of its own instead of the full page rubric, which would fail it
+       for the sitemap absence that is the entire point.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+  <meta name="corcoran-page" content="error-404">
+
+  <title>Page Not Found | Corcoran Communications</title>
+  <meta name="description" content="That page is not here. Head back to the homepage, the services, or the free AI site audit.">
+
+  <!-- No canonical. A canonical on an error page would tell Google this
+       URL is the real version of something, and it is not. -->
+  <meta name="robots" content="noindex, follow">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y. Kept on this page
+       on purpose: 404 hits are how you find the broken inbound links
+       that survived the cutover. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="/assets/site.css?v=6581d554">
+  <script src="/assets/site.js?v=8db47049" defer></script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV ============
+       Root-relative, for the reason in the head comment. -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="/" aria-label="Corcoran Communications home"><img src="/logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#promise">Promise</a></li>
+        <li><a href="/free-audit/">Free Audit</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#industries">Industries</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="/free-audit/">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <p class="eyebrow">404</p>
+        <h1>That Page Is Not Here</h1>
+        <p class="lead">The link is old, or the address has a typo. Nothing is broken on your end.</p>
+        <div class="cta-row">
+          <a class="btn" href="/">Homepage</a>
+          <a class="btn btn-ghost" href="/#services">Services</a>
+          <a class="btn btn-ghost" href="/free-audit/">Free AI Site Audit</a>
+        </div>
+        <p class="proof">Looking for something specific? Call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="/" aria-label="Corcoran Communications home"><img src="/logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#promise">The Promise</a></li>
+            <li><a href="/#how">How It Works</a></li>
+            <li><a href="/#industries">Industries</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="/services/web-design/">Web Design</a></li>
+            <li><a href="/services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="/services/google-ads/">Google Ads</a></li>
+            <li><a href="/services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="/services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="/free-audit/">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="/locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="/locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="/locations/bucks-county/">Perkasie</a></li><li><a href="/locations/bucks-county/">Sellersville</a></li>
+            <li><a href="/locations/bucks-county/newtown/">Newtown</a></li><li><a href="/locations/bucks-county/">Warrington</a></li><li><a href="/locations/bucks-county/">New Hope</a></li><li><a href="/locations/bucks-county/">Chalfont</a></li>
+            <li><a href="/locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="/locations/montgomery-county/">Souderton</a></li><li><a href="/locations/montgomery-county/">Harleysville</a></li><li><a href="/locations/montgomery-county/">Skippack</a></li>
+            <li><a href="/locations/montgomery-county/">North Wales</a></li><li><a href="/locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="/locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="/locations/montgomery-county/">Ambler</a></li>
+            <li><a href="/locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="/locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="/locations/lehigh-valley/easton/">Easton</a></li><li><a href="/locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="/locations/lehigh-valley/">Macungie</a></li><li><a href="/locations/lehigh-valley/">Whitehall</a></li><li><a href="/locations/lehigh-valley/">Center Valley</a></li><li><a href="/locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="/locations/bucks-county/">Bucks</a> and <a href="/locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="/locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="/privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
