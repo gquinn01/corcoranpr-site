@@ -13,15 +13,20 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    site score of 100 does not mean every page is at 100, so always check
    the table rather than the headline.
 
-   **Not every row is a page.** Since 2026-08-27 the scan covers 43
-   files: **27 real pages**, **15 redirect stubs** standing at the old
-   WordPress URLs, and **1 error page** (`docs/404.html`). The headline
-   line names the mix, so read it rather than calling 43 a page count.
-   Stubs and the 404 page are scored against short rubrics of their own
-   and are *supposed* to be absent from `sitemap.xml` and `llms.txt`;
-   for them that absence is a pass, not the critical it would be on a
-   real page. A stub showing 4 passing checks is healthy, not thin. When
-   you report growth moves, count the 27.
+   **How many rows to expect.** The weekly run scans the live site, and
+   a live run takes its page list from `sitemap.xml`, so it covers the
+   **27 real pages** and nothing else. That is the normal report.
+
+   A *local* run (`python3 scripts/audit.py` with no argument) covers 43
+   files instead: the same 27 pages, plus **15 redirect stubs** standing
+   at the old WordPress URLs and **1 error page** (`docs/404.html`). If
+   you are ever reading a report with 43 rows, that is why, and the
+   headline line names the mix. Stubs and the 404 page are scored
+   against short rubrics of their own and are *supposed* to be absent
+   from `sitemap.xml` and `llms.txt`; for them that absence is a pass,
+   not the critical it would be on a real page. A stub showing 4 passing
+   checks is healthy, not thin. Either way, when you report growth
+   moves, count the 27.
 
 2. **Check in with your teammate.** List open GitHub Issues with the label
    `google-update` (use `gh issue list --label google-update --state open`).
@@ -60,17 +65,15 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
      Google and being *the answer* an AI assistant gives are two different
      games; report on both.
 
-     **If there is no `## Site-wide` section, say so.** Those checks only
-     run when the scan is pointed at a live URL, because robots.txt and
-     llms.txt have to be fetched from a domain root. Until the domain
-     cutover the scan runs against the local files in `docs/`, so the
-     robots.txt and llms.txt checks do not run at all. That is a hole in
-     the evidence, not a clean bill of health, and a "0 warnings"
-     headline is less complete than it looks. Never report those two as
-     passing when they never ran. Read `docs/robots.txt` and
-     `docs/llms.txt` yourself, report what they say, and label it as
-     checked by hand. Note that robots.txt only takes effect at a real
-     domain root, so it does nothing on the GitHub Pages address.
+     **Read the `## Site-wide` section, and expect it to be there.**
+     Since the domain cutover on 2026-08-27, `SITE_URL` is set to
+     `https://corcoranpr.com/` and the scan runs against the live site,
+     so the robots.txt and llms.txt checks fetch from a real domain root
+     and actually run. Report what they say. If that section is ever
+     *missing*, something went wrong with the run rather than with the
+     site: say so plainly instead of reporting a clean bill of health,
+     because a "0 warnings" headline with those checks skipped is less
+     complete than it looks.
    - **Publishing gaps are critical.** If any page is flagged as missing
      from `docs/sitemap.xml` or `docs/llms.txt`, report it as a critical
      issue in plain terms: the page is live but crawlers and AI assistants

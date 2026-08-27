@@ -1,177 +1,149 @@
-# 🚀 AI Agency Starter Kit
+# Corcoran Communications
 
-This folder is a complete, working copy of the setup Lucas described:
-a professional local-business website plus **two AI agents that live in
-GitHub and talk to each other** — one scans the site, one watches for
-Google algorithm changes.
+The source for **[corcoranpr.com](https://corcoranpr.com/)**, and the two
+AI agents that watch it.
 
-You do not need to know how to code. You need about 30 minutes and the
-ability to follow numbered steps.
+Corcoran Communications is a veteran-owned marketing firm in Quakertown,
+Pennsylvania, founded by Ruth Corcoran in January 2000 and owned since
+July 2023 by her son Greg Quinn. This repo holds the website itself and
+the automation around it.
 
-## What's in the box
+The site is a static site on GitHub Pages: no database, no platform
+fees, no plugins, and every character editable in a text editor. It went
+live on this domain on 2026-08-27, replacing the WordPress site that had
+served it before.
+
+## What is here
 
 ```
-ai-agency-starter-kit/
-├── PLAYBOOK.md                     ← THE playbook: strategy, AEO, selling,
-│                                     your punch list. Read this first.
-├── docs/
-│   ├── index.html                  ← THE NEW CORCORANPR.COM (your rebuilt site!)
-│   ├── assets/
-│   │   ├── site.css                ← The shared stylesheet. The brand palette
-│   │   │                             lives here and ONLY here.
-│   │   └── site.js                 ← Shared behavior (the mobile menu)
-│   ├── services/                   ← One page per service, all linked from
-│   │   ├── web-design/               the homepage cards and the footer
-│   │   ├── seo/                      (SEO also owns AEO + content marketing)
-│   │   ├── google-ads/
-│   │   ├── social-media-marketing/
-│   │   └── lead-generation/
-│   ├── llms.txt                    ← AI-agent guide to your business (AEO)
-│   ├── robots.txt                  ← Welcomes search + AI crawlers (AEO)
-│   └── sitemap.xml                 ← Table of contents for crawlers
+corcoranpr-site/
+├── docs/                          ← THE LIVE SITE. Pages serves this folder.
+│   ├── index.html                   Homepage
+│   ├── about/  free-audit/  privacy/
+│   ├── services/                    Five service pages
+│   │   ├── web-design/  seo/  google-ads/
+│   │   └── social-media-marketing/  lead-generation/
+│   ├── industries/                  Six industry pages, each earned from
+│   │                                real client work
+│   ├── locations/                   Three county hubs, nine town pages
+│   ├── 404.html                     Branded error page
+│   ├── assets/site.css              The shared stylesheet. The brand
+│   │                                palette lives here and ONLY here.
+│   ├── assets/site.js               Mobile menu, audit form, stat band
+│   ├── llms.txt                     Guide for AI assistants (AEO)
+│   ├── robots.txt                   Welcomes search and AI crawlers (AEO)
+│   ├── sitemap.xml                  27 pages, the crawler's contents page
+│   └── CNAME                        The custom domain. Never delete it.
 ├── templates/
-│   ├── spa-local-business-template.html  ← The day-spa demo — your reusable
-│   │                                 template for pitching local businesses
-│   └── service-page-template.html  ← Start here to add a service page.
-│                                     See the checklist in PLAYBOOK.md Part 4.
+│   ├── service-page-template.html ← The master mold. Any shared change to
+│   │                                a live page lands here in the same commit.
+│   └── spa-local-business-template.html   Day-spa demo, for pitching
 ├── scripts/
-│   ├── audit.py                    ← The SEO + AEO scanner (15+ checks).
-│   │                                 Scores EVERY page of the site separately.
-│   └── fetch_seo_news.py           ← Pulls Google/AI-search news from 4 trusted sources
+│   ├── audit.py                   ← The SEO + AEO scanner. Scores every
+│   │                                page separately. The definition of done.
+│   ├── stamp-assets.py              Cache-busting stamps for the CSS and JS
+│   ├── fetch_seo_news.py            Pulls Google/AI-search news for the Watcher
+│   ├── cascade-analyzer.html        Checks CSS for component-vs-ancestor overrides
+│   └── mobile-check.md              How to test mobile layout honestly
 ├── agents/
-│   ├── site-auditor.md             ← Agent 1's job description (plain English — edit it!)
-│   └── google-watcher.md           ← Agent 2's job description
-└── .github/workflows/
-    ├── site-audit-agent.yml        ← Runs Agent 1 every Monday morning
-    └── google-watch-agent.yml      ← Runs Agent 2 every day
+│   ├── site-auditor.md            ← Agent job descriptions, in plain English.
+│   └── google-watcher.md            That IS the programming.
+├── brand/                           Source logo art and how the live files
+│                                    were derived from it
+├── archive/old-site/                The WordPress site as it stood the day
+│                                    before cutover, and what it was running
+├── CLAUDE.md                        Standing orders: brand, voice, facts,
+│                                    definition of done. Read before editing.
+└── PLAYBOOK.md                      Strategy, AEO, the cutover record,
+                                     the decided redirect map
 ```
 
-The first thing to do: **double-click `docs/index.html`** and look at your
-new site. Then open it in a text editor and read the comments marked
-`WHY:` (the SEO/AEO course hiding inside the page) and `[CONFIRM]` (the
-handful of facts only you can verify or decide — a named testimonial,
-headshots, whether to add a street address for local-pack visibility).
+Under `docs/` there are **43 files**: 27 real pages, 15 redirect stubs
+standing at old WordPress URLs, and the 404 page. Only the 27 are in
+`sitemap.xml`, which is deliberate.
 
-## Setup (about 30 minutes, one time)
+## The two agents
 
-### 1. Create a free GitHub account
-Go to [github.com](https://github.com) → Sign up. GitHub is where your
-sites and agents will live. Free plan is all you need.
+Both run on GitHub Actions and file their work as GitHub Issues, so
+every exchange is logged where a human can read it.
 
-### 2. Create a repository (a "repo" = a project folder in the cloud)
-Click the **+** in the top-right → **New repository** → name it
-`my-first-ai-site` → set it to **Public** → **Create repository**.
+| Agent | Runs | Job |
+|---|---|---|
+| **Site Auditor** | Mondays, 8:00am ET | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
+| **Google Watcher** | Daily, 7:00am ET | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
 
-### 3. Upload this kit
-On your new repo's page: **Add file → Upload files**, then drag the
-*contents* of this folder (not the folder itself) into the box and click
-**Commit changes**.
+They coordinate through the Issues tab: the Watcher files alerts, and
+the Auditor reads the open ones before writing its Monday report, so a
+relevant algorithm change reorders that week's priorities.
 
-> **Mac tip:** the `.github` folder is hidden by default. In Finder, press
-> **Cmd + Shift + .** (period) to reveal hidden folders so it gets dragged
-> along with everything else. On Windows it's visible normally.
->
-> **The pro move:** once you install [Claude Code](https://code.claude.com)
-> later, you'll just say *"push this folder to a new GitHub repo"* and it
-> does all of this for you. That's the actual workflow Lucas uses.
+The firm runs three more agents against client advertising accounts,
+plus automated watchdog scripts checking spend pacing and conversion
+tracking daily. Those live with the accounts they watch, not in this
+repo. **A human reviews and approves every change. Nothing ships on a
+machine's say-so.**
 
-### 4. Give your agents a brain (API key)
-The agents think using Claude, which needs an API key (like a prepaid
-phone card for AI):
+To run one by hand: **Actions** tab, pick the workflow, then **Run
+workflow**. The report lands in **Issues** a couple of minutes later.
 
-1. Go to [console.anthropic.com](https://console.anthropic.com) → sign up
-   → **API Keys** → **Create key**. Copy it. Add $5–10 of credit.
-2. In your GitHub repo: **Settings → Secrets and variables → Actions →
-   New repository secret**.
-3. Name: `ANTHROPIC_API_KEY` · Value: paste the key → **Add secret**.
+### Configuration
 
-### 5. Turn on your live website (free hosting!)
-In the repo: **Settings → Pages** → under "Build and deployment" choose
-**Deploy from a branch** → branch `main`, folder `/docs` → **Save**.
-Two minutes later your site is live at
-`https://YOUR-USERNAME.github.io/my-first-ai-site/`.
+| Where | Name | Value |
+|---|---|---|
+| Secrets | `ANTHROPIC_API_KEY` | Anthropic API key. The agents think with it. |
+| Variables | `SITE_URL` | `https://corcoranpr.com/` |
 
-### 6. Wake up the agents
-Go to the **Actions** tab → click **"Agent: Site Auditor (weekly)"** →
-**Run workflow** → **Run workflow** (green button). Wait ~2 minutes,
-then open the **Issues** tab. Your first AI-written SEO report is
-sitting there. Do the same for the Google Watcher.
+`SITE_URL` is what points the weekly audit at the live site rather than
+the local files. Set, the scan takes its page list from the live
+`sitemap.xml` (27 pages) and the site-wide `robots.txt` and `llms.txt`
+checks run, because those have to be fetched from a real domain root.
+Point it at any other domain and the same scanner audits that site,
+which is how a prospect gets a free audit.
 
-From now on they run themselves: the Watcher every morning, the Auditor
-every Monday — even while you sleep. **The Issues tab is where you watch
-your agents talk to each other**: the Watcher files `google-update`
-alerts; the Auditor reads them and folds them into its Monday report.
+## Working on the site
 
-## Pointing the auditor at a real (live) site
+Read `CLAUDE.md` first. It carries the brand palette, the voice rules,
+the facts that are not negotiable, and the reasoning behind decisions
+that look arbitrary until you know why.
 
-**Settings → Secrets and variables → Actions → Variables tab → New
-repository variable**: Name `SITE_URL`, value `https://corcoranpr.com/`.
-The Monday audit will scan your LIVE site instead of the copy in this
-repo — set this on day one so the auditor benchmarks the old WordPress
-site, and you get a before/after story once the new site goes live.
-This works on ANY site — including a prospect's site. (Audit a prospect,
-send them the report, close the deal.)
+Before committing anything:
 
-## Going live on corcoranpr.com (when you're ready — not day one)
+```bash
+python3 scripts/audit.py --strict     # every one of the 43 files at 100/100
+python3 scripts/stamp-assets.py       # after any change to site.css or site.js
+```
 
-The new site previews free at your GitHub Pages address first. Live it
-with, tweak it, and only then cut over. When you're ready:
+`--strict` exits nonzero if any file is under 100. A page is not
+finished until it is in `sitemap.xml` and `llms.txt`, and the audit
+enforces both, so the checklist is not something to remember. It is
+something the build fails without.
 
-1. **Don't touch anything else yet.** Your old WordPress site stays up
-   and untouched throughout; there is no downtime moment.
-2. In the repo: **Settings → Pages → Custom domain** → enter
-   `corcoranpr.com` → Save. GitHub shows you the DNS records it needs.
-3. At your domain registrar (wherever corcoranpr.com is registered),
-   update ONLY the web records (A / CNAME) as GitHub instructs.
-   **Do not change MX records — those are your email.** greg@corcoranpr.com
-   keeps working untouched.
-4. Check "Enforce HTTPS" once GitHub offers it (minutes to an hour).
-5. ~~**Redirects matter**~~ — **already done, 2026-08-27.** The old
-   site's 28 URLs were crawled, inventoried and mapped before cutover.
-   15 have a redirect stub waiting for them under `docs/`; the rest 404
-   on purpose, because a redirect that lies about relevance is worse
-   than an honest 404. The decided map is the table in `PLAYBOOK.md`,
-   and the old site itself is archived in `archive/old-site/`. Nothing
-   to do here at cutover except let DNS move.
+## What it costs
 
-If any of this feels hairy, it's a perfect first Claude Code task:
-"Here's my repo and my registrar — walk me through the cutover."
+GitHub: **$0**. The free tier includes 2,000 minutes a month of Actions
+runtime and both agents together use roughly 30. Hosting on GitHub
+Pages: **$0**. The Claude API: a few dollars a month.
 
-## What this costs
-
-GitHub: **$0** (free tier includes 2,000 minutes/month of agent runtime;
-this kit uses roughly 30). Claude API: **pennies per run** — a few
-dollars a month for both agents. Hosting: **$0** on GitHub Pages.
-
-## When something breaks
+## When a run fails
 
 Open the failed run in the **Actions** tab, click the red step, copy the
-error text, and paste it into Claude with: *"This GitHub Action failed
-with this error. Fix my workflow file."* That is the entire skill of
-debugging in 2026 — knowing what to paste and what to ask. (Versions of
-actions change over time; Claude will update the YAML for you.)
+error, and hand it to Claude with the workflow file. Action versions
+drift over time and that is usually all it is.
 
 ## Built for AEO, not just SEO
 
-SEO gets you ranked when someone *searches*. **AEO (answer engine
-optimization)** gets you *recommended* when someone asks ChatGPT, Claude,
-Perplexity, or Google's AI a question like "best day spa near Ridgewood."
-This kit covers both. The demo site carries the AEO signals (FAQ content
-with FAQPage schema, `sameAs` entity links, `robots.txt` that welcomes AI
-crawlers, an `llms.txt` guide for AI agents), the auditor scores AEO
-checks on every scan, and the Google Watcher tracks answer-engine changes
-— not just Google's. One honest note: Google has said its AI features
-ignore `llms.txt`, while Anthropic and OpenAI tooling uses it — it's
-20-minute insurance, not magic. The parts no script can do for a client:
-a fully filled-out Google Business Profile, steady reviews, and identical
-name/address/phone everywhere. That's human work — bill for it.
+SEO gets you ranked when someone searches. **AEO, answer engine
+optimization**, gets you named inside the answer when someone asks
+ChatGPT, Claude, Perplexity, or Google's AI a question like "best auto
+body shop near me."
 
-## Make it yours
+This repo covers both. Every page carries FAQ content mirrored in
+`FAQPage` schema, `sameAs` entity links, a `robots.txt` that explicitly
+welcomes AI crawlers, and an `llms.txt` guide. The auditor scores AEO
+checks on every scan and fails a page whose visible FAQ has drifted from
+its schema, because assistants quote the schema.
 
-- Edit `agents/site-auditor.md` and `agents/google-watcher.md` — they're
-  plain English. That IS the programming.
-- Replace `docs/index.html` with a real client's site.
-- Ask Claude to add a third agent — a content writer that drafts a
-  monthly blog post as a pull request for your review. Same pattern:
-  a schedule, a script, a job description, an Issue.
-  
+One honest note: Google has said its AI features ignore `llms.txt`,
+while Anthropic and OpenAI tooling reads it. It is cheap insurance, not
+magic. And the parts no script can do stay human work: a filled-out
+Google Business Profile, steady reviews, and identical name, address and
+phone everywhere.

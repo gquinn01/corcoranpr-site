@@ -124,7 +124,7 @@ As of 2026-08-13 the site is no longer one page. It has a homepage plus five ser
 
 When you add a page, all four of these happen or the page is not finished:
 
-1. **Build it from the template.** Copy `templates/service-page-template.html` to `docs/services/<slug>/index.html` and replace every `{{TOKEN}}`. The nav, footer, palette and schema shape come with it. All internal links must stay relative (`../../` is the site root from there), because the site also serves from a project subpath where a leading `/` would 404. One token is not free copy: `{{HOW_SUB}}`, the eyebrow above **How It Works**, is always `WHAT HAPPENS WHEN YOU CALL`. All 24 pages carrying that section were standardized on it on 2026-08-21, and the audit does not check the wording, so a new page only stays consistent if you set it deliberately.
+1. **Build it from the template.** Copy `templates/service-page-template.html` to `docs/services/<slug>/index.html` and replace every `{{TOKEN}}`. The nav, footer, palette and schema shape come with it. All internal links must stay relative (`../../` is the site root from there). That rule outlived its original reason, the project subpath, and stands anyway; see the Links section of `CLAUDE.md`. One token is not free copy: `{{HOW_SUB}}`, the eyebrow above **How It Works**, is always `WHAT HAPPENS WHEN YOU CALL`. All 24 pages carrying that section were standardized on it on 2026-08-21, and the audit does not check the wording, so a new page only stays consistent if you set it deliberately.
 2. **Put it in the sitemap.** Add a `<url>` block to `docs/sitemap.xml` with the absolute URL, a trailing slash, and `lastmod` set to the real date you published it. A missing sitemap entry is scored as **critical**.
 3. **Put it in llms.txt.** Add a line under `## Key pages` in `docs/llms.txt`, in the existing `- [Name](url): description` form. This is the file AI assistants read to learn what the business offers. A missing entry is scored as a **warning**.
 4. **Link to it.** The matching homepage service card gets its "More on ..." link, and the page goes in the footer Services column, which appears on every page.
@@ -133,9 +133,9 @@ Then run `python3 scripts/audit.py`. Every page must read 100/100. Steps 2 and 3
 
 ### The domain cutover checklist
 
-The site is built for `corcoranpr.com` and is not served from it yet. Every absolute URL in the repo already points there: all 27 canonical tags, all 27 `<loc>` entries in `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and 204 `@id`/`url` values across the schema blocks. Meanwhile `corcoranpr.com` still resolves to the old WordPress site.
+**DONE 2026-08-27. `corcoranpr.com` serves this site over HTTPS.** The certificate covers the apex and `www`, `www` 301s to the apex, and the old GitHub Pages address `gquinn01.github.io/corcoranpr-site/` now 301s to the custom domain and keeps the path. A missing URL returns a real 404 status and the branded 404 page. `SITE_URL` is set, so the weekly audit scans the live site and the site-wide AEO checks run again.
 
-That gap is not neutral, and it is the reason not to let this drag. Right now every page on the GitHub Pages address tells Google *the real version of this page lives at corcoranpr.com* — and the page that answers there is the old site. The longer both are up, the longer you are pointing crawlers at the thing you replaced.
+The checklist below is kept as the record of what was done and why, and as the pattern to reuse for a client. The absolute URLs it talks about were correct all along: all 27 canonical tags, all 27 `<loc>` entries in `sitemap.xml`, the `Sitemap:` line in `robots.txt`, and the `@id`/`url` values across the schema blocks all pointed at `corcoranpr.com` before the domain did, which is why nothing had to be rewritten on the day.
 
 **Before you touch DNS.**
 
@@ -145,15 +145,15 @@ That gap is not neutral, and it is the reason not to let this drag. Right now ev
 
 **The cutover itself.**
 
-4. **Add `docs/CNAME`**, one line, `corcoranpr.com`, no protocol and no trailing slash. The repo has no CNAME file today. Without it GitHub Pages drops the custom domain on the next deploy.
-5. **Set the custom domain** in Settings → Pages. The Pages API currently reports `cname: null`, serving from `main` branch, `/docs` path.
+4. ~~**Add `docs/CNAME`**~~ **DONE.** GitHub wrote it itself when the custom domain was saved in Settings: one line, `corcoranpr.com`, no protocol, no trailing slash, no trailing newline. It is commit `ee4a310`. Without it Pages drops the custom domain on the next deploy, so never delete it.
+5. ~~**Set the custom domain**~~ **DONE.** The Pages API now reports `cname: corcoranpr.com`, `status: built`, serving from `main` branch, `/docs` path.
 6. **Point DNS at GitHub.** Apex `corcoranpr.com` needs four A records (and the matching AAAA records) at GitHub's Pages IPs; `www` gets a CNAME to `gquinn01.github.io`. Read the current IPs off [GitHub's own docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) on the day you do it rather than trusting any list written earlier, this one included.
-7. **Wait, then enforce HTTPS.** The certificate is issued after DNS resolves, so the "Enforce HTTPS" box stays greyed out until propagation finishes. Come back for it; do not skip it.
+7. ~~**Wait, then enforce HTTPS.**~~ **DONE.** The Pages API reports the certificate `approved` for `corcoranpr.com` and `www.corcoranpr.com`. The box stays greyed out until DNS propagates, which is why this step is a separate trip back.
 
 **After it is live.**
 
-8. **Restore `SITE_URL`**: `gh variable set SITE_URL --body "https://corcoranpr.com/"`. See the rule in `CLAUDE.md`. This is what puts the weekly audit back on the live site, and it is what turns the site-wide AEO checks back on — `robots.txt` and `llms.txt` are fetched from a domain root, so while the scan runs on local files those two checks do not run at all.
-9. **Confirm `robots.txt` is finally real.** The file says so itself in its own header comment: on a project subpath it is decorative. At a domain root it starts working, and the AI-crawler `Allow` rules that are the whole point of it take effect.
+8. ~~**Restore `SITE_URL`**~~ **DONE 2026-08-27**: `gh variable set SITE_URL --body "https://corcoranpr.com/"`. This is what puts the weekly audit back on the live site and turns the site-wide AEO checks back on. One consequence worth knowing: a live run takes its page list from `sitemap.xml`, so the weekly report now covers the 27 real pages and never the 15 redirect stubs or the 404 page. Only a local `python3 scripts/audit.py` covers all 43 files.
+9. ~~**Confirm `robots.txt` is finally real.**~~ **DONE.** It serves 200 at `https://corcoranpr.com/robots.txt`, so the AI-crawler `Allow` rules that are the whole point of it are finally in effect rather than decorative.
 10. **Search Console.** Add `corcoranpr.com` as a property, verify it, submit `sitemap.xml`. Do not use Change of Address — that tool is for moving between different domains, and this is the same domain changing what it serves.
 11. **Re-run the audit against the live site** once, by hand: `python3 scripts/audit.py https://corcoranpr.com/`. The page list comes from the live sitemap, so this is also the check that the sitemap deployed correctly.
 11a. **The tracking that came across, and the tracking that did not.** The new site runs exactly one tag: Google Analytics 4, property `G-BNLRK8YR6Y`, the same property the WordPress site fed, so the history is continuous across the cutover. The old site's other five tags were dropped on purpose: the `GTM-MFPHPDK` container, a Meta pixel (`214048892700199`), a dead Universal Analytics property (`UA-62592023-10`, which stopped processing in July 2023), Jetpack Stats, and reCAPTCHA. There is no consent banner and there was not one before; `/privacy/` is the disclosure, which is why that page has to stay true to what actually ships.
@@ -163,7 +163,7 @@ That gap is not neutral, and it is the reason not to let this drag. Right now ev
 11c. **When Corcoran runs its own Google Ads.** The firm has never run its own ads and has no Google Ads account today, which is why there is no `AW-` conversion tag anywhere and no placeholder for one. When that changes: create the account under the MCC, link it to GA4, import the `form_submit` key event as the conversion rather than hand-rolling a second tag, and update `/privacy/` in the same commit to say an advertising tag now runs. One tag, one source of truth for the conversion.
 
 12. **Update the profiles that carry the URL** — Google Business Profile first, then the four social accounts in the schema `sameAs` array.
-13. **Clean up the pre-cutover language.** The `SITE_URL` rule in `CLAUDE.md` and the site-wide AEO instruction in `agents/site-auditor.md` are both written "until the domain cutover." Once it has happened they are stale.
+13. ~~**Clean up the pre-cutover language.**~~ **DONE 2026-08-27.** The `SITE_URL` rule in `CLAUDE.md`, the relative-links rationale, the 404 page's unstyled-preview caveat, and the site-wide AEO instruction in `agents/site-auditor.md` were all written "until the domain cutover" and have been rewritten to the live reality.
 
 #### The redirect map: decide it, don't default it
 
@@ -208,7 +208,7 @@ The temptation is to point all 28 old URLs at the homepage. Don't. Google treats
 
 One more thing the old sitemap will drag along: Search Console has `/sitemap_index.xml` on file and the new site serves `/sitemap.xml`. That is step 10 below, and it is not optional.
 
-A 404 is not a failure state. It is the correct, honest answer for a page that no longer exists, and it is what Google prefers to a redirect that lies about relevance. Which was the argument for **`docs/404.html`**, built 2026-08-27. It carries the nav, the footer, a plain line saying the page is not here, and links to the homepage, the services and the free audit. It is the one file in `docs/` allowed root-relative paths, because Pages serves it at whatever URL was missing and relative paths resolve against a directory that does not exist. Until cutover it renders unstyled on the project subpath, which is the accepted cost; see the Links section of `CLAUDE.md`.
+A 404 is not a failure state. It is the correct, honest answer for a page that no longer exists, and it is what Google prefers to a redirect that lies about relevance. Which was the argument for **`docs/404.html`**, built 2026-08-27. It carries the nav, the footer, a plain line saying the page is not here, and links to the homepage, the services and the free audit. It is the one file in `docs/` allowed root-relative paths, because Pages serves it at whatever URL was missing and relative paths resolve against a directory that does not exist. Confirmed working at the domain root on cutover day: a missing path returns a real 404 status and the styled page. See the Links section of `CLAUDE.md`.
 
 ---
 

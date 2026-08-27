@@ -259,10 +259,17 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
 
 ## Links (decided 2026-08-13)
 - EVERY internal link and asset path is RELATIVE and never starts with
-  "/". The site also serves from a project subpath
-  (gquinn01.github.io/corcoranpr-site/), where a leading slash 404s.
-  From a service page the site root is ../../ , so: ../../assets/site.css,
-  ../../logo-dark.png, ../../#services, ../seo/ for a sibling service.
+  "/". From a service page the site root is ../../ , so:
+  ../../assets/site.css, ../../logo-dark.png, ../../#services, ../seo/
+  for a sibling service.
+  THE RULE STANDS AFTER CUTOVER (2026-08-27), with a different reason.
+  It was written because the site also served from a project subpath,
+  gquinn01.github.io/corcoranpr-site/, where a leading slash 404s. That
+  address now 301s to corcoranpr.com and keeps the path, so a leading
+  slash would technically work today. It stays banned anyway: relative
+  paths keep working wherever the files are served from, including a
+  local checkout and any future preview, and the ban is what the whole
+  repo is built on. Do not "modernize" 43 files to absolute paths.
 - The only absolute URLs are the ones the spec requires to be absolute:
   canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
 - ONE EXCEPTION, docs/404.html (decided 2026-08-27). GitHub Pages
@@ -271,10 +278,11 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   a directory that does not exist. Relative paths are meaningless there,
   so the 404 page uses ROOT-RELATIVE paths throughout: stylesheet,
   script, logo, and every link. Inlining the CSS instead was rejected,
-  because it would put the palette in a second file. The cost is that
-  the 404 renders unstyled on the project subpath until cutover, which
-  is when the page starts mattering anyway. No other file may take this
-  exception.
+  because it would put the palette in a second file. Confirmed working
+  at the domain root on 2026-08-27: a missing path returns a real 404
+  status and the styled page, with /assets/site.css resolving. The
+  temporary cost of it rendering unstyled on the project subpath is
+  spent and gone. No other file may take this exception.
 - Verify with: grep -rn 'href="/\|src="/' docs/ --exclude=404.html
   — it must print nothing. The --exclude is the 404 rule above; without
   it the check reports the exception it already knows about.
@@ -366,18 +374,20 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   Formspree endpoint; no server code. Two pages carry a direct contact
   band instead, phone and email with no form: film-live-entertainment
   and privacy. Redirect stubs and the 404 page carry neither.
-- SITE_URL, the repo variable the weekly Site Auditor reads, is UNSET as
-  of 2026-08-20 and goes back to https://corcoranpr.com/ after the domain
-  cutover. Restore it with:
-  gh variable set SITE_URL --body "https://corcoranpr.com/"
-  Set, the weekly scan audits that live URL instead of docs/. It was set
-  until 2026-08-20, and because the cutover has not happened the domain
-  still served the old WordPress site, so every weekly report to date
-  scored the OLD site, not ours. Unset, the scan covers all 27 pages
-  under docs/, plus the 15 redirect stubs and the 404 page, and scores
-  what we actually build. The cost of leaving it
-  unset: check_ai_access only runs against a live URL, so the site-wide
-  robots.txt and llms.txt checks do not run at all, and the report says
-  so. That is the trade until cutover: real pages with two missing
-  site-wide checks beats a complete audit of somebody else's site.
+- SITE_URL, the repo variable the weekly Site Auditor reads, is SET to
+  https://corcoranpr.com/ as of 2026-08-27, the day the domain cutover
+  happened. The weekly scan therefore audits the live site, and the
+  site-wide AEO checks (robots.txt and llms.txt, which have to be
+  fetched from a domain root) run again for the first time since
+  2026-08-20. Between 2026-08-20 and the cutover it was deliberately
+  unset, because the domain still served the old WordPress site and a
+  live scan would have scored somebody else's pages.
+- THE LIVE SCAN AND THE LOCAL SCAN COVER DIFFERENT SETS, and this is the
+  one thing to keep straight now that SITE_URL is set. A live run takes
+  its page list FROM sitemap.xml, which is 27 pages. The 15 redirect
+  stubs and the 404 page are deliberately not in the sitemap, so the
+  weekly report will never mention them. Only a local run,
+  python3 scripts/audit.py, covers all 43 files. Run the local one
+  before committing; that is what the definition of done means by
+  "EVERY page".
 - Never put API keys or secrets in any file.
