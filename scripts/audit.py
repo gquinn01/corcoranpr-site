@@ -63,6 +63,81 @@ SITE_BASE = "https://corcoranpr.com/"
 SITEMAP_MAX_DEPTH = 3
 SITEMAP_MAX_FILES = 50
 
+# --- LocalBusiness and everything that IS one -------------------------
+# The "is this a local business page" check used to hold a hand-written
+# list of about twenty types, which meant every schema.org subtype
+# nobody had thought to type out was reported as having no
+# LocalBusiness schema at all. A real prospect's site was flagged on
+# every page for exactly this: it publishes a complete AutoBodyShop
+# node, address, telephone, geo and hours included, and AutoBodyShop is
+# a LocalBusiness subtype the list happened to omit. The finding was
+# false, and it was the kind of false that a prospect can check in a
+# minute.
+#
+# So this is the full set: LocalBusiness plus every class under it in
+# the schema.org vocabulary, all 130 of them, derived from
+# schemaorg-current-https.jsonld (schema.org v29, read 2026-08-28) by
+# walking rdfs:subClassOf down from schema:LocalBusiness. None of them
+# is superseded. It is baked in as a literal rather than fetched so the
+# audit still runs with no network, which is how it runs against our
+# own pages. To refresh it after a schema.org release, walk the
+# vocabulary again — do not add names by hand, which is the habit that
+# produced the short list.
+LOCAL_BUSINESS_TYPES = frozenset({
+    "LocalBusiness", "AccountingService", "AdultEntertainment",
+    "AmusementPark", "AnimalShelter", "ArchiveOrganization",
+    "ArtGallery", "Attorney", "AutoBodyShop", "AutoDealer",
+    "AutoPartsStore", "AutoRental", "AutoRepair", "AutoWash",
+    "AutomatedTeller", "AutomotiveBusiness", "Bakery",
+    "BankOrCreditUnion", "BarOrPub", "BeautySalon", "BedAndBreakfast",
+    "BikeStore", "BookStore", "BowlingAlley", "Brewery",
+    "CafeOrCoffeeShop", "Campground", "Casino", "ChildCare",
+    "ClothingStore", "ComedyClub", "ComputerStore", "ConvenienceStore",
+    "CovidTestingFacility", "DaySpa", "Dentist", "DepartmentStore",
+    "Distillery", "DryCleaningOrLaundry", "Electrician",
+    "ElectronicsStore", "EmergencyService", "EmploymentAgency",
+    "EntertainmentBusiness", "ExerciseGym", "FastFoodRestaurant",
+    "FinancialService", "FireStation", "Florist", "FoodEstablishment",
+    "FurnitureStore", "GardenStore", "GasStation", "GeneralContractor",
+    "GolfCourse", "GovernmentOffice", "GroceryStore", "HVACBusiness",
+    "HairSalon", "HardwareStore", "HealthAndBeautyBusiness",
+    "HealthClub", "HobbyShop", "HomeAndConstructionBusiness",
+    "HomeGoodsStore", "Hospital", "Hostel", "Hotel", "HousePainter",
+    "IceCreamShop", "IndividualPhysician", "InsuranceAgency",
+    "InternetCafe", "JewelryStore", "LegalService", "Library",
+    "LiquorStore", "Locksmith", "LodgingBusiness", "MedicalBusiness",
+    "MedicalClinic", "MensClothingStore", "MobilePhoneStore", "Motel",
+    "MotorcycleDealer", "MotorcycleRepair", "MovieRentalStore",
+    "MovieTheater", "MovingCompany", "MusicStore", "NailSalon",
+    "NightClub", "Notary", "OfficeEquipmentStore", "Optician",
+    "OutletStore", "PawnShop", "PetStore", "Pharmacy", "Physician",
+    "PhysiciansOffice", "Plumber", "PoliceStation", "PostOffice",
+    "ProfessionalService", "PublicSwimmingPool", "RadioStation",
+    "RealEstateAgent", "RecyclingCenter", "Resort", "Restaurant",
+    "RoofingContractor", "SelfStorage", "ShoeStore", "ShoppingCenter",
+    "SkiResort", "SportingGoodsStore", "SportsActivityLocation",
+    "SportsClub", "StadiumOrArena", "Store", "TattooParlor",
+    "TelevisionStation", "TennisComplex", "TireShop",
+    "TouristInformationCenter", "ToyStore", "TravelAgency",
+    "VacationRental", "WholesaleStore", "Winery"
+})
+
+# A @type may be written as a bare name, a full URL, or a compact IRI
+# ("AutoBodyShop", "https://schema.org/AutoBodyShop", "schema:AutoBodyShop").
+# All three are valid JSON-LD and all three appear in the wild, so the
+# name is normalized before anything is matched against it. Without
+# this, a page using the URL form reads as having no recognized type at
+# all, which would fail the FAQPage check the same way.
+TYPE_NAME_RE = re.compile(r"^(?:https?://(?:www\.)?schema\.org/|schema:)")
+
+
+def type_name(raw) -> str:
+    """The bare schema.org class name from any of its written forms."""
+    if not isinstance(raw, str):
+        return ""
+    return TYPE_NAME_RE.sub("", raw.strip()).strip("/")
+
+
 # --- Pages that are not pages -----------------------------------------
 # Two kinds of file under docs/ exist for machines rather than readers: a
 # redirect stub standing at an old WordPress URL, and the 404 page. Both
@@ -519,19 +594,17 @@ def audit(source: str, coverage: dict = None):
             for item in unwrapped:
                 t2 = item.get("@type")
                 if t2:
-                    types.extend(t2 if isinstance(t2, list) else [t2])
-                    if "FAQPage" in (t2 if isinstance(t2, list) else [t2]):
+                    names = [type_name(t) for t in
+                             (t2 if isinstance(t2, list) else [t2])]
+                    names = [n for n in names if n]
+                    types.extend(names)
+                    if "FAQPage" in names:
                         faq_nodes.append(item)
         except (json.JSONDecodeError, AttributeError):
             warns.append("**A JSON-LD block failed to parse** — broken structured data is invisible to Google. Validate at validator.schema.org.")
     if types:
         passes.append(f"Structured data found: {', '.join(types)}.")
-        local_types = {"LocalBusiness", "ProfessionalService", "DaySpa", "Restaurant", "Store",
-                       "HomeAndConstructionBusiness", "Plumber", "Electrician", "HVACBusiness",
-                       "RoofingContractor", "LegalService", "Dentist", "MedicalBusiness",
-                       "AutoRepair", "BeautySalon", "HealthAndBeautyBusiness", "FinancialService",
-                       "RealEstateAgent", "TravelAgency", "FoodEstablishment", "ExerciseGym"}
-        if not local_types.intersection(types) and "LocalBusiness" not in " ".join(types):
+        if not LOCAL_BUSINESS_TYPES.intersection(types):
             warns.append("**No LocalBusiness-type schema detected.** For a local business this is the #1 upgrade — add name, address, phone, hours, and geo as JSON-LD.")
     else:
         fails.append("**No structured data (JSON-LD) at all.** This is how you speak directly to Google's machines and AI search. Most competitors are missing it — easy win.")
