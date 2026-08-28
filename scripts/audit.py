@@ -55,6 +55,14 @@ NAP_EMAIL_RE = re.compile(r"greg@corcoranpr\.com")
 # sitemap.xml under its OWN address rather than under some other page's.
 SITE_BASE = "https://corcoranpr.com/"
 
+# A sitemap is not always a list of pages. It may be a <sitemapindex>,
+# a list of OTHER sitemaps, which is what WordPress and Yoast ship by
+# default. We follow an index into its children, with two caps so a
+# malformed or looping sitemap cannot spin a scan forever: how deep the
+# nesting may go, and how many sitemap files one run will fetch at all.
+SITEMAP_MAX_DEPTH = 3
+SITEMAP_MAX_FILES = 50
+
 # --- Pages that are not pages -----------------------------------------
 # Two kinds of file under docs/ exist for machines rather than readers: a
 # redirect stub standing at an old WordPress URL, and the 404 page. Both
@@ -709,21 +717,97 @@ def score_of(n_pass: int, n_warn: int, n_fail: int) -> int:
     return round(100 * n_pass / max(1, n_pass + n_warn + n_fail))
 
 
+def is_xml_url(url: str) -> bool:
+    """True for a URL that points at an XML file. Those are sitemaps and
+    feeds, never pages. Scoring one against the HTML rubric produces a
+    page-shaped verdict about a file no reader will ever open."""
+    return urlparse(url).path.lower().endswith(".xml")
+
+
+def new_sitemap_stats() -> dict:
+    """What one expansion learned about the sitemaps it read, so the
+    report can say what was followed and what was skipped."""
+    return {"files": 0, "indexes": 0, "unreadable": [], "capped": False}
+
+
+def collect_sitemap_pages(sitemap_url: str, depth: int = 0, seen: set = None,
+                          stats: dict = None) -> list:
+    """Returns the page URLs one sitemap lists, following an index.
+
+    A <urlset> lists pages. A <sitemapindex> lists other sitemaps, and
+    its <loc> entries are those sitemaps' own addresses. Both use the
+    same <loc> tag, so the wrapper tag is the only thing that says which
+    kind of list you are holding. Reading an index as if it were a
+    urlset is what put category-sitemap.xml, page-sitemap.xml and
+    post-sitemap.xml through the page rubric on the first prospect scan.
+
+    Anything ending in .xml is dropped here whatever the wrapper said,
+    so a sitemap that is mislabeled, or an index nested deeper than we
+    follow, still cannot put a sitemap into the page list."""
+    if seen is None:
+        seen = set()
+    if stats is None:
+        stats = new_sitemap_stats()
+    # Three ways to stop: already been here (an index can point at
+    # itself), too deep, or too many files fetched for one run. The last
+    # two mean we may be leaving real pages unread, so they get recorded
+    # and reported. Revisiting a sitemap we already read costs nothing.
+    if sitemap_url in seen:
+        return []
+    if depth > SITEMAP_MAX_DEPTH or stats["files"] >= SITEMAP_MAX_FILES:
+        stats["capped"] = True
+        return []
+    seen.add(sitemap_url)
+    stats["files"] += 1
+
+    xml = load(sitemap_url)
+    locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
+    if re.search(r"<\s*sitemapindex[\s>]", xml):
+        stats["indexes"] += 1
+        pages = []
+        for child in locs:
+            # One dead child sitemap must not cost us the others.
+            try:
+                pages.extend(collect_sitemap_pages(child, depth + 1, seen, stats))
+            except Exception:
+                stats["unreadable"].append(child)
+        return pages
+    return [u for u in locs if not is_xml_url(u)]
+
+
 def expand_sitemap(url: str):
     """A live site's page list comes from its own sitemap. If that can't
     be read we still audit the URL we were given, and say why."""
     parts = urlparse(url)
     root = f"{parts.scheme}://{parts.netloc}"
+    # Pointing the script straight at a sitemap means audit what THAT
+    # file lists, not what /sitemap.xml lists.
+    entry = url if is_xml_url(url) else root + "/sitemap.xml"
+    fallback = [] if is_xml_url(url) else [url]
+    stats = new_sitemap_stats()
     try:
-        xml = load(root + "/sitemap.xml")
-        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
-        if locs:
-            return sorted(set(locs)), None
-        return [url], (f"{root}/sitemap.xml has no <loc> entries, so only the page you named "
-                       "was audited.")
+        locs = collect_sitemap_pages(entry, stats=stats)
     except Exception:
-        return [url], (f"Could not read {root}/sitemap.xml, so only the page you named was "
-                       "audited. Add a sitemap so every page gets scanned.")
+        return fallback, (f"Could not read {entry}, so only the page you named was "
+                          "audited. Add a sitemap so every page gets scanned.")
+
+    followed = []
+    if stats["indexes"]:
+        n = stats["files"] - 1
+        followed.append(f"{entry} is a sitemap index, so the {n} sitemap"
+                        f"{'' if n == 1 else 's'} under it "
+                        f"{'was' if n == 1 else 'were'} read instead of being scored as pages.")
+    if stats["capped"]:
+        followed.append(f"That index nests deeper than {SITEMAP_MAX_DEPTH} levels or lists more "
+                        f"than {SITEMAP_MAX_FILES} sitemaps, so the scan stopped following it "
+                        "and some pages may be missing from this report.")
+    if stats["unreadable"]:
+        followed.append("These child sitemaps could not be read: "
+                        + ", ".join(stats["unreadable"]) + ".")
+    if not locs:
+        followed.append(f"{entry} lists no pages, so only the page you named was audited.")
+        return fallback, " ".join(followed)
+    return sorted(set(locs)), (" ".join(followed) if followed else None)
 
 
 def resolve_targets(args):
@@ -773,7 +857,8 @@ def main():
 
     targets, expand_note = resolve_targets(opts.targets)
     if not targets:
-        print(f"No HTML pages found under {SITE_DIR}/.", file=sys.stderr)
+        # A live run that found nothing has a reason, and the note is it.
+        print(expand_note or f"No HTML pages found under {SITE_DIR}/.", file=sys.stderr)
         return 1
 
     live = [t for t in targets if is_url(t)]
