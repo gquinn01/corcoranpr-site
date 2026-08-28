@@ -199,6 +199,14 @@
   the one you touched. Add --strict to make the run exit nonzero when any
   page falls short. A single path still works for a quick spot check:
   python3 scripts/audit.py docs/services/seo/index.html
+- Run: python3 scripts/test-sitemap-expansion.py — it must exit 0. Ten
+  offline cases guarding how a live run reads somebody else's sitemap,
+  which is the one input to the audit we do not write ourselves. No
+  network, about a second, so it runs before EVERY commit with no
+  conditions. It is not a site check and does not care what you edited:
+  our own sitemap is a plain urlset that scores 100/100 whether that
+  code is right or wrong, which is precisely why a green audit is no
+  reason to skip it.
 - Valid JSON-LD, title ≤60 chars, meta description ≤160, exactly one H1.
 - Every <img> needs real alt text. The audit counts alt="" as missing
   and drops the score, so decorative-empty alt is not an option here.
