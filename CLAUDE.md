@@ -161,6 +161,13 @@
   true anywhere, but "doing web design since 2000" is not. Do not date
   a service earlier than the year the firm started selling it.
 - The agent roster, as of 2026-08-18, is FIVE agents plus scripts.
+  SIXTH AGENT ADDED 2026-08-31, and it is INTERNAL: the Content Writer
+  drafts one post a week for our own blog and files it as a pull
+  request. It does no client work, so it is NOT part of the five in the
+  canonical description below, and NO customer-facing copy changes for
+  it. The site still says five agents because five is what a client
+  gets. If that ever reads as a contradiction, the fix is Greg's
+  decision about the copy, not a quiet edit to the number.
   Site agents: Site Auditor (weekly), Google Watcher (daily).
   Ads agents: Industry Watcher (weekly, sweeps Google Ads announcements
   and trade press), Account Watcher (weekly, reports on client ad
@@ -265,6 +272,69 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   downtown is West Broad Street, not Main Street. Getting one of these
   wrong is what makes a local page read as written from a map.
 
+## The blog (decided 2026-08-31)
+- The blog lives at docs/blog/, index at /blog/, posts at
+  /blog/<slug>/. That URL was on the old WordPress site and PLAYBOOK.md
+  listed it as a deliberate 404 with one condition attached, "revisit
+  only if a notes section ever launches". It has, so the URL is a real
+  page again and the PLAYBOOK row moved in the same commit.
+- BLOG IS IN THE FOOTER, NOT THE NAV, and that is deliberate rather
+  than an oversight. It sits in the Explore column after About, on all
+  29 pages, docs/404.html and the service page template. Nav and footer
+  cost the identical 29-file edit and give the identical crawl equity;
+  the only difference is prominence, and a nav slot pointing at a
+  near-empty blog advertises an empty room.
+  PROMOTION TRIGGER: at roughly EIGHT published posts, move it into the
+  nav after About. The nav fits a seventh item at its 1000px breakpoint
+  with room to spare, measured against the 1150px step-down rule. Until
+  then, a sweep that finds Blog missing from the nav has found the
+  decision, not a bug.
+- Post titles do NOT carry the "| Corcoran Communications" suffix. That
+  rule is scoped to the five service pages. Twenty-six characters of
+  brand out of sixty leaves thirty-four for a headline, which is how a
+  blog ends up with titles nobody can read. Title 60 or fewer, meta 160
+  or fewer, both MACHINE COUNTED, never estimated.
+- EVERY POST CARRIES AN FAQ, and the reason is mechanical:
+  scripts/audit.py scores a page with no FAQPage schema as a warning,
+  and one warning drops it under 100/100 and fails --strict. So the FAQ
+  is structural, not optional, on the index and on every post. It must
+  still pass the standalone test in both senses: questions a reader
+  would actually ask, and answers whose FIRST SENTENCE survives being
+  lifted without its question, because that is what an assistant does
+  with it. No bare particle openers ("No." "Yes." "Two things."), which
+  comma-merge into the sentence that follows. Padding written to
+  satisfy the audit is worse than no post at all. The FAQ mirror law
+  applies as everywhere else: each visible question and answer
+  byte-identical to its schema twin.
+- A POST'S FAQ IS TOPIC-ONLY, and blog posts are the FOURTH SANCTIONED
+  EXCEPTION to the contracts question that ends every other page's FAQ
+  (decided 2026-08-31, after web-design, film-live-entertainment and
+  privacy). Every question on a post is about that post's own subject.
+  A reader who came for one answer is not being asked to think about
+  an engagement model. THE BLOG INDEX IS NOT THE EXCEPTION: it is a hub
+  page like any other and keeps the contracts question, byte-identical
+  to every other page's. A consistency sweep that finds the question
+  missing from a post has found this rule, and each post carries a
+  comment in its FAQ section saying so.
+- IMAGES: real photographs only, and none by default. A post ships with
+  no image, and the content writer agent may never add one, because it
+  does not source or generate art and invented art is a fact claim like
+  any other. When Greg supplies a real photograph it goes in the
+  template's .post-figure block with real alt text describing what is
+  in the frame. No stock art, no generated art, ever.
+- Article body runs 700 to 1200 words. Nothing enforces this but the
+  writer: the audit's word count reads the whole page including nav and
+  footer, so a 200-word post still clears it. That check is not the
+  floor.
+- Adding a post is the same four steps as any other page, plus one:
+  the page from templates/blog-post-template.html, its sitemap entry,
+  its llms.txt line, and its card in docs/blog/index.html AND its
+  BlogPosting entry in that page's Blog schema.
+- SKIP BEATS FILLER. The cadence is weekly to start because the blog is
+  empty, and it is a ceiling, not a quota. A week with no strong topic
+  files a short content-skipped issue and produces no post. The
+  standard does not bend to the schedule.
+
 ## Links (decided 2026-08-13)
 - EVERY internal link and asset path is RELATIVE and never starts with
   "/". From a service page the site root is ../../ , so:
@@ -277,7 +347,7 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   slash would technically work today. It stays banned anyway: relative
   paths keep working wherever the files are served from, including a
   local checkout and any future preview, and the ban is what the whole
-  repo is built on. Do not "modernize" 43 files to absolute paths.
+  repo is built on. Do not "modernize" 45 files to absolute paths.
 - The only absolute URLs are the ones the spec requires to be absolute:
   canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
 - ONE EXCEPTION, docs/404.html (decided 2026-08-27). GitHub Pages
@@ -323,7 +393,8 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   verified.
 - The privacy page is the THIRD sanctioned exception to the contracts
   question that ends every other page's FAQ, after web-design and
-  film-live-entertainment. A privacy policy has no product to contract
+  film-live-entertainment. (Blog POSTS became the fourth on 2026-08-31;
+  see The blog. The blog INDEX keeps the question.) A privacy policy has no product to contract
   for. It also carries no audit form: its contact band is direct phone
   and email, following the film page, because phone and email are how a
   reader asks to have their information deleted.
@@ -392,10 +463,10 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   live scan would have scored somebody else's pages.
 - THE LIVE SCAN AND THE LOCAL SCAN COVER DIFFERENT SETS, and this is the
   one thing to keep straight now that SITE_URL is set. A live run takes
-  its page list FROM sitemap.xml, which is 27 pages. The 15 redirect
+  its page list FROM sitemap.xml, which is 29 pages. The 15 redirect
   stubs and the 404 page are deliberately not in the sitemap, so the
   weekly report will never mention them. Only a local run,
-  python3 scripts/audit.py, covers all 43 files. Run the local one
+  python3 scripts/audit.py, covers all 45 files. Run the local one
   before committing; that is what the definition of done means by
   "EVERY page".
 - Never put API keys or secrets in any file.

@@ -7,3 +7,6 @@ audit-report.md
 # pre-commit run in CLAUDE.md leaves one behind every time. Ignored so
 # git status stays quiet about a folder that is pure build output.
 __pycache__/
+
+# macOS Finder junk. It appeared in a staged diff on 2026-08-31.
+.DS_Store

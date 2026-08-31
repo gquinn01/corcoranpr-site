@@ -26,17 +26,20 @@ corcoranpr-site/
 │   ├── industries/                  Six industry pages, each earned from
 │   │                                real client work
 │   ├── locations/                   Three county hubs, nine town pages
+│   ├── blog/                        Notes on Local Marketing: the index
+│   │                                and one folder per post
 │   ├── 404.html                     Branded error page
 │   ├── assets/site.css              The shared stylesheet. The brand
 │   │                                palette lives here and ONLY here.
 │   ├── assets/site.js               Mobile menu, audit form, stat band
 │   ├── llms.txt                     Guide for AI assistants (AEO)
 │   ├── robots.txt                   Welcomes search and AI crawlers (AEO)
-│   ├── sitemap.xml                  27 pages, the crawler's contents page
+│   ├── sitemap.xml                  29 pages, the crawler's contents page
 │   └── CNAME                        The custom domain. Never delete it.
 ├── templates/
 │   ├── service-page-template.html ← The master mold. Any shared change to
 │   │                                a live page lands here in the same commit.
+│   ├── blog-post-template.html      The mold for a blog post. Same rule.
 │   └── spa-local-business-template.html   Day-spa demo, for pitching
 ├── scripts/
 │   ├── audit.py                   ← The SEO + AEO scanner. Scores every
@@ -47,7 +50,9 @@ corcoranpr-site/
 │   └── mobile-check.md              How to test mobile layout honestly
 ├── agents/
 │   ├── site-auditor.md            ← Agent job descriptions, in plain English.
-│   └── google-watcher.md            That IS the programming.
+│   ├── google-watcher.md            That IS the programming.
+│   └── content-writer.md            Drafts one post a week as a pull
+│                                    request. It never publishes.
 ├── brand/                           Source logo art and how the live files
 │                                    were derived from it
 ├── archive/old-site/                The WordPress site as it stood the day
@@ -58,8 +63,8 @@ corcoranpr-site/
                                      the decided redirect map
 ```
 
-Under `docs/` there are **43 files**: 27 real pages, 15 redirect stubs
-standing at old WordPress URLs, and the 404 page. Only the 27 are in
+Under `docs/` there are **45 files**: 29 real pages, 15 redirect stubs
+standing at old WordPress URLs, and the 404 page. Only the 29 are in
 `sitemap.xml`, which is deliberate.
 
 ## The two agents
@@ -94,7 +99,7 @@ workflow**. The report lands in **Issues** a couple of minutes later.
 
 `SITE_URL` is what points the weekly audit at the live site rather than
 the local files. Set, the scan takes its page list from the live
-`sitemap.xml` (27 pages) and the site-wide `robots.txt` and `llms.txt`
+`sitemap.xml` (29 pages) and the site-wide `robots.txt` and `llms.txt`
 checks run, because those have to be fetched from a real domain root.
 Point it at any other domain and the same scanner audits that site,
 which is how a prospect gets a free audit.
@@ -108,7 +113,7 @@ that look arbitrary until you know why.
 Before committing anything:
 
 ```bash
-python3 scripts/audit.py --strict     # every one of the 43 files at 100/100
+python3 scripts/audit.py --strict     # every one of the 45 files at 100/100
 python3 scripts/stamp-assets.py       # after any change to site.css or site.js
 ```
 

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG INDEX. Built from the shell every page shares (nav, page
+       hero, contact band, FAQ, footer) wrapped around an intro and a
+       list of posts.
+
+       DEPTH. This page sits ONE level under docs/, like docs/about/
+       and docs/privacy/, so the site root is ../ and a post is
+       <slug>/ from here. A POST sits two levels down and uses ../../
+
+       WHY /blog/ AND NOT /notes/. The old WordPress site had a /blog/
+       index, and PLAYBOOK.md listed that URL as a deliberate 404 with
+       one condition on it: "revisit only if a notes section ever
+       launches." It has. Reusing the URL hands an already-indexed
+       address a real page instead of an error, which is the one thing
+       a deliberate 404 was never meant to outlive. The PLAYBOOK row
+       moved in the same commit.
+
+       THE LIST IS A STACK, NOT A GRID. .grid3 holding one post renders
+       as one card and two holes. .post-list is a single column that
+       reads correctly at one post and at thirty.
+
+       FAQ IS NOT OPTIONAL HERE. scripts/audit.py scores a page without
+       FAQPage schema as a warning, and a warning drops it off 100/100.
+       Every question below is byte-identical to its acceptedAnswer in
+       the schema. Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Notes on Local Marketing | Corcoran Communications</title>
+  <meta name="description" content="Short, practical notes on getting found by customers in Bucks County, Montgomery County, and the Lehigh Valley. Written by Greg Quinn.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Notes on Local Marketing | Corcoran Communications">
+  <meta property="og:description" content="Short, practical notes on getting found by customers in Bucks County, Montgomery County, and the Lehigh Valley. Written by Greg Quinn.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../assets/site.css?v=233c0539">
+  <script src="../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. The Blog node names the section itself; each post carries
+       its own BlogPosting on its own page. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://corcoranpr.com/blog/#blog",
+        "url": "https://corcoranpr.com/blog/",
+        "name": "Notes on Local Marketing",
+        "description": "Short, practical notes on getting found by customers in Bucks County, Montgomery County, and the Lehigh Valley.",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "@id": "https://corcoranpr.com/blog/named-in-ai-answers/#post",
+            "url": "https://corcoranpr.com/blog/named-in-ai-answers/",
+            "headline": "How Upper Bucks Businesses Get Named in AI Answers",
+            "datePublished": "2026-08-31",
+            "author": { "@type": "Person", "name": "Greg Quinn" }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How often does a new post go up?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A new post goes up about once a week, and only when there is something worth saying. A week with no strong topic gets no post rather than a thin one. If you would rather not check back, call or text 215-259-8304 and we will send the next one to you." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who writes these?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Greg Quinn, the owner, writes them. An AI agent drafts each one and files it for review, the same way the site auditor files its weekly report, and nothing goes up until Greg has checked every fact in it himself." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you require long-term contracts?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No, monitoring and marketing plans run month to month, and you can walk anytime. Anything we built or set up for you is yours to keep. We keep clients by delivering results, not by locking the door." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#promise">Promise</a></li>
+        <li><a href="../free-audit/">Free Audit</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../#industries">Industries</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with no decorative art, following the privacy page. A list
+         of posts illustrates itself. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../">Home</a></li>
+            <li aria-current="page">Blog</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Blog</p>
+        <h1>Notes on Local Marketing</h1>
+        <p class="lead">Short, practical notes on getting found by the customers who are already looking for you, written for business owners in Bucks County, Montgomery County, and the Lehigh Valley.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT THIS IS ============ -->
+    <section id="about-these">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Written for Business Owners</h2>
+          <p class="sec-sub">ONE QUESTION AT A TIME, IN PLAIN ENGLISH</p>
+        </div>
+        <p class="story-lead">Each note takes one question a local business owner actually asks and answers it in plain English, with enough detail to act on it this afternoon.</p>
+        <p class="story-lead">The examples are local. Shops off West Broad Street in Quakertown, contractors working across upper Bucks, restaurants and firms in Doylestown, Lansdale, Allentown, and Bethlehem.</p>
+      </div>
+    </section>
+
+    <!-- ============ THE POSTS ============
+         .post-list is a single stacked column. Newest first. Each card
+         is date, title, one-line summary, and a link. -->
+    <section class="dark field-blue" id="posts">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Latest</h2>
+          <p class="sec-sub">NEWEST FIRST</p>
+        </div>
+        <div class="post-list">
+          <article class="card">
+            <p class="tag">August 31, 2026</p>
+            <h3><a href="named-in-ai-answers/">How Upper Bucks Businesses Get Named in AI Answers</a></h3>
+            <p>Search is starting to answer questions instead of listing links. Being named inside that answer is a different job from ranking under it, and most of the work happens off your website.</p>
+            <p class="card-more"><a href="named-in-ai-answers/">Read the post</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">ABOUT THESE NOTES, AND ABOUT WORKING TOGETHER</p>
+        </div>
+        <details><summary>How often does a new post go up?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>A new post goes up about once a week, and only when there is something worth saying. A week with no strong topic gets no post rather than a thin one. If you would rather not check back, call or text <a href="tel:+12152598304">215-259-8304</a> and we will send the next one to you.</p></details>
+        <details><summary>Who writes these?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Greg Quinn, the owner, writes them. An AI agent drafts each one and files it for review, the same way the site auditor files its weekly report, and nothing goes up until Greg has checked every fact in it himself.</p></details>
+        <details><summary>Do you require long-term contracts?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>No, monitoring and marketing plans run month to month, and you can walk anytime. Anything we built or set up for you is yours to keep. We keep clients by delivering results, not by locking the door.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../" aria-label="Corcoran Communications home"><img src="../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../#services">Services</a></li>
+            <li><a href="../#promise">The Promise</a></li>
+            <li><a href="../#how">How It Works</a></li>
+            <li><a href="../#industries">Industries</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="./">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../services/web-design/">Web Design</a></li>
+            <li><a href="../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../services/google-ads/">Google Ads</a></li>
+            <li><a href="../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../locations/bucks-county/">Perkasie</a></li><li><a href="../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../locations/bucks-county/">Warrington</a></li><li><a href="../locations/bucks-county/">New Hope</a></li><li><a href="../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../locations/montgomery-county/">Souderton</a></li><li><a href="../locations/montgomery-county/">Harleysville</a></li><li><a href="../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../locations/montgomery-county/">North Wales</a></li><li><a href="../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../locations/lehigh-valley/">Macungie</a></li><li><a href="../locations/lehigh-valley/">Whitehall</a></li><li><a href="../locations/lehigh-valley/">Center Valley</a></li><li><a href="../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../locations/bucks-county/">Bucks</a> and <a href="../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

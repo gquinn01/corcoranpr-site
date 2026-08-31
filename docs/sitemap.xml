@@ -140,4 +140,16 @@
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <!-- The blog. The index changes whenever a post lands, so it is
+       weekly; a post itself does not change after it is published. -->
+  <url>
+    <loc>https://corcoranpr.com/blog/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/blog/named-in-ai-answers/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>

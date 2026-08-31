@@ -1,0 +1,86 @@
+name: "Agent: Content Writer (weekly)"
+
+# ============================================================
+# THE SCHEDULE LIVES HERE AND NOWHERE ELSE.
+#
+# Wednesday, 12:00 UTC (8:00am ET). Wednesday on purpose: the Site
+# Auditor files its weekly report Monday morning, and a draft post
+# landing on top of that report is a draft nobody reads.
+#
+# The blog is new and empty, so the cadence starts WEEKLY. It is
+# expected to drop to monthly once there is a back catalog. When that
+# day comes, change the one cron line below and nothing else.
+#
+#   weekly   0 12 * * 3     every Wednesday
+#   monthly  0 12 1 * *     the 1st of the month, any weekday
+#
+# Do NOT try to write "the first Wednesday of the month" as
+# `0 12 1-7 * 3`. Cron ORs day-of-month against day-of-week when both
+# are restricted, so that expression fires on the 1st through the 7th
+# AND on every Wednesday, which is more often than weekly, not less.
+#
+# The agent's own skip rule is the other half of the cadence: a week
+# with no strong topic produces an issue and no post. Frequency is the
+# ceiling, not the target.
+# ============================================================
+on:
+  schedule:
+    - cron: "0 12 * * 3"
+  workflow_dispatch: {}     # the manual "Run workflow" button, for testing
+
+# contents: write and pull-requests: write are a first for this repo. The
+# other two agents only ever file issues. This one has to push a branch
+# and open a pull request, so it needs both, and nothing beyond them.
+#
+# issues: write is here for the SKIP path, not as an extra. A week with no
+# strong topic files a short `content-skipped` issue and opens no pull
+# request; without this permission the agent's correct quiet outcome would
+# fail instead of being recorded.
+#
+# WHAT THIS STILL DOES NOT GET: no packages, no deployments, no actions,
+# no secrets beyond the one API key below.
+#
+# WORTH KNOWING: `contents: write` is repository-wide. It is the agent's
+# instructions, not the token, that keep it off main. If you want that
+# enforced by the platform rather than by a job description, put branch
+# protection on main requiring a pull request. That is the real guard.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # the agent reads the blog's history to avoid repeating itself
+
+      - name: Give the agent a git identity
+        run: |
+          git config user.name "Content Writer Agent"
+          git config user.email "greg@corcoranpr.com"
+
+      - name: Claude drafts one post and opens a pull request
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Read the file agents/content-writer.md and follow those
+            instructions exactly. Today is a scheduled weekly run.
+
+            Two things that are not negotiable, restated here so they are
+            in front of you before you start:
+            NEVER commit to main. NEVER merge your own pull request.
+            Greg's Merge click is the only publish button.
+
+            If there is no strong topic this week, file the
+            `content-skipped` issue and open no pull request. That is a
+            correct outcome, not a failure.
+          claude_args: |
+            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(git switch:*),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(gh issue:*),Bash(gh label:*),Bash(date:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*)"
+        env:
+          GH_TOKEN: ${{ github.token }}
