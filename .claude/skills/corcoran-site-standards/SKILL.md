@@ -89,7 +89,7 @@ Doorway pages get sites devalued. A town page exists only when it carries: three
 ## 9. Design and conversion doctrine
 
 - **Content first**: structure and the words are agreed before anything is designed. Design serves copy that already works; it never rescues copy that doesn't.
-- **Palette law**: the palette is defined in exactly one place (the shared stylesheet) and uses solid colors only — no gradients, no glows. Small accent text on light backgrounds gets its own darker accessible shade.
+- **Palette law**: the palette is defined in exactly one place (the shared stylesheet). Solid colors by default — no glows, and no gradients on text, buttons, cards, or accents. Section-background gradients are the one sanctioned exception, permitted only as a dated, recorded decision in the site's constitution (corcoranpr.com: decided 2026-08-11). Small accent text on light backgrounds gets its own darker accessible shade.
 - **Motion as evidence, not costume**: animation exists only where it proves something true — numbers counting up because they're real, a diagram pulsing because the system is genuinely alive. Ambient decoration (animated borders, glow effects) reads as the template every AI-startup site uses, and it taxes phones. When in doubt, less.
 - **Button grammar**: a filled button means act (the one conversion action, the phone); a text link means read more. Never inflate navigation into buttons — the grammar only protects the real CTA if it is never violated. No exit links adjacent to forms.
 - **Real photos only** — the owner, the shop, the work. No stock, no AI-generated imagery. The site that tells clients real beats stock must live by it.
