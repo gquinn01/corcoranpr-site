@@ -333,6 +333,34 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   the page from templates/blog-post-template.html, its sitemap entry,
   its llms.txt line, and its card in docs/blog/index.html AND its
   BlogPosting entry in that page's Blog schema.
+- THE ARTICLE COLUMN IS TUNED FOR READING, NOT SCANNING (decided
+  2026-08-31, after the first post went live and read badly). 640px at
+  1.15rem, line height 1.85, which MEASURES 74 characters a line. The
+  rest of the site's type is set for scanning a sales section; 900
+  words is a different job. Check the measure by machine when the size
+  changes: at the original 17px on a 740px column it ran to 93
+  characters, well past the 60 to 75 long prose is comfortable in, and
+  a wider column at a bigger size only looks generous.
+- BODY TEXT IN A POST IS --midnight, NOT --slate, and this is a
+  deliberate deviation from the derived-neutrals list above, which
+  assigns --slate to body text on light. Recorded rather than quietly
+  done: --slate is right for a card, a caption, or a paragraph you
+  skim, and across 900 words on Cloud it reads washed out. Midnight is
+  13.64:1 there. It applies ONLY inside .post-body. Everywhere else on
+  the site body text stays --slate, and nothing new entered the
+  palette.
+- THE FOUR-ITEM PATTERN: when a post lists things, each one is an H3
+  followed by its paragraph, never a paragraph with a bold lead-in. The
+  H3 sits closer to the paragraph under it than to the one above, which
+  is what makes a list read as a list. Bold lead-ins render as four
+  paragraphs that happen to start bold.
+- POST CARDS ON THE DARK INDEX BAND follow the site's existing dark
+  rules: title white, date and hover Fresh Mint, plus the Fresh Mint
+  card top border this constitution names and nothing had used yet.
+  The light-panel card colors are wrong there and were shipped that way
+  once: --midnight title on a dark card measured 1.16:1 and
+  --green-text on it measured 2.36:1. Never reuse a light-panel card
+  color on a dark band without checking it.
 - SKIP BEATS FILLER. The cadence is weekly to start because the blog is
   empty, and it is a ceiling, not a quota. A week with no strong topic
   files a short content-skipped issue and produces no post. The

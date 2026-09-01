@@ -79,7 +79,16 @@
          {{LEAD}}        the standfirst, one or two sentences.
          {{DATE_ISO}}    2026-08-31, for datePublished and <time>.
          {{DATE_HUMAN}}  August 31, 2026, for the visible byline.
-         {{BODY}}        the article, <p> and <h2> inside .post-body.
+         {{BODY}}        the article, inside .post-body. Paragraphs are
+                         <p>, section headings <h2>. WHEN THE POST LISTS
+                         THINGS, each item is an <h3> followed by its
+                         <p>, never a <p> opening with a bold lead-in:
+                         the h3 sits closer to the paragraph below it
+                         than to the one above, which is what makes four
+                         items read as a list instead of as four
+                         paragraphs that happen to start bold. The
+                         column is 640px at 1.15rem, which measures 74
+                         characters a line; do not widen it.
          {{FAQ_SUB}}     the eyebrow under the FAQ heading.
          {{FAQ_ITEMS}}   visible <details> blocks.
          {{FAQ_SCHEMA}}  the matching Question nodes, byte-identical.
@@ -124,7 +133,7 @@
     gtag('config', 'G-BNLRK8YR6Y');
   </script>
 
-  <link rel="stylesheet" href="{{ROOT}}assets/site.css?v=233c0539">
+  <link rel="stylesheet" href="{{ROOT}}assets/site.css?v=cb98801c">
   <script src="{{ROOT}}assets/site.js?v=8db47049" defer></script>
 
   <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id

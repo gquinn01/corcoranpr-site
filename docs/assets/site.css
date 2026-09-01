@@ -378,13 +378,12 @@ details[open] p{animation:faqIn .3s ease both}
 .contact-alt a:hover{color:var(--mint);text-decoration:underline}
 
 /* ---------- blog ----------
-   Two shapes, both deliberately plain. A POST is prose, so it gets a
-   narrow left-aligned column instead of .story-lead: that one is
-   centered and built for a single wide paragraph, and centered text is
-   hard to track back to the next line over 900 words. The INDEX is a
-   single stacked list rather than .grid3, because a three-column grid
-   holding one post renders as one card and two holes, and the blog
-   starts with one post. The list looks right at one and at thirty. */
+   Two shapes. A POST is prose, so it gets a narrow left-aligned column
+   instead of .story-lead: that one is centered and built for a single
+   wide paragraph, and centered text is hard to track back to the next
+   line over 900 words. The INDEX is a single stacked list rather than
+   .grid3, because a three-column grid holding one post renders as one
+   card and two holes. The list looks right at one and at thirty. */
 .post-list{display:grid;gap:20px;max-width:880px;margin:0 auto}
 /* A post card leads with its date instead of an icon tile, so the tag
    has nothing above it to need its 20px of clearance. */
@@ -392,21 +391,66 @@ details[open] p{animation:faqIn .3s ease both}
 .post-list .card h3 a{color:var(--midnight);text-decoration:none}
 .post-list .card h3 a:hover{color:var(--signal);text-decoration:underline}
 
+/* THE POST LIST ON A DARK BAND. Everything above is written for a white
+   card on a light section, and the index puts these cards on Midnight,
+   where two of those colors were unreadable:
+     - the title link held --midnight against a translucent-white card
+       over Midnight, which composites to #143553: navy on navy at
+       1.16:1, which is why it looked like nothing was there;
+     - .tag is --green-text (#0E7A55), 2.36:1 on this panel.
+   Both now follow the rules the rest of the site already uses on dark:
+   .dark h2,.dark h3 go white, .dark .card-more a and .dark .plain-label
+   and .dark .step-num go Fresh Mint. Signal Blue never appears here, at
+   2.82:1 on Midnight.
+   The mint top border is the card treatment CLAUDE.md names for Fresh
+   Mint and nothing had used yet. It is what lifts a single card out of
+   the gradient field; without it one card in a wide dark band reads as
+   a faint rectangle. Palette tokens only, no new color, no glow. */
+.dark .post-list .card{border-top:3px solid var(--mint)}
+.dark .post-list .card h3 a{color:var(--white)}
+.dark .post-list .card h3 a:hover{color:var(--mint);text-decoration:underline}
+.dark .post-list .tag{color:var(--mint)}
+
 /* Byline and date, under the H1 on the dark page hero. --on-dark is
    8.6:1 on Midnight and Fresh Mint carries the accent; Signal Blue is
    2.82:1 there and never appears on a dark panel. */
 .post-meta{font-size:.9rem;color:var(--on-dark);margin-top:24px}
 .post-meta strong{color:var(--mint);font-weight:700}
 
-/* The article column. 740px is about 75 characters at this size, which
-   is the width long prose stays readable at. */
-.post-body{max-width:740px;margin:0 auto;font-size:1.06rem;line-height:1.85;color:var(--slate)}
-.post-body>p+p{margin-top:22px}
-.post-body h2{font-size:1.42rem;line-height:1.35;margin:48px 0 16px}
-.post-body h3{font-size:1.1rem;line-height:1.4;margin:32px 0 12px}
-.post-body ul,.post-body ol{margin:20px 0 0 22px}
-.post-body li{margin-bottom:10px}
+/* THE ARTICLE COLUMN. Sized for reading 900 words rather than for
+   scanning a section of a sales page, which is what the rest of the
+   site's type is tuned for.
+     - 1.15rem over the old 1.06rem, and the column narrows from 740px
+       to 640px. MEASURED, not guessed: at the old size 740px ran to 93
+       characters a line, and the bigger type alone only brought that
+       to 86. Long prose wants 60 to 75. 640px at 1.15rem measures 74.
+       The column looks narrower than a marketing section wants to be,
+       and that is the point: this one is for reading, not scanning.
+     - --midnight rather than --slate. --slate is the palette's body
+       color and it is right for a card or a caption; across 900 words
+       on Cloud it reads washed out. Midnight is 13.64:1 here and is
+       already the site's text color for anything that has to be read
+       rather than skimmed.
+     - 1.85 line height and 26px between paragraphs, so the column has
+       air in it.
+   The measure is checked by machine, not by eye: see the character
+   count in the mobile-check probe. */
+.post-body{max-width:640px;margin:0 auto;font-size:1.15rem;line-height:1.85;color:var(--midnight)}
+.post-body>p+p{margin-top:26px}
+/* 72px above an H2 and 18px under it: the gap is what tells a reader a
+   new section started, and at this type size the old 48px did not read
+   as a break at all. */
+.post-body h2{font-size:1.5rem;line-height:1.3;margin:72px 0 18px}
+/* An H3 is one item in a list of items, not a subsection. It sits
+   closer to the paragraph it introduces than to the one above it, which
+   is what makes four of them read as four things rather than as four
+   paragraphs that happen to start bold. */
+.post-body h3{font-size:1.16rem;line-height:1.4;margin:42px 0 10px}
+.post-body h3 + p{margin-top:0}
+.post-body ul,.post-body ol{margin:26px 0 0 24px}
+.post-body li{margin-bottom:14px;padding-left:4px}
 .post-body li::marker{color:var(--signal)}
+.post-body a{color:var(--signal)}
 
 /* OPTIONAL, and only ever a real photograph Greg supplied with its own
    real alt text. No post ships with generated or stock art, and the

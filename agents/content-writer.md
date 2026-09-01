@@ -141,6 +141,11 @@ not merge your own pull request, and do not ask anyone to merge it for you.
    - **Every visible FAQ question and answer is byte-identical to its twin
      in the FAQPage schema.** Edit one, edit both. The audit checks this and
      will fail you.
+   - **When the post lists things, each item is an `<h3>` followed by its
+     paragraph**, never a paragraph opening with a bold lead-in. Four
+     bold lead-ins read as four paragraphs that happen to start bold; four
+     H3s read as the four things your heading just promised. The
+     stylesheet already spaces them; you only have to use the right tag.
    - **No images.** You do not source, generate, or commission art. The
      template has a `.post-figure` block for the day Greg supplies a real
      photograph; it is not yours to fill. A post you write ships imageless.
