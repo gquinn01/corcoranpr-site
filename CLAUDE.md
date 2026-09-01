@@ -280,8 +280,11 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   page again and the PLAYBOOK row moved in the same commit.
 - BLOG IS IN THE FOOTER, NOT THE NAV, and that is deliberate rather
   than an oversight. It sits in the Explore column after About, on all
-  29 pages, docs/404.html and the service page template. Nav and footer
-  cost the identical 29-file edit and give the identical crawl equity;
+  29 pages, docs/404.html and BOTH templates. The link is one line per
+  file at that file's own relative depth, not one identical string: the
+  blog index self-links with ./ the way About and Privacy do, and
+  docs/404.html uses /blog/ under its root-relative exception. Nav and
+  footer cost the identical edit and give the identical crawl equity;
   the only difference is prominence, and a nav slot pointing at a
   near-empty blog advertises an empty room.
   PROMOTION TRIGGER: at roughly EIGHT published posts, move it into the
