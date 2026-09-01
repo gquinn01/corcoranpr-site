@@ -26,7 +26,12 @@ name: "Agent: Content Writer (weekly)"
 on:
   schedule:
     - cron: "0 12 * * 3"
-  workflow_dispatch: {}     # the manual "Run workflow" button, for testing
+  workflow_dispatch:        # the manual "Run workflow" button
+    inputs:
+      force_draft:
+        description: "Test the write path: draft the best available topic even if the skip rule would skip. The PR is titled TEST and is meant to be closed, not merged."
+        type: boolean
+        default: false
 
 # contents: write and pull-requests: write are a first for this repo. The
 # other two agents only ever file issues. This one has to push a branch
@@ -64,6 +69,20 @@ jobs:
           git config user.name "Content Writer Agent"
           git config user.email "greg@corcoranpr.com"
 
+      # THE TOOL LIST IS THE PERMISSION BOUNDARY, and it is deliberately
+      # verb by verb rather than `Bash(git:*)` and `Bash(gh:*)`.
+      #   - `git push` is allowed ONLY for a ref starting `post/`, so the
+      #     agent cannot push main even if something told it to. Branch
+      #     protection is the second lock; this is the first.
+      #   - `git checkout -b` only, not bare `checkout`.
+      #   - the gh verbs are the five it uses plus the two label verbs it
+      #     needs the first time it ever skips. No delete, no merge, no
+      #     `pr merge`, no `api`.
+      #   - no rm, no mv, no sed, no curl, no chmod, and no force anything.
+      # THE LIST AND THE JOB DESCRIPTION MUST AGREE. The first manual run
+      # failed with 8 permission denials because step 8 said "copy the
+      # template" while the list had no `cp`. If you add an instruction
+      # that needs a command, add the command here in the same commit.
       - name: Claude drafts one post and opens a pull request
         uses: anthropics/claude-code-action@v1
         with:
@@ -80,7 +99,14 @@ jobs:
             If there is no strong topic this week, file the
             `content-skipped` issue and open no pull request. That is a
             correct outcome, not a failure.
+
+            FORCE DRAFT: ${{ inputs.force_draft || 'false' }}
+            When that says true, this is a test of the write path. The
+            skip rule is suspended for this run only: draft your best
+            available topic and open the pull request even if you would
+            otherwise skip. Follow the "Test runs" section of
+            agents/content-writer.md exactly, including the TEST title.
           claude_args: |
-            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(git switch:*),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(gh issue:*),Bash(gh label:*),Bash(date:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*)"
+            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(git push -u origin post/:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*)"
         env:
           GH_TOKEN: ${{ github.token }}

@@ -150,8 +150,20 @@ not merge your own pull request, and do not ask anyone to merge it for you.
      template has a `.post-figure` block for the day Greg supplies a real
      photograph; it is not yours to fill. A post you write ships imageless.
 
-8. **Build the files.** Copy `templates/blog-post-template.html` to
-   `docs/blog/<slug>/index.html` and replace every token. **Replace the
+8. **Build the files.** Two commands, exactly these, because they are the
+   ones you are allowed to run:
+
+   ```
+   mkdir -p docs/blog/<slug>
+   cp templates/blog-post-template.html docs/blog/<slug>/index.html
+   ```
+
+   Then edit that copy with the Edit tool and replace every token. You
+   have no `rm`, no `mv`, no `sed`, no `cat` and no `ls`: read files with
+   Read, search with Grep and Glob, and change them with Write and Edit.
+   If you find yourself reaching for a shell command that is not in this
+   file, stop and use a tool instead of working around the boundary.
+   **Replace the
    template's own header comment as well.** That block documents the
    tokens for whoever builds the next post. It is not content, and
    shipping it leaves a live page whose source is instructions for
@@ -181,9 +193,23 @@ not merge your own pull request, and do not ask anyone to merge it for you.
    current and you have no reason to run the stamper. You should not be
    editing the shared stylesheet at all.
 
-10. **Open the pull request.** Branch name `post/<slug>`. Commit in plain
-    English, the way every other commit in this repo reads. Then
-    `gh pr create` with a body containing, in this order:
+10. **Open the pull request.** Three commands, and the push form is not
+    optional:
+
+    ```
+    git checkout -b post/<slug>
+    git add <the files you changed>
+    git commit
+    git push -u origin post/<slug>
+    ```
+
+    **That exact push form.** The workflow allows pushing a ref whose
+    name begins `post/` and nothing else, so `git push`, `git push
+    origin HEAD`, and any other spelling will be refused. You cannot
+    push to `main`, `main` requires a pull request, and you must not try
+    either. Commit in plain English, the way every other commit in this
+    repo reads. Then `gh pr create` with a body containing, in this
+    order:
 
     - **The full post in readable form.** Markdown, not HTML. Greg reads the
       post here, not in a diff.
@@ -199,6 +225,31 @@ not merge your own pull request, and do not ask anyone to merge it for you.
 
     Then stop. Do not merge. Do not comment on your own pull request asking
     for a merge.
+
+## Test runs, when FORCE DRAFT is true
+
+The prompt that starts you says `FORCE DRAFT: true` or `FORCE DRAFT:
+false`. It is false on every scheduled Wednesday run, and this whole
+section is then irrelevant.
+
+When it is **true**, someone is testing the write path by hand, because
+the skip path is the only one that has ever executed and an untested
+path is not a working one. For that run only:
+
+- **The skip rule in step 6 is suspended.** Draft your best available
+  topic and open the pull request even if you would otherwise skip. If
+  every topic is weak, say which one you took and why it was the least
+  weak, in the pull request body.
+- **The pull request title begins `TEST: `.** That is how the reader
+  knows at a glance this was forced rather than chosen.
+- **The first line of the body is:** `Forced test draft. The skip rule
+  was suspended for this run, so this topic is not a recommendation.
+  Close this pull request; do not merge it.`
+- **Nothing else changes.** Same word floor, same machine-counted title
+  and meta, same topic-only FAQ, same fact-check list, same two
+  alternates, same gate in step 9. A test draft that skips the checks
+  tests nothing.
+- **You still never merge.** Whoever triggered the run closes it.
 
 ## Style
 
