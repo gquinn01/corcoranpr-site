@@ -10,6 +10,27 @@ not merge your own pull request, and do not ask anyone to merge it for you.
 
 **Some weeks you write nothing, and that is a correct outcome.** See step 6.
 
+**EVERY RUN ENDS WITH EXACTLY ONE ARTIFACT.** There are three, and one of
+them always applies:
+
+| What happened | What you file |
+|---|---|
+| You wrote a post | a pull request from a `post/` branch |
+| No topic was worth writing | an issue labeled `content-skipped` |
+| You could not finish | an issue labeled `content-blocked` |
+
+**Ending the run without one of those three is a failure, even if nothing
+went wrong.** A forced-draft test on 2026-09-01 did ten minutes of work,
+produced nothing, and reported success, because stopping quietly was
+technically compliant with what this file said. It is not compliant now.
+The workflow checks for these three after you finish and fails the job if
+none exists, so a silent stop is a red run, not a quiet week.
+
+**You have a hard cap of 60 turns.** If you are burning turns re-trying
+something, stop early and file `content-blocked` while you still have the
+turns to write it. Hitting the cap mid-task produces nothing and fails
+the run.
+
 ## Your process
 
 1. **Read the site's law first.** `CLAUDE.md` in the repo root is the
@@ -106,6 +127,33 @@ not merge your own pull request, and do not ask anyone to merge it for you.
    nothing better appears. Then stop. **Do not open a pull request.** Silence
    is a feature, exactly as it is for the Google Watcher.
 
+6a. **If you cannot finish, say so: file `content-blocked`.** This covers
+   every way a run can stop that is not "no topic worth writing":
+
+   - a command you needed was refused
+   - `audit.py --strict` fails on a page **you** created or edited and you
+     cannot get it to 100/100
+   - the push or the pull request will not go through
+   - you are running out of turns
+   - anything else that stops you finishing
+
+   File an issue titled `Blocked — <today's date>` with the label
+   `content-blocked`. **That label may not exist yet.** If `gh issue
+   create` rejects it, run `gh label create content-blocked --description
+   "A run that could not finish, and what stopped it"` and try again,
+   exactly as you would for `content-skipped`.
+
+   The body is short and specific, and it is useless if it is vague:
+   - the exact command you ran, copied, not paraphrased
+   - the exact output or refusal you got back
+   - what you had already done, so nobody repeats it
+   - what you think would unblock it
+
+   Then stop. Do not open a pull request, do not retry in a loop, and do
+   not quietly give up instead of filing this. A blocked run that says
+   what blocked it is a good run: it is the only way the tool list ever
+   gets fixed.
+
 7. **Write the post.**
    - **Length: 700 to 1200 words of article body.** Count it, do not
      estimate it. Nothing enforces this but you: `scripts/audit.py` counts
@@ -184,9 +232,12 @@ not merge your own pull request, and do not ask anyone to merge it for you.
      drops another page is your change.
      **But a page you never touched that is already failing is not yours
      to repair.** Do not edit anything outside `docs/blog/` to get the
-     gate green. Stop, file an issue naming the page and its findings, and
-     open no pull request. A content agent quietly rewriting a service
-     page at 3am is a worse outcome than a missed post.
+     gate green. Stop, file `content-blocked` naming the page and its
+     findings, and open no pull request. A content agent quietly rewriting
+     a service page at 3am is a worse outcome than a missed post.
+     **And if the gate fails on the page YOU built and you cannot fix it,
+     that is `content-blocked` too**, not a reason to stop quietly. See
+     step 6a.
    - `python3 scripts/test-sitemap-expansion.py` — exit 0.
 
    If you edited nothing under `docs/assets/`, the stamps are already

@@ -365,6 +365,14 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   empty, and it is a ceiling, not a quota. A week with no strong topic
   files a short content-skipped issue and produces no post. The
   standard does not bend to the schedule.
+- EVERY CONTENT WRITER RUN ENDS WITH EXACTLY ONE ARTIFACT (decided
+  2026-09-01, after a forced test run did ten minutes of work, produced
+  nothing, and went green). The three are: a pull request from a post/
+  branch, a content-skipped issue, or a content-blocked issue. Nothing
+  else counts, including hitting the 60-turn cap. The workflow's last
+  step looks for one of the three and fails the job when none exists,
+  because the agent's own "success" only ever meant it stopped without
+  crashing. A silent stop is now a red run, not a quiet week.
 
 ## Links (decided 2026-08-13)
 - EVERY internal link and asset path is RELATIVE and never starts with

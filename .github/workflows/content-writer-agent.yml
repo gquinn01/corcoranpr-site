@@ -64,6 +64,10 @@ jobs:
         with:
           fetch-depth: 0        # the agent reads the blog's history to avoid repeating itself
 
+      - name: Note when this run started
+        id: start
+        run: echo "at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+
       - name: Give the agent a git identity
         run: |
           git config user.name "Content Writer Agent"
@@ -87,6 +91,16 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Full agent output in the log. It is off by default and that
+          # cost us a run: the first forced draft did ten minutes of work,
+          # produced nothing, and the log said only "full output hidden
+          # for security", so which commands were refused and why it
+          # stopped were simply not in the record. This repo is public and
+          # its logs already are; the prompt carries no secrets and the
+          # agent reads files anyone can read. Being able to diagnose a
+          # bad run is worth more than hiding a transcript of public
+          # files.
+          show_full_output: true
           prompt: |
             Read the file agents/content-writer.md and follow those
             instructions exactly. Today is a scheduled weekly run.
@@ -107,6 +121,63 @@ jobs:
             otherwise skip. Follow the "Test runs" section of
             agents/content-writer.md exactly, including the TEST title.
           claude_args: |
+            # A hard ceiling on one run. The forced-draft test spent 57
+            # turns and $3.60 producing nothing; without a cap a run that
+            # is thrashing just keeps paying. Hitting this cap is NOT a
+            # success: the agent stops mid-task, so no artifact is
+            # created, and the verification step below turns that into a
+            # failed job instead of a green one.
+            --max-turns 60
             --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(git push -u origin post/:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*)"
         env:
           GH_TOKEN: ${{ github.token }}
+
+      # NOTHING MAY REPORT SUCCESS WHILE PRODUCING NOTHING.
+      # The forced-draft test on 2026-09-01 ran ten minutes, cost $3.60,
+      # created no branch, no pull request and no issue, and the job went
+      # green. Three separate layers allowed that: the action's own
+      # is_error only means the agent did not crash, the job description
+      # had no instruction for "I am blocked", and nothing checked that
+      # anything came out. This step is the third layer, and it is the
+      # only one that can actually enforce it.
+      #
+      # Exactly one of three things must exist, created by THIS run:
+      #   a pull request from a post/ branch   (it wrote a post)
+      #   an issue labeled content-skipped     (no topic worth writing)
+      #   an issue labeled content-blocked     (it could not finish, and said so)
+      # Anything else, including hitting --max-turns, fails the job.
+      #
+      # if: always() so it also runs when the agent step itself failed:
+      # a crash with no explanation filed still deserves a clear message
+      # rather than a bare red X.
+      - name: Something must have come out of this
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SINCE: ${{ steps.start.outputs.at }}
+        run: |
+          set -euo pipefail
+          echo "Looking for anything created since $SINCE"
+
+          PR=$(gh pr list --state open --json number,headRefName,createdAt \
+               | jq -r --arg since "$SINCE" \
+                 '[.[] | select(.headRefName | startswith("post/"))
+                       | select(.createdAt >= $since)] | .[0].number // empty')
+
+          ISSUE=$(gh issue list --state all --limit 30 --json number,createdAt,labels \
+                  | jq -r --arg since "$SINCE" \
+                    '[.[] | select(.createdAt >= $since)
+                          | select([.labels[].name] | any(. == "content-skipped" or . == "content-blocked"))]
+                     | .[0].number // empty')
+
+          if [ -n "$PR" ]; then
+            echo "Pull request #$PR. The write path ran."
+            exit 0
+          fi
+          if [ -n "$ISSUE" ]; then
+            echo "Issue #$ISSUE. The agent said why there is no post."
+            exit 0
+          fi
+
+          echo "::error title=The Content Writer produced nothing::No pull request from a post/ branch, and no content-skipped or content-blocked issue. Either the agent stopped without saying why, or it hit the 60-turn cap mid-task. Read the full agent output in the step above: show_full_output is on, so the refused commands and its last message are in this log. Do not treat this as a quiet week."
+          exit 1
