@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG POST. How a local business owner should read a fall in
+       website traffic: what to check, in what order, and which
+       patterns mean nothing. Built from
+       templates/blog-post-template.html with every token replaced.
+
+       DEPTH. Two levels under docs/, so the site root is ../../ and the
+       blog index is ../
+
+       The FAQ below is byte-identical to the FAQPage schema in the head.
+       Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>What to Check When Your Website Traffic Drops</title>
+  <meta name="description" content="A drop in website visitors is not always a drop in business. Four checks, in order, that separate a real problem from a display change.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/when-traffic-drops/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What to Check When Your Website Traffic Drops">
+  <meta property="og:description" content="A drop in website visitors is not always a drop in business. Four checks, in order, that separate a real problem from a display change.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/when-traffic-drops/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../../assets/site.css?v=cb98801c">
+  <script src="../../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/when-traffic-drops/#post",
+        "url": "https://corcoranpr.com/blog/when-traffic-drops/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/when-traffic-drops/",
+        "headline": "What to Check When Your Website Traffic Drops",
+        "description": "Fewer visitors is not the same as fewer customers. Four checks, in order, that separate a real problem from a change in how search results are shown.",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-01",
+        "dateModified": "2026-09-01",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "What to Check When Your Website Traffic Drops" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much of a traffic drop is worth worrying about?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A traffic drop is worth worrying about when it shows up in your phone calls and form fills, not when it only shows up in a visitor count. Visitor numbers move around on their own from one week to the next, so a single low week tells you very little. Put four weeks of calls beside the four weeks before them and let that comparison decide whether anything is actually wrong." }
+          },
+          {
+            "@type": "Question",
+            "name": "My visitors are down but the phone rings the same. Is something broken?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Visitors falling while the phone rings the same is usually a change in how results are displayed, not a fault in your website. Your link is still there and still ranking, and fewer people are clicking it because something above it already answered the question. Keep counting the calls, because that is the number that pays." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where do I look to see whether people are still finding me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Google Search Console is the free tool that shows how often your site appeared in search results and how often somebody clicked. Those are two separate numbers, and the gap between them is the whole story when traffic falls. Appearances holding steady while clicks fall means people are still finding you." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../../#services">Services</a></li>
+        <li><a href="../../#promise">Promise</a></li>
+        <li><a href="../../free-audit/">Free Audit</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../#industries">Industries</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with no decorative art, following the privacy page and the
+         blog index. A post illustrates itself with its own words. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">What to Check When Your Website Traffic Drops</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Reading the Numbers</p>
+        <h1>What to Check When Your Website Traffic Drops</h1>
+        <p class="lead">Fewer visitors is not the same as fewer customers. Four things to check, in order, before you change anything on your website.</p>
+        <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-09-01">September 1, 2026</time></p>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+          <p>You open the traffic report for your website and the line is pointing down. Fewer visitors than the month before, maybe a lot fewer. The first instinct is to assume something broke. The second is to start changing things.</p>
+
+          <p>Hold off on both for one afternoon. A drop in visitors is not the same as a drop in business, and the four checks below take about an hour between them. Do them in this order, because the first one often ends the conversation.</p>
+
+          <h2>Visitors are a middle number</h2>
+
+          <p>Nobody pays the rent in visitors. The numbers that decide whether a month was any good are phone calls, form fills, and booked jobs. Traffic is one of the things that feeds them, and it is not the only one.</p>
+
+          <p>A month with fewer visitors and the same number of booked jobs is not a bad month. It is a month when fewer people wandered past the window and the same number walked in. That sounds obvious written down. It stops being obvious when the chart is red and somebody is telling you your rankings are gone.</p>
+
+          <h2>The four checks, in order</h2>
+
+          <h3>Start with the phone log and the inbox.</h3>
+          <p>Count the calls, texts, form fills, and walk-ins for the last four weeks, and put them next to the four weeks before that. If those held while traffic fell, you do not have a business problem, you have a measurement question, and the checks below tell you which one. If the calls fell too, keep going, because the cause still decides what you do.</p>
+
+          <h3>Compare the same weeks a year ago, not the weeks just before.</h3>
+          <p>Local demand runs on a calendar. A collision shop, a landscaper, and a restaurant in Doylestown each have stretches of the year when the phone is quieter, and none of that has anything to do with Google. A shop on West Broad Street in Quakertown and a firm in Lansdale can both have a slow February that says nothing about their websites. Comparing this month to last month measures the season. Comparing it to the same month a year ago measures your marketing.</p>
+
+          <h3>Find out whether it is one page or the whole site.</h3>
+          <p>Open the report that lists your most visited pages, and set it beside the same list from before the drop. One page falling while the rest hold is a specific problem with a specific page: an address changed, a link broke, something got renamed in a redesign. Every page falling by roughly the same share points at a site-wide cause instead. Those two are not fixed the same way, so it is worth knowing which one you have before you touch anything.</p>
+
+          <h3>Check whether people are still seeing you.</h3>
+          <p>Appearing in the search results and getting clicked are two different numbers. Google Search Console, which is free for anyone who owns a website, reports both. If the number of times you appeared held steady while the clicks fell, people are still finding you, and something about the results page changed rather than something about your site.</p>
+
+          <h2>The pattern that looks like a disaster and is not</h2>
+
+          <p>Steady appearances with falling clicks is the pattern worth learning to recognize, because it is the one that gets working websites rebuilt for nothing. It usually means the results page gave your link less room, not that Google thinks less of you.</p>
+
+          <p>Google has said that for some questions the written answer at the top of the results opens to its full length on its own, which pushes the ordinary links further down the page. [CONFIRM: Google statement to Search Engine Roundtable, August 28, 2026, that AI Overviews may dynamically expand for some queries.] A taller answer box moves your link without touching your position. Nothing on your website caused that, and nothing on your website fixes it.</p>
+
+          <p>What does help is being named inside the answer itself, which is <a href="../named-in-ai-answers/">a different job</a> and a slower one. It is worth starting. It is not worth panicking into.</p>
+
+          <h2>The patterns that are worth acting on</h2>
+
+          <h3>Appearances and clicks both fell.</h3>
+          <p>Fewer appearances means fewer people are seeing you at all, and that is the drop worth investigating properly. Start with what changed on your side in the weeks before it began: a redesign, a page that was deleted, an address that moved, a plugin update nobody watched.</p>
+
+          <h3>The traffic held and the calls stopped.</h3>
+          <p>A form that quietly stopped sending is the most expensive failure on this list, and it is more common than owners expect. Send yourself a test message through every form on your site, from your phone, and confirm the email actually arrives. Then dial the phone number in your own listings and make sure it rings where you are sitting.</p>
+
+          <h3>One page fell off a cliff.</h3>
+          <p>A single page losing nearly everything usually has a mechanical cause rather than a mysterious one. Check that the page still loads, still lives at the same address, and has not been set to hide from search engines by accident. That setting gets flipped during a redesign more often than anyone admits.</p>
+
+          <h2>Make the calls countable</h2>
+
+          <p>Every check above gets easier when you know how customers found you, and the cheapest way to know is to ask. Add one line to how you answer the phone: how did you hear about us. Write the answer on the job sheet, every time, and give it two months.</p>
+
+          <p>What you end up with is something no traffic report can give you. Somebody in Perkasie or Bethlehem searched, read an answer that named you, never clicked a link, and called anyway. Those people exist, they are already calling businesses across Bucks and the Lehigh Valley, and they are invisible in every analytics tool you own until you ask them.</p>
+
+          <h2>The short version</h2>
+
+          <p>Traffic down with calls steady is a measurement story. Traffic down with calls down is a business story. The four checks tell you which one you are in before you spend a dollar, and the order matters because the cheap check is first.</p>
+
+          <p>The worst outcome here is not a slow month. It is rebuilding a website that was working, because a chart went red and nobody looked past it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both.
+
+         NO CONTRACTS QUESTION, DELIBERATELY. Blog posts are the FOURTH
+         sanctioned exception to the question that ends every other
+         page's FAQ, after web-design, film-live-entertainment and
+         privacy (decided 2026-08-31, recorded in CLAUDE.md). A post's
+         FAQ is topic-only: real reader questions about the subject of
+         this post and nothing else. A future consistency sweep that
+         finds the contracts question missing here has found the rule,
+         not a gap. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">THREE QUESTIONS THAT COME UP FIRST</p>
+        </div>
+        <details><summary>How much of a traffic drop is worth worrying about?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>A traffic drop is worth worrying about when it shows up in your phone calls and form fills, not when it only shows up in a visitor count. Visitor numbers move around on their own from one week to the next, so a single low week tells you very little. Put four weeks of calls beside the four weeks before them and let that comparison decide whether anything is actually wrong.</p></details>
+        <details><summary>My visitors are down but the phone rings the same. Is something broken?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Visitors falling while the phone rings the same is usually a change in how results are displayed, not a fault in your website. Your link is still there and still ranking, and fewer people are clicking it because something above it already answered the question. Keep counting the calls, because that is the number that pays.</p></details>
+        <details><summary>Where do I look to see whether people are still finding me?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Google Search Console is the free tool that shows how often your site appeared in search results and how often somebody clicked. Those are two separate numbers, and the gap between them is the whole story when traffic falls. Appearances holding steady while clicks fall means people are still finding you.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../../#services">Services</a></li>
+            <li><a href="../../#promise">The Promise</a></li>
+            <li><a href="../../#how">How It Works</a></li>
+            <li><a href="../../#industries">Industries</a></li>
+            <li><a href="../../#faq">FAQ</a></li>
+            <li><a href="../../about/">About</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../../services/web-design/">Web Design</a></li>
+            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

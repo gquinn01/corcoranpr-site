@@ -144,8 +144,13 @@
        weekly; a post itself does not change after it is published. -->
   <url>
     <loc>https://corcoranpr.com/blog/</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://corcoranpr.com/blog/when-traffic-drops/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://corcoranpr.com/blog/named-in-ai-answers/</loc>

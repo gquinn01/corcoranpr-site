@@ -72,6 +72,7 @@ Films, Spirit Financial, Tri County Collision, and ILM.
 - [Web Design in Bethlehem](https://corcoranpr.com/locations/lehigh-valley/bethlehem/): web design for businesses in Bethlehem, PA, a city with a strong identity
 - [Web Design in Easton](https://corcoranpr.com/locations/lehigh-valley/easton/): web design for businesses in Easton, PA, working both sides of the state line
 - [Blog: Notes on Local Marketing](https://corcoranpr.com/blog/): short, practical notes on getting found by local customers, written by owner Greg Quinn
+- [What to Check When Your Website Traffic Drops](https://corcoranpr.com/blog/when-traffic-drops/): four checks, in order, that tell a real traffic problem apart from a change in how search results are displayed
 - [How Upper Bucks Businesses Get Named in AI Answers](https://corcoranpr.com/blog/named-in-ai-answers/): why being named inside an AI answer is a different job from ranking under it, and what moves it for a local business
 - [Privacy Policy](https://corcoranpr.com/privacy/): what the audit form collects, who handles it, what it is used for, and how to have it deleted
 
