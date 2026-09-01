@@ -378,7 +378,7 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   2026-09-01, after a forced test run did ten minutes of work, produced
   nothing, and went green). The three are: a pull request from a post/
   branch, a content-skipped issue, or a content-blocked issue. Nothing
-  else counts, including hitting the 60-turn cap. The workflow's last
+  else counts, including hitting the turn cap. The workflow's last
   step looks for one of the three and fails the job when none exists,
   because the agent's own "success" only ever meant it stopped without
   crashing. A silent stop is now a red run, not a quiet week.

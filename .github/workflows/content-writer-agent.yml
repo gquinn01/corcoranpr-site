@@ -129,13 +129,22 @@ jobs:
             otherwise skip. Follow the "Test runs" section of
             agents/content-writer.md exactly, including the TEST title.
           claude_args: |
-            # A hard ceiling on one run. The forced-draft test spent 57
-            # turns and $3.60 producing nothing; without a cap a run that
-            # is thrashing just keeps paying. Hitting this cap is NOT a
-            # success: the agent stops mid-task, so no artifact is
-            # created, and the verification step below turns that into a
-            # failed job instead of a green one.
-            --max-turns 60
+            # A hard ceiling on one run, so a thrashing run cannot keep
+            # paying. Hitting it is NOT a success: the agent stops
+            # mid-task, no artifact is created, and the verification step
+            # below turns that into a failed job rather than a green one.
+            #
+            # WHY 80 AND NOT 60. The cap costs nothing when it is not hit,
+            # because runs bill by turns actually used, and 60 turned out
+            # to be too close to the real work. The two runs that finished
+            # the whole job used 59 and 49 turns, and the 49 was the clean
+            # case: no refused commands, no retry on the audit, nothing
+            # needing a second attempt. That leaves about ten turns of
+            # headroom on a good day, and a run that hits two or three
+            # snags would die on the ceiling with a finished post in it,
+            # which is exactly what happened once already for a different
+            # reason. 80 buys the insurance for nothing.
+            --max-turns 80
             --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(bash scripts/push-post-branch.sh:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*),Bash(echo:*),Bash(tail:*)"
         env:
           GH_TOKEN: ${{ github.token }}
@@ -187,5 +196,5 @@ jobs:
             exit 0
           fi
 
-          echo "::error title=The Content Writer produced nothing::No pull request from a post/ branch, and no content-skipped or content-blocked issue. Either the agent stopped without saying why, or it hit the 60-turn cap mid-task. Read the full agent output in the step above: show_full_output is on, so the refused commands and its last message are in this log. Do not treat this as a quiet week."
+          echo "::error title=The Content Writer produced nothing::No pull request from a post/ branch, and no content-skipped or content-blocked issue. Either the agent stopped without saying why, or it hit the turn cap mid-task. Read the full agent output in the step above: show_full_output is on, so the refused commands and its last message are in this log. Do not treat this as a quiet week."
           exit 1

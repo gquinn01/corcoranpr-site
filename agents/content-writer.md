@@ -26,7 +26,7 @@ technically compliant with what this file said. It is not compliant now.
 The workflow checks for these three after you finish and fails the job if
 none exists, so a silent stop is a red run, not a quiet week.
 
-**You have a hard cap of 60 turns.** If you are burning turns re-trying
+**You have a hard cap of 80 turns.** If you are burning turns re-trying
 something, stop early and file `content-blocked` while you still have the
 turns to write it. Hitting the cap mid-task produces nothing and fails
 the run.
@@ -222,7 +222,7 @@ the run.
    - **no `for` loops.** They are refused outright, whatever is in them.
      Read four issues with four calls.
    - **no heredocs**, no `python3 - <<'PY'`. Use Write and Edit.
-   Each refusal costs a turn, and you only have 60.
+   Each refusal costs a turn, and you only have 80.
    **Replace the
    template's own header comment as well.** That block documents the
    tokens for whoever builds the next post. It is not content, and
