@@ -45,6 +45,8 @@ corcoranpr-site/
 │   ├── audit.py                   ← The SEO + AEO scanner. Scores every
 │   │                                page separately. The definition of done.
 │   ├── stamp-assets.py              Cache-busting stamps for the CSS and JS
+│   ├── push-post-branch.sh          The only way the writer agent can push.
+│   │                                Refuses any branch but its own post/ one.
 │   ├── fetch_seo_news.py            Pulls Google/AI-search news for the Watcher
 │   ├── cascade-analyzer.html        Checks CSS for component-vs-ancestor overrides
 │   └── mobile-check.md              How to test mobile layout honestly

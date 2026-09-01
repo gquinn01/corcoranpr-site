@@ -365,6 +365,15 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   empty, and it is a ceiling, not a quota. A week with no strong topic
   files a short content-skipped issue and produces no post. The
   standard does not bend to the schedule.
+- THE WRITER HAS NO `git push`. It pushes through
+  scripts/push-post-branch.sh, which refuses any branch that is not the
+  checked-out post/ branch. This was a permission pattern until
+  2026-09-01, `Bash(git push -u origin post/:*)`, and it cost a finished
+  post: the runner matches an allowlist entry TOKEN BY TOKEN, so a
+  pattern ending mid-token matches nothing real. A tool-allowlist entry
+  must end where a token ends. Where a rule needs to be cleverer than
+  that, it goes in a script that can be tested, not in a permission
+  string. Branch protection on main is the second lock and stays.
 - EVERY CONTENT WRITER RUN ENDS WITH EXACTLY ONE ARTIFACT (decided
   2026-09-01, after a forced test run did ten minutes of work, produced
   nothing, and went green). The three are: a pull request from a post/

@@ -75,9 +75,17 @@ jobs:
 
       # THE TOOL LIST IS THE PERMISSION BOUNDARY, and it is deliberately
       # verb by verb rather than `Bash(git:*)` and `Bash(gh:*)`.
-      #   - `git push` is allowed ONLY for a ref starting `post/`, so the
-      #     agent cannot push main even if something told it to. Branch
-      #     protection is the second lock; this is the first.
+      #   - the agent holds NO `git push` at all. It pushes through
+      #     scripts/push-post-branch.sh, which refuses any branch that is
+      #     not a checked-out post/ branch. That rule used to live here as
+      #     `Bash(git push -u origin post/:*)` and did not work: Claude
+      #     Code matches an allowlist entry TOKEN BY TOKEN, so a pattern
+      #     ending mid-token can never match a real branch name. It cost a
+      #     complete post on 2026-09-01. Policy belongs in code that can be
+      #     tested, not in a permission string. Branch protection on main
+      #     is still the second lock.
+      #   - `echo` and `tail` are here because the run log showed the agent
+      #     being refused on them, not because they might be useful.
       #   - `git checkout -b` only, not bare `checkout`.
       #   - the gh verbs are the five it uses plus the two label verbs it
       #     needs the first time it ever skips. No delete, no merge, no
@@ -128,7 +136,7 @@ jobs:
             # created, and the verification step below turns that into a
             # failed job instead of a green one.
             --max-turns 60
-            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(git push -u origin post/:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*)"
+            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(bash scripts/push-post-branch.sh:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*),Bash(echo:*),Bash(tail:*)"
         env:
           GH_TOKEN: ${{ github.token }}
 

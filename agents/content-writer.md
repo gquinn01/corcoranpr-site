@@ -211,6 +211,18 @@ the run.
    Read, search with Grep and Glob, and change them with Write and Edit.
    If you find yourself reaching for a shell command that is not in this
    file, stop and use a tool instead of working around the boundary.
+
+   **One command per call, and keep it simple.** The 2026-09-01 run was
+   refused four times before it even reached the push, and every one was
+   shell shape rather than a missing permission:
+   - **no `;` or `&&` chains.** A command with several parts is allowed
+     only if EVERY part is, so `python3 scripts/audit.py --strict; echo
+     "exit: $?"` is refused over the `echo`. Run the audit on its own and
+     read its output.
+   - **no `for` loops.** They are refused outright, whatever is in them.
+     Read four issues with four calls.
+   - **no heredocs**, no `python3 - <<'PY'`. Use Write and Edit.
+   Each refusal costs a turn, and you only have 60.
    **Replace the
    template's own header comment as well.** That block documents the
    tokens for whoever builds the next post. It is not content, and
@@ -251,16 +263,23 @@ the run.
     git checkout -b post/<slug>
     git add <the files you changed>
     git commit
-    git push -u origin post/<slug>
+    bash scripts/push-post-branch.sh post/<slug>
     ```
 
-    **That exact push form.** The workflow allows pushing a ref whose
-    name begins `post/` and nothing else, so `git push`, `git push
-    origin HEAD`, and any other spelling will be refused. You cannot
-    push to `main`, `main` requires a pull request, and you must not try
-    either. Commit in plain English, the way every other commit in this
-    repo reads. Then `gh pr create` with a body containing, in this
-    order:
+    **You do not have `git push`, and asking for it will be refused.**
+    The last line is how you push: a small script that pushes the branch
+    you are on if it is a `post/` branch and refuses everything else.
+    Give it the same branch name you just created. If it refuses, it
+    tells you why in one line, and that line goes straight into a
+    `content-blocked` issue.
+
+    On 2026-09-01 a complete post was lost here. The rule used to live in
+    the workflow as a permission pattern, `git push -u origin post/`,
+    which looks like it means "any post/ branch" and does not: the runner
+    matches those patterns token by token, so it only ever matched a
+    branch literally called `post/`. The rule is code now. Commit in
+    plain English, the way every other commit in this repo reads. Then
+    `gh pr create` with a body containing, in this order:
 
     - **The full post in readable form.** Markdown, not HTML. Greg reads the
       post here, not in a diff.
