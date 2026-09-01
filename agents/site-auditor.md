@@ -15,18 +15,18 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
 
    **How many rows to expect.** The weekly run scans the live site, and
    a live run takes its page list from `sitemap.xml`, so it covers the
-   **27 real pages** and nothing else. That is the normal report.
+   **29 real pages** and nothing else. That is the normal report.
 
-   A *local* run (`python3 scripts/audit.py` with no argument) covers 43
-   files instead: the same 27 pages, plus **15 redirect stubs** standing
+   A *local* run (`python3 scripts/audit.py` with no argument) covers 45
+   files instead: the same 29 pages, plus **15 redirect stubs** standing
    at the old WordPress URLs and **1 error page** (`docs/404.html`). If
-   you are ever reading a report with 43 rows, that is why, and the
+   you are ever reading a report with 45 rows, that is why, and the
    headline line names the mix. Stubs and the 404 page are scored
    against short rubrics of their own and are *supposed* to be absent
    from `sitemap.xml` and `llms.txt`; for them that absence is a pass,
    not the critical it would be on a real page. A stub showing 4 passing
    checks is healthy, not thin. Either way, when you report growth
-   moves, count the 27.
+   moves, count the 29.
 
 2. **Check in with your teammate.** List open GitHub Issues with the label
    `google-update` (use `gh issue list --label google-update --state open`).

@@ -377,6 +377,46 @@ details[open] p{animation:faqIn .3s ease both}
 .contact-alt a{color:var(--white);font-weight:700;text-decoration:none;overflow-wrap:anywhere}
 .contact-alt a:hover{color:var(--mint);text-decoration:underline}
 
+/* ---------- blog ----------
+   Two shapes, both deliberately plain. A POST is prose, so it gets a
+   narrow left-aligned column instead of .story-lead: that one is
+   centered and built for a single wide paragraph, and centered text is
+   hard to track back to the next line over 900 words. The INDEX is a
+   single stacked list rather than .grid3, because a three-column grid
+   holding one post renders as one card and two holes, and the blog
+   starts with one post. The list looks right at one and at thirty. */
+.post-list{display:grid;gap:20px;max-width:880px;margin:0 auto}
+/* A post card leads with its date instead of an icon tile, so the tag
+   has nothing above it to need its 20px of clearance. */
+.post-list .card > .tag:first-child{margin-top:0}
+.post-list .card h3 a{color:var(--midnight);text-decoration:none}
+.post-list .card h3 a:hover{color:var(--signal);text-decoration:underline}
+
+/* Byline and date, under the H1 on the dark page hero. --on-dark is
+   8.6:1 on Midnight and Fresh Mint carries the accent; Signal Blue is
+   2.82:1 there and never appears on a dark panel. */
+.post-meta{font-size:.9rem;color:var(--on-dark);margin-top:24px}
+.post-meta strong{color:var(--mint);font-weight:700}
+
+/* The article column. 740px is about 75 characters at this size, which
+   is the width long prose stays readable at. */
+.post-body{max-width:740px;margin:0 auto;font-size:1.06rem;line-height:1.85;color:var(--slate)}
+.post-body>p+p{margin-top:22px}
+.post-body h2{font-size:1.42rem;line-height:1.35;margin:48px 0 16px}
+.post-body h3{font-size:1.1rem;line-height:1.4;margin:32px 0 12px}
+.post-body ul,.post-body ol{margin:20px 0 0 22px}
+.post-body li{margin-bottom:10px}
+.post-body li::marker{color:var(--signal)}
+
+/* OPTIONAL, and only ever a real photograph Greg supplied with its own
+   real alt text. No post ships with generated or stock art, and the
+   default post carries no image at all: agents/content-writer.md is
+   forbidden from adding one. The class exists so that a photo, when
+   there is one, has somewhere correct to go. */
+.post-figure{margin:34px 0}
+.post-figure img{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);display:block;box-shadow:var(--lift)}
+.post-figure figcaption{margin-top:14px;font-size:.9rem;line-height:1.6;color:var(--slate)}
+
 /* ---------- audit request form ----------
    Lives in the contact band, so it sits on Midnight. Inputs are white
    with Midnight text, which is the most legible pairing we have and

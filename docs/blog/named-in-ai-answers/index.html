@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG POST. Built from templates/blog-post-template.html with
+       every token replaced. If the shared shape changes here, it
+       changes in that template in the same commit.
+
+       DEPTH. Two levels under docs/, so the site root is ../../ and the
+       blog index is ../
+
+       The FAQ below is byte-identical to the FAQPage schema in the head.
+       Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>How Upper Bucks Businesses Get Named in AI Answers</title>
+  <meta name="description" content="Search is starting to answer questions instead of listing links. What actually gets a local business named inside that answer.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/named-in-ai-answers/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How Upper Bucks Businesses Get Named in AI Answers">
+  <meta property="og:description" content="Search is starting to answer questions instead of listing links. What actually gets a local business named inside that answer.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/named-in-ai-answers/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../../assets/site.css?v=233c0539">
+  <script src="../../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/named-in-ai-answers/#post",
+        "url": "https://corcoranpr.com/blog/named-in-ai-answers/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/named-in-ai-answers/",
+        "headline": "How Upper Bucks Businesses Get Named in AI Answers",
+        "description": "Search is starting to answer questions instead of listing links. Being named inside that answer is a different job from ranking under it, and most of the work happens off your website.",
+        "inLanguage": "en-US",
+        "datePublished": "2026-08-31",
+        "dateModified": "2026-08-31",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "How Upper Bucks Businesses Get Named in AI Answers" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need to do something different for ChatGPT than for Google?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Mostly no, because the same things make a business easy to verify anywhere. Those things are a claimed profile, reviews that say something specific, listings on pages other people trust, and a site that answers real questions in plain sentences. Chasing each assistant separately is how you end up doing four versions of the same work." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long before any of this shows up?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The profile and review work can start showing within weeks, because those sources get refreshed often. Being named in answers is slower and less predictable, because it depends on pages we do not control being updated. Anyone who gives you a date for it is guessing." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does any of this still matter if I already rank first?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ranking first still matters and it is worth keeping. What changes is that a first-place link can now sit underneath an answer that named three other businesses, so the ranking is doing less work than it used to. The four things above are what put you inside the answer and above the links." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../../#services">Services</a></li>
+        <li><a href="../../#promise">Promise</a></li>
+        <li><a href="../../free-audit/">Free Audit</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../#industries">Industries</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with no decorative art, following the privacy page and the
+         blog index. A post illustrates itself with its own words. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">How Upper Bucks Businesses Get Named in AI Answers</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Getting Found</p>
+        <h1>How Upper Bucks Businesses Get Named in AI Answers</h1>
+        <p class="lead">Search is starting to answer the question instead of listing links. Being named inside that answer is a different job from ranking under it, and most of the work happens somewhere other than your website.</p>
+        <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-08-31">August 31, 2026</time></p>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+          <p>Someone in Quakertown needs a plumber. A few years ago they typed it into Google and got a page of links to work through. Today, more and more often, what comes back first is a written answer that names two or three businesses and explains why. If yours is not one of the names, the ranking you worked for is sitting underneath a paragraph that already answered the question.</p>
+
+          <p>That is the shift worth understanding, and it quietly changes the job. Ranking and being named are not the same work, and they are not won in the same place.</p>
+
+          <h2>Ranking puts you on the list. Being named puts you in the answer.</h2>
+
+          <p>A ranking is a position on a page of results. Being named is different: something has read a pile of sources, decided which businesses are worth mentioning, and written a sentence about you. That is much closer to a recommendation than to a listing, which is why it converts differently when it happens.</p>
+
+          <p>Here is the part most owners find backwards. Ranking is mostly won on your own website. Being named is mostly won off it. When an assistant puts together an answer about collision shops in upper Bucks, a lot of what it reads is not those shops' websites at all. It is directories, roundups, chamber listings, local news, review pages, and map profiles. Your own site confirms the story. Other people's pages are what tell it.</p>
+
+          <h2>The four things that actually move it</h2>
+
+          <p><strong>A claimed Google Business Profile, filled in properly.</strong> This is the biggest one for a local business and it costs nothing. It is what can put you in the map results, and it is the clearest signal available that you are a real business at a real address with real hours. If you have never claimed yours, that hour beats anything else on this list.</p>
+
+          <p><strong>Reviews with actual words in them.</strong> A star rating is a number, and numbers do not get quoted. A review that names the specific job and the town it happened in is a sentence, and sentences do. Ask for reviews right after the work is finished, while the customer still remembers the detail that made it go well.</p>
+
+          <p><strong>Being listed where the answer is already looking.</strong> Your local chamber of commerce, the trade associations you belong to, the county directories, the roundup pages people here actually read. None of these will send you much traffic on their own, and that is not what they are for. They are the corroboration that you exist and do what you say you do.</p>
+
+          <p><strong>A website that answers questions in plain sentences.</strong> Not keyword pages. Real questions, asked the way a customer asks them, answered in two or three sentences with no sales pitch wedged in the middle. That is most of what the trade calls answer engine optimization, and the honest version of it is mainly just writing clearly and putting the answer first.</p>
+
+          <h2>What this looks like in Bucks and the Lehigh Valley</h2>
+
+          <p>The easiest way to get local wrong is to write it from far away. A page about the greater Philadelphia area technically covers Doylestown, but it never sounds like it means Doylestown, which sits in central Bucks. The names people here actually use are more specific than that: Lansdale is North Penn, Souderton is Indian Valley, and Easton does business on both sides of the state line. Those are ordinary facts around here, easy to check and easy to get wrong, and a reader who lives here can tell which one you did.</p>
+
+          <p>So name the towns you actually serve, in the words people here use for them. A shop on West Broad Street in Quakertown should say West Broad Street. A contractor who covers upper Bucks and the Lehigh Valley but not Philadelphia should say exactly that. Specificity is not a trick to rank for a town name. It is the thing that makes an answer engine confident enough to name you when somebody nearby asks.</p>
+
+          <h2>What to do this week</h2>
+
+          <ul>
+            <li>Search your own business name and your main service plus your town, and read what comes back. Whatever is written about you up there is what a customer sees first.</li>
+            <li>Claim your Google Business Profile if it is not claimed. Fill in the hours, the service area, and the categories.</li>
+            <li>Ask your last five happy customers for a review, and ask them to mention the job and the town.</li>
+            <li>Write down the three questions you answer on the phone every single week. Those are your first three FAQ entries.</li>
+          </ul>
+
+          <h2>The honest part</h2>
+
+          <p>None of this is fast and none of it is a trick. It is the slow, checkable work of being a business that is easy to verify. That is the only thing that has ever worked for local search, and it is worth more now than it was.</p>
+
+          <p>It is also hard to measure with a click count, and you should know that before you start. Someone who reads an answer that named you and then calls you directly never shows up as a click from a search engine. So measure it the old way as well: ask new callers how they heard about you, and write the answers down. Phone calls, form fills, and booked jobs are the numbers that decide whether this was worth doing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both.
+
+         NO CONTRACTS QUESTION, DELIBERATELY. Blog posts are the FOURTH
+         sanctioned exception to the question that ends every other
+         page's FAQ, after web-design, film-live-entertainment and
+         privacy (decided 2026-08-31, recorded in CLAUDE.md). A post's
+         FAQ is topic-only: real reader questions about the subject of
+         this post and nothing else. A future consistency sweep that
+         finds the contracts question missing here has found the rule,
+         not a gap. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">THREE THINGS OWNERS ASK ABOUT THIS</p>
+        </div>
+        <details><summary>Do I need to do something different for ChatGPT than for Google?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Mostly no, because the same things make a business easy to verify anywhere. Those things are a claimed profile, reviews that say something specific, listings on pages other people trust, and a site that answers real questions in plain sentences. Chasing each assistant separately is how you end up doing four versions of the same work.</p></details>
+        <details><summary>How long before any of this shows up?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>The profile and review work can start showing within weeks, because those sources get refreshed often. Being named in answers is slower and less predictable, because it depends on pages we do not control being updated. Anyone who gives you a date for it is guessing.</p></details>
+        <details><summary>Does any of this still matter if I already rank first?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Ranking first still matters and it is worth keeping. What changes is that a first-place link can now sit underneath an answer that named three other businesses, so the ranking is doing less work than it used to. The four things above are what put you inside the answer and above the links.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../../#services">Services</a></li>
+            <li><a href="../../#promise">The Promise</a></li>
+            <li><a href="../../#how">How It Works</a></li>
+            <li><a href="../../#industries">Industries</a></li>
+            <li><a href="../../#faq">FAQ</a></li>
+            <li><a href="../../about/">About</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../../services/web-design/">Web Design</a></li>
+            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

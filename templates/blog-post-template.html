@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       CORCORAN COMMUNICATIONS, BLOG POST TEMPLATE.
+       Copy this to docs/blog/<slug>/index.html and replace every
+       {{TOKEN}}. This file mirrors the live posts: if you change the
+       shared shape, change it here too, in the same commit.
+
+       SECTION ORDER: hero (breadcrumb, eyebrow, H1, standfirst,
+       byline) > article body > contact band > FAQ last > footer.
+       Backgrounds alternate: dark hero, light article, dark contact,
+       light FAQ, dark footer.
+
+       ---------------------------------------------------------------
+       DEPTH. A post sits TWO levels under docs/ (docs/blog/<slug>/),
+       so the site root is ../../ and the blog index is ../ Every
+       depth-dependent path goes through {{ROOT}}: the stylesheet, the
+       script, the logo, the nav, the footer, the breadcrumb. Do not
+       introduce a leading slash; see the Links section of CLAUDE.md.
+
+       ---------------------------------------------------------------
+       THE FAQ IS MANDATORY, and this is the reason. scripts/audit.py
+       scores any normal page with no FAQPage schema as a warning, and
+       one warning drops the page off 100/100, which fails the build
+       gate. So a post always carries at least two real questions. They
+       must pass on their own as questions a reader would actually ask;
+       padding written to satisfy the audit is worse than no post. Each
+       visible question and answer is BYTE-IDENTICAL to its twin in the
+       FAQPage schema. Edit one, edit both.
+
+       NO CONTRACTS QUESTION. A post's FAQ is TOPIC-ONLY: real reader
+       questions about this post's subject and nothing else. Blog posts
+       are the FOURTH sanctioned exception to the question that ends
+       every other page's FAQ, after web design, film and live
+       entertainment, and privacy (decided 2026-08-31, recorded in
+       CLAUDE.md). The blog INDEX is not the exception and keeps it.
+       Every post carries a comment in its FAQ section saying this, so
+       a consistency sweep finds the rule instead of a gap.
+
+       ANSWERS MUST SURVIVE BEING LIFTED. The first sentence of every
+       answer has to stand on its own without the question above it,
+       because that is what an assistant does with it. No bare particle
+       openers: "No." and "Mostly no." comma-merge into the sentence
+       that follows.
+
+       ---------------------------------------------------------------
+       IMAGES. A post ships with NO image by default, and the content
+       writer agent may never add one: it does not source or generate
+       art, and invented art is a fact claim like any other. When Greg
+       supplies a real photograph, it goes in a .post-figure block,
+       inside the body, with real alt text describing what is actually
+       in the frame. Two rules stand: real photographs only, and every
+       <img> carries alt text the audit will count.
+
+         <figure class="post-figure">
+           <img src="{{ROOT}}blog/<slug>/<file>.jpg" alt="..." width="..." height="...">
+           <figcaption>What this is and where it was taken.</figcaption>
+         </figure>
+
+       ---------------------------------------------------------------
+       TOKENS
+         {{ROOT}}        ../../ from a post. Nothing else uses it.
+         {{SLUG}}        the folder name, e.g. named-in-ai-answers
+         {{TITLE}}       <title>. 60 characters or fewer, MACHINE
+                         COUNTED. Blog titles do NOT carry the
+                         "| Corcoran Communications" suffix that the
+                         five service pages share: 26 characters of
+                         brand leaves 34 for a headline, which is how
+                         a blog ends up with titles nobody can read.
+                         The suffix rule in CLAUDE.md is scoped to
+                         service pages.
+         {{META_DESC}}   meta description. 160 or fewer, machine counted.
+         {{OG_DESC}}     usually the same sentence as {{META_DESC}}.
+         {{SUMMARY}}     one line for the index card and the schema
+                         description.
+         {{EYEBROW}}     the category over the H1, two or three words.
+         {{H1}}          the headline as the reader sees it.
+         {{LEAD}}        the standfirst, one or two sentences.
+         {{DATE_ISO}}    2026-08-31, for datePublished and <time>.
+         {{DATE_HUMAN}}  August 31, 2026, for the visible byline.
+         {{BODY}}        the article, <p> and <h2> inside .post-body.
+         {{FAQ_SUB}}     the eyebrow under the FAQ heading.
+         {{FAQ_ITEMS}}   visible <details> blocks.
+         {{FAQ_SCHEMA}}  the matching Question nodes, byte-identical.
+
+       AFTER BUILDING A POST, all four steps or it is not finished:
+         1. this file copied and every token replaced
+         2. its <url> block in docs/sitemap.xml
+         3. its line under "## Key pages" in docs/llms.txt
+         4. its card in docs/blog/index.html AND its BlogPosting entry
+            in that page's Blog schema
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{META_DESC}}">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/{{SLUG}}/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{OG_DESC}}">
+  <meta property="og:url" content="https://corcoranpr.com/blog/{{SLUG}}/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="{{ROOT}}assets/site.css?v=233c0539">
+  <script src="{{ROOT}}assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/{{SLUG}}/#post",
+        "url": "https://corcoranpr.com/blog/{{SLUG}}/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/{{SLUG}}/",
+        "headline": "{{H1}}",
+        "description": "{{SUMMARY}}",
+        "inLanguage": "en-US",
+        "datePublished": "{{DATE_ISO}}",
+        "dateModified": "{{DATE_ISO}}",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "{{H1}}" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+{{FAQ_SCHEMA}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="{{ROOT}}" aria-label="Corcoran Communications home"><img src="{{ROOT}}logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="{{ROOT}}#services">Services</a></li>
+        <li><a href="{{ROOT}}#promise">Promise</a></li>
+        <li><a href="{{ROOT}}free-audit/">Free Audit</a></li>
+        <li><a href="{{ROOT}}about/">About</a></li>
+        <li><a href="{{ROOT}}#industries">Industries</a></li>
+        <li><a href="{{ROOT}}#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with no decorative art, following the privacy page and the
+         blog index. A post illustrates itself with its own words. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{{ROOT}}">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">{{H1}}</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">{{EYEBROW}}</p>
+        <h1>{{H1}}</h1>
+        <p class="lead">{{LEAD}}</p>
+        <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="{{DATE_ISO}}">{{DATE_HUMAN}}</time></p>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+{{BODY}}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">{{FAQ_SUB}}</p>
+        </div>
+{{FAQ_ITEMS}}
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="{{ROOT}}" aria-label="Corcoran Communications home"><img src="{{ROOT}}logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="{{ROOT}}#services">Services</a></li>
+            <li><a href="{{ROOT}}#promise">The Promise</a></li>
+            <li><a href="{{ROOT}}#how">How It Works</a></li>
+            <li><a href="{{ROOT}}#industries">Industries</a></li>
+            <li><a href="{{ROOT}}#faq">FAQ</a></li>
+            <li><a href="{{ROOT}}about/">About</a></li>
+            <li><a href="{{ROOT}}blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="{{ROOT}}services/web-design/">Web Design</a></li>
+            <li><a href="{{ROOT}}services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="{{ROOT}}services/google-ads/">Google Ads</a></li>
+            <li><a href="{{ROOT}}services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="{{ROOT}}services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="{{ROOT}}locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="{{ROOT}}locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="{{ROOT}}locations/bucks-county/">Perkasie</a></li><li><a href="{{ROOT}}locations/bucks-county/">Sellersville</a></li>
+            <li><a href="{{ROOT}}locations/bucks-county/newtown/">Newtown</a></li><li><a href="{{ROOT}}locations/bucks-county/">Warrington</a></li><li><a href="{{ROOT}}locations/bucks-county/">New Hope</a></li><li><a href="{{ROOT}}locations/bucks-county/">Chalfont</a></li>
+            <li><a href="{{ROOT}}locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Souderton</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Harleysville</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Skippack</a></li>
+            <li><a href="{{ROOT}}locations/montgomery-county/">North Wales</a></li><li><a href="{{ROOT}}locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="{{ROOT}}locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="{{ROOT}}locations/montgomery-county/">Ambler</a></li>
+            <li><a href="{{ROOT}}locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="{{ROOT}}locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="{{ROOT}}locations/lehigh-valley/easton/">Easton</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="{{ROOT}}locations/lehigh-valley/">Macungie</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Whitehall</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Center Valley</a></li><li><a href="{{ROOT}}locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="{{ROOT}}locations/bucks-county/">Bucks</a> and <a href="{{ROOT}}locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="{{ROOT}}locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="{{ROOT}}privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
