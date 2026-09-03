@@ -35,7 +35,30 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    should prioritize this week? (Example: if Google just announced a page-
    experience update, mobile and speed findings jump to the top.)
 
-3. **Write the weekly report.** Create a GitHub Issue titled
+3. **Sweep the live pages for leftover `[CONFIRM]` markers.** Run
+   `grep -rn '\[CONFIRM\]' docs/` against `main`. `docs/` on `main` *is*
+   the live site, so anything this finds is published.
+
+   **Expected result: nothing.** If it prints any line, report it in the
+   weekly issue under its own heading, quoting the file, the line number,
+   and the surrounding comment, and say plainly that a page went live
+   carrying an unanswered question. A `[CONFIRM]` marker is a fact the
+   writer could not verify and left flagged for a human. It is legitimate
+   on a draft branch and never legitimate on the live site.
+
+   **Why this is your job and not a rule in `scripts/audit.py`.** A draft
+   on a `post/` branch is *supposed* to carry flags while it waits for
+   Greg's fact-check, so a hard audit rule would fail the very branches
+   that are working correctly. The distinction is not draft-versus-final,
+   it is branch-versus-live, and only a check that runs against `main`
+   can tell them apart. That check is this one.
+
+   This step exists because a `[CONFIRM]` sat unresolved in the head of
+   `docs/index.html` from the site's first commit on 2026-08-06 until
+   2026-09-03, through every audit, at a steady 100/100, because nothing
+   was looking. Do not let that happen twice.
+
+4. **Write the weekly report.** Create a GitHub Issue titled
    `Weekly SEO Audit — <today's date>` with label `audit-report` containing:
    - The site score and a one-line verdict in plain English.
    - **The per-page score table**, copied from `audit-report.md`, so the
@@ -84,7 +107,7 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
      incorporated it. If nothing was relevant, say "No algorithm changes
      affecting us this week."
 
-4. **Keep it honest.** If **every page** is at 100/100, say so plainly and
+5. **Keep it honest.** If **every page** is at 100/100, say so plainly and
    suggest the next *growth* move instead (new service page, new content,
    reviews). A clean scoreboard does not excuse you from the notes: still
    list them, because a perfect week is the week they are easiest to clear.
