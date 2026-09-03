@@ -46,7 +46,17 @@ jobs:
           prompt: |
             Read the file agents/site-auditor.md and follow those instructions
             exactly. Today's scan results are in audit-report.md.
+          # Edit(...), NOT Write(...). Claude Code checks file permissions
+          # against Edit and Read rules only; a Write(path) rule is accepted
+          # and then never consulted, so it would look right and do nothing.
+          # Verified on 2026-09-03: Write(./.audit-issue-body.md) refused the
+          # write, Edit(./.audit-issue-body.md) allowed it, and that same rule
+          # refused a different filename. Scoped to the one scratch file the
+          # agent writes a long issue body into, so it still cannot write
+          # anything else. These comments sit OUTSIDE claude_args on purpose:
+          # that key is a literal block scalar, so a "#" line inside it is
+          # passed to the CLI as an argument, not treated as a comment.
           claude_args: |
-            --allowedTools "Read,Grep,Glob,Bash(gh issue:*),Bash(gh label:*),Bash(date:*)"
+            --allowedTools "Read,Grep,Glob,Edit(./.audit-issue-body.md),Bash(gh issue:*),Bash(gh label:*),Bash(date:*)"
         env:
           GH_TOKEN: ${{ github.token }}

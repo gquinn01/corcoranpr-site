@@ -487,6 +487,44 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   missing stamp as a CRITICAL against that page, which drops it under
   100/100 and fails --strict, the same way a missing sitemap entry does.
 
+## Agents and their permissions (decided 2026-09-03)
+- NO INSTRUCTION SHIPS IN ANY agents/*.md UNLESS THAT WORKFLOW'S TOOL
+  LIST CAN EXECUTE IT. Cross-check the two files on every edit to
+  either: agents/<name>.md against the `--allowedTools` line in
+  .github/workflows/<name>-agent.yml. Writing a step is not the same as
+  checking the agent can perform it, and nothing else in the repo
+  catches the gap: the audit does not read agent files, and the runner
+  reports a refused command as a normal stop, so the job still goes
+  green.
+- This has now cost two runs. On 2026-09-01 the permission pattern
+  `Bash(git push -u origin post/:*)` matched nothing real, because the
+  runner matches an allowlist entry TOKEN BY TOKEN and that entry ends
+  mid-token; a finished post could not be pushed. On 2026-09-03 a new
+  Site Auditor step told the agent to run four shell greps, two of them
+  piped into `wc -l`, when its Bash grant is only `gh issue`, `gh label`
+  and `date`. The second was caught before it ran only because the
+  workflow was read. Read the workflow.
+- A TOOL-ALLOWLIST ENTRY MUST END WHERE A TOKEN ENDS. Where a rule needs
+  to be cleverer than that, it goes in a script that can be tested, not
+  in a permission string. That is why scripts/push-post-branch.sh exists.
+- FILE PERMISSIONS ARE `Edit(path)`, NEVER `Write(path)`. Claude Code
+  checks file rules against Edit and Read only. A `Write(path)` rule is
+  accepted and then never consulted, so it reads as correct and does
+  nothing, which is the worst failure shape there is. Verified three
+  ways on 2026-09-03: `Write(./.audit-issue-body.md)` refused the write,
+  `Edit(./.audit-issue-body.md)` allowed it, and that same rule refused
+  a different filename. Scope the rule to one exact filename; never
+  grant a general Write to a reporting agent.
+- A BASH COMMAND OVER ROUGHLY 5KB IS REFUSED for length, and a heredoc
+  is part of the same command string, so `--body-file -` does not escape
+  it. A long issue body is written to the agent's one granted scratch
+  file and passed with `--body-file <name>`. Measured on 2026-09-03:
+  12,871 characters refused, 4,727 accepted.
+- VERIFY A PERMISSION RULE, DO NOT ASSUME IT. `claude -p "<task>"
+  --allowedTools "<rule>"` in a scratch directory proves a rule in
+  seconds, including the negative case, and costs nothing next to a
+  wasted agent run.
+
 ## Repo rules
 - docs/ = the live site. docs/assets/ = the shared stylesheet and script
   used by every page; the palette lives ONLY in docs/assets/site.css, so

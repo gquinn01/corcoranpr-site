@@ -10,3 +10,11 @@ __pycache__/
 
 # macOS Finder junk. It appeared in a staged diff on 2026-08-31.
 .DS_Store
+
+# Scratch files the report agents write a long issue body into, then pass
+# to `gh issue create --body-file`. A Bash command over roughly 5KB is
+# refused by the command parser, and a full weekly report is bigger than
+# that, so the body cannot go on the command line. Runner-only, but
+# ignored so a local test run cannot commit one.
+.audit-issue-body.md
+.gw-comment.md

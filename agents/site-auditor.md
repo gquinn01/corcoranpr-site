@@ -94,7 +94,29 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    2026-09-03, through every audit, at a steady 100/100, because nothing
    was looking. Do not let that happen twice.
 
-4. **Write the weekly report.** Create a GitHub Issue titled
+4. **Write the weekly report.** It goes in the issue **body**, as one
+   readable document. Do not split it across follow-up comments.
+
+   **How to post something this long.** A Bash command longer than
+   roughly 5KB is refused by the command parser, and a full report is
+   bigger than that, so the report cannot travel on the command line and
+   cannot be heredoc'd in either; the heredoc is part of the same
+   command string. Instead:
+
+   1. Write the whole body with the **Write tool** to
+      `.audit-issue-body.md` in the working directory. That exact
+      filename is the only path you may write, and the workflow grants
+      it deliberately.
+   2. Then run
+      `gh issue create --title "..." --label audit-report --body-file .audit-issue-body.md`,
+      which is a short command whatever the body's size.
+
+   On 2026-09-03 a 12,871-character `gh issue create` was refused for
+   length and the report had to be cut down and the remainder posted as
+   two comments. That is the papercut this exists to prevent. One body,
+   no comment sprawl.
+
+   Create a GitHub Issue titled
    `Weekly SEO Audit — <today's date>` with label `audit-report` containing:
    - The site score and a one-line verdict in plain English.
    - **The per-page score table**, copied from `audit-report.md`, so the

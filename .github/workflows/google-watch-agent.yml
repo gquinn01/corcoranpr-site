@@ -37,7 +37,11 @@ jobs:
           prompt: |
             Read the file agents/google-watcher.md and follow those instructions
             exactly. Today's headline sweep is in seo-news.md.
+          # Edit(...), NOT Write(...); see the note in site-audit-agent.yml,
+          # including why these comments stay outside claude_args. This agent
+          # hit the same wall on 2026-09-02, trying to write .gw-comment.md
+          # and to redirect into /tmp.
           claude_args: |
-            --allowedTools "Read,Grep,Glob,Bash(gh issue:*),Bash(gh label:*),Bash(date:*),WebFetch"
+            --allowedTools "Read,Grep,Glob,Edit(./.gw-comment.md),Bash(gh issue:*),Bash(gh label:*),Bash(date:*),WebFetch"
         env:
           GH_TOKEN: ${{ github.token }}

@@ -38,6 +38,16 @@ teammate, the **Site Audit Agent**, only when something is worth acting on.
      - **What our sites should do about it** — concrete and specific.
      - Links to your sources.
 
+     **If the text runs long**, do not trim it and do not split it across
+     comments. A Bash command longer than roughly 5KB is refused by the
+     command parser, and a heredoc counts as part of the same command
+     string, so a long body cannot go on the command line at all. Write
+     it with the **Write tool** to `.gw-comment.md`, the one path the
+     workflow grants you, then pass `--body-file .gw-comment.md` to
+     `gh issue create` or `gh issue comment`. On 2026-09-02 this agent
+     tried to write that file and to redirect into `/tmp`, and both were
+     refused, because the permission did not exist yet. It does now.
+
 4. **Close the loop.** When an update finishes rolling out or turns out to
    be a nothing-burger, comment on and close its issue with a one-line
    post-mortem.
