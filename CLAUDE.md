@@ -354,13 +354,32 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   H3 sits closer to the paragraph under it than to the one above, which
   is what makes a list read as a list. Bold lead-ins render as four
   paragraphs that happen to start bold.
-- POST CARDS ON THE DARK INDEX BAND follow the site's existing dark
-  rules: title white, date and hover Fresh Mint, plus the Fresh Mint
-  card top border this constitution names and nothing had used yet.
-  The light-panel card colors are wrong there and were shipped that way
-  once: --midnight title on a dark card measured 1.16:1 and
-  --green-text on it measured 2.36:1. Never reuse a light-panel card
-  color on a dark band without checking it.
+- THE INDEX'S "LATEST" BAND IS LIGHT (changed 2026-09-03, reversing the
+  2026-08-31 dark band). The page now runs dark hero, light posts, dark
+  contact, light FAQ, the same alternation every other page keeps, and
+  the posts sit on the page background with white cards like every other
+  card on the site. The band carries no .dark and no field class.
+  Nothing in site.css changed: it already held both variants, so the
+  base light rules apply on their own, --midnight title at 14.58:1,
+  --signal hover at 5.18:1, --green-text date at 5.34:1, all on white.
+  The .dark .post-list rules stay in the stylesheet, unmatched here, for
+  any future dark band.
+- THE HARD-WON PART OF THAT OLD RULE STILL STANDS: never reuse a
+  light-panel card color on a dark band without checking it. On the dark
+  band a --midnight title measured 1.16:1 and --green-text measured
+  2.36:1, and both shipped that way once. The colors are only safe now
+  because the band under them is light.
+- THE BLOG INDEX HERO CARRIES A PER-PAGE GRAPHIC like every other page:
+  .hero-split wrapping .hero-copy-col and a decorative .hero-art SVG,
+  aria-hidden and hidden below 1000px by the existing CSS. Palette hex
+  hardcoded, because custom properties do not reach inline SVG
+  attributes. This is page furniture, NOT a post image, so it is not
+  touched by the real-photographs-only rule below, which governs images
+  inside a post.
+- THE INDEX HAS NO "WHAT THIS IS" SECTION (deleted 2026-09-03). The hero
+  lead already says who the notes are for, and the section restated it
+  at more length while the page's job is to show the posts. Nothing
+  linked to its #about-these anchor.
 - SKIP BEATS FILLER. The cadence is weekly to start because the blog is
   empty, and it is a ceiling, not a quota. A week with no strong topic
   files a short content-skipped issue and produces no post. The
