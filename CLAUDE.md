@@ -235,6 +235,33 @@
   technique documented in scripts/); a headless-Chrome window
   screenshot below ~500px is not evidence of a layout defect.
 - Show me the diff before committing. Commit messages in plain English.
+- COMMENTS ARE LOAD-BEARING AND ARE AUDITED LIKE COPY (decided
+  2026-09-03). A comment is where the next reader, human or agent,
+  learns the rules, so a wrong one is not inert: it teaches. THE
+  PRE-COMMIT DIFF REVIEW COVERS EVERY COMMENT ADJACENT TO A CHANGED
+  LINE, not only the changed lines themselves, and a change that
+  falsifies a nearby comment IS NOT DONE until that comment moves in
+  the same commit. Nothing else catches this: scripts/audit.py does not
+  read comments, and a stale one costs no points and breaks no page.
+  TEMPLATE COMMENTS GET THE STRICTEST READING, because their errors
+  reseed. A wrong instruction in templates/ is copied into every page
+  built from it afterwards, and each of those pages looks correct on
+  arrival, so one bad line becomes a drift nobody can date. Two shipped
+  and both were found by a sweep rather than by a check:
+  templates/service-page-template.html gave the proof line's separator
+  as &middot; in BOTH of its documented defaults, when 24 of the 26 live
+  pages carrying that refrain used the literal, so every page built by
+  following the comment inherited the wrong spelling; and
+  templates/blog-post-template.html said "Hero with no decorative art"
+  eighteen lines above a hero that had art, which would have taught the
+  next reader, or the content writer agent, to strip the graphic.
+  PRECEDENT, the four-file fix of 2026-09-03: the post template's three
+  stale comments, plus the same stale hero comment still sitting in
+  docs/blog/index.html and in both live posts. Rendered HTML was
+  byte-identical before and after, which is exactly why only reading
+  the comments would ever have found it. A stale instruction is worse
+  than a stale claim, because it recruits the next reader into
+  repeating it.
 
 ## Adding a page (all four steps, every time)
 A page does not exist until it is in sitemap.xml AND llms.txt. The audit
