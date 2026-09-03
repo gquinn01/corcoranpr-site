@@ -164,10 +164,19 @@
   SIXTH AGENT ADDED 2026-08-31, and it is INTERNAL: the Content Writer
   drafts one post a week for our own blog and files it as a pull
   request. It does no client work, so it is NOT part of the five in the
-  canonical description below, and NO customer-facing copy changes for
-  it. The site still says five agents because five is what a client
-  gets. If that ever reads as a contradiction, the fix is Greg's
-  decision about the copy, not a quiet edit to the number.
+  canonical description below. The site still says five agents because
+  five is what a client gets. If that ever reads as a contradiction, the
+  fix is Greg's decision about the copy, not a quiet edit to the number.
+  THE "NO CUSTOMER-FACING COPY" HALF OF THAT RULE IS LIFTED, in one
+  place only (decided 2026-09-03). The blog index FAQ, "Who writes
+  these?", now says plainly that an agent drafts each note and that Greg
+  edits it and verifies every fact in it. Disclosing it is the honest
+  answer to a question a reader actually asks, and it costs nothing: the
+  answer carries no count, so the five-agent claims on the homepage and
+  the About page still stand and still describe what a CLIENT gets. This
+  does not reopen the door generally. No other page mentions the sixth
+  agent, and nothing anywhere calls it the Content Writer, because the
+  describe-agents-by-role rule above is untouched.
   Site agents: Site Auditor (weekly), Google Watcher (daily).
   Ads agents: Industry Watcher (weekly, sweeps Google Ads announcements
   and trade press), Account Watcher (weekly, reports on client ad
@@ -304,7 +313,14 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   still pass the standalone test in both senses: questions a reader
   would actually ask, and answers whose FIRST SENTENCE survives being
   lifted without its question, because that is what an assistant does
-  with it. No bare particle openers ("No." "Yes." "Two things."), which
+  with it. SURVIVING THE LIFT MEANS BEING TRUE ALONE, not merely
+  grammatical (sharpened 2026-09-03). The blog's "Who writes these?"
+  opened "Greg Quinn, the owner, writes them", which reads perfectly
+  well and claims a sole authorship the very next sentence takes back.
+  An assistant quoting only that sentence would have published a claim
+  the full answer contradicts. Put the whole truth in sentence one and
+  the reassurance after it, never the other way round.
+  No bare particle openers ("No." "Yes." "Two things."), which
   comma-merge into the sentence that follows. Padding written to
   satisfy the audit is worse than no post at all. The FAQ mirror law
   applies as everywhere else: each visible question and answer
