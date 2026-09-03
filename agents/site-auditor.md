@@ -13,20 +13,37 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    site score of 100 does not mean every page is at 100, so always check
    the table rather than the headline.
 
-   **How many rows to expect.** The weekly run scans the live site, and
-   a live run takes its page list from `sitemap.xml`, so it covers the
-   **29 real pages** and nothing else. That is the normal report.
+   **How many rows to expect. Count it, do not read it off this page.**
+   The blog publishes on a cadence, so the number of real pages grows
+   most weeks. Any figure written into these instructions is right on
+   the day it is typed and wrong soon after, which is exactly what
+   happened: this step said "29 real pages" while the true number was
+   already 30. So derive it every run:
 
-   A *local* run (`python3 scripts/audit.py` with no argument) covers 45
-   files instead: the same 29 pages, plus **15 redirect stubs** standing
-   at the old WordPress URLs and **1 error page** (`docs/404.html`). If
-   you are ever reading a report with 45 rows, that is why, and the
-   headline line names the mix. Stubs and the 404 page are scored
-   against short rubrics of their own and are *supposed* to be absent
-   from `sitemap.xml` and `llms.txt`; for them that absence is a pass,
-   not the critical it would be on a real page. A stub showing 4 passing
-   checks is healthy, not thin. Either way, when you report growth
-   moves, count the 29.
+   ```
+   grep -c '<loc>' docs/sitemap.xml                      # real pages
+   grep -rl 'content="redirect-stub"' docs/ | wc -l      # redirect stubs
+   grep -rl 'content="error-404"' docs/ | wc -l          # error pages
+   ```
+
+   The weekly run scans the live site, and a live run takes its page
+   list from `sitemap.xml`, so it covers **the first number and nothing
+   else**. That is the normal report.
+
+   A *local* run (`python3 scripts/audit.py` with no argument) covers
+   **all three added together**: the same real pages, plus the redirect
+   stubs standing at the old WordPress URLs, plus the error page
+   (`docs/404.html`). If you are reading a report with the larger row
+   count, that is why, and the headline line names the mix. Stubs and
+   the 404 page are scored against short rubrics of their own and are
+   *supposed* to be absent from `sitemap.xml` and `llms.txt`; for them
+   that absence is a pass, not the critical it would be on a real page.
+   A stub is scored on a handful of checks rather than the full set, so
+   a low passing count on one is healthy, not thin. Either way, when you
+   report growth moves, count the real pages only.
+
+   If any of those three commands fails or returns nothing, say so in
+   the report and do not substitute a number from memory.
 
 2. **Check in with your teammate.** List open GitHub Issues with the label
    `google-update` (use `gh issue list --label google-update --state open`).
@@ -35,9 +52,18 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    should prioritize this week? (Example: if Google just announced a page-
    experience update, mobile and speed findings jump to the top.)
 
-3. **Sweep the live pages for leftover `[CONFIRM]` markers.** Run
-   `grep -rn '\[CONFIRM\]' docs/` against `main`. `docs/` on `main` *is*
-   the live site, so anything this finds is published.
+3. **Sweep the live pages for leftover `[CONFIRM]` markers.**
+
+   **First confirm you are actually looking at the site.** Check that
+   `docs/index.html` exists in the checkout before you grep. If it does
+   not, the checkout is wrong or empty, and the only honest report is
+   **"could not check"**. Never write "none found" in that case. A
+   `grep` over a missing directory finds nothing for the same reason a
+   clean site finds nothing, and the two must never share a spelling:
+   one means the site is clean, the other means you never looked.
+
+   Then run `grep -rn '\[CONFIRM\]' docs/` against `main`. `docs/` on
+   `main` *is* the live site, so anything this finds is published.
 
    **Expected result: nothing.** If it prints any line, report it in the
    weekly issue under its own heading, quoting the file, the line number,
