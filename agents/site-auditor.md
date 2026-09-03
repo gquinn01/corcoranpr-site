@@ -59,6 +59,42 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    should prioritize this week? (Example: if Google just announced a page-
    experience update, mobile and speed findings jump to the top.)
 
+   **VERIFY BEFORE YOU PROMOTE. An open alert is not evidence of a gap.**
+   An alert records what was true on the day it was filed. It stays open
+   until somebody closes it, not until it stops being true, so an alert
+   describing work that has since been done reads exactly like one
+   describing work still outstanding. You cannot tell them apart by
+   reading the alert. You have to look.
+
+   So no alert becomes a priority in your report unless **this run**
+   looked at the site and the gap is still there. Check with the Grep
+   and Read tools against `docs/`, which is the source GitHub Pages
+   serves, so it is the live site give or take a deploy of a few
+   minutes. If an alert names a thing that should be on the pages, go
+   find whether it is on the pages.
+
+   **If the site already satisfies the alert, say so on the alert and
+   close it:**
+
+   ```
+   gh issue comment <n> --body "<what satisfied it, and when>"
+   gh issue close <n>
+   ```
+
+   Name the evidence you found and the date. Do not close an alert you
+   did not check, and do not close one whose off-site half is still
+   real: an alert can be satisfied on the site and still point at work
+   that lives in the weekly priorities. Say which half you closed.
+
+   **This rule was bought.** On 2026-09-03 this agent promoted alert #4
+   to priority #2 and published, in a filed report, that the business
+   schema carried no Google Business Profile. It had carried one on
+   every page since that morning. The run had never checked; it read a
+   three-week-old alert and believed it. Alert #4 had been satisfied and
+   nobody had closed it. It is the same law as the page counts in step
+   1 and the checkout in step 3: **count it, look at it, do not read it
+   off something that was right when it was written.**
+
 3. **Sweep the live pages for leftover `[CONFIRM]` markers.**
 
    **First confirm you are actually looking at the site.** Read

@@ -128,6 +128,10 @@ jobs:
             available topic and open the pull request even if you would
             otherwise skip. Follow the "Test runs" section of
             agents/content-writer.md exactly, including the TEST title.
+          # gh pr view was added 2026-09-03. The 2026-09-02 run was refused
+          # on `gh pr view 19 --json ...` while holding gh pr list and
+          # gh pr create, so the agent could open a pull request and then
+          # not read it back. Same verb family, read-only.
           claude_args: |
             # A hard ceiling on one run, so a thrashing run cannot keep
             # paying. Hitting it is NOT a success: the agent stops
@@ -145,7 +149,7 @@ jobs:
             # which is exactly what happened once already for a different
             # reason. 80 buys the insurance for nothing.
             --max-turns 80
-            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(bash scripts/push-post-branch.sh:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*),Bash(echo:*),Bash(tail:*)"
+            --allowedTools "Read,Grep,Glob,Write,Edit,Bash(mkdir:*),Bash(cp:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git branch:*),Bash(git checkout -b:*),Bash(git add:*),Bash(git commit:*),Bash(bash scripts/push-post-branch.sh:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr create:*),Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*),Bash(python3 scripts/audit.py:*),Bash(python3 scripts/test-sitemap-expansion.py:*),Bash(python3 -c:*),Bash(wc:*),Bash(date:*),Bash(echo:*),Bash(tail:*)"
         env:
           GH_TOKEN: ${{ github.token }}
 

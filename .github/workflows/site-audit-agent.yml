@@ -53,9 +53,11 @@ jobs:
           # write, Edit(./.audit-issue-body.md) allowed it, and that same rule
           # refused a different filename. Scoped to the one scratch file the
           # agent writes a long issue body into, so it still cannot write
-          # anything else. These comments sit OUTSIDE claude_args on purpose:
-          # that key is a literal block scalar, so a "#" line inside it is
-          # passed to the CLI as an argument, not treated as a comment.
+          # anything else. These comments sit outside claude_args simply
+          # because it is unambiguous there. Inside works too: claude_args
+          # is a literal block scalar, so a "#" line is part of the string,
+          # but the action strips comment lines, which content-writer-agent.yml
+          # has relied on for a while.
           claude_args: |
             --allowedTools "Read,Grep,Glob,Edit(./.audit-issue-body.md),Bash(gh issue:*),Bash(gh label:*),Bash(date:*)"
         env:
