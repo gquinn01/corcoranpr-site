@@ -18,13 +18,20 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
    most weeks. Any figure written into these instructions is right on
    the day it is typed and wrong soon after, which is exactly what
    happened: this step said "29 real pages" while the true number was
-   already 30. So derive it every run:
+   already 30. So derive it every run, with the **Grep tool**, not with
+   a shell command:
 
-   ```
-   grep -c '<loc>' docs/sitemap.xml                      # real pages
-   grep -rl 'content="redirect-stub"' docs/ | wc -l      # redirect stubs
-   grep -rl 'content="error-404"' docs/ | wc -l          # error pages
-   ```
+   | Number | Grep tool call |
+   |---|---|
+   | Real pages | pattern `<loc>`, path `docs/sitemap.xml`, output mode **count** |
+   | Redirect stubs | pattern `content="redirect-stub"`, path `docs/`, output mode **files_with_matches**, then count the files listed |
+   | Error pages | pattern `content="error-404"`, path `docs/`, output mode **files_with_matches**, then count the files listed |
+
+   **Use the Grep tool, never `grep` in Bash.** You do not hold a general
+   Bash permission. The workflow grants Bash only for `gh issue`,
+   `gh label` and `date`, so a shell `grep` is refused and a pipe into
+   `wc -l` is refused twice over. Read, Grep and Glob are tools you hold
+   outright and they do this job without a shell.
 
    The weekly run scans the live site, and a live run takes its page
    list from `sitemap.xml`, so it covers **the first number and nothing
@@ -54,16 +61,19 @@ act on, and to coordinate with your teammate, the **Google Watch Agent**.
 
 3. **Sweep the live pages for leftover `[CONFIRM]` markers.**
 
-   **First confirm you are actually looking at the site.** Check that
-   `docs/index.html` exists in the checkout before you grep. If it does
-   not, the checkout is wrong or empty, and the only honest report is
-   **"could not check"**. Never write "none found" in that case. A
-   `grep` over a missing directory finds nothing for the same reason a
-   clean site finds nothing, and the two must never share a spelling:
-   one means the site is clean, the other means you never looked.
+   **First confirm you are actually looking at the site.** Read
+   `docs/index.html` before you sweep. If that file is not there, the
+   checkout is wrong or empty, and the only honest report is **"could
+   not check"**. Never write "none found" in that case. A search over a
+   missing directory finds nothing for the same reason a clean site
+   finds nothing, and the two must never share a spelling: one means the
+   site is clean, the other means you never looked.
 
-   Then run `grep -rn '\[CONFIRM\]' docs/` against `main`. `docs/` on
-   `main` *is* the live site, so anything this finds is published.
+   Then sweep with the **Grep tool**: pattern `\[CONFIRM\]`, path
+   `docs/`, output mode **content**, line numbers on. Again, the Grep
+   tool and not a shell `grep`, for the reason given in step 1. The
+   checkout is `main`, and `docs/` on `main` *is* the live site, so
+   anything this finds is published.
 
    **Expected result: nothing.** If it prints any line, report it in the
    weekly issue under its own heading, quoting the file, the line number,
