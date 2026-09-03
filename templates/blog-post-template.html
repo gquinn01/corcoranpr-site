@@ -8,7 +8,8 @@
        shared shape, change it here too, in the same commit.
 
        SECTION ORDER: hero (breadcrumb, eyebrow, H1, standfirst,
-       byline) > article body > contact band > FAQ last > footer.
+       byline, fixed graphic) > article body > contact band > FAQ last
+       > footer.
        Backgrounds alternate: dark hero, light article, dark contact,
        light FAQ, dark footer.
 
@@ -52,6 +53,12 @@
        inside the body, with real alt text describing what is actually
        in the frame. Two rules stand: real photographs only, and every
        <img> carries alt text the audit will count.
+
+       THE HERO GRAPHIC IS NOT A POST IMAGE and this rule does not
+       reach it. It is page furniture, the same on every post: inline
+       SVG, aria-hidden, no <img> and so no alt text owed. The rule
+       above governs images INSIDE the article, which is where an
+       invented picture would read as a fact claim.
 
          <figure class="post-figure">
            <img src="{{ROOT}}blog/<slug>/<file>.jpg" alt="..." width="..." height="...">
@@ -230,8 +237,11 @@
 
   <main>
 
-    <!-- Hero with no decorative art, following the privacy page and the
-         blog index. A post illustrates itself with its own words. -->
+    <!-- Hero carries the FIXED post graphic: the same picture on every
+         post, so no post ever needs an art decision. It does not vary
+         per post, and the content writer agent may not swap, vary, or
+         remove it. The drawing and the reasoning are in the comment on
+         .hero-art below; the rule is recorded in CLAUDE.md. -->
     <section class="hero hero--page field-hero">
       <div class="wrap">
         <nav class="crumb" aria-label="Breadcrumb">
