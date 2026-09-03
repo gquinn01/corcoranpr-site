@@ -392,6 +392,18 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   attributes. This is page furniture, NOT a post image, so it is not
   touched by the real-photographs-only rule below, which governs images
   inside a post.
+- EVERY POST HERO CARRIES THE SAME GRAPHIC, and the sameness is the
+  point (decided 2026-09-03). It lives in
+  templates/blog-post-template.html, so a post inherits it and no post
+  ever needs an art decision: nothing to draw, nothing to review, one
+  fewer way for a weekly post to stall. It is a marked-up page, a ruled
+  margin with a bracket and a green check against a mint-washed line,
+  and it is DELIBERATELY NOT the index's article card. The two heroes
+  have to look different or clicking a post card reads as nothing having
+  happened. Page furniture like the index's, so the
+  real-photographs-only rule below does not touch it either, and the
+  content writer agent may not vary it, swap it, or remove it. A sweep
+  that finds all posts sharing one graphic has found this rule.
 - THE INDEX HAS NO "WHAT THIS IS" SECTION (deleted 2026-09-03). The hero
   lead already says who the notes are for, and the section restated it
   at more length while the page's job is to show the posts. Nothing

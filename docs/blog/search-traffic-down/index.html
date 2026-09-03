@@ -167,10 +167,51 @@
             <li aria-current="page">Search Traffic Down? Check the Phone Before You Panic</li>
           </ol>
         </nav>
-        <p class="eyebrow">Reading the Numbers</p>
-        <h1>Search Traffic Down? Check the Phone Before You Panic</h1>
-        <p class="lead">Visits to a website can fall for reasons that have nothing to do with the website. Before you pay anybody to fix it, find out which number actually moved.</p>
-        <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-09-03">September 3, 2026</time></p>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Reading the Numbers</p>
+            <h1>Search Traffic Down? Check the Phone Before You Panic</h1>
+            <p class="lead">Visits to a website can fall for reasons that have nothing to do with the website. Before you pay anybody to fix it, find out which number actually moved.</p>
+            <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-09-03">September 3, 2026</time></p>
+          </div>
+
+          <!-- Decorative only, and FIXED: the same graphic on every post, so
+               no post needs an art decision. A marked-up page. Margin rule,
+               headline, prose, and in the margin a bracket and a green check
+               against the line a mint wash picks out. It reads as somebody
+               having gone through the page and marked what matters, which is
+               what these notes are. Deliberately NOT the blog index's clean
+               article card: the two heroes have to look different or clicking
+               a post card reads as nothing having happened. Hex values are
+               hardcoded because CSS custom properties do not reach inline SVG
+               attributes. Every one is a Strategic Growth palette color,
+               solid or at low alpha over the Midnight hero. No gradients. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <!-- the sheet, with a ruled margin down its left -->
+              <rect x="40" y="20" width="340" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="88" y="30" width="1.5" height="230" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- headline, two lines -->
+              <rect x="104" y="46" width="244" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="67" width="152" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="96" width="252" height="1.5" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- first passage, bracketed in the margin -->
+              <path d="M76 110 H64 V168 H76" fill="none" stroke="#DDF7EC" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="110" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="104" y="126" width="236" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="142" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="158" width="176" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- the line that matters: washed in mint, checked in the margin -->
+              <rect x="98" y="185" width="220" height="16" rx="4" fill="#DDF7EC" fill-opacity=".2"/>
+              <path d="M62 192 L68 199 L79 184" fill="none" stroke="#15B77E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="189" width="206" height="8" rx="4" fill="#DDF7EC" fill-opacity=".38"/>
+              <rect x="104" y="211" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="227" width="190" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- last passage, ending short the way a paragraph does -->
+              <rect x="104" y="249" width="148" height="8" rx="4" fill="#B6C9DD" fill-opacity=".2"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </section>
 
