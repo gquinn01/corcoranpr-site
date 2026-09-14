@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG POST. Whether a local business should build a page for
+       every town it serves: the test a town page has to pass, and
+       what covers the towns that do not pass it.
+
+       DEPTH. Two levels under docs/, so the site root is ../../ and
+       the blog index is ../
+
+       The FAQ below is byte-identical to the FAQPage schema in the
+       head. Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Should You Build a Page for Every Town You Serve?</title>
+  <meta name="description" content="A page for every town you serve looks like free traffic. The test a town page has to pass in Bucks, Montgomery, and the Lehigh Valley.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/page-for-every-town/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Should You Build a Page for Every Town You Serve?">
+  <meta property="og:description" content="A page for every town you serve looks like free traffic. The test a town page has to pass in Bucks, Montgomery, and the Lehigh Valley.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/page-for-every-town/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../../assets/site.css?v=cb98801c">
+  <script src="../../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.google.com/maps/place/?q=place_id:ChIJQfKFYUoDxYkRBnhq4IKL8s0",
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/page-for-every-town/#post",
+        "url": "https://corcoranpr.com/blog/page-for-every-town/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/page-for-every-town/",
+        "headline": "Should You Build a Page for Every Town You Serve?",
+        "description": "A page for every town you serve is the easiest page to add and the hardest to fill. The test a town page has to pass, and what covers the towns that do not pass it.",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-14",
+        "dateModified": "2026-09-14",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Should You Build a Page for Every Town You Serve?" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Should I have a separate page for every town I serve?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A separate page for a town earns its place only when you can fill it with facts that are true about that town and about your work in it, which for most businesses means a handful of pages rather than twenty. A town you cannot write three checkable facts about is better covered by a sentence on a page you already have. The pages you can fill are worth more than the ones you could only generate." }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I tell if a town page is good enough to publish?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Read the town page beside your home page with the town names covered up, and if the two read the same, it is not good enough to publish yet. That test catches the pages built from a list rather than written, which is what a reader and a search engine both react to. Three true, checkable facts about the town is a fair floor before one goes up." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can customers find me in a town if I have no page for it?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Customers can find you in a town you have no page for, because naming the town in the text of a page you already have does much of the same work. A county page that covers the whole county is one place to do it, and the towns you serve can also be named on your main pages and in your footer. A page of its own is worth building when you have something to put on it." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../../#services">Services</a></li>
+        <li><a href="../../#promise">Promise</a></li>
+        <li><a href="../../free-audit/">Free Audit</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../#industries">Industries</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero carries the FIXED post graphic: the same picture on every
+         post, so no post ever needs an art decision. It does not vary
+         per post, and the content writer agent may not swap, vary, or
+         remove it. The drawing and the reasoning are in the comment on
+         .hero-art below; the rule is recorded in CLAUDE.md. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">Should You Build a Page for Every Town You Serve?</li>
+          </ol>
+        </nav>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Local Pages</p>
+            <h1>Should You Build a Page for Every Town You Serve?</h1>
+            <p class="lead">A page named after a town is the easiest page on a website to add and the hardest one to fill. Here is the test one has to pass, and what to do about the towns that do not pass it.</p>
+            <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-09-14">September 14, 2026</time></p>
+          </div>
+
+          <!-- Decorative only, and FIXED: the same graphic on every post, so
+               no post needs an art decision. A marked-up page. Margin rule,
+               headline, prose, and in the margin a bracket and a green check
+               against the line a mint wash picks out. It reads as somebody
+               having gone through the page and marked what matters, which is
+               what these notes are. Deliberately NOT the blog index's clean
+               article card: the two heroes have to look different or clicking
+               a post card reads as nothing having happened. Hex values are
+               hardcoded because CSS custom properties do not reach inline SVG
+               attributes. Every one is a Strategic Growth palette color,
+               solid or at low alpha over the Midnight hero. No gradients. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <!-- the sheet, with a ruled margin down its left -->
+              <rect x="40" y="20" width="340" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="88" y="30" width="1.5" height="230" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- headline, two lines -->
+              <rect x="104" y="46" width="244" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="67" width="152" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="96" width="252" height="1.5" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- first passage, bracketed in the margin -->
+              <path d="M76 110 H64 V168 H76" fill="none" stroke="#DDF7EC" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="110" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="104" y="126" width="236" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="142" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="158" width="176" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- the line that matters: washed in mint, checked in the margin -->
+              <rect x="98" y="185" width="220" height="16" rx="4" fill="#DDF7EC" fill-opacity=".2"/>
+              <path d="M62 192 L68 199 L79 184" fill="none" stroke="#15B77E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="189" width="206" height="8" rx="4" fill="#DDF7EC" fill-opacity=".38"/>
+              <rect x="104" y="211" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="227" width="190" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- last passage, ending short the way a paragraph does -->
+              <rect x="104" y="249" width="148" height="8" rx="4" fill="#B6C9DD" fill-opacity=".2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+          <p>You serve two dozen towns, and your website has one page that covers all of them. Sooner or later somebody offers the obvious fix: a page for each town, its name in the headline, one afternoon of work. A tool will write all two dozen before lunch.</p>
+
+          <p>Those pages are easy to make and hard to fill, and the gap between the two is the whole problem. Before you order a page for every town on your list, it is worth knowing which ones will earn their place.</p>
+
+          <h2>Why it looks like free money</h2>
+
+          <p>The thinking behind town pages is sound as far as it goes. Somebody in Perkasie needs a collision shop, types the town in or searches 'near me' and lets Google decide, and a page with Perkasie on it looks like the closest match. Two dozen towns, two dozen chances.</p>
+
+          <p>The part that does not hold is the downside. The intuitive model says a weak page just fails to rank and is otherwise harmless, so you may as well have it. No page on your site is free. Each one is something to keep accurate, something a customer can land on, and something a search engine reads while it works out what kind of site this is.</p>
+
+          <h2>What a town page has to carry</h2>
+
+          <p>A page named after a town earns its place when it says something true about that town and about your work in it. Three things is a fair floor, and a stranger should not be able to write any of the three.</p>
+
+          <h3>Something true about the town</h3>
+          <p>Not the population and not the founding date, both of which anybody can copy off a map. Somebody writing about Quakertown from an office in another state will call the main street Main Street, because that is the safe guess. It is West Broad Street, and everybody who works in town knows it.</p>
+
+          <h3>Something true about your work there</h3>
+          <p>Which jobs come to you from that town, what those customers ask about first, what you have learned about getting there and parking a truck. Keep it to what you can stand behind. No numbers you cannot show and no reviews you cannot point at.</p>
+
+          <h3>A question that town actually asks</h3>
+          <p>Questions differ by town, and those differences are the page. A list of questions copied word for word from the page for the next town over is the clearest sign a page was manufactured rather than written. A reader notices that as fast as a search engine does.</p>
+
+          <h3>A reason for the reader to stay on it</h3>
+          <p>A page whose only job is to hand somebody along to a different page is a hallway, not a room. If a town page has nothing of its own to say, the click it wins is a visitor who leaves. That is worse than the visitor you never had, because this one has now seen what you have.</p>
+
+          <h2>The price of a page you could not fill</h2>
+
+          <p>Twenty pages nobody can tell apart are still twenty pages to keep accurate. Your hours change, you add a service, your phone number moves to a new line, and now there are twenty edits instead of one. Most of them will not get made. A wrong closing time on a page you forgot about costs what it costs anywhere, which is <a href="../google-listing-can-change/">the same problem your Google listing has</a>, multiplied by twenty.</p>
+
+          <p>There is a second cost, and Google has been unusually direct about it. John Mueller, who speaks for Google Search, said in September 2026 that pages generated in bulk from combinations of names and attributes often produce a site that is spam, borderline spam, or low quality. He added that Google's systems can lose faith in the site as a whole, not only in the pages that caused it, and that recovering takes time and significant effort. [CONFIRM]</p>
+
+          <p>Delete that paragraph and the advice does not move. A page you could not fill gives a visitor nothing and gives you something to maintain, and that was true before anybody at Google said so. What his answer changes is the timing: this is a decision worth making before the pages exist, because unpicking it afterwards is the expensive direction.</p>
+
+          <h2>Covering a town without a page for it</h2>
+
+          <p>A town does not need its own page for you to be found in it. Naming it in the text of a page you already have does much of the same work with none of the upkeep. A county page can carry a whole county. Our own <a href="../../locations/bucks-county/">Bucks County page</a> names Perkasie, Sellersville, Chalfont, and the rest inside prose about the county itself. Every one of those towns is also a link in the footer under this article.</p>
+
+          <p>That is the honest version of coverage, and it survives anybody asking about it. You serve the town, you can say you serve the town, and the sentence that says so sits on a page with other reasons to exist.</p>
+
+          <h2>The names you can only get right from here</h2>
+
+          <p>Regional names are facts rather than flavor, and they are the quickest way to tell a local page from a generated one. North Penn means Lansdale, North Wales, and Hatfield. Souderton and Harleysville are the Indian Valley, which is what the county planning commission calls them. Quakertown is upper Bucks, Doylestown is central Bucks, and Newtown is lower Bucks. Allentown, Bethlehem, and Easton are the Lehigh Valley. Perkasie is not, however close it looks on a map.</p>
+
+          <p>Get one of those wrong and the page reads as written from a map, to a reader in that town first of all. Get them right and you have put something on the page that a competitor from out of the area cannot copy without learning what you already know.</p>
+
+          <h2>What to do instead of two dozen pages</h2>
+
+          <p>Pick the one town other than your own where you do the most work. Write that page yourself, or sit with whoever writes it until the facts on it are yours, the way a <a href="../../services/web-design/">page built for one business</a> differs from a page built from a list. Then read it beside your home page with the town names covered up. If they read the same, the page is not finished.</p>
+
+          <p>Do that once a quarter and inside a year you have four pages you can defend in front of a customer. That is a better year than two dozen pages you cannot. Judge them the way you judge the rest of it: phone calls, form fills, and booked jobs. A page that brings none of those is not a chance, it is just a page.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both.
+
+         NO CONTRACTS QUESTION, DELIBERATELY. Blog posts are the FOURTH
+         sanctioned exception to the question that ends every other
+         page's FAQ, after web-design, film-live-entertainment and
+         privacy (decided 2026-08-31, recorded in CLAUDE.md). A post's
+         FAQ is topic-only: real reader questions about the subject of
+         this post and nothing else. A future consistency sweep that
+         finds the contracts question missing here has found the rule,
+         not a gap. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">THREE THINGS OWNERS ASK ABOUT TOWN PAGES</p>
+        </div>
+        <details><summary>Should I have a separate page for every town I serve?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>A separate page for a town earns its place only when you can fill it with facts that are true about that town and about your work in it, which for most businesses means a handful of pages rather than twenty. A town you cannot write three checkable facts about is better covered by a sentence on a page you already have. The pages you can fill are worth more than the ones you could only generate.</p></details>
+        <details><summary>How can I tell if a town page is good enough to publish?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Read the town page beside your home page with the town names covered up, and if the two read the same, it is not good enough to publish yet. That test catches the pages built from a list rather than written, which is what a reader and a search engine both react to. Three true, checkable facts about the town is a fair floor before one goes up.</p></details>
+        <details><summary>Can customers find me in a town if I have no page for it?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Customers can find you in a town you have no page for, because naming the town in the text of a page you already have does much of the same work. A county page that covers the whole county is one place to do it, and the towns you serve can also be named on your main pages and in your footer. A page of its own is worth building when you have something to put on it.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../../#services">Services</a></li>
+            <li><a href="../../#promise">The Promise</a></li>
+            <li><a href="../../#how">How It Works</a></li>
+            <li><a href="../../#industries">Industries</a></li>
+            <li><a href="../../#faq">FAQ</a></li>
+            <li><a href="../../about/">About</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../../services/web-design/">Web Design</a></li>
+            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
