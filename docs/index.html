@@ -441,12 +441,18 @@
           </div>
           <p class="proof">Clients from Main Street to Disney on Ice · U.S. Navy veteran owned &amp; operated</p>
         </div>
-        <!-- Name and role are the exact strings from the Team section. -->
+        <!-- The name is the exact string from the Team section. The ROLE IS NOT,
+             and that is deliberate as of 2026-09-15: the hero says CEO, while the
+             Team card below, the jobTitle in schema, the About page, the blog
+             bylines and llms.txt all still say Owner. Greg asked for the hero
+             banner alone, twice, so a sweep that finds the two disagreeing has
+             found this decision and not a drift. Alt text carries the caption's
+             title, because an accessible description matches what is rendered. -->
         <figure class="hero-portrait">
-          <img src="greg-quinn.jpg" width="640" height="640" fetchpriority="high" alt="Greg Quinn, owner and lead strategist of Corcoran Communications">
+          <img src="greg-quinn.jpg" width="640" height="640" fetchpriority="high" alt="Greg Quinn, CEO and lead strategist of Corcoran Communications">
           <figcaption>
             <b>Greg Quinn</b>
-            <span>Owner · Lead Strategist</span>
+            <span>CEO · Lead Strategist</span>
           </figcaption>
         </figure>
       </div>
