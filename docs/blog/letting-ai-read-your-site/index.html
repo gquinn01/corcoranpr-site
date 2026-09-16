@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG POST. How robots.txt decides whether AI assistants may read
+       a website, how a Search Console setting can take it out of
+       Google's AI features without touching a page, how an owner checks
+       both, and why being absent from an answer costs more in a small
+       market than a large one.
+
+       TWO CLAIMS CARRY [CONFIRM] IN THE BODY, both from the Google
+       Watcher's open issues rather than from this site: Apple's
+       sentence about Applebot-Extended and ranking (#26), and the date
+       the Search Console AI control reached all sites (#22). Neither
+       is the spine. Delete either sentence and the advice around it
+       still stands, which is the test in agents/content-writer.md.
+
+       DEPTH. Two levels under docs/, so the site root is ../../ and
+       the blog index is ../
+
+       The FAQ below is byte-identical to the FAQPage schema in the
+       head. Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Your Website May Be Telling AI to Stay Out</title>
+  <meta name="description" content="The file that tells AI assistants whether they may read your website, how to find it in thirty seconds, and what a copied setting costs.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/letting-ai-read-your-site/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Your Website May Be Telling AI to Stay Out">
+  <meta property="og:description" content="The file that tells AI assistants whether they may read your website, how to find it in thirty seconds, and what a copied setting costs.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/letting-ai-read-your-site/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../../assets/site.css?v=cb98801c">
+  <script src="../../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.google.com/maps/place/?q=place_id:ChIJQfKFYUoDxYkRBnhq4IKL8s0",
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/letting-ai-read-your-site/#post",
+        "url": "https://corcoranpr.com/blog/letting-ai-read-your-site/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/letting-ai-read-your-site/",
+        "headline": "Your Website May Be Telling AI to Stay Out",
+        "description": "One small file decides whether AI assistants may read your website. How to find yours in thirty seconds, and what a copied setting quietly costs.",
+        "inLanguage": "en-US",
+        "datePublished": "2026-09-16",
+        "dateModified": "2026-09-16",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Your Website May Be Telling AI to Stay Out" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I check whether AI can read my website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You can check whether AI can read your website by typing your own domain with /robots.txt on the end, so yourbusiness.com/robots.txt, and reading what comes back. The words that matter are Disallow and the crawler names GPTBot, OAI-SearchBot, ClaudeBot, and PerplexityBot. A file that is missing or empty is fine, because it means nothing has been refused." }
+          },
+          {
+            "@type": "Question",
+            "name": "Should a local business block AI crawlers?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A local business almost always wants AI crawlers in, because being named in an assistant's answer is how a customer who asked that assistant ever hears about you. Blocking them takes you out of those answers without taking you out of ordinary search results, so nothing in your reports explains where the phone calls went. If the objection is to your writing being used to train a model, that part can usually be refused on its own." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does letting AI read my site mean it will recommend me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Letting AI read your site makes being named possible, and does not by itself make it happen. Permission is the floor rather than the result. What moves the rest is a claimed Google listing, reviews with real words in them, being listed where the answer is already looking, and a website that answers questions in plain sentences." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../../#services">Services</a></li>
+        <li><a href="../../#promise">Promise</a></li>
+        <li><a href="../../free-audit/">Free Audit</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../#industries">Industries</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero carries the FIXED post graphic: the same picture on every
+         post, so no post ever needs an art decision. It does not vary
+         per post, and the content writer agent may not swap, vary, or
+         remove it. The drawing and the reasoning are in the comment on
+         .hero-art below; the rule is recorded in CLAUDE.md. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">Your Website May Be Telling AI to Stay Out</li>
+          </ol>
+        </nav>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Site Settings</p>
+            <h1>Your Website May Be Telling AI to Stay Out</h1>
+            <p class="lead">Most owners have never seen the file that tells AI assistants whether they are allowed to read the website. It takes thirty seconds to find, and nobody at your business necessarily chose what it says.</p>
+            <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-09-16">September 16, 2026</time></p>
+          </div>
+
+          <!-- Decorative only, and FIXED: the same graphic on every post, so
+               no post needs an art decision. A marked-up page. Margin rule,
+               headline, prose, and in the margin a bracket and a green check
+               against the line a mint wash picks out. It reads as somebody
+               having gone through the page and marked what matters, which is
+               what these notes are. Deliberately NOT the blog index's clean
+               article card: the two heroes have to look different or clicking
+               a post card reads as nothing having happened. Hex values are
+               hardcoded because CSS custom properties do not reach inline SVG
+               attributes. Every one is a Strategic Growth palette color,
+               solid or at low alpha over the Midnight hero. No gradients. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <!-- the sheet, with a ruled margin down its left -->
+              <rect x="40" y="20" width="340" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="88" y="30" width="1.5" height="230" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- headline, two lines -->
+              <rect x="104" y="46" width="244" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="67" width="152" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="96" width="252" height="1.5" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- first passage, bracketed in the margin -->
+              <path d="M76 110 H64 V168 H76" fill="none" stroke="#DDF7EC" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="110" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="104" y="126" width="236" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="142" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="158" width="176" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- the line that matters: washed in mint, checked in the margin -->
+              <rect x="98" y="185" width="220" height="16" rx="4" fill="#DDF7EC" fill-opacity=".2"/>
+              <path d="M62 192 L68 199 L79 184" fill="none" stroke="#15B77E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="189" width="206" height="8" rx="4" fill="#DDF7EC" fill-opacity=".38"/>
+              <rect x="104" y="211" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="227" width="190" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- last passage, ending short the way a paragraph does -->
+              <rect x="104" y="249" width="148" height="8" rx="4" fill="#B6C9DD" fill-opacity=".2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+          <p>Somebody in Sellersville needs a collision shop and never opens Google. They ask the assistant on their phone, in a sentence, the way they would ask a neighbor. Back comes an answer with two or three shops named in it and a line about each one.</p>
+
+          <p>To write that answer, something had to read those shops' websites. If yours said no, you were not a candidate. You did not rank badly and you did not lose on price. You were not in the running, and nothing on your end reports that.</p>
+
+          <h2>There is a doorman file, and you can read it</h2>
+
+          <p>Almost every website carries a small text file called robots.txt. It sits at the top level of the domain and it holds instructions for automated visitors: who may read the site, and which parts of it. It is closer to a sign on a door than a lock, and the large search and AI companies follow it.</p>
+
+          <p>You can look at yours in a browser. Type your own domain with /robots.txt on the end, so yourbusiness.com/robots.txt, and whatever comes back is what every automated visitor has been reading. A missing or empty file is fine, because it means nothing has been refused. If you want to see one that plainly says yes, ours is at corcoranpr.com/robots.txt, and it names every crawler we want in, one at a time.</p>
+
+          <h2>Four names worth looking for</h2>
+
+          <p>Two words do the work. Allow means come in, Disallow means stay out, and each applies to the User-agent named on the line above it. So you are reading for the word Disallow, and then for which of these it sits under.</p>
+
+          <h3>GPTBot and OAI-SearchBot.</h3>
+          <p>These two belong to OpenAI, and between them they are how anything in ChatGPT comes to know your site exists. If both are disallowed, an assistant answering a question about your trade has your business only from wherever else it appears.</p>
+
+          <h3>ClaudeBot.</h3>
+          <p>ClaudeBot is Anthropic's, behind Claude. The same rule holds, and for a small business the gap it leaves is wider than it sounds, because there may be very little written about you anywhere except your own pages.</p>
+
+          <h3>PerplexityBot.</h3>
+          <p>PerplexityBot is Perplexity's. An assistant with a smaller audience still gets asked who does this work locally, and still has to name somebody, so there is no version of this where being unreadable helps you.</p>
+
+          <h3>Googlebot and Bingbot.</h3>
+          <p>These two are ordinary search, not AI, and a site that refuses them is not in the results at all. That is a bigger problem than the AI question and it is worth ruling out in the same thirty seconds, because the symptom looks exactly like a marketing problem.</p>
+
+          <h2>Nobody decided this</h2>
+
+          <p>The words in that file were often never chosen. A site built on a platform or a content system usually has a setting, or a plugin, that writes robots.txt for you, and whatever the template said travels with it. A site that spent a few weeks on a staging address can still carry the blanket refusal that kept the unfinished version out of search. One article about AI companies training on other people's work is enough for a helpful person to paste in a block list and move on.</p>
+
+          <p>None of those are decisions about your business. They are settings that arrived. So the useful question is not who did this, it is whether what the file says today is what you would choose.</p>
+
+          <h2>Refusing training and refusing answers are two different things</h2>
+
+          <p>Some crawlers exist to gather material for training a model. Others exist to fetch a page so an assistant can answer a question about it. They often travel under separate names, and that distinction is worth knowing. It means an owner who objects to their writing becoming training material can refuse that and stay readable for answers.</p>
+
+          <p>Where a crawler's only job is training, refusing it costs you nothing in answers. Google-Extended and Applebot-Extended are controls of that kind rather than switches that make you findable, and Apple's own support documentation says that site rules for Applebot-Extended are not used in ranking for Apple's search. [CONFIRM: both halves of that sentence come from the Google Watcher's issue #26 rather than from anything published here. The Apple wording is quoted from support.apple.com/en-us/119829, and reading those two names as training controls rather than findability switches is the Watcher's.] The position worth holding is the specific one: refuse training if you want to, and leave the answer crawlers in.</p>
+
+          <h2>The switch that is not on your website</h2>
+
+          <p>Permission does not only live in a file. Search Console, Google's free dashboard for site owners, carries a control that takes a site out of Google's AI features. [CONFIRM: Google's rollout notice says this control reached all websites worldwide on August 31, 2026. We have that notice only as quoted by Search Engine Roundtable, and Google's own page would not open for us.] The part that outlasts any one setting is simpler. A person with access to your dashboard can take you off a surface without touching a single page, so knowing who holds that access is part of knowing what your site says.</p>
+
+          <h2>Short lists have no room for the absent</h2>
+
+          <p>Being unreadable costs more in Quakertown than it would in Philadelphia, and the reason is arithmetic. Ask an assistant for a general contractor in a city and it is cutting a long list down to three. Ask for one in Quakertown, Perkasie, or Coopersburg and there may only be a handful of real candidates before anybody starts choosing.</p>
+
+          <p>What fills your place is the business one town over. A customer in Quakertown will happily drive to Perkasie, so an assistant that cannot read your site names the Perkasie shop it can read, with no sense that it left anybody out. The phone call, the form fill, and the booked job all land there instead, and both shops carry on assuming nothing happened.</p>
+
+          <h2>The thirty-second check</h2>
+
+          <ol>
+            <li>Open your domain with /robots.txt on the end and read what comes back. You are looking for the word Disallow, and for any of the four names above.</li>
+            <li>If you find Disallow followed by a bare slash, that is a refusal of the whole site to whichever visitor it names, and it is worth a call to whoever maintains your website this week.</li>
+            <li>Write down who can change that file and who has access to your Search Console. If one of those is a company you stopped working with, that is the thing to fix first.</li>
+          </ol>
+
+          <h2>The honest part</h2>
+
+          <p>Letting an assistant read your website does not get you named in its answer. It only makes being named possible, which is a floor and not a result. What moves the rest is a claimed Google listing, reviews with real words in them, being present where the answer is already looking, and pages that answer a question in plain sentences. <a href="../named-in-ai-answers/">That is the longer job</a>.</p>
+
+          <p>Permission is the part you can settle today, by yourself, in less time than it took to read this. Not much else in local marketing works that way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both.
+
+         NO CONTRACTS QUESTION, DELIBERATELY. Blog posts are the FOURTH
+         sanctioned exception to the question that ends every other
+         page's FAQ, after web-design, film-live-entertainment and
+         privacy (decided 2026-08-31, recorded in CLAUDE.md). A post's
+         FAQ is topic-only: real reader questions about the subject of
+         this post and nothing else. A future consistency sweep that
+         finds the contracts question missing here has found the rule,
+         not a gap. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">WHAT OWNERS ASK ABOUT LETTING AI READ A SITE</p>
+        </div>
+        <details><summary>How do I check whether AI can read my website?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>You can check whether AI can read your website by typing your own domain with /robots.txt on the end, so yourbusiness.com/robots.txt, and reading what comes back. The words that matter are Disallow and the crawler names GPTBot, OAI-SearchBot, ClaudeBot, and PerplexityBot. A file that is missing or empty is fine, because it means nothing has been refused.</p></details>
+        <details><summary>Should a local business block AI crawlers?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>A local business almost always wants AI crawlers in, because being named in an assistant's answer is how a customer who asked that assistant ever hears about you. Blocking them takes you out of those answers without taking you out of ordinary search results, so nothing in your reports explains where the phone calls went. If the objection is to your writing being used to train a model, that part can usually be refused on its own.</p></details>
+        <details><summary>Does letting AI read my site mean it will recommend me?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Letting AI read your site makes being named possible, and does not by itself make it happen. Permission is the floor rather than the result. What moves the rest is a claimed Google listing, reviews with real words in them, being listed where the answer is already looking, and a website that answers questions in plain sentences.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../../#services">Services</a></li>
+            <li><a href="../../#promise">The Promise</a></li>
+            <li><a href="../../#how">How It Works</a></li>
+            <li><a href="../../#industries">Industries</a></li>
+            <li><a href="../../#faq">FAQ</a></li>
+            <li><a href="../../about/">About</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../../services/web-design/">Web Design</a></li>
+            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
