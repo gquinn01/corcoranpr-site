@@ -292,6 +292,12 @@ the run.
       on the list is a claim that did not get checked.
     - **Two alternate topics**, one line each, in case Greg would rather have
       one of those. Say why you ranked them below the one you wrote.
+    - **This standing line, word for word:** `Dates are draft dates.
+      datePublished, the byline date, and the sitemap lastmod get bumped
+      to the merge date before merging.` Step 8 dates the post today
+      because today is all you know, and a post can wait weeks for its
+      merge. A date from the week it was drafted is wrong once it
+      publishes later, and the line is what reminds whoever merges.
 
     Then stop. Do not merge. Do not comment on your own pull request asking
     for a merge.
@@ -323,8 +329,36 @@ path is not a working one. For that run only:
 
 ## Style
 
-Write the way the site writes: plain English, confident, no hype, and never
-a word the reader would have to look up. Specifics:
+Write as plainly as the site writes: plain English, confident, no hype,
+and never a word the reader would have to look up. **But not in the
+site's register.** The service pages are written to sell, almost without
+contractions, and a post written in that voice reads stiff. This used to
+say "write the way the site writes", and drafts imitated the register
+faithfully. A post is a note from a person, so it sounds like one.
+Specifics:
+
+- **Contractions are the default.** A post reads like a note from a
+  person: "it'll read well," "doesn't answer at night," "that's the
+  trouble." Write "do not," "cannot," or "it is" only where the sentence
+  needs the weight, the way you would stress it out loud. A post with no
+  contractions reads as machine-written, and that is fatal on a blog
+  whose own FAQ says an agent drafts it. This is a blog rule. The service
+  pages keep their own register, and they are not yours to write.
+  `scripts/audit.py` notes a post that leans on the long forms, and
+  the note lands in Monday's audit report under your post's name.
+- **Name AI plainly.** When a post is about AI, the word is "AI" or "an
+  AI tool", never "a writing tool", "a machine", or any other
+  euphemism, and never a mix: the term in the title is the term in the
+  body and in the FAQ. "AI" is not jargon under the jargon rule below;
+  it is the word the reader uses. `scripts/audit.py` fails any page
+  containing "writing tool", so that one cannot ship at all. The ban
+  covers terms that avoid the word AI; "AI assistant" is the product's
+  name and is allowed.
+- **A hypothetical example stays in one tense, the present, start to
+  finish.** "A shop owner opens the report and calls on Tuesday." An
+  example that drifts into the past tense halfway through reads as a
+  report of something that happened, and an invented event reported as
+  real is exactly what step 5 forbids.
 
 - **Speak to the reader, never about ourselves.** No remarks about our
   process, no arguing with competitors nobody raised. State the fact and

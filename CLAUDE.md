@@ -392,6 +392,30 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   13.64:1 there. It applies ONLY inside .post-body. Everywhere else on
   the site body text stays --slate, and nothing new entered the
   palette.
+- POST PROSE IS IN THE BLOG REGISTER, NOT THE SITE'S SALES REGISTER
+  (decided 2026-10-08), and this is a deliberate deviation in the same
+  shape as the --midnight ruling above. Recorded rather than quietly
+  done: the service pages are nearly contraction-free, the content
+  writer was told to "write the way the site writes", and its drafts
+  came out stiff because it imitated that register faithfully. The
+  cause was a missing rule, not a bad one. So, in posts only:
+  CONTRACTIONS ARE THE DEFAULT, and "do not", "cannot", "it is" are
+  kept for stress, where you would stress them out loud. A post with no
+  contractions reads as machine-written, which is fatal on a blog whose
+  own FAQ says an agent drafts it. AI IS NAMED PLAINLY: when a post is
+  about AI the word is "AI" or "an AI tool", one term from title through
+  body and FAQ, never a euphemism. "AI" is not jargon under the
+  above-the-fold rule; it is the reader's own word. "WRITING TOOL" IS
+  BANNED on every page. A hypothetical example stays in the present
+  tense start to finish, because one that drifts into the past reads as
+  a report of something that happened. Everywhere else on the site the
+  sales register stands; service pages are not the writer's to touch.
+  Mechanism: scripts/audit.py fails any page under docs/ with "writing
+  tool" in its visible text (a critical), and adds a NOTE, which never
+  scores, to any post whose article runs at 0.5 or more uncontracted
+  forms per 100 words with at least three of them. The note surfaces in
+  the Site Auditor's Monday report on its own. Both checks run on our
+  own pages only, never on a prospect's.
 - THE FOUR-ITEM PATTERN: when a post lists things, each one is an H3
   followed by its paragraph, never a paragraph with a bold lead-in. The
   H3 sits closer to the paragraph under it than to the one above, which
