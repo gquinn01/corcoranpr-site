@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BLOG POST. Why copy AI drafts for a small
+       business website has to be fact-checked by someone who knows
+       the business, and the four things to check before it goes live.
+
+       DEPTH. Two levels under docs/, so the site root is ../../ and
+       the blog index is ../
+
+       The FAQ below is byte-identical to the FAQPage schema in the
+       head. Edit one, edit both.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082A4A">
+
+  <title>Check What the AI Wrote Before Your Customers Do</title>
+  <meta name="description" content="AI fills gaps in what it knows with facts that sound right. Four things to check before AI-written copy goes on your website in Bucks County.">
+
+  <link rel="canonical" href="https://corcoranpr.com/blog/check-ai-written-copy/">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Check What the AI Wrote Before Your Customers Do">
+  <meta property="og:description" content="AI fills gaps in what it knows with facts that sound right. Four things to check before AI-written copy goes on your website in Bucks County.">
+  <meta property="og:url" content="https://corcoranpr.com/blog/check-ai-written-copy/">
+  <meta property="og:image" content="https://corcoranpr.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Corcoran Communications, AI-powered marketing in Quakertown, PA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- WHY: Google Analytics 4, property G-BNLRK8YR6Y, carried over from
+       the WordPress site. This is the ONLY tracking on the site, and
+       docs/privacy/ is the disclosure that stands in place of a consent
+       banner. Do not add a second tag without updating that page in the
+       same commit. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNLRK8YR6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BNLRK8YR6Y');
+  </script>
+
+  <link rel="stylesheet" href="../../assets/site.css?v=cb98801c">
+  <script src="../../assets/site.js?v=8db47049" defer></script>
+
+  <!-- WHY: one @graph. The ProfessionalService node repeats the SAME @id
+       as every other page so the whole site resolves to one business
+       entity. BlogPosting names the author and the date; isPartOf ties
+       it back to the Blog node on the index. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://corcoranpr.com/#business",
+        "name": "Corcoran Communications",
+        "alternateName": "Corcoran PR",
+        "url": "https://corcoranpr.com/",
+        "telephone": "+1-215-259-8304",
+        "email": "greg@corcoranpr.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1808 Enclave Dr",
+          "addressLocality": "Quakertown",
+          "addressRegion": "PA",
+          "postalCode": "18951",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 40.4418, "longitude": -75.3416 },
+        "sameAs": [
+          "https://www.google.com/maps/place/?q=place_id:ChIJQfKFYUoDxYkRBnhq4IKL8s0",
+          "https://www.facebook.com/CorcoranPR/",
+          "https://www.instagram.com/corcoran_pr/",
+          "https://twitter.com/Corcoran_PR",
+          "https://www.linkedin.com/company/corcorancommunications/"
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://corcoranpr.com/blog/check-ai-written-copy/#post",
+        "url": "https://corcoranpr.com/blog/check-ai-written-copy/",
+        "mainEntityOfPage": "https://corcoranpr.com/blog/check-ai-written-copy/",
+        "headline": "Check What the AI Wrote Before Your Customers Do",
+        "description": "AI fills the gaps in what it knows with whatever sounds typical. Four things to check before AI-written copy goes on your website, and who should check them.",
+        "inLanguage": "en-US",
+        "datePublished": "2026-10-07",
+        "dateModified": "2026-10-07",
+        "author": {
+          "@type": "Person",
+          "name": "Greg Quinn",
+          "jobTitle": "Owner",
+          "worksFor": { "@id": "https://corcoranpr.com/#business" }
+        },
+        "publisher": { "@id": "https://corcoranpr.com/#business" },
+        "isPartOf": { "@id": "https://corcoranpr.com/blog/#blog" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://corcoranpr.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://corcoranpr.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Check What the AI Wrote Before Your Customers Do" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is it OK to use AI to write my website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Using AI to write your website is fine as long as someone who knows the business checks every fact before it goes live. AI is quick with sentences and has no way of knowing your hours, your service area, or the year you opened. Treat what it writes as a first draft, never as the finished page." }
+          },
+          {
+            "@type": "Question",
+            "name": "What does AI get wrong on small business websites?",
+            "acceptedAnswer": { "@type": "Answer", "text": "AI is most likely to get wrong the details only the business knows: years in business, the towns it serves, the services it offers, and promises like free estimates or emergency service. Where AI has a gap, it can fill it with what's typical for similar businesses. That's why the mistakes sound plausible and survive a quick read." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I fact-check a page AI wrote?",
+            "acceptedAnswer": { "@type": "Answer", "text": "To fact-check a page AI wrote, print it and underline every number, place name, promise, and service in it. Next to each one, write where the fact comes from, such as your license or your own records, and cut or rewrite anything left blank. Then have whoever answers your phone read it, because they hear what customers ask every day." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ STICKY DARK NAV (identical on every page) ============ -->
+  <header class="nav">
+    <div class="wrap inner">
+      <a class="nav-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+      <nav class="nav-main" id="navmenu" aria-label="Main"><ul>
+        <li><a href="../../#services">Services</a></li>
+        <li><a href="../../#promise">Promise</a></li>
+        <li><a href="../../free-audit/">Free Audit</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../#industries">Industries</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+      </ul></nav>
+      <a class="btn btn-sm" href="#contact">Get Started</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero carries the FIXED post graphic: the same picture on every
+         post, so no post ever needs an art decision. It does not vary
+         per post, and the content writer agent may not swap, vary, or
+         remove it. The drawing and the reasoning are in the comment on
+         .hero-art below; the rule is recorded in CLAUDE.md. -->
+    <section class="hero hero--page field-hero">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../">Blog</a></li>
+            <li aria-current="page">Check What the AI Wrote Before Your Customers Do</li>
+          </ol>
+        </nav>
+        <div class="hero-split">
+          <div class="hero-copy-col">
+            <p class="eyebrow">Website Copy</p>
+            <h1>Check What the AI Wrote Before Your Customers Do</h1>
+            <p class="lead">AI can write a page about your business in seconds, and it'll read well. Where it doesn't know a fact, it supplies one anyway.</p>
+            <p class="post-meta">By <strong>Greg Quinn</strong>, owner, Corcoran Communications &middot; <time datetime="2026-10-07">October 7, 2026</time></p>
+          </div>
+
+          <!-- Decorative only, and FIXED: the same graphic on every post, so
+               no post needs an art decision. A marked-up page. Margin rule,
+               headline, prose, and in the margin a bracket and a green check
+               against the line a mint wash picks out. It reads as somebody
+               having gone through the page and marked what matters, which is
+               what these notes are. Deliberately NOT the blog index's clean
+               article card: the two heroes have to look different or clicking
+               a post card reads as nothing having happened. Hex values are
+               hardcoded because CSS custom properties do not reach inline SVG
+               attributes. Every one is a Strategic Growth palette color,
+               solid or at low alpha over the Midnight hero. No gradients. -->
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 400 300" focusable="false">
+              <!-- the sheet, with a ruled margin down its left -->
+              <rect x="40" y="20" width="340" height="250" rx="16" fill="#DDF7EC" fill-opacity=".05" stroke="#DDF7EC" stroke-opacity=".22" stroke-width="1.5"/>
+              <rect x="88" y="30" width="1.5" height="230" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- headline, two lines -->
+              <rect x="104" y="46" width="244" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="67" width="152" height="13" rx="6.5" fill="#DDF7EC" fill-opacity=".5"/>
+              <rect x="104" y="96" width="252" height="1.5" fill="#DDF7EC" fill-opacity=".14"/>
+              <!-- first passage, bracketed in the margin -->
+              <path d="M76 110 H64 V168 H76" fill="none" stroke="#DDF7EC" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="110" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".3"/>
+              <rect x="104" y="126" width="236" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="142" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="158" width="176" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- the line that matters: washed in mint, checked in the margin -->
+              <rect x="98" y="185" width="220" height="16" rx="4" fill="#DDF7EC" fill-opacity=".2"/>
+              <path d="M62 192 L68 199 L79 184" fill="none" stroke="#15B77E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="104" y="189" width="206" height="8" rx="4" fill="#DDF7EC" fill-opacity=".38"/>
+              <rect x="104" y="211" width="252" height="8" rx="4" fill="#B6C9DD" fill-opacity=".26"/>
+              <rect x="104" y="227" width="190" height="8" rx="4" fill="#B6C9DD" fill-opacity=".22"/>
+              <!-- last passage, ending short the way a paragraph does -->
+              <rect x="104" y="249" width="148" height="8" rx="4" fill="#B6C9DD" fill-opacity=".2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE ARTICLE ============ -->
+    <section id="post">
+      <div class="wrap">
+        <div class="post-body">
+          <p>Say a heating contractor in Perkasie asks AI for an About page. A few seconds later there's one, and it reads beautifully. It says the company has served Bucks County for over twenty years, offers 24-hour emergency service, and is proud of its convenient location in downtown Quakertown.</p>
+
+          <p>The owner opened the shop in 2015, doesn't answer the phone at night, and works out of Perkasie. Every one of those claims is wrong, and not one of them looks wrong. That's the trouble with copy AI writes: it fails in exactly the places a quick read doesn't catch.</p>
+
+          <h2>Fluent isn't the same as true</h2>
+
+          <p>AI is very good at sentences. It knows what an About page for a heating contractor usually says, and it writes that. What it can't know is anything about your business you didn't tell it: the year you opened, the towns you drive to, the hours somebody picks up the phone.</p>
+
+          <p>When it reaches a gap like that, it doesn't always leave a blank. It can fill the gap with whatever is typical, in the same confident voice as everything else on the page. A made-up claim and a true one look identical, so the only person who can tell them apart is the one who knows the business.</p>
+
+          <h2>Wrong copy costs calls, not just credibility</h2>
+
+          <p>A wrong fact on your website is not a typo. A customer who reads "24-hour emergency service" and calls at eleven at night has been promised something, and the voicemail breaks the promise. A page that names towns you don't serve brings calls you have to turn away, while the towns you do serve go unmentioned.</p>
+
+          <p>A customer who catches one wrong detail also starts doubting the rest. If the address is off, why believe the warranty? That doubt rarely turns into a complaint. It turns into a call to somebody else.</p>
+
+          <h2>Four things to check before it goes live</h2>
+
+          <h3>Every number.</h3>
+          <p>Years in business, jobs completed, customers served, star ratings, response times. Every number in an AI draft is either one you gave it or one it made up, and you're the only one who knows which. If you can't point to where a number came from, it comes out.</p>
+
+          <h3>Every place name.</h3>
+          <p>Towns, neighborhoods, streets, and regions are where AI, working from general knowledge, slips, and locals notice in a second. Quakertown's downtown is West Broad Street, not Main Street. Souderton and Harleysville are the Indian Valley, while North Penn means Lansdale, North Wales, and Hatfield. A page that mixes those up reads as if it was written from a map.</p>
+
+          <h3>Every promise.</h3>
+          <p>Free estimates, same-day service, licensed and insured, satisfaction guaranteed. These phrases fill the typical page in your trade, which is exactly why AI reaches for them. Each one is also something a customer will hold you to, so keep only the ones you'd put in writing on an invoice.</p>
+
+          <h3>Every service.</h3>
+          <p>Ask AI to describe a collision shop and it'll list what collision shops usually do. Yours may not do glass, frame work, or fleet accounts. A service you don't offer brings calls you can't take, and it pushes the work you actually want further down the page.</p>
+
+          <h2>How to check a draft in one sitting</h2>
+
+          <ul>
+            <li>Give AI your facts before you ask it to write: the year you opened, the towns you serve, your hours, and what you do and don't sell. The less it has to guess, the less it fills in.</li>
+            <li>Print the draft and underline every claim. Each number, place, promise, and service gets its own line.</li>
+            <li>Next to each underline, write where the fact comes from: your license, your records, your own knowledge. Anything left blank gets cut or rewritten.</li>
+            <li>Hand the page to whoever answers your phone. They hear what customers ask every day, and they'll spot a promise you can't keep faster than anyone.</li>
+          </ul>
+
+          <p>None of that needs software or a consultant. It needs the person who knows the business and a pen.</p>
+
+          <h2>Small towns read closely</h2>
+
+          <p>In upper Bucks, a customer reading your page often knows the roads better than the AI that wrote it. Somebody from Sellersville will notice a shop placed on the wrong street, and somebody from Harleysville will notice their town filed under the wrong region. In Allentown or Bethlehem the same error is easier to miss, which only means it costs you quietly instead of out loud.</p>
+
+          <p>The details AI gets wrong are the same details that tell a local reader you're actually from here. Getting them right is cheap, and it's the part of the page no competitor can copy.</p>
+
+          <h2>The honest part</h2>
+
+          <p>AI is a reasonable way to get past a blank page. What it produces is a starting point, though, and the only fact-checker it can have is somebody who knows the business. On October 1, 2026, Google updated its Search Central guidance on generative AI content to say it's critical to fact-check and review all AI-generated content by hand for accuracy before publishing.</p>
+
+          <p>Judge the page by the numbers that pay a wage: phone calls, form fills, and booked jobs. A wrong promise can still bring in the call. It just cannot turn it into the job.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="dark contact field-both" id="contact">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 class="sec-title">Start With the Free AI Site Audit</h2>
+          <p class="sec-sub">OUR AGENTS SCAN YOUR SITE. YOU GET THE PLAIN-ENGLISH REPORT. NO OBLIGATION.</p>
+        </div>
+        <!-- ============ AUDIT REQUEST FORM ============
+             Posts to a hosted Formspree endpoint, so there is no server code
+             in this repo and nothing to maintain. It works with JavaScript
+             off: the browser submits normally and Formspree returns its own
+             confirmation. With JavaScript on, assets/site.js intercepts it,
+             posts in the background, and swaps in the thank you below. -->
+        <form class="audit-form" action="https://formspree.io/f/mgawnozw" method="POST">
+          <input type="hidden" name="_subject" value="New audit request from corcoranpr.com">
+          <!-- Honeypot. Hidden from people and from screen readers, so
+               anything that fills it in is a bot and Formspree drops it. -->
+          <div class="af-hp" aria-hidden="true">
+            <label for="af-company">Leave this field empty</label>
+            <input type="text" id="af-company" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="af-grid">
+            <p class="af-field">
+              <label for="af-name">Your name</label>
+              <input type="text" id="af-name" name="name" required autocomplete="name">
+            </p>
+            <p class="af-field">
+              <label for="af-business">Business name</label>
+              <input type="text" id="af-business" name="business" required autocomplete="organization">
+            </p>
+            <p class="af-field af-wide af-url">
+              <label for="af-website">Your website address</label>
+              <input type="text" id="af-website" name="website" required inputmode="url" autocomplete="url" placeholder="yourbusiness.com" aria-describedby="af-website-hint">
+              <span class="af-hint" id="af-website-hint">This is the site we audit. If you do not have one yet, put none.</span>
+            </p>
+            <p class="af-field">
+              <label for="af-email">Email</label>
+              <input type="email" id="af-email" name="email" required autocomplete="email">
+            </p>
+            <p class="af-field">
+              <label for="af-phone">Phone <span class="af-opt">Optional</span></label>
+              <input type="tel" id="af-phone" name="phone" autocomplete="tel">
+            </p>
+            <p class="af-field af-wide">
+              <label for="af-note">Anything we should know? <span class="af-opt">Optional</span></label>
+              <textarea id="af-note" name="note" rows="3"></textarea>
+            </p>
+          </div>
+          <p class="af-error" role="alert" hidden></p>
+          <button class="btn af-submit" type="submit">Send My Free Audit</button>
+        </form>
+        <div class="af-thanks" role="status" hidden>
+          <p>Got it. Your report comes back within one business day. If it is urgent, call or text <a href="tel:+12152598304">215-259-8304</a>.</p>
+        </div>
+        <p class="contact-alt">Prefer to talk? Call or text <a href="tel:+12152598304">215-259-8304</a> or email <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ, LAST BEFORE THE FOOTER ============
+         Each answer is byte-identical to its acceptedAnswer text in the
+         FAQPage schema above. Edit one, edit both.
+
+         NO CONTRACTS QUESTION, DELIBERATELY. Blog posts are the FOURTH
+         sanctioned exception to the question that ends every other
+         page's FAQ, after web-design, film-live-entertainment and
+         privacy (decided 2026-08-31, recorded in CLAUDE.md). A post's
+         FAQ is topic-only: real reader questions about the subject of
+         this post and nothing else. A future consistency sweep that
+         finds the contracts question missing here has found the rule,
+         not a gap. -->
+    <section id="faq">
+      <div class="wrap" style="max-width:880px">
+        <div class="sec-head">
+          <h2 class="sec-title">Questions, Answered</h2>
+          <p class="sec-sub">THREE THINGS OWNERS ASK ABOUT AI-WRITTEN COPY</p>
+        </div>
+        <details><summary>Is it OK to use AI to write my website?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>Using AI to write your website is fine as long as someone who knows the business checks every fact before it goes live. AI is quick with sentences and has no way of knowing your hours, your service area, or the year you opened. Treat what it writes as a first draft, never as the finished page.</p></details>
+        <details><summary>What does AI get wrong on small business websites?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>AI is most likely to get wrong the details only the business knows: years in business, the towns it serves, the services it offers, and promises like free estimates or emergency service. Where AI has a gap, it can fill it with what's typical for similar businesses. That's why the mistakes sound plausible and survive a quick read.</p></details>
+        <details><summary>How do I fact-check a page AI wrote?<span class="faq-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></span></summary><p>To fact-check a page AI wrote, print it and underline every number, place name, promise, and service in it. Next to each one, write where the fact comes from, such as your license or your own records, and cut or rewrite anything left blank. Then have whoever answers your phone read it, because they hear what customers ask every day.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (identical on every page) ============ -->
+  <footer class="site field-green">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="foot-home" href="../../" aria-label="Corcoran Communications home"><img src="../../logo-dark.png" alt="Corcoran Communications" width="467" height="40"></a>
+          <p class="foot-tag">AI-powered marketing for Bucks, Montgomery &amp; Lehigh Valley businesses.</p>
+          <p class="foot-nap">
+            Corcoran Communications<br>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr<br>
+            Quakertown, PA 18951</a><br>
+            <a href="tel:+12152598304">215-259-8304</a><br>
+            <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a>
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-head">Explore</h2>
+          <ul class="foot-links">
+            <li><a href="../../#services">Services</a></li>
+            <li><a href="../../#promise">The Promise</a></li>
+            <li><a href="../../#how">How It Works</a></li>
+            <li><a href="../../#industries">Industries</a></li>
+            <li><a href="../../#faq">FAQ</a></li>
+            <li><a href="../../about/">About</a></li>
+            <li><a href="../../blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Services</h2>
+          <ul class="foot-links">
+            <li><a href="../../services/web-design/">Web Design</a></li>
+            <li><a href="../../services/seo/">SEO &amp; AEO</a></li>
+            <li><a href="../../services/google-ads/">Google Ads</a></li>
+            <li><a href="../../services/social-media-marketing/">Social Media Marketing</a></li>
+            <li><a href="../../services/lead-generation/">Lead Generation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-head">Get Started</h2>
+          <ul class="foot-links">
+            <li><a href="#contact">Free AI Site Audit</a></li>
+            <li><a href="tel:+12152598304">Call or Text 215-259-8304</a></li>
+            <li><a href="mailto:greg@corcoranpr.com">Email Greg</a></li>
+          </ul>
+        </div>
+        <div class="foot-area" id="service-area">
+          <h2 class="foot-head">Service Area</h2>
+          <ul>
+            <li><a href="../../locations/bucks-county/quakertown/">Quakertown</a></li><li><a href="../../locations/bucks-county/doylestown/">Doylestown</a></li><li><a href="../../locations/bucks-county/">Perkasie</a></li><li><a href="../../locations/bucks-county/">Sellersville</a></li>
+            <li><a href="../../locations/bucks-county/newtown/">Newtown</a></li><li><a href="../../locations/bucks-county/">Warrington</a></li><li><a href="../../locations/bucks-county/">New Hope</a></li><li><a href="../../locations/bucks-county/">Chalfont</a></li>
+            <li><a href="../../locations/montgomery-county/lansdale/">Lansdale</a></li><li><a href="../../locations/montgomery-county/">Souderton</a></li><li><a href="../../locations/montgomery-county/">Harleysville</a></li><li><a href="../../locations/montgomery-county/">Skippack</a></li>
+            <li><a href="../../locations/montgomery-county/">North Wales</a></li><li><a href="../../locations/montgomery-county/blue-bell/">Blue Bell</a></li><li><a href="../../locations/montgomery-county/collegeville/">Collegeville</a></li><li><a href="../../locations/montgomery-county/">Ambler</a></li>
+            <li><a href="../../locations/lehigh-valley/allentown/">Allentown</a></li><li><a href="../../locations/lehigh-valley/bethlehem/">Bethlehem</a></li><li><a href="../../locations/lehigh-valley/easton/">Easton</a></li><li><a href="../../locations/lehigh-valley/">Emmaus</a></li>
+            <li><a href="../../locations/lehigh-valley/">Macungie</a></li><li><a href="../../locations/lehigh-valley/">Whitehall</a></li><li><a href="../../locations/lehigh-valley/">Center Valley</a></li><li><a href="../../locations/lehigh-valley/">Coopersburg</a></li>
+          </ul>
+          <p>Serving <a href="../../locations/bucks-county/">Bucks</a> and <a href="../../locations/montgomery-county/">Montgomery</a> Counties and the Greater <a href="../../locations/lehigh-valley/">Lehigh Valley</a>.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 Corcoran Communications · <a href="https://www.google.com/maps/search/?api=1&amp;query=Corcoran%20Communications%2C%201808%20Enclave%20Dr%2C%20Quakertown%2C%20PA%2018951" target="_blank" rel="noopener">1808 Enclave Dr, Quakertown, PA 18951</a> · <a href="tel:+12152598304">215-259-8304</a> · <a href="mailto:greg@corcoranpr.com">greg@corcoranpr.com</a> · <a href="../../privacy/">Privacy Policy</a></p>
+        <p>Veteran-owned and operated</p>
+        <div class="social">
+          <a href="https://www.facebook.com/CorcoranPR/">Facebook</a>
+          <a href="https://www.instagram.com/corcoran_pr/">Instagram</a>
+          <a href="https://twitter.com/Corcoran_PR">Twitter/X</a>
+          <a href="https://www.linkedin.com/company/corcorancommunications/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
