@@ -351,7 +351,9 @@ Specifics:
   euphemism, and never a mix: the term in the title is the term in the
   body and in the FAQ. "AI" is not jargon under the jargon rule below;
   it is the word the reader uses. `scripts/audit.py` fails any page
-  containing "writing tool", so that one cannot ship at all.
+  containing "writing tool", so that one cannot ship at all. The ban
+  covers terms that avoid the word AI; "AI assistant" is the product's
+  name and is allowed.
 - **A hypothetical example stays in one tense, the present, start to
   finish.** "A shop owner opens the report and calls on Tuesday." An
   example that drifts into the past tense halfway through reads as a
