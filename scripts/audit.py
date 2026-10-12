@@ -177,6 +177,38 @@ STAMP_RE = {
     for a in STAMPED_ASSETS
 }
 
+# --- House language rules (decided 2026-10-08) -------------------------
+# Both checks below are OUR rules, not SEO, so they run only on our own
+# pages: a local file under docs/, or a live URL on the production
+# domain. A prospect's site is never scored against how we write.
+#
+# BANNED_PHRASES is the hard one, a critical. "writing tool" is the
+# euphemism blog drafts reached for instead of saying AI, and CLAUDE.md
+# now says to name AI plainly. A rule that lived only there would be
+# broken by the next draft, so the build fails on it instead. Matched
+# case-insensitively against visible text: everything outside <script>
+# and <style>, which includes <title>. JSON-LD is skipped, but the FAQ
+# mirror check already holds schema answers to the visible ones.
+BANNED_PHRASES = ("writing tool",)
+
+# The cadence check is the soft one, a NOTE, the bucket score_of() does
+# not count, same as the og:description rule. Blog posts default to
+# contractions (CLAUDE.md, The blog, 2026-10-08), so "do not" and "it
+# is" are kept for stress, and stress more than once every 200 words is
+# no longer stress. It reads only the article (.post-body), so the blog
+# index, which has none, is never measured. The floor of three hits
+# keeps a short post from tripping on two deliberate ones. It cannot
+# tell a sentence-final "what it is", which will not contract, from one
+# that should, which is why it is a note for a human and never a score.
+# The last three forms were added after the first measurement, when a
+# post with one contraction in 1006 words slipped under the line because
+# its long forms were "is not" and "are not", not the eight first listed.
+UNCONTRACTED_RE = re.compile(
+    r"\b(do not|does not|did not|cannot|will not|it is|that is|there is"
+    r"|is not|are not|they are)\b", re.I)
+CADENCE_NOTE_PER_100 = 0.5
+CADENCE_NOTE_MIN_HITS = 3
+
 
 def current_stamps() -> dict:
     """First 8 hex of each stamped asset's SHA-256. Empty dict if they
@@ -225,6 +257,54 @@ def check_asset_stamps(html: str, stamps: dict, passes: list, fails: list):
                 f"**`{asset}` carries a stale stamp** (`?v={m.group(2)}`, the file is now "
                 f"`?v={want}`). The page will serve a cached older copy of the file. Run "
                 f"`python3 scripts/stamp-assets.py`.")
+
+
+def is_own_page(source: str) -> bool:
+    """True for one of our pages: a local file under docs/ or a live URL
+    on the production domain. The house language rules apply to these
+    and to nothing else."""
+    if is_url(source):
+        return urlparse(source).netloc.lower().endswith(urlparse(SITE_BASE).netloc)
+    root = os.path.abspath(SITE_DIR) + os.sep
+    return os.path.abspath(source).startswith(root)
+
+
+def check_banned_phrases(p, passes: list, fails: list):
+    """A critical for any banned phrase in the visible text. See
+    BANNED_PHRASES for the one there is and why."""
+    text = " ".join(" ".join(p.visible_text).split())
+    hits = [ph for ph in BANNED_PHRASES
+            if re.search(r"\s+".join(map(re.escape, ph.split())), text, re.I)]
+    for ph in hits:
+        m = re.search(r".{0,60}" + r"\s+".join(map(re.escape, ph.split())) + r".{0,60}", text, re.I)
+        fails.append(f"**Banned phrase “{ph}” in the visible text.** When the subject is AI, "
+                     f"the word is “AI” or “an AI tool” (CLAUDE.md, The blog, 2026-10-08): "
+                     f"“…{m.group(0).strip()}…”")
+    if not hits:
+        passes.append("No banned house phrases in the visible text.")
+
+
+def check_post_cadence(p, notes: list):
+    """A note when a blog post's article leans on uncontracted forms. See
+    UNCONTRACTED_RE for the threshold and why it never scores."""
+    body = " ".join(p.post_blocks)
+    words = len(body.split())
+    hits = UNCONTRACTED_RE.findall(body)
+    if not words or len(hits) < CADENCE_NOTE_MIN_HITS:
+        return
+    per_100 = 100 * len(hits) / words
+    if per_100 < CADENCE_NOTE_PER_100:
+        return
+    lines = []
+    for block in p.post_blocks:
+        for sentence in re.split(r"(?<=[.?!])\s+", " ".join(block.split())):
+            if UNCONTRACTED_RE.search(sentence):
+                lines.append(UNCONTRACTED_RE.sub(lambda m: f"**{m.group(0)}**", sentence))
+    shown = "; ".join(f"“{s[:110]}{'…' if len(s) > 110 else ''}”" for s in lines[:3])
+    notes.append(f"Post cadence: {len(hits)} uncontracted forms (do not, it is, and the rest) "
+                 f"in {words} words of article, {per_100:.2f} per 100 against a line of "
+                 f"{CADENCE_NOTE_PER_100}. Blog posts default to contractions and keep the long "
+                 f"form for stress. Reread these, and leave any that need the weight: {shown}")
 
 
 def special_audit(source: str, html: str, p, kind: str, coverage: dict):
@@ -332,6 +412,8 @@ def special_audit(source: str, html: str, p, kind: str, coverage: dict):
     if kind == "redirect-stub":
         notes.append("Scored as a redirect stub, not as a page: no schema, no FAQ, no word count "
                      "and no llms.txt entry are expected on it.")
+    if is_own_page(source):
+        check_banned_phrases(p, passes, fails)
     return passes, warns, fails, notes
 
 
@@ -369,11 +451,25 @@ class PageParser(HTMLParser):
         self._faq_q = None
         self._faq_a = None
         self._skip_faq_ico = 0    # the chevron <span>, art with no words
+        # Everything a reader can see, for the banned-phrase check, and
+        # the article alone, one string per paragraph, heading or list
+        # item, for the cadence note on blog posts.
+        self.visible_text = []
+        self.post_blocks = []
+        self._post_div_depth = 0  # 0 outside .post-body, else open <div>s
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if tag in ("script", "style"):
             self._skip_depth += 1
+        if self._post_div_depth:
+            if tag == "div":
+                self._post_div_depth += 1
+            if tag in ("p", "h2", "h3", "h4", "li", "blockquote"):
+                self.post_blocks.append("")
+        elif tag == "div" and "post-body" in (a.get("class") or "").split():
+            self._post_div_depth = 1
+            self.post_blocks.append("")
         if tag == "title":
             self._in_title = True
         elif tag == "h1":
@@ -412,6 +508,8 @@ class PageParser(HTMLParser):
                 self.links_internal += 1
 
     def handle_endtag(self, tag):
+        if tag == "div" and self._post_div_depth:
+            self._post_div_depth -= 1
         if tag == "title":
             self._in_title = False
         elif tag == "h1":
@@ -449,6 +547,9 @@ class PageParser(HTMLParser):
             self._faq_a += data
         if self._skip_depth:
             return
+        self.visible_text.append(data)
+        if self._post_div_depth and self.post_blocks:
+            self.post_blocks[-1] += data
         linked = any(h.startswith(("tel:", "mailto:")) for h in self._href_stack)
         for kind, rx in (("phone", NAP_PHONE_RE), ("email", NAP_EMAIL_RE)):
             for _ in rx.finditer(data):
@@ -761,6 +862,11 @@ def audit(source: str, coverage: dict = None):
 
     # --- Cache-busting stamps on the shared assets ---
     check_asset_stamps(html, current_stamps() if not is_url(source) else {}, passes, fails)
+
+    # --- House language rules, our pages only ---
+    if is_own_page(source):
+        check_banned_phrases(p, passes, fails)
+        check_post_cadence(p, notes)
 
     # --- Published where crawlers can find it ---
     # A page that exists but is in neither sitemap.xml nor llms.txt is a
