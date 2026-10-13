@@ -155,6 +155,10 @@ the run.
    gets fixed.
 
 7. **Write the post.**
+   - **Read the model post first:**
+     `docs/blog/page-for-every-town/index.html`. Then read "How a post
+     is written" at the end of this file. The model is what a post here
+     sounds like, and that section is the rules it follows.
    - **Length: 700 to 1200 words of article body.** Count it, do not
      estimate it. Nothing enforces this but you: `scripts/audit.py` counts
      the whole page including the nav and footer, so a 200-word post still
@@ -251,6 +255,21 @@ the run.
      that is `content-blocked` too**, not a reason to stop quietly. See
      step 6a.
    - `python3 scripts/test-sitemap-expansion.py` — exit 0.
+   - `python3 scripts/audit.py docs/blog/<slug>/index.html`, which is
+     your post on its own. Find the line that starts `Post readability`. It
+     gives two numbers for your article: the average words a sentence,
+     against a line of 14, and the reading grade, against a line of 6.
+     **Under both lines, it is listed under "Passing", and you copy it
+     into the pull request. Over either line, it is listed under
+     "Notes", and the post is not finished.** A note never lowers the
+     score, so the first command above stays green with it. Do not take
+     the green as a pass. Split the long sentences, swap the long words
+     for plain ones, run this again, and repeat until the line is under
+     "Passing". The note names the three longest sentences, so start
+     there. Write it plain from the first draft, so this check confirms
+     the post instead of repairing it. If the line is still under
+     "Notes" after three rounds of edits, stop and file
+     `content-blocked` with the line as printed. That is step 6a.
 
    If you edited nothing under `docs/assets/`, the stamps are already
    current and you have no reason to run the stamper. You should not be
@@ -285,6 +304,8 @@ the run.
       post here, not in a diff.
     - **Title and meta description, each with its character count**, in the
       form `Title (54/60)` so the number is visible without counting.
+    - **The `Post readability` line from step 9**, copied as the audit
+      printed it.
     - **Every factual claim in the post, as a checklist**, one per line, each
       with where it came from: "already on the site", "in CLAUDE.md", or
       `[CONFIRM]` with what needs checking. This list is the fact-check, and
@@ -327,15 +348,77 @@ path is not a working one. For that run only:
   tests nothing.
 - **You still never merge.** Whoever triggered the run closes it.
 
-## Style
+## How a post is written
 
-Write as plainly as the site writes: plain English, confident, no hype,
-and never a word the reader would have to look up. **But not in the
-site's register.** The service pages are written to sell, almost without
-contractions, and a post written in that voice reads stiff. This used to
-say "write the way the site writes", and drafts imitated the register
+**This section is the part that travels.** When a writer is built for a
+client's site from this file, this section copies across as it stands.
+Two things in it change: the path to the model post, and the offer in
+"End with a first step". Everything above this section holds Corcoran's
+own facts, towns and files, and those get swapped for the client's.
+
+**The model post is `docs/blog/page-for-every-town/index.html`.** Greg
+read the first drafts and called them strangely written. That post is
+the rewrite he approved on 2026-10-12. Read its article from the first
+paragraph to the last before you write, and write yours the same way.
+
+**Do not copy the voice of this file.** These instructions argue for
+their rules and reach for a turn of phrase. A post does neither.
+
+### Plain language (decided 2026-10-12)
+
+The reader owns a business and has never bought marketing. Write the
+way you would explain it to them across the counter.
+
+- **Use the plain word.** "Help", not "earn its place". "Keep up to
+  date", not "keep accurate". If the reader might have to stop and work
+  out a word or a phrase, use an easier one.
+- **One idea to a sentence, and keep sentences short.** The article
+  averages 14 words a sentence or fewer, and reads at about a
+  sixth-grade level or below. Step 9 measures both. A long sentence is
+  usually two sentences joined by a comma or an "and", so split it. Any
+  sentence over 35 words gets rewritten, whatever the average is.
+- **Answer the title in the first few lines.** If the title asks a
+  question, the summary under it and the opening paragraphs give the
+  answer. The rest of the post explains it.
+- **No clever lines.** No metaphors, no sayings, and no punchy line to
+  close a paragraph. One draft said a page that only passes the reader
+  along "is a hallway, not a room", and called town pages "free money".
+  Say the plain thing: "If the page has nothing of its own to say, the
+  visitor leaves."
+- **Do not argue with the reader, and do not talk about the post.** No
+  "the intuitive model says", no "the part that doesn't hold", no "the
+  advice stands without his answer". Tell the reader what is true and
+  what to do about it.
+- **A heading says what its section tells you**, in the words a person
+  would type or ask. "What a good town page has on it", not "The price
+  of a page you couldn't fill".
+- **Show it with an example.** A collision shop, a new phone number, a
+  wrong closing time. One concrete case does more than a general
+  statement. Step 5 still applies: an example is true, or it is plainly
+  hypothetical.
+- **End with a first step.** The last section gives the reader one
+  thing to do, small enough to start this week. After it, one sentence
+  may point to the free site audit as a text link to
+  `../../free-audit/`. One sentence, at the end, and nowhere else in
+  the article. On a client's site this is that client's own offer.
+- **FAQ questions are worded the way a customer asks them out loud**,
+  and the answer comes in the first sentence, in plain words. The rule
+  in step 7 about an answer standing without its question still holds,
+  and it is no reason for a tangled opener. A draft answered "A
+  separate page for a town earns its place only when you can fill it
+  with facts that are true about that town and about your work in it".
+  The approved answer says "You usually shouldn't have a separate page
+  for every town you serve, because most of those pages end up saying
+  the same thing with a different town name."
+- **Read it back as speech.** Any sentence you would not say to a
+  client on the phone gets rewritten.
+
+### The blog register (decided 2026-10-08)
+
+The service pages are written to sell, almost without contractions, and
+a post written in that voice reads stiff. This file used to say "write
+the way the site writes", and drafts imitated the service pages
 faithfully. A post is a note from a person, so it sounds like one.
-Specifics:
 
 - **Contractions are the default.** A post reads like a note from a
   person: "it'll read well," "doesn't answer at night," "that's the
@@ -360,6 +443,8 @@ Specifics:
   report of something that happened, and an invented event reported as
   real is exactly what step 5 forbids.
 
+### House rules
+
 - **Speak to the reader, never about ourselves.** No remarks about our
   process, no arguing with competitors nobody raised. State the fact and
   stop.
@@ -371,7 +456,6 @@ Specifics:
 - **No em dashes anywhere**, including in schema text. Commas, periods, or
   a new sentence.
 - **American spelling**: center, neighbor, organized, skeptical.
-- **A sentence over 35 words gets rewritten.** Count them.
 - **No stale-clock phrases**: "right now", "recently", "new this year",
   "currently". A post is read months after it is filed, and those words
   age badly. Say what is true rather than when you noticed it.
