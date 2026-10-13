@@ -83,7 +83,8 @@
                          description.
          {{EYEBROW}}     the category over the H1, two or three words.
          {{H1}}          the headline as the reader sees it.
-         {{LEAD}}        the standfirst, one or two sentences.
+         {{LEAD}}        the standfirst, one or two sentences. When
+                         the title asks a question, this answers it.
          {{DATE_ISO}}    2026-08-31, for datePublished and <time>.
          {{DATE_HUMAN}}  August 31, 2026, for the visible byline.
          {{BODY}}        the article, inside .post-body. Paragraphs are
@@ -100,6 +101,13 @@
                          pages': contractions by default, AI called AI,
                          examples in the present tense. CLAUDE.md, The
                          blog, 2026-10-08.
+                         IT IS ALSO IN PLAIN LANGUAGE: plain words,
+                         short sentences, no clever lines, an average
+                         of 14 words a sentence or fewer. The model to
+                         read first is docs/blog/page-for-every-town/,
+                         and scripts/audit.py prints a "Post
+                         readability" line for every post. CLAUDE.md,
+                         The blog, 2026-10-12.
          {{FAQ_SUB}}     the eyebrow under the FAQ heading.
          {{FAQ_ITEMS}}   visible <details> blocks.
          {{FAQ_SCHEMA}}  the matching Question nodes, byte-identical.

@@ -178,7 +178,7 @@ STAMP_RE = {
 }
 
 # --- House language rules (decided 2026-10-08) -------------------------
-# Both checks below are OUR rules, not SEO, so they run only on our own
+# The three checks below are OUR rules, not SEO, so they run only on our own
 # pages: a local file under docs/, or a live URL on the production
 # domain. A prospect's site is never scored against how we write.
 #
@@ -208,6 +208,36 @@ UNCONTRACTED_RE = re.compile(
     r"|is not|are not|they are)\b", re.I)
 CADENCE_NOTE_PER_100 = 0.5
 CADENCE_NOTE_MIN_HITS = 3
+
+# The readability check is the cadence check's sibling: also a NOTE, also
+# the article only, also our own pages only (decided 2026-10-12). The
+# first posts had their contractions and still read like essays. Greg
+# called them strangely written, and the rewrite he approved, the town
+# pages post, is the model: plain words, short sentences. Two numbers
+# stand in for that. Both are measured on paragraphs and list items only,
+# because a heading has no period and would count as a very short
+# sentence and flatter the average.
+#   - average words a sentence. The model post is 11.9. The eight
+#     drafts written before the rule, that post's own first draft among
+#     them, ran from 15.5 to 18.5.
+#   - Flesch-Kincaid grade, the U.S. school grade the text reads at. It
+#     needs a syllable count, and syllables() below estimates one from
+#     the spelling, so the grade is "about", never exact. The model post
+#     is about 4.4. The eight drafts ran from 6.8 to 8.8.
+# The lines sit between the two groups, so the model clears both with
+# room and every one of the eight trips both. Measured 2026-10-12.
+# REPORTING ONLY. It is a note and not a warning because three live
+# posts were published before the rule and would fail it: a warning
+# would drop them under 100/100 and turn the build red over pages
+# nobody has changed. Whether it ever scores is Greg's call once those
+# three are rewritten. The content writer is held to it regardless, by
+# its own instructions (agents/content-writer.md, step 9).
+# A post under both lines gets a pass line carrying the two numbers, so
+# they can be quoted in a pull request without anybody counting.
+READ_MAX_AVG_WORDS = 14.0
+READ_MAX_GRADE = 6.0
+READ_MIN_SENTENCES = 10   # too little text to measure below this
+READ_BLOCK_TAGS = ("p", "li", "blockquote")
 
 # --- Favicon (decided 2026-10-12) --------------------------------------
 # The site went live on 2026-08-27 with no favicon at all, and the weekly
@@ -332,6 +362,47 @@ def check_post_cadence(p, notes: list):
                  f"in {words} words of article, {per_100:.2f} per 100 against a line of "
                  f"{CADENCE_NOTE_PER_100}. Blog posts default to contractions and keep the long "
                  f"form for stress. Reread these, and leave any that need the weight: {shown}")
+
+
+def syllables(word: str) -> int:
+    """A spelling-based estimate, good enough for a reading grade and not
+    for anything else: one syllable per run of vowels, less a silent
+    final e. A token with no letters in it, a year or a number, counts
+    as one."""
+    w = re.sub(r"[^a-z]", "", word.lower())
+    if not w:
+        return 1
+    n = len(re.findall(r"[aeiouy]+", w))
+    if w.endswith("e") and not w.endswith(("le", "ee")) and n > 1:
+        n -= 1
+    return max(n, 1)
+
+
+def check_post_readability(p, passes: list, notes: list):
+    """A note when a blog post's article runs to long sentences or a high
+    reading grade, and a pass line with the two numbers when it does not.
+    See READ_MAX_AVG_WORDS for the lines and why it never scores."""
+    sentences = []
+    for tag, block in zip(p.post_block_tags, p.post_blocks):
+        if tag not in READ_BLOCK_TAGS:
+            continue
+        sentences += [s for s in re.split(r"(?<=[.?!])\s+", " ".join(block.split())) if s]
+    if len(sentences) < READ_MIN_SENTENCES:
+        return
+    words = [w for s in sentences for w in s.split()]
+    avg = len(words) / len(sentences)
+    grade = 0.39 * avg + 11.8 * sum(map(syllables, words)) / len(words) - 15.59
+    measured = (f"{avg:.1f} words a sentence against a line of {READ_MAX_AVG_WORDS:.0f}, "
+                f"and about grade {grade:.1f} against a line of {READ_MAX_GRADE:.0f}")
+    if avg <= READ_MAX_AVG_WORDS and grade <= READ_MAX_GRADE:
+        passes.append(f"Post readability: the article averages {measured}.")
+        return
+    longest = sorted(sentences, key=lambda s: len(s.split()), reverse=True)[:3]
+    shown = "; ".join(f"“{s[:110]}{'…' if len(s) > 110 else ''}” ({len(s.split())} words)"
+                      for s in longest)
+    notes.append(f"Post readability: the article averages {measured}. Blog posts are written "
+                 f"in plain language (CLAUDE.md, The blog, 2026-10-12): short sentences, plain "
+                 f"words, one idea to a sentence. Start with the longest ones: {shown}")
 
 
 def favicon_file(source: str, href: str):
@@ -530,9 +601,10 @@ class PageParser(HTMLParser):
         self._skip_faq_ico = 0    # the chevron <span>, art with no words
         # Everything a reader can see, for the banned-phrase check, and
         # the article alone, one string per paragraph, heading or list
-        # item, for the cadence note on blog posts.
+        # item, for the cadence and readability notes on blog posts.
         self.visible_text = []
         self.post_blocks = []
+        self.post_block_tags = []  # one tag per block, for the readability note
         self._post_div_depth = 0  # 0 outside .post-body, else open <div>s
 
     def handle_starttag(self, tag, attrs):
@@ -544,9 +616,11 @@ class PageParser(HTMLParser):
                 self._post_div_depth += 1
             if tag in ("p", "h2", "h3", "h4", "li", "blockquote"):
                 self.post_blocks.append("")
+                self.post_block_tags.append(tag)
         elif tag == "div" and "post-body" in (a.get("class") or "").split():
             self._post_div_depth = 1
             self.post_blocks.append("")
+            self.post_block_tags.append("div")
         if tag == "title":
             self._in_title = True
         elif tag == "h1":
@@ -948,6 +1022,7 @@ def audit(source: str, coverage: dict = None):
     if is_own_page(source):
         check_banned_phrases(p, passes, fails)
         check_post_cadence(p, notes)
+        check_post_readability(p, passes, notes)
 
     # --- Published where crawlers can find it ---
     # A page that exists but is in neither sitemap.xml nor llms.txt is a

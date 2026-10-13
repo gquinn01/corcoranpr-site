@@ -416,6 +416,48 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   forms per 100 words with at least three of them. The note surfaces in
   the Site Auditor's Monday report on its own. Both checks run on our
   own pages only, never on a prospect's.
+- POSTS ARE WRITTEN IN PLAIN LANGUAGE (decided 2026-10-12). This sits
+  on top of the register rule above and does not replace it. Greg read
+  the drafts after they were brought into that register and called them
+  strangely written: the contractions were in, and the posts still read
+  like essays. The cause was the same as last time, a missing rule. The
+  only limit on a sentence was 35 words, nothing asked for plain words,
+  and the writer had never been shown a post Greg liked. Its own
+  instructions are also written in a clever voice, which it may have
+  been copying, so they now tell it not to.
+  THE MODEL POST IS docs/blog/page-for-every-town/. It is the rewrite
+  Greg approved, and the writer reads it before every draft. The rules
+  it follows: the plain word over the clever one; one idea to a
+  sentence; the title's question answered in the first few lines; no
+  metaphors, sayings, or punchy closing lines; no arguing with the
+  reader and no talk about the post itself; headings in the words a
+  person would search; a concrete example over a general statement; a
+  first step at the end, then one sentence, and only one, pointing to
+  the free audit page as a text link; FAQ questions worded the way a
+  customer asks them, answered in the first sentence. The full list
+  with its examples is "How a post is written" in
+  agents/content-writer.md, and that is the copy to edit.
+  THE NUMBERS: an article averages 14 words a sentence or fewer and
+  reads at about a sixth-grade level or below. The model post is 11.9
+  words and about grade 4.4. The eight drafts written before the rule
+  ran from 15.5 to 18.5 words and from grade 6.8 to 8.8. The 35-word
+  ceiling on any one sentence stands.
+  Mechanism: scripts/audit.py measures every post's article and prints
+  a "Post readability" line, under Passing when the post is inside both
+  lines and as a NOTE when it is over either. IT IS REPORTING ONLY, and
+  that is deliberate: three live posts were published before the rule
+  (google-listing-can-change, search-traffic-down, named-in-ai-answers)
+  and a warning would turn the build red over pages nobody changed.
+  Whether it ever scores is Greg's decision once those three are
+  rewritten. THE WRITER IS HELD TO IT NOW, by step 9 of its
+  instructions: a draft with the note is not finished and is not filed.
+  Like the two checks before it, this one runs on our own pages only.
+  CLIENT SITES: a client's blog writer is built by copying
+  agents/content-writer.md. "How a post is written" travels as it
+  stands, and the steps above it, which hold our own facts and towns,
+  are swapped for the client's. That is the whole mechanism, by Greg's
+  choice: no separate copy of the rules is kept anywhere else, except
+  the one-paragraph pointer in the corcoran-site-standards skill.
 - THE FOUR-ITEM PATTERN: when a post lists things, each one is an H3
   followed by its paragraph, never a paragraph with a bold lead-in. The
   H3 sits closer to the paragraph under it than to the one above, which
