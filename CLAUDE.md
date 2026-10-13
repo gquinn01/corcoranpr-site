@@ -315,8 +315,8 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   only if a notes section ever launches". It has, so the URL is a real
   page again and the PLAYBOOK row moved in the same commit.
 - BLOG IS IN THE FOOTER, NOT THE NAV, and that is deliberate rather
-  than an oversight. It sits in the Explore column after About, on all
-  29 pages, docs/404.html and BOTH templates. The link is one line per
+  than an oversight. It sits in the Explore column after About, on
+  every page, docs/404.html and BOTH templates. The link is one line per
   file at that file's own relative depth, not one identical string: the
   blog index self-links with ./ the way About and Privacy do, and
   docs/404.html uses /blog/ under its root-relative exception. Nav and
@@ -493,7 +493,7 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   slash would technically work today. It stays banned anyway: relative
   paths keep working wherever the files are served from, including a
   local checkout and any future preview, and the ban is what the whole
-  repo is built on. Do not "modernize" 45 files to absolute paths.
+  repo is built on. Do not "modernize" the site to absolute paths.
 - The only absolute URLs are the ones the spec requires to be absolute:
   canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
 - ONE EXCEPTION, docs/404.html (decided 2026-08-27). GitHub Pages
@@ -592,7 +592,7 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   Midnight, scaled down. No new art. brand/README.md has the crop box
   and why the avatar could not be used uncropped.
 - EVERY PAGE CARRIES THE SAME THREE <link> TAGS, right after the
-  theme-color meta: the 31 pages, docs/404.html and both page templates.
+  theme-color meta: every page, docs/404.html and both page templates.
   Each is at that file's own relative depth, like every other path on
   the site, and docs/404.html uses its root-relative form. A new page
   inherits them from its template through {{ROOT}}.
@@ -676,10 +676,13 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   live scan would have scored somebody else's pages.
 - THE LIVE SCAN AND THE LOCAL SCAN COVER DIFFERENT SETS, and this is the
   one thing to keep straight now that SITE_URL is set. A live run takes
-  its page list FROM sitemap.xml, which is 29 pages. The 15 redirect
-  stubs and the 404 page are deliberately not in the sitemap, so the
-  weekly report will never mention them. Only a local run,
-  python3 scripts/audit.py, covers all 45 files. Run the local one
+  its page list FROM sitemap.xml, which lists the real pages only (31
+  on 2026-10-12, and one more with every post). The 15 redirect stubs
+  and the 404 page are deliberately not in the sitemap, so the weekly
+  report will never mention them. Only a local run,
+  python3 scripts/audit.py, covers every file under docs/ (47 on
+  2026-10-12). The run prints both counts in its "Site score" line;
+  trust that line over any number written here. Run the local one
   before committing; that is what the definition of done means by
   "EVERY page".
 - Never put API keys or secrets in any file.
