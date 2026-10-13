@@ -315,8 +315,8 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   only if a notes section ever launches". It has, so the URL is a real
   page again and the PLAYBOOK row moved in the same commit.
 - BLOG IS IN THE FOOTER, NOT THE NAV, and that is deliberate rather
-  than an oversight. It sits in the Explore column after About, on all
-  29 pages, docs/404.html and BOTH templates. The link is one line per
+  than an oversight. It sits in the Explore column after About, on
+  every page, docs/404.html and BOTH templates. The link is one line per
   file at that file's own relative depth, not one identical string: the
   blog index self-links with ./ the way About and Privacy do, and
   docs/404.html uses /blog/ under its root-relative exception. Nav and
@@ -392,6 +392,30 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   13.64:1 there. It applies ONLY inside .post-body. Everywhere else on
   the site body text stays --slate, and nothing new entered the
   palette.
+- POST PROSE IS IN THE BLOG REGISTER, NOT THE SITE'S SALES REGISTER
+  (decided 2026-10-08), and this is a deliberate deviation in the same
+  shape as the --midnight ruling above. Recorded rather than quietly
+  done: the service pages are nearly contraction-free, the content
+  writer was told to "write the way the site writes", and its drafts
+  came out stiff because it imitated that register faithfully. The
+  cause was a missing rule, not a bad one. So, in posts only:
+  CONTRACTIONS ARE THE DEFAULT, and "do not", "cannot", "it is" are
+  kept for stress, where you would stress them out loud. A post with no
+  contractions reads as machine-written, which is fatal on a blog whose
+  own FAQ says an agent drafts it. AI IS NAMED PLAINLY: when a post is
+  about AI the word is "AI" or "an AI tool", one term from title through
+  body and FAQ, never a euphemism. "AI" is not jargon under the
+  above-the-fold rule; it is the reader's own word. "WRITING TOOL" IS
+  BANNED on every page. A hypothetical example stays in the present
+  tense start to finish, because one that drifts into the past reads as
+  a report of something that happened. Everywhere else on the site the
+  sales register stands; service pages are not the writer's to touch.
+  Mechanism: scripts/audit.py fails any page under docs/ with "writing
+  tool" in its visible text (a critical), and adds a NOTE, which never
+  scores, to any post whose article runs at 0.5 or more uncontracted
+  forms per 100 words with at least three of them. The note surfaces in
+  the Site Auditor's Monday report on its own. Both checks run on our
+  own pages only, never on a prospect's.
 - THE FOUR-ITEM PATTERN: when a post lists things, each one is an H3
   followed by its paragraph, never a paragraph with a bold lead-in. The
   H3 sits closer to the paragraph under it than to the one above, which
@@ -469,7 +493,7 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   slash would technically work today. It stays banned anyway: relative
   paths keep working wherever the files are served from, including a
   local checkout and any future preview, and the ban is what the whole
-  repo is built on. Do not "modernize" 45 files to absolute paths.
+  repo is built on. Do not "modernize" the site to absolute paths.
 - The only absolute URLs are the ones the spec requires to be absolute:
   canonical, og:url, og:image, sitemap <loc>, and schema @id/url values.
 - ONE EXCEPTION, docs/404.html (decided 2026-08-27). GitHub Pages
@@ -561,6 +585,35 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   missing stamp as a CRITICAL against that page, which drops it under
   100/100 and fails --strict, the same way a missing sitemap entry does.
 
+## Favicon (decided 2026-10-12)
+- THREE FILES AT THE SITE ROOT: docs/favicon.ico (16, 32 and 48px),
+  docs/favicon-192.png and docs/apple-touch-icon.png (180px). All three
+  are a crop of brand/corcoran-gbp-avatar-720.png, the white C on
+  Midnight, scaled down. No new art. brand/README.md has the crop box
+  and why the avatar could not be used uncropped.
+- EVERY PAGE CARRIES THE SAME THREE <link> TAGS, right after the
+  theme-color meta: every page, docs/404.html and both page templates.
+  Each is at that file's own relative depth, like every other path on
+  the site, and docs/404.html uses its root-relative form. A new page
+  inherits them from its template through {{ROOT}}.
+- THE 15 REDIRECT STUBS CARRY NONE, on purpose. They are bare by rule,
+  and a browser that asks for the default /favicon.ico gets the root
+  file anyway. A sweep that finds no icon tags on a stub has found this
+  rule.
+- THE HOME PAGE'S TAGS ARE THE ONES GOOGLE READS. It takes one icon per
+  site from the home page and can take days to weeks to show a change.
+  After any change to the icon files, ask for the home page to be
+  recrawled in Search Console's URL Inspection tool.
+- THE AUDIT ENFORCES IT, because the site ran for seven weeks with no
+  icon and a perfect score. On our own pages a missing tag is a warning,
+  and a tag pointing at a file that is not there is a critical. Either
+  one drops the page under 100/100 and fails --strict. On a prospect's
+  page a missing tag is only a note, since many sites serve the icon
+  from the root with no tag.
+- THE ICON FILES ARE NOT STAMPED. stamp-assets.py covers site.css and
+  site.js only. An icon changes rarely, and browsers and Google both
+  hold their own copy far longer than the ten minutes a stamp fights.
+
 ## Agents and their permissions (decided 2026-09-03)
 - NO INSTRUCTION SHIPS IN ANY agents/*.md UNLESS THAT WORKFLOW'S TOOL
   LIST CAN EXECUTE IT. Cross-check the two files on every edit to
@@ -623,10 +676,13 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   live scan would have scored somebody else's pages.
 - THE LIVE SCAN AND THE LOCAL SCAN COVER DIFFERENT SETS, and this is the
   one thing to keep straight now that SITE_URL is set. A live run takes
-  its page list FROM sitemap.xml, which is 29 pages. The 15 redirect
-  stubs and the 404 page are deliberately not in the sitemap, so the
-  weekly report will never mention them. Only a local run,
-  python3 scripts/audit.py, covers all 45 files. Run the local one
+  its page list FROM sitemap.xml, which lists the real pages only (31
+  on 2026-10-12, and one more with every post). The 15 redirect stubs
+  and the 404 page are deliberately not in the sitemap, so the weekly
+  report will never mention them. Only a local run,
+  python3 scripts/audit.py, covers every file under docs/ (47 on
+  2026-10-12). The run prints both counts in its "Site score" line;
+  trust that line over any number written here. Run the local one
   before committing; that is what the definition of done means by
   "EVERY page".
 - Never put API keys or secrets in any file.

@@ -16,12 +16,12 @@
        would put the palette in a second file, and the palette lives
        ONLY in docs/assets/site.css.
 
-       The cost, which is temporary: until the domain cutover the site
-       serves from a project subpath, where /assets/... does not
-       resolve, so this page renders unstyled during preview. At the
-       domain root it is correct. That trade is recorded in CLAUDE.md
-       along with the amended verification grep, which excludes this
-       file.
+       The cost was temporary and is spent. Until the domain cutover
+       on 2026-08-27 the site served from a project subpath, where
+       /assets/... did not resolve, so this page rendered unstyled in
+       preview. At the domain root it is correct, confirmed that day.
+       The trade is recorded in CLAUDE.md along with the amended
+       verification grep, which excludes this file.
 
        NOT IN sitemap.xml AND NOT IN llms.txt, deliberately. An error
        page is not a destination. scripts/audit.py recognizes the
@@ -32,6 +32,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="corcoran-page" content="error-404">
 
   <title>Page Not Found | Corcoran Communications</title>

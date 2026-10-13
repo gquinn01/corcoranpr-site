@@ -1,34 +1,81 @@
-# WHY: robots.txt is the doorman for crawlers. For AEO, the modern
-# mistake is BLOCKING the AI assistants' crawlers (often via copy-pasted
-# "block AI" templates) — which makes the business invisible when
-# customers ask ChatGPT, Claude, or Perplexity for recommendations.
-# A local business wants these bots IN.
+# WHY: robots.txt is the doorman for crawlers, and this one lets
+# everybody in. The modern mistake is a copy-pasted "block AI" template,
+# which makes a business invisible when customers ask ChatGPT, Claude,
+# or Perplexity for a recommendation. A local business wants to be
+# found there, so nothing below is blocked.
 #
-# NOTE: robots.txt only works at the ROOT of a domain. On a free
-# GitHub Pages address (username.github.io/repo/) it is decorative;
-# it becomes active when you attach a real custom domain.
+# EVERY BOT NAMED HERE IS ALREADY ALLOWED by the last rule in the file,
+# "User-agent: *". Naming one changes nothing a crawler does. They are
+# named so the policy is said out loud, and so nobody tidies one into a
+# block without first reading what it is for.
+#
+# THE NAMES DO FOUR DIFFERENT JOBS, and they are grouped by job. Groups
+# 1 to 3 are about being FOUND, in search results and in the answers
+# assistants give. Group 4 is about whether our pages may be used to
+# TRAIN a company's AI models, which is a different question with one
+# overlap, noted there. Each description below is from that company's
+# own documentation, read on 2026-10-12.
+#
+# NOTE: robots.txt only works at the ROOT of a domain. This file is
+# live at https://corcoranpr.com/robots.txt and has been since the
+# domain cutover on 2026-08-27.
 
-# Search engines: welcome
+# 1. Search engines: welcome. Applebot is Apple's crawler, and what it
+#    reads is what Siri, Spotlight and Safari search.
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# AI assistants and answer engines: explicitly welcome
-User-agent: GPTBot
+User-agent: Applebot
 Allow: /
 
+# 2. AI search crawlers: welcome. Each one builds the index its
+#    assistant searches when somebody asks it a question: ChatGPT,
+#    Claude and Perplexity, in that order. Block one and we lose
+#    visibility in that assistant's answers.
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
+# 3. Fetchers: welcome. These open a page only when a person asks the
+#    assistant about it. They do not crawl on their own.
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# 4. Training controls: allowed, by choice. GPTBot and ClaudeBot
+#    collect pages that may be used to train OpenAI's and Anthropic's
+#    models. Google-Extended and Applebot-Extended crawl nothing. They
+#    are switches: each tells Google or Apple whether pages its
+#    ordinary crawler already fetched may be used for its AI models.
+#    Google-Extended also covers whether the Gemini app may draw on our
+#    pages when it answers. Google and Apple both say their switch has
+#    no effect on search ranking.
+#    Allowing these four is a choice, not a requirement for being
+#    found. Ours is to allow them, for the same reason as everything
+#    above: we want to be known wherever a customer asks.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 # Everyone else

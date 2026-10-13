@@ -95,7 +95,11 @@
                          items read as a list instead of as four
                          paragraphs that happen to start bold. The
                          column is 640px at 1.15rem, which measures 74
-                         characters a line; do not widen it.
+                         characters a line; do not widen it. The prose
+                         is in the blog register, not the service
+                         pages': contractions by default, AI called AI,
+                         examples in the present tense. CLAUDE.md, The
+                         blog, 2026-10-08.
          {{FAQ_SUB}}     the eyebrow under the FAQ heading.
          {{FAQ_ITEMS}}   visible <details> blocks.
          {{FAQ_SCHEMA}}  the matching Question nodes, byte-identical.
@@ -110,6 +114,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
+  <!-- Favicon. Three files at the site root, linked at this page's own
+       depth through {{ROOT}}. Every page carries all three tags; the
+       audit warns when they are missing and fails the page when one
+       points at a file that is not there. -->
+  <link rel="icon" href="{{ROOT}}favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="{{ROOT}}favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ROOT}}apple-touch-icon.png">
 
   <title>{{TITLE}}</title>
   <meta name="description" content="{{META_DESC}}">

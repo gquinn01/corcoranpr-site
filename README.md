@@ -34,7 +34,7 @@ corcoranpr-site/
 │   ├── assets/site.js               Mobile menu, audit form, stat band
 │   ├── llms.txt                     Guide for AI assistants (AEO)
 │   ├── robots.txt                   Welcomes search and AI crawlers (AEO)
-│   ├── sitemap.xml                  29 pages, the crawler's contents page
+│   ├── sitemap.xml                  Every real page, the crawler's contents page
 │   └── CNAME                        The custom domain. Never delete it.
 ├── templates/
 │   ├── service-page-template.html ← The master mold. Any shared change to
@@ -65,9 +65,11 @@ corcoranpr-site/
                                      the decided redirect map
 ```
 
-Under `docs/` there are **45 files**: 29 real pages, 15 redirect stubs
-standing at old WordPress URLs, and the 404 page. Only the 29 are in
-`sitemap.xml`, which is deliberate.
+Under `docs/` there are three kinds of file: real pages, 15 redirect
+stubs standing at old WordPress URLs, and the 404 page. Only the real
+pages are in `sitemap.xml`, which is deliberate. On 2026-10-12 that was
+31 real pages and **47 files** in all; `python3 scripts/audit.py`
+prints the current counts in its "Site score" line.
 
 ## The two agents
 
@@ -76,8 +78,8 @@ every exchange is logged where a human can read it.
 
 | Agent | Runs | Job |
 |---|---|---|
-| **Site Auditor** | Mondays, 8:00am ET | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
-| **Google Watcher** | Daily, 7:00am ET | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
+| **Site Auditor** | Mondays, 10:37 UTC (6:37am Eastern in summer) | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
+| **Google Watcher** | Daily, 10:17 UTC (6:17am Eastern in summer) | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
 
 They coordinate through the Issues tab: the Watcher files alerts, and
 the Auditor reads the open ones before writing its Monday report, so a
@@ -101,7 +103,7 @@ workflow**. The report lands in **Issues** a couple of minutes later.
 
 `SITE_URL` is what points the weekly audit at the live site rather than
 the local files. Set, the scan takes its page list from the live
-`sitemap.xml` (29 pages) and the site-wide `robots.txt` and `llms.txt`
+`sitemap.xml` (the real pages only) and the site-wide `robots.txt` and `llms.txt`
 checks run, because those have to be fetched from a real domain root.
 Point it at any other domain and the same scanner audits that site,
 which is how a prospect gets a free audit.
@@ -115,7 +117,7 @@ that look arbitrary until you know why.
 Before committing anything:
 
 ```bash
-python3 scripts/audit.py --strict     # every one of the 45 files at 100/100
+python3 scripts/audit.py --strict     # every file under docs/ at 100/100
 python3 scripts/stamp-assets.py       # after any change to site.css or site.js
 ```
 

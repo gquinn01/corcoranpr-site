@@ -139,6 +139,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#082A4A">
+  <!-- Favicon. Three files at the site root, linked at this page's own
+       depth through {{ROOT}}. Every page carries all three tags; the
+       audit warns when they are missing and fails the page when one
+       points at a file that is not there. -->
+  <link rel="icon" href="{{ROOT}}favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="{{ROOT}}favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ROOT}}apple-touch-icon.png">
 
   <title>{{TITLE}}</title>
   <meta name="description" content="{{META_DESC}}">

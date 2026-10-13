@@ -98,6 +98,39 @@ roughly 8px strokes at source and the one in "Communications" roughly
 5px. The original logo sets the two words in different weights. The
 avatar uses the heavier one.
 
+## Favicon
+
+Three files at the site root, built 2026-10-12. All three are a CROP of
+`corcoran-gbp-avatar-720.png`, scaled DOWN, so nothing here is a new
+reconstruction and no letterform was redrawn.
+
+The avatar cannot be used as it stands. It was sized for Google's
+circular profile slot, so the "C" is 374px of a 720px canvas, 52% of the
+height, and at 16px in a browser tab that leaves a letter about eight
+pixels tall that reads as a smudge. Three crops were rendered side by
+side at 16, 32 and 48px (letter at 52%, 62% and 70% of the height) and
+Greg picked 70%, the only one that holds at tab size.
+
+**The recipe.** Crop box `(93, 93, 627, 627)` in the avatar's own
+coordinates: a 534px square centered on the letter's bounding box
+`(251, 173, 469, 547)`, which sits dead center at `(360, 360)`. Then
+Lanczos to each size. The canvas is solid Midnight `#082A4A` edge to
+edge, so the crop needs no fill.
+
+| File | Job |
+|------|-----|
+| `docs/favicon.ico` | 16, 32 and 48px in one file. Browser tabs, and the default path a browser asks for when a page names no icon. |
+| `docs/favicon-192.png` | 192x192. The one Google and high-density screens take. |
+| `docs/apple-touch-icon.png` | 180x180. iPhone home screen. iOS rounds the corners itself, so the file stays square and full bleed. |
+
+Circle-safe by measurement, which matters because Google shows the icon
+in a circle: the letter's diagonal is 0.81 of the cropped square, so it
+sits inside the inscribed circle with room on every side.
+
+Regenerate all three from the avatar with that crop box, never by hand
+and never from each other. If the avatar is ever rebuilt, re-measure the
+letter's bounding box first; the crop box follows from it.
+
 ## og-card.png
 
 `docs/og-card.png` is 1200x630: solid Midnight, the dark wordmark at

@@ -2,7 +2,17 @@ name: "Agent: Google Watcher (daily)"
 
 on:
   schedule:
-    - cron: "0 11 * * *"   # Every day, 11:00 UTC (7:00am ET)
+    # Every day at 10:17 UTC: 6:17am Eastern in summer, 5:17am in
+    # winter. GitHub's clock is UTC and does not follow daylight time.
+    #
+    # NOT ON THE HOUR, on purpose (changed 2026-10-12). GitHub delays
+    # scheduled runs at busy times and names the start of every hour as
+    # one of them. Its advice is to pick a different minute, and that is
+    # all this is. Do not tidy it back to :00.
+    # This ran at "0 11" (7:00am Eastern) and by October was starting
+    # in the afternoon: 4:10pm Eastern on Oct 12. The site says this
+    # watcher runs every morning, so the schedule has to make that true.
+    - cron: "17 10 * * *"
   workflow_dispatch: {}     # Manual "Run workflow" button for testing
 
 permissions:

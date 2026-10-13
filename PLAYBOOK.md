@@ -57,7 +57,7 @@ Learn these and every AI-marketing conversation stops being intimidating.
 
 **Agent** — an AI given a job description, tools, and a trigger, that then works without you babysitting each step. Job description + schedule + permissions = employee. The job description is written in plain English — you, a PR man, are *more* qualified to write great ones than most engineers.
 
-**Cron** — the scheduling syntax inside GitHub Actions (`0 12 * * 1` means "Mondays at 12:00 UTC"). You never memorize it; you ask AI to write it.
+**Cron** — the scheduling syntax inside GitHub Actions (`37 10 * * 1` means "Mondays at 10:37 UTC"). You never memorize it; you ask AI to write it.
 
 **Claude Code** — Anthropic's tool that lets an AI work directly with files, folders, GitHub, and other software — the "hands" that turn instructions into finished work. This is the tool that builds sites in an afternoon. (Cursor and GitHub Copilot are cousins.)
 
@@ -80,7 +80,7 @@ Everything Lucas described — and everything in your starter kit — is this pi
                          │        GITHUB (the office)    │
                          │                              │
    Google's blogs   ┌────┤  AGENT 2: Google Watcher     │
-   Status dashboard │    │  runs DAILY, 7am             │
+   Status dashboard │    │  runs DAILY, 6am             │
    SEO watchdogs ───┘    │  "anything change out there?"│
                          │            │                 │
                          │            ▼  files alert    │
@@ -236,7 +236,7 @@ The encouraging news: AEO is not a separate dark art. It's built from parts you 
 
 **Make the entity verifiable.** Before an AI recommends a business, it wants evidence the business is real, open, and liked: consistent name/address/phone everywhere, a fully filled-out [Google Business Profile](https://brandify.io/blog/aeo-for-local-businesses/), review volume and recency, and `sameAs` schema links tying the website to its Instagram, Yelp, and directory profiles. The demo site now carries those links, and the auditor checks for them. Note that most of this is *off*-site work — profiles, citations, review cadence — which no script fully automates. That's human work. It's also exactly the kind of thing a PR firm is better at than any dev shop, so bill for it.
 
-**Let the AI crawlers in.** AI assistants can only recommend what their crawlers can read. A surprising number of sites block GPTBot, ClaudeBot, and PerplexityBot with copy-pasted "block AI" robots.txt templates — self-inflicted invisibility. The kit now ships a robots.txt that explicitly welcomes them, and the auditor checks any live site for accidental blocking. (Prospecting angle: run the audit on a prospect and discover they've been invisible to ChatGPT for a year. That's a phone call that closes.)
+**Let the AI crawlers in.** AI assistants can only recommend what their crawlers can read. A surprising number of sites block the AI crawlers wholesale with copy-pasted "block AI" robots.txt templates — self-inflicted invisibility. The names do different jobs: OAI-SearchBot, Claude-SearchBot, and PerplexityBot build the indexes ChatGPT, Claude, and Perplexity search, so blocking those is what hides a business from an answer, while GPTBot and ClaudeBot are training crawlers (each company's own documentation, read 2026-10-12; `docs/robots.txt` has the full grouping). The kit now ships a robots.txt that explicitly welcomes them, and the auditor checks any live site for accidental blocking. (Prospecting angle: run the audit on a prospect and discover they've been invisible to ChatGPT for a year. That's a phone call that closes.)
 
 **llms.txt — with an honest label.** This is a plain-text "guide to the business" written for AI agents, and it's the most hyped and most oversold item in AEO. The truth, as of mid-2026: [Google has said its AI Search features ignore it](https://www.getpassionfruit.com/blog/should-i-create-an-llms.txt-file-google-s-2026-guidance-explained), while Anthropic recommends it for agents, OpenAI publishes them for its own products, and Perplexity has been seen reading them. Twenty minutes of work, some upside, zero downside — the kit includes one for the demo spa. When a competitor pitches llms.txt as an AI-ranking miracle to one of your clients, you'll be the one in the room who knows both halves of that story.
 
