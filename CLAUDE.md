@@ -585,6 +585,35 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   missing stamp as a CRITICAL against that page, which drops it under
   100/100 and fails --strict, the same way a missing sitemap entry does.
 
+## Favicon (decided 2026-10-12)
+- THREE FILES AT THE SITE ROOT: docs/favicon.ico (16, 32 and 48px),
+  docs/favicon-192.png and docs/apple-touch-icon.png (180px). All three
+  are a crop of brand/corcoran-gbp-avatar-720.png, the white C on
+  Midnight, scaled down. No new art. brand/README.md has the crop box
+  and why the avatar could not be used uncropped.
+- EVERY PAGE CARRIES THE SAME THREE <link> TAGS, right after the
+  theme-color meta: the 31 pages, docs/404.html and both page templates.
+  Each is at that file's own relative depth, like every other path on
+  the site, and docs/404.html uses its root-relative form. A new page
+  inherits them from its template through {{ROOT}}.
+- THE 15 REDIRECT STUBS CARRY NONE, on purpose. They are bare by rule,
+  and a browser that asks for the default /favicon.ico gets the root
+  file anyway. A sweep that finds no icon tags on a stub has found this
+  rule.
+- THE HOME PAGE'S TAGS ARE THE ONES GOOGLE READS. It takes one icon per
+  site from the home page and can take days to weeks to show a change.
+  After any change to the icon files, ask for the home page to be
+  recrawled in Search Console's URL Inspection tool.
+- THE AUDIT ENFORCES IT, because the site ran for seven weeks with no
+  icon and a perfect score. On our own pages a missing tag is a warning,
+  and a tag pointing at a file that is not there is a critical. Either
+  one drops the page under 100/100 and fails --strict. On a prospect's
+  page a missing tag is only a note, since many sites serve the icon
+  from the root with no tag.
+- THE ICON FILES ARE NOT STAMPED. stamp-assets.py covers site.css and
+  site.js only. An icon changes rarely, and browsers and Google both
+  hold their own copy far longer than the ten minutes a stamp fights.
+
 ## Agents and their permissions (decided 2026-09-03)
 - NO INSTRUCTION SHIPS IN ANY agents/*.md UNLESS THAT WORKFLOW'S TOOL
   LIST CAN EXECUTE IT. Cross-check the two files on every edit to

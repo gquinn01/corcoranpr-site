@@ -209,6 +209,33 @@ UNCONTRACTED_RE = re.compile(
 CADENCE_NOTE_PER_100 = 0.5
 CADENCE_NOTE_MIN_HITS = 3
 
+# --- Favicon (decided 2026-10-12) --------------------------------------
+# The site went live on 2026-08-27 with no favicon at all, and the weekly
+# report said so by hand for seven Mondays, because nothing here failed.
+# This is the check that would have caught it the first week.
+#
+# Google reads the icon from the HOME page's <link> tags and keeps one per
+# site; every other page carries the same tags for the browser tab. Any of
+# the rel values below counts, which is the list Google documents.
+#
+# Three outcomes on one of OUR pages:
+#   no tag at all            a WARNING. No ranking effect, but a warning
+#                            still drops the page under 100 and fails
+#                            --strict, which is the point.
+#   a tag whose file is not  a CRITICAL, local runs only. A link to a
+#   there                    missing file is worse than no link: the page
+#                            looks finished and the tab shows nothing.
+#   tags whose files exist   a pass.
+# On a live run the files cannot be opened, so a declared tag passes.
+#
+# On a PROSPECT'S page a missing tag is only a NOTE. Plenty of sites
+# serve /favicon.ico from the root with no tag, and browsers find it
+# there, so its absence from the HTML is not proof they have no icon.
+#
+# Redirect stubs are not checked. They are bare on purpose, and a browser
+# asking for the default /favicon.ico gets the root file anyway.
+FAVICON_RELS = frozenset({"icon", "apple-touch-icon", "apple-touch-icon-precomposed"})
+
 
 def current_stamps() -> dict:
     """First 8 hex of each stamped asset's SHA-256. Empty dict if they
@@ -307,6 +334,54 @@ def check_post_cadence(p, notes: list):
                  f"form for stress. Reread these, and leave any that need the weight: {shown}")
 
 
+def favicon_file(source: str, href: str):
+    """Where a favicon href lands on disk for a local page, or None when
+    it cannot be checked from here (a live run, or an icon hosted on
+    someone else's domain)."""
+    if is_url(source):
+        return None
+    href = href.split("#")[0].split("?")[0].strip()
+    if href.startswith(SITE_BASE):
+        href = "/" + href[len(SITE_BASE):]
+    if href.startswith(("http://", "https://", "//", "data:")):
+        return None
+    if href.startswith("/"):
+        return os.path.join(SITE_DIR, href.lstrip("/"))
+    return os.path.normpath(os.path.join(os.path.dirname(source), href))
+
+
+def check_favicon(source: str, p, passes: list, warns: list, fails: list, notes: list):
+    """Is a favicon declared, and on a local run, is every declared file
+    really there? See FAVICON_RELS for the three outcomes and why."""
+    hrefs = [h for h in p.icons if h.strip()]
+    if not hrefs:
+        if is_own_page(source):
+            warns.append(
+                "**No favicon declared.** Add the three `<link>` tags every other page "
+                "carries (`favicon.ico`, `favicon-192.png`, `apple-touch-icon.png`, at this "
+                "page's own relative depth). Without them the browser tab is blank, and on the "
+                "home page it is the tag Google reads for the icon beside our name in results.")
+        else:
+            notes.append(
+                "No `<link rel=\"icon\">` on this page. Check whether the site serves "
+                "`/favicon.ico` from its root; with neither, Google shows a generic globe "
+                "beside the business name in search results.")
+        return
+    missing = []
+    for h in hrefs:
+        path = favicon_file(source, h)
+        if path is not None and not os.path.isfile(path):
+            missing.append(h)
+    for h in missing:
+        fails.append(
+            f"**Favicon link points at a file that is not there: `{h}`.** The tag is on the "
+            f"page but the icon will not load. Fix the path, or restore the file under "
+            f"`{SITE_DIR}/`.")
+    if not missing:
+        passes.append(f"Favicon declared ({len(hrefs)} icon link(s))"
+                      + ("." if is_url(source) else ", and every file it names exists."))
+
+
 def special_audit(source: str, html: str, p, kind: str, coverage: dict):
     """The short rubric for a redirect stub or the 404 page.
 
@@ -391,6 +466,7 @@ def special_audit(source: str, html: str, p, kind: str, coverage: dict):
             passes.append(f"All {len(p.images)} images have alt text.")
 
         check_asset_stamps(html, current_stamps(), passes, fails)
+        check_favicon(source, p, passes, warns, fails, notes)
 
         notes.append("Scored as the error page, not as a page: no canonical is expected on it "
                      "(one would claim this URL is the real version of something), and it is "
@@ -410,8 +486,8 @@ def special_audit(source: str, html: str, p, kind: str, coverage: dict):
         passes.append(f"Correctly absent from `docs/sitemap.xml`: {own}")
 
     if kind == "redirect-stub":
-        notes.append("Scored as a redirect stub, not as a page: no schema, no FAQ, no word count "
-                     "and no llms.txt entry are expected on it.")
+        notes.append("Scored as a redirect stub, not as a page: no schema, no FAQ, no favicon "
+                     "tags, no word count and no llms.txt entry are expected on it.")
     if is_own_page(source):
         check_banned_phrases(p, passes, fails)
     return passes, warns, fails, notes
@@ -435,6 +511,7 @@ class PageParser(HTMLParser):
         self.links_internal = 0
         self.links_external = 0
         self.canonical = None
+        self.icons = []           # href of every favicon <link>, in order
         self.has_viewport = False
         self.contacts_linked = 0  # phone/email mentions inside tel:/mailto:
         self.contacts_bare = []   # (line, kind) for the ones that are not
@@ -483,6 +560,8 @@ class PageParser(HTMLParser):
                 self.has_viewport = True
         elif tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href")
+        elif tag == "link" and FAVICON_RELS.intersection((a.get("rel") or "").lower().split()):
+            self.icons.append(a.get("href") or "")
         elif tag == "script" and a.get("type") == "application/ld+json":
             self._in_jsonld = True
             self.jsonld_blocks.append("")
@@ -825,6 +904,8 @@ def audit(source: str, coverage: dict = None):
         passes.append("Mobile viewport tag present (site is mobile-friendly at the HTML level).")
     else:
         fails.append("**No viewport meta tag** — Google indexes mobile-first; this is a must-fix.")
+
+    check_favicon(source, p, passes, warns, fails, notes)
 
     robots = p.meta.get("robots", "")
     if "noindex" in robots:
