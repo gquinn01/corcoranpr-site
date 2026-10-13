@@ -57,7 +57,7 @@ Learn these and every AI-marketing conversation stops being intimidating.
 
 **Agent** — an AI given a job description, tools, and a trigger, that then works without you babysitting each step. Job description + schedule + permissions = employee. The job description is written in plain English — you, a PR man, are *more* qualified to write great ones than most engineers.
 
-**Cron** — the scheduling syntax inside GitHub Actions (`0 12 * * 1` means "Mondays at 12:00 UTC"). You never memorize it; you ask AI to write it.
+**Cron** — the scheduling syntax inside GitHub Actions (`37 10 * * 1` means "Mondays at 10:37 UTC"). You never memorize it; you ask AI to write it.
 
 **Claude Code** — Anthropic's tool that lets an AI work directly with files, folders, GitHub, and other software — the "hands" that turn instructions into finished work. This is the tool that builds sites in an afternoon. (Cursor and GitHub Copilot are cousins.)
 
@@ -80,7 +80,7 @@ Everything Lucas described — and everything in your starter kit — is this pi
                          │        GITHUB (the office)    │
                          │                              │
    Google's blogs   ┌────┤  AGENT 2: Google Watcher     │
-   Status dashboard │    │  runs DAILY, 7am             │
+   Status dashboard │    │  runs DAILY, 6am             │
    SEO watchdogs ───┘    │  "anything change out there?"│
                          │            │                 │
                          │            ▼  files alert    │

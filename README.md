@@ -78,8 +78,8 @@ every exchange is logged where a human can read it.
 
 | Agent | Runs | Job |
 |---|---|---|
-| **Site Auditor** | Mondays, 8:00am ET | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
-| **Google Watcher** | Daily, 7:00am ET | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
+| **Site Auditor** | Mondays, 10:37 UTC (6:37am Eastern in summer) | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
+| **Google Watcher** | Daily, 10:17 UTC (6:17am Eastern in summer) | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
 
 They coordinate through the Issues tab: the Watcher files alerts, and
 the Auditor reads the open ones before writing its Monday report, so a
