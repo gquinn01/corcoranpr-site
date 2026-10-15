@@ -58,13 +58,15 @@ the run.
      Google Ads posts in a row because Google Ads is easy to write about.
 
 3. **Check what the Google Watcher filed.** Run
-   `gh issue list --label google-update --state open`. **If an alert was
-   filed in the last two weeks, what that change means for local businesses
-   takes topic priority this week.** That is the whole reason the two agents
-   sit in the same repo: the Watcher notices, you explain it to the people
-   it happens to. Read the issue before you write, and write about the
-   consequence for a business owner in Bucks County, not about the
-   announcement.
+   `gh issue list --label google-update --state open`. The Site Auditor
+   closes every alert on the Monday it reads it (decided 2026-10-14), so
+   whatever is open was filed since Monday: this week's alerts, and
+   only those. **If one is open, what that change means for local
+   businesses takes topic priority this week.** That is the whole
+   reason the two agents sit in the same repo: the Watcher notices, you
+   explain it to the people it happens to. Read the issue before you
+   write, and write about the consequence for a business owner in Bucks
+   County, not about the announcement. A closed alert is not a topic.
 
    **This pulls against step 5, and here is how to resolve it.** What the
    Watcher filed is not published on our site, so it is a new fact and

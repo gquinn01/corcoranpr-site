@@ -689,6 +689,25 @@ Full checklist with the reasoning lives in PLAYBOOK.md.
   it. A long issue body is written to the agent's one granted scratch
   file and passed with `--body-file <name>`. Measured on 2026-09-03:
   12,871 characters refused, 4,727 accepted.
+- A WATCHER ALERT LIVES ONE WEEK (decided 2026-10-14). The Google
+  Watcher files alerts as google-update issues. The Site Auditor reads
+  every open one on Monday, folds each into its report as a priority,
+  an item for Greg, or a no-action line, and then CLOSES IT with that
+  line as the comment. Greg reads the Monday report and nothing else;
+  that is the whole point of the two agents, and it was the design from
+  the start. What was missing was the close: the auditor closed an
+  alert only when the SITE satisfied it, so alerts about measurement,
+  Business Profile, or anything off the pages never closed, sixteen
+  were open on 2026-10-14 going back to August, every Monday re-read
+  them all, and the Content Writer kept treating weeks-old alerts as
+  this week's topic. The 16 were closed by hand that day with one
+  comment each. Consequences: the writer's "last two weeks" window is
+  now simply the open list, which is since last Monday; an off-site
+  item an alert raises lives in the Monday report and on Greg's to-do
+  list, never in an open issue; and a further development on a closed
+  alert is a NEW issue naming the old number, never a reopen. The
+  auditor's `Bash(gh issue:*)` grant already covers `gh issue close`;
+  nothing in .github/ changed.
 - VERIFY A PERMISSION RULE, DO NOT ASSUME IT. `claude -p "<task>"
   --allowedTools "<rule>"` in a scratch directory proves a rule in
   seconds, including the negative case, and costs nothing next to a

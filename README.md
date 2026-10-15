@@ -81,9 +81,12 @@ every exchange is logged where a human can read it.
 | **Site Auditor** | Mondays, 10:37 UTC (6:37am Eastern in summer) | Runs `scripts/audit.py` against the live site, then has Claude turn the raw scan into a plain-English report with recommended fixes. |
 | **Google Watcher** | Daily, 10:17 UTC (6:17am Eastern in summer) | Sweeps Google Search Central, the Search Status dashboard, and industry watchdogs. Files a `google-update` alert only when something warrants it. |
 
-They coordinate through the Issues tab: the Watcher files alerts, and
-the Auditor reads the open ones before writing its Monday report, so a
-relevant algorithm change reorders that week's priorities.
+They coordinate through the Issues tab: the Watcher files alerts, the
+Auditor reads the open ones before writing its Monday report, so a
+relevant algorithm change reorders that week's priorities, and then it
+closes each one with a line saying what it became in the report. An
+alert lives one week. The Monday report is the one thing a person has
+to read.
 
 The firm runs three more agents against client advertising accounts,
 plus automated watchdog scripts checking spend pacing and conversion
